@@ -1,0 +1,208 @@
+.logoMapingIcon {
+    width: 45px;
+    position: relative;
+    height: 33px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.logoIcon {
+    width: 194.7px;
+    position: relative;
+    height: 30.7px;
+}
+.logo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 252px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+.logoMaping {
+    width: 252px;
+    position: relative;
+    height: 33px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.div {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.wrapLogo {
+    width: 336px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 20px;
+    color: #000;
+}
+.div1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 24px;
+}
+.infoChild {
+    width: 1px;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 10px;
+}
+.div2 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 24px;
+    text-align: left;
+}
+.info {
+    width: 339px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: right;
+}
+.dataBasedOn {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 24px;
+}
+.info1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.container {
+    width: 555px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.quickPanel {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.wrapQuickPanel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.faq {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    background-color: #5262f3;
+}
+.symbolIcon {
+    position: absolute;
+    height: 46.88%;
+    width: 62.5%;
+    top: 25.78%;
+    right: 18.75%;
+    bottom: 27.34%;
+    left: 18.75%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.circlePurple {
+    width: 48px;
+    position: relative;
+    border-radius: 400px;
+    height: 48px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.snskakaotalkIcon {
+    width: 48px;
+    position: relative;
+    height: 48px;
+}
+.quickPanel1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.p {
+    margin: 0;
+}
+.wrapFaq {
+    width: 198px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.container1 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 64px;
+}
+.containerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.footer {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 314px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 40px 360px;
+    box-sizing: border-box;
+    gap: 306px;
+    text-align: left;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.7);
+    font-family: Pretendard;
+}
+
