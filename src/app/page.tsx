@@ -20,7 +20,7 @@ function Header(){
         <div className={styles.statusloginTypenonSearch}>
             <div className={styles.logoMaping}>
                 <Link href="/" className={styles.logo}>
-                    <Image className={styles.logoMapingIcon} width={195} height={31} alt="" src="/icons/logo-maping.png" />
+                    <Image className={styles.logoIcon} width={195} height={31} alt="" src="/icons/logo-maping.png" />
                 </Link>
             </div>
             <div className={styles.container}>
@@ -64,6 +64,8 @@ function ApiCenter(){
 
 function PatchNotes(){
     return(
-        <div></div>
+        <div>
+
+        </div>
     );
 }

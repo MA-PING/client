@@ -180,7 +180,8 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 64px;
+    gap: 20px; /* 간격 조정 */
+    width: 100%; /* 전체 너비로 조정 */
 }
 .containerWrapper {
     display: flex;
@@ -192,7 +193,7 @@
     width: 100%;
     position: relative;
     background-color: #fff;
-    height: 314px;
+    height: auto;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -205,4 +206,5 @@
     color: rgba(14, 15, 20, 0.7);
     font-family: Pretendard;
 }
+
 
