@@ -38,7 +38,7 @@ const APIContents:NextPage = () => {
                             </div>
                         </div>
                         <div className={styles.button2}>
-                            <Image className={styles.icon} width={20} height={20} alt="" src="/icons/icon.svg" />
+                            <Image className={styles.icon} width={20} height={20} alt="" src="/icons/change.svg" />
                         </div>
                     </div>
                 </div>

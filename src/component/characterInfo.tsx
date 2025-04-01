@@ -60,7 +60,7 @@ const Frame:NextPage = () => {
                             </div>
                             <div className={styles.wrapBtn}>
                                 <div className={styles.button2}>
-                                    <Image className={styles.icon} width={20} height={20} alt="" src="/icons/icon.svg" />
+                                    <Image className={styles.icon} width={20} height={20} alt="" src="/icons/change.svg" />
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ const Frame:NextPage = () => {
                             </div>
                             <div className={styles.wrapBtn}>
                                 <div className={styles.button2}>
-                                    <Image className={styles.icon} width={20} height={20} alt="" src="/icons/icon.svg" />
+                                    <Image className={styles.icon} width={20} height={20} alt="" src="/icons/change.svg" />
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ const Frame:NextPage = () => {
                             </div>
                             <div className={styles.wrapBtn}>
                                 <div className={styles.button2}>
-                                    <Image className={styles.icon} width={20} height={20} alt="" src="/icons/icon.svg" />
+                                    <Image className={styles.icon} width={20} height={20} alt="" src="/icons/change.svg" />
                                 </div>
                             </div>
                         </div>
