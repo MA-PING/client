@@ -1,4 +1,4 @@
-import CharacterInfo from "@/component/characterInfo";
+import CharacterInfo from "@/component/character/characterInfo";
 import Footer from "@/component/footer";
 import Header from "@/component/header";
 

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
-import styles from '../styles/notice.module.css';
+import styles from '../../styles/home/notice.module.css';
 
 
 const NOTICE:NextPage = () => {

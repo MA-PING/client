@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
-import styles from '../styles/banner.module.css';
+import styles from '../../styles/home/banner.module.css';
 
 
 const Banner:NextPage = () => {

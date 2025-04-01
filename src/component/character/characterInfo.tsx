@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
-import styles from '../styles/characterInfo.module.css';
+import styles from '../../styles/character/characterInfo.module.css';
 
 
 const Frame:NextPage = () => {

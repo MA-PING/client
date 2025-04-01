@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from 'next/image';
 import styles from '../styles/home.header.module.css';
 import Footer from "@/component/footer";
-import NOTICE from "@/component/notice";
-import Banner from "@/component/banner";
-import APIContents from "@/component/APIContents";
+import NOTICE from "@/component/home/notice";
+import Banner from "@/component/home/banner";
+import APIContents from "@/component/home/APIContents";
 
 export default function Home() {
   return(

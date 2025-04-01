@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
-import styles from '../styles/APIContents.module.css';
+import styles from '../../styles/home/APIContents.module.css';
 
 
 const APIContents:NextPage = () => {
