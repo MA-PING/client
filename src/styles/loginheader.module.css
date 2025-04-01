@@ -1,0 +1,43 @@
+.logoMapingIcon {
+    width: 30px;
+    position: relative;
+    height: 22px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.logoIcon {
+    width: 129.8px;
+    position: relative;
+    height: 20.4px;
+}
+.logo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 168px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.logoMaping {
+    width: 168px;
+    position: relative;
+    height: 22px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.header {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 24px;
+    box-sizing: border-box;
+}
+

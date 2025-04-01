@@ -1,6 +1,10 @@
+import Header from "@/component/loginheader";
+
+
 export default function Home() {
     return (
-        <div>info
+        <div>
+                <Header/>
         </div>
     );
 }
