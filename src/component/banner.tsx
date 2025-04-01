@@ -25,7 +25,7 @@ const Banner:NextPage = () => {
                     <div className={styles.div1}>
                         <div className={styles.inPageNavigationLarge}>
                             <div className={styles.wrapTitle}>
-                                <Image className={styles.icon} width={24} height={24} alt="" src="/icons/Search2.svg" />
+                                <Image className={styles.icon} width={24} height={24} alt="" src="/icons/search.svg" />
                                 <div className={styles.title1}>
                                     <div className={styles.div2}>본캐 맞춤 추천 질문</div>
                                     <div className={styles.div3}>오늘 17:28 / 칸데르니아 (본캐) 기준</div>
@@ -68,7 +68,7 @@ const Banner:NextPage = () => {
                     <div className={styles.div1}>
                         <div className={styles.inPageNavigationLarge}>
                             <div className={styles.wrapTitle}>
-                                <Image className={styles.icon} width={24} height={24} alt="" src="/icons/Search2.svg" />
+                                <Image className={styles.icon} width={24} height={24} alt="" src="/icons/search.svg" />
                                 <div className={styles.title1}>
                                     <div className={styles.div2}>유저들이 자주 하는 질문</div>
                                     <div className={styles.div3}>오늘 17:28 기준</div>
