@@ -9,7 +9,7 @@ const Header:NextPage = () => {
         <div className={styles.header}>
             <div className={styles.logoMaping}>
                 <div className={styles.logo}>
-                    <Image className={styles.logoMapingIcon}  width={195} height={31} alt="" src="/icons/logo-maping.png" />
+                    <Image className={styles.logoIcon}  width={195} height={31} alt="" src="/icons/logo-maping.png" />
                 </div>
             </div>
             <div className={styles.button}>

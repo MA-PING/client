@@ -2,14 +2,17 @@ import Link from "next/link";
 import Image from 'next/image';
 import styles from '../styles/home.header.module.css';
 import Footer from "@/component/footer";
+import NOTICE from "@/component/notice";
+import Banner from "@/component/banner";
+import APIContents from "@/component/APIContents";
 
 export default function Home() {
   return(
   <div>
       <Header/>
       <Banner/>
-      <ApiCenter/>
-      <PatchNotes/>
+      <APIContents/>
+      <NOTICE/>
       <Footer/>
   </div>
     );
@@ -42,30 +45,6 @@ function Header(){
             <div className={styles.button}>
                 <Image className={styles.icon} width={40} height={40} alt="" src="/icons/profile.png" />
             </div>
-        </div>
-    );
-}
-
-function Banner(){
-    return(
-        <div>
-
-        </div>
-    );
-}
-
-function ApiCenter(){
-    return(
-        <div>
-
-        </div>
-    );
-}
-
-function PatchNotes(){
-    return(
-        <div>
-
         </div>
     );
 }

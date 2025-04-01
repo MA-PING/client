@@ -1,0 +1,285 @@
+.div {
+    position: relative;
+    line-height: 150%;
+}
+.title {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 0;
+}
+.logoMapingIcon {
+    width: 260px;
+    position: relative;
+    height: 40px;
+    overflow: hidden;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.maskGroupIcon {
+    width: 64px;
+    position: absolute;
+    margin: 0 !important;
+    top: -44px;
+    left: 294px;
+    height: 64px;
+    object-fit: cover;
+    z-index: 2;
+}
+.display1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    gap: 16px;
+}
+.display {
+    width: 358px;
+    margin: 0 !important;
+    position: absolute;
+    top: 132px;
+    left: 362px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    z-index: 0;
+}
+.characterChild {
+    width: 240px;
+    position: absolute;
+    margin: 0 !important;
+    top: 456px;
+    left: 328px;
+    filter: blur(10px);
+    border-radius: 50%;
+    background-color: #ededf0;
+    height: 84px;
+    transform:  rotate(178deg);
+    transform-origin: 0 0;
+    z-index: 0;
+}
+.vidIcon {
+    width: 384px;
+    position: absolute;
+    margin: 0 !important;
+    top: 0px;
+    left: 0px;
+    height: 526px;
+    object-fit: cover;
+    z-index: 1;
+}
+.character {
+    width: 384px;
+    margin: 0 !important;
+    position: absolute;
+    top: 280px;
+    left: 434px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
+}
+.ai1 {
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
+.icon {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.div2 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 600;
+}
+.div3 {
+    position: relative;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.title1 {
+    width: 473px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.wrapTitle {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.inPageNavigationAtomic1 {
+    width: 22px;
+    border-radius: 16px;
+    background-color: #f0f3ff;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 9px;
+    box-sizing: border-box;
+}
+.div5 {
+    width: 376px;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.9);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.inPageNavigationAtomic {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 16px;
+}
+.inPageNavigationAtomic7 {
+    width: 22px;
+    border-radius: 16px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 9px;
+    box-sizing: border-box;
+}
+.inPageNavigationAtomic6 {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 16px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.list {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: center;
+    font-size: 15px;
+    color: #4060ff;
+}
+.inPageNavigationLarge {
+    width: 510px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.div1 {
+    width: 560px;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 1px solid #ededf0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+}
+.wrapRecommend {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 20px;
+}
+.ai {
+    margin: 0 !important;
+    position: absolute;
+    top: 264px;
+    left: 971px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    z-index: 2;
+    color: rgba(14, 15, 20, 0.9);
+}
+.div27 {
+    width: 608px;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.search {
+    width: 564px;
+    margin: 0 !important;
+    position: absolute;
+    top: 165px;
+    left: 969px;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 2px solid #d4d4d6;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    gap: 16px;
+    z-index: 3;
+    font-size: 18px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.banner {
+    width: 100%;
+    position: relative;
+    height: 950px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    background-image: url('/images/Banner.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    text-align: left;
+    font-size: 24px;
+    color: rgba(14, 15, 20, 0.7);
+    font-family: Pretendard;
+}
+
