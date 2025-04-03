@@ -47,7 +47,7 @@
 .div1 {
     position: relative;
     letter-spacing: -0.02em;
-    line-height: 24px;
+    line-height: 150%;
 }
 .infoChild {
     width: 1px;
@@ -59,7 +59,7 @@
 .div2 {
     position: relative;
     letter-spacing: -0.02em;
-    line-height: 24px;
+    line-height: 150%;
     text-align: left;
 }
 .info {
@@ -70,12 +70,6 @@
     justify-content: flex-start;
     gap: 16px;
     text-align: right;
-}
-.dataBasedOn {
-    align-self: stretch;
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 24px;
 }
 .info1 {
     align-self: stretch;
@@ -180,8 +174,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 20px; /* 간격 조정 */
-    width: 100%; /* 전체 너비로 조정 */
+    gap: 64px;
 }
 .containerWrapper {
     display: flex;
@@ -189,21 +182,22 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
-.footer {
+.statusdefault {
     width: 100%;
     position: relative;
     background-color: #fff;
-    height: auto;
+    height: 314px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 400px 360px;
+    padding: 40px 360px;
     box-sizing: border-box;
     gap: 306px;
     text-align: left;
+    margin-top: 120px;
     font-size: 14px;
     color: rgba(14, 15, 20, 0.7);
+    font-family: Pretendard;
 }
-
 

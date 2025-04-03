@@ -13,10 +13,10 @@ const Header:NextPage = () => {
     return (
         <div className={styles.header}>
             <div className={styles.logoMaping}>
-                <div className={styles.logo}>
+                <Link href="/" className={styles.logo}>
                     <Image className={styles.logoMapingIcon} width={30} height={22} alt="" src="/icons/Maping.svg" />
                     <Image className={styles.logoIcon} width={130} height={20} alt="" src="/icons/Logo.svg" />
-                </div>
+                </Link>
             </div>
             <div className={styles.button}>
                 <Image className={styles.icon} width={40} height={40} alt="" src="/icons/profile.png" />

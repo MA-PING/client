@@ -2,18 +2,45 @@ import Link from "next/link";
 import Image from 'next/image';
 import styles from '../styles/home.header.module.css';
 import Footer from "@/component/footer";
-import NOTICE from "@/component/home/notice";
+import PatchNotice from '@/component/home/patchNote';
 import Banner from "@/component/home/banner";
 import APIContents from "@/component/home/APIContents";
 import FloatingButton from "@/component/FloatingButton";
 
-export default function Home() {
+interface PatchNote {
+    title: string;
+    url: string;
+    date: string;
+    summary: string;
+    version: string;
+}
+interface ApiResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: PatchNote[];
+    success: boolean;
+}
+
+async function getPatchNotes(): Promise<PatchNote[]> {
+    try {
+        const response = await fetch('https://api.ma-ping.com/api/v1/ai/notice');
+        const data: ApiResponse = await response.json();
+        return data.data;
+    } catch (error) {
+        console.error('패치 노트 가져오기 오류:', error);
+        return [];
+    }
+}
+
+export default async function Home() {
+    const patchNotes = await getPatchNotes();
   return(
   <div>
       <Header/>
       <Banner/>
       <APIContents/>
-      <NOTICE/>
+      <PatchNotice patchNotes={patchNotes}/>
       <Footer/>
       <FloatingButton />
   </div>
@@ -51,3 +78,30 @@ function Header(){
         </div>
     );
 }
+//
+// export async function getServerSideProps() {
+//     console.log('getServerSideProps 실행');
+//     try {
+//         console.log('API 호출 시작'); // 추가
+//         const response = await fetch('https://api.ma-ping.com/api/v1/ai/notice');
+//         const data: ApiResponse = await response.json(); // 타입 정의 적용
+//
+//
+//
+//         // API 응답에서 patchNotes 데이터 추출
+//         const patchNotes = data.data;
+//         // console.log('getServerSideProps data:', patchNotes); // 데이터 확인
+//         return {
+//             props: {
+//                 patchNotes,
+//             },
+//         };
+//     } catch (error) {
+//         console.error('패치 노트 가져오기 오류:', error);
+//         return {
+//             props: {
+//                 patchNotes: [], // 에러 발생 시 빈 배열 전달
+//             },
+//         };
+//     }
+// }

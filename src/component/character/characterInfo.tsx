@@ -144,7 +144,9 @@ const Frame:NextPage = () => {
                                 <div className={styles.item}>
                                     <div className={styles.button1}>전투력</div>
                                     <div className={styles.div16}>999억 9999만 9999</div>
-                                    <Image className={styles.icon3} width={24} height={24} alt="" src="icon.svg" />
+                                    <button>
+                                        <Image className={styles.icon3} width={24} height={24} alt="" src="/icons/blue_question_mark.svg" />
+                                    </button>
                                 </div>
                                 <div className={styles.wrapPreset}>
                                     <div className={styles.presetAbility}>
@@ -248,7 +250,9 @@ const Frame:NextPage = () => {
                                             <div className={styles.div25}>99,999</div>
                                         </div>
                                     </div>
-                                    <Image className={styles.dividerIcon} width={727} height={1} alt="" src="Divider.svg" />
+                                    <svg width="728" height="2" viewBox="0 0 728 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.5 1L727.5 1.00006" stroke="#EDEEF0"/>
+                                    </svg>
                                     <div className={styles.wrapItem1}>
                                         <div className={styles.item1}>
                                             <div className={styles.label}>스타포스</div>
@@ -283,7 +287,9 @@ const Frame:NextPage = () => {
                                             <div className={styles.div25}>9,999</div>
                                         </div>
                                     </div>
-                                    <Image className={styles.dividerIcon1} width={727} height={1} alt="" src="divider.svg" />
+                                    <svg width="728" height="2" viewBox="0 0 728 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.5 1L727.5 1.00006" stroke="#EDEEF0"/>
+                                    </svg>
                                     <div className={styles.wrapItem}>
                                         <div className={styles.item1}>
                                             <div className={styles.label}>추가 경험치 획득</div>
@@ -330,7 +336,9 @@ const Frame:NextPage = () => {
                                             <div className={styles.div25}>9단계</div>
                                         </div>
                                     </div>
-                                    <Image className={styles.dividerIcon1} width={727} height={1} alt="" src="divider.svg" />
+                                    <svg width="728" height="2" viewBox="0 0 728 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.5 1L727.5 1.00006" stroke="#EDEEF0"/>
+                                    </svg>
                                     <div className={styles.wrapItem}>
                                         <div className={styles.item1}>
                                             <div className={styles.label}>스탯 공격력</div>
