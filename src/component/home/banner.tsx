@@ -17,7 +17,7 @@ const Banner:NextPage = () => {
             </div>
             <div className={styles.character}>
                 <div className={styles.characterChild} />
-                <Image className={styles.vidIcon} width={384} height={526} alt="" src="/images/메이-vid.gif" />
+                <Image className={styles.vidIcon} width={384} height={526} alt="" src="/images/메이-vid1.webp" />
             </div>
             <div className={styles.ai}>
                 <div className={styles.ai1}>메이 AI 추천 질문</div>

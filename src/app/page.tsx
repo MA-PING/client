@@ -5,6 +5,7 @@ import Footer from "@/component/footer";
 import NOTICE from "@/component/home/notice";
 import Banner from "@/component/home/banner";
 import APIContents from "@/component/home/APIContents";
+import FloatingButton from "@/component/FloatingButton";
 
 export default function Home() {
   return(
@@ -14,6 +15,7 @@ export default function Home() {
       <APIContents/>
       <NOTICE/>
       <Footer/>
+      <FloatingButton/>
   </div>
     );
 }
