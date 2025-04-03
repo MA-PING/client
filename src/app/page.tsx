@@ -15,7 +15,7 @@ export default function Home() {
       <APIContents/>
       <NOTICE/>
       <Footer/>
-      <FloatingButton/>
+      <FloatingButton />
   </div>
     );
 }
@@ -25,7 +25,8 @@ function Header(){
         <div className={styles.statusloginTypenonSearch}>
             <div className={styles.logoMaping}>
                 <Link href="/" className={styles.logo}>
-                    <Image className={styles.logoIcon} width={195} height={31} alt="" src="/icons/logo-maping.png" />
+                    <Image className={styles.logoMapingIcon} width={30} height={22} alt="" src="/icons/Maping.svg" />
+                    <Image className={styles.logoIcon} width={130} height={20} alt="" src="/icons/Logo.svg" />
                 </Link>
             </div>
             <div className={styles.container}>

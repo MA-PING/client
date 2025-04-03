@@ -1,27 +1,24 @@
-// components/FloatingButton.tsx
-import styles from '../styles/FloatingButton.module.css';
-import { FunctionComponent } from 'react';
+import type { NextPage } from 'next';
 import Image from "next/image";
+import styles from '../styles/FloatingButton.module.css';
 
-interface FloatingButtonProps {
-    children?: React.ReactNode; // children prop에 대한 타입 정의 (선택적)
-    onClick: () => void;
-}
 
-const FloatingButton: FunctionComponent<FloatingButtonProps> = ({ children, onClick }) => {
+const FloatingButton:NextPage = () => {
     return (
-        <div className={styles.chatbotContainer}> {/* 컨테이너 div 추가 */}
-            <button className={styles.chatbot} onClick={onClick}>
-                <Image
-                    className={styles.iconchatbot}
-                    src="/icons/chatbot.svg"
-                    alt="챗봇 아이콘"
-                    width={80}  // 이미지 크기 지정
-                    height={80} // 이미지 크기 지정
-                />
+        <div className={styles.wrapChatbot}>
+            <div className={styles.bubbleChatbot}>
+                <div className={styles.wrap}>
+                    <div className={styles.div}>내 캐릭터에 딱 맞는 맞춤 정보를 원한다면?</div>
+                </div>
+                <div className={styles.arrow}>
+                    <Image className={styles.arrowIcon} width={22} height={9} alt="" src="/icons/arrow.svg" />
+                </div>
+            </div>
+            <button className={styles.chatbotShrink}>
+                <Image className={styles.iconchatbot} width={80} height={80} alt="" src="/icons/chatbot.svg" />
             </button>
-        </div>
-    );
+        </div>);
 };
 
 export default FloatingButton;
+          					

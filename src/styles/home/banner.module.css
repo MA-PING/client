@@ -61,7 +61,7 @@
     height: 84px;
     transform:  rotate(178deg);
     transform-origin: 0 0;
-    z-index: 0;
+    /*z-index: 0;*/
 }
 .vidIcon {
     width: 384px;
@@ -226,7 +226,7 @@
     margin: 0 !important;
     position: absolute;
     top: 264px;
-    left: 971px;
+    left: 972px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -249,7 +249,7 @@
     margin: 0 !important;
     position: absolute;
     top: 165px;
-    left: 969px;
+    left: 970px;
     border-radius: 12px;
     background-color: #fff;
     border: 2px solid #d4d4d6;
@@ -264,12 +264,10 @@
     font-size: 18px;
     color: rgba(14, 15, 20, 0.5);
 }
-
 .banner {
     width: 100%;
     position: relative;
-    height: 0; /* 높이를 0으로 설정 */
-    padding-bottom: 56.25%; /* 16:9 비율 유지 (1080/1920 * 100) */
+    height: 950px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -278,7 +276,7 @@
     background-image: url('/images/Banner.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center; /* 이미지를 중앙에 배치 */
+    background-position: top;
     text-align: left;
     font-size: 24px;
     color: rgba(14, 15, 20, 0.7);

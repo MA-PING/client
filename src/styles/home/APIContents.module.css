@@ -27,8 +27,6 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    z-index: 0;
-    text-align: center;
 }
 .imageIcon {
     width: 790px;
@@ -171,29 +169,15 @@
     justify-content: center;
     position: relative;
     gap: 24px;
-    z-index: 1;
+    text-align: left;
     font-size: 17px;
     color: #fff;
-}
-.wrapChange1 {
-    margin: 0 !important;
-    position: absolute;
-    top: 156px;
-    left: 664px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    z-index: 2;
-    font-size: 13px;
-    color: #05843e;
 }
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    position: relative;
     gap: 32px;
 }
 .title1 {
@@ -207,7 +191,7 @@
     position: absolute;
     margin: 0 !important;
     top: 66px;
-    left: 69px;
+    left: 70px;
     max-height: 100%;
     object-fit: cover;
     z-index: 0;
@@ -236,7 +220,7 @@
     justify-content: flex-start;
     gap: 16px;
 }
-.div5 {
+.div3 {
     width: 591px;
     position: relative;
     font-size: 16px;
@@ -245,7 +229,7 @@
     color: rgba(14, 15, 20, 0.9);
     display: inline-block;
 }
-.wrapAlert3 {
+.wrapAlert2 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -300,7 +284,7 @@
     font-size: 14px;
     color: #4060ff;
 }
-.alert3 {
+.alert2 {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -341,7 +325,6 @@
     align-items: center;
     justify-content: flex-start;
     gap: 24px;
-    text-align: center;
 }
 .apiContents {
     width: 100%;
@@ -354,129 +337,9 @@
     padding: 120px 360px 60px;
     box-sizing: border-box;
     gap: 60px;
-    text-align: left;
+    text-align: center;
     font-size: 24px;
     color: rgba(14, 15, 20, 0.9);
     font-family: Pretendard;
 }
-
-/* 기본 스타일 유지 */
-.kingkoo {
-    position: relative;
-    line-height: 150%;
-    font-weight: 600;
-}
-
-/* 컨테이너의 기본 크기를 설정하고 반응형 조정 */
-.aiContainer1 {
-    width: 100%;
-}
-
-.aiContainer {
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-    font-size: 16px;
-    letter-spacing: -0.02em;
-    line-height: 160%;
-    color: rgba(14, 15, 20, 0.7);
-    display: flex;
-    align-items: center;
-}
-
-/* 이미지 반응형 설정 */
-.imageIcon {
-    width: 100%;
-    max-width: 790px;
-    height: auto;
-    position: relative;
-    margin: 0 auto;
-    border-radius: 12px;
-    object-fit: cover;
-    display: block;
-}
-
-.image156Icon {
-    width: 100%;
-    max-width: 240px;
-    height: auto;
-    position: relative;
-    margin: 0 auto;
-    border-radius: 2px;
-    object-fit: cover;
-}
-
-/* 버튼 반응형 조정 */
-.button {
-    width: 100%;
-    max-width: 226px;
-    height: 48px;
-    border-radius: 8px;
-    background-color: #4060ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
-}
-
-/* 컨텐츠 반응형 조정 */
-.content {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 24px;
-    text-align: center;
-}
-
-.apiContents {
-    width: 100%;
-    padding: 60px 5%;
-    box-sizing: border-box;
-    text-align: left;
-}
-
-/* 작은 화면 (모바일) 대응 */
-@media (max-width: 768px) {
-    .aiContainer {
-        font-size: 14px;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .wrapImg {
-        height: auto;
-        gap: 5px;
-    }
-
-    .button {
-        height: 40px;
-        font-size: 14px;
-    }
-
-    .content {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .apiContents {
-        padding: 40px 5%;
-    }
-}
-
-/* 초소형 화면 (스마트폰) 대응 */
-@media (max-width: 480px) {
-    .button {
-        padding: 12px;
-        font-size: 12px;
-    }
-
-    .imageIcon, .image156Icon {
-        width: 90%;
-    }
-}
-
 

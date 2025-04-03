@@ -130,6 +130,9 @@
     gap: 8px;
     font-size: 14px;
 }
+.hidden {
+    display: none;
+}
 .container {
     margin: 0 !important;
     position: absolute;

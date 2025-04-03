@@ -1,15 +1,21 @@
+"use client"
+
 import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '../styles/header.module.css';
 import Link from "next/link";
+import {usePathname} from "next/navigation";
 
 
 const Header:NextPage = () => {
+    const pathname = usePathname()
+    console.log(pathname)
     return (
         <div className={styles.header}>
             <div className={styles.logoMaping}>
                 <div className={styles.logo}>
-                    <Image className={styles.logoIcon}  width={195} height={31} alt="" src="/icons/logo-maping.png" />
+                    <Image className={styles.logoMapingIcon} width={30} height={22} alt="" src="/icons/Maping.svg" />
+                    <Image className={styles.logoIcon} width={130} height={20} alt="" src="/icons/Logo.svg" />
                 </div>
             </div>
             <div className={styles.button}>
@@ -17,16 +23,16 @@ const Header:NextPage = () => {
             </div>
             <div className={styles.container}>
                 <div className={styles.wrapItem}>
-                    <Link href="/" className={styles.item}>
+                    <Link href="/" className={pathname === "/" ? styles.item1 : styles.item}>
                         <div className={styles.div}>홈</div>
                     </Link>
-                    <Link href="my-character" className={styles.item1}>
+                    <Link href="/my-character" className={pathname === "/my-character" ? styles.item1 : styles.item2}>
                         <div className={styles.div1}>내 캐릭터 정보</div>
                     </Link>
-                    <Link href="simulator" className={styles.item2}>
+                    <Link href="/simulator" className={pathname === "/simulator" ? styles.item1 : styles.item2}>
                         <div className={styles.div1}>시뮬레이터</div>
                     </Link>
-                    <Link href="ranking" className={styles.item2}>
+                    <Link href= "/ranking" className={pathname === "/ranking" ? styles.item1 : styles.item2}>
                         <div className={styles.div1}>랭커정보</div>
                     </Link>
                 </div>
