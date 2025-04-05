@@ -19,6 +19,8 @@ RUN npm run build
 # Production image, copy built assets and start server
 FROM node:20-alpine AS production
 
+ENV TZ=Asia/Seoul
+
 # Set the working directory.
 WORKDIR /app
 

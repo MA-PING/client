@@ -3,6 +3,8 @@ import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '../../styles/home/patchNote.module.css';
 import { useState } from 'react';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from 'remark-gfm'
 
 interface PatchNote {
     title: string;
@@ -40,15 +42,24 @@ const PatchNotice: NextPage<Props> = ({ patchNotes }) => {
                             <div className={styles.div2}>{note.title}</div>
                             <div className={styles.wrap1}>
                                 <div className={styles.div3}>{note.date.split("T")[0].replace(/-/g, '.')}</div>
-                                <Image className={styles.icon} width={32} height={32} alt="" src="/icons/arrow_down.svg" />
+                                <Image
+                                    className={styles.icon}
+                                    width={32}
+                                    height={32}
+                                    alt=""
+                                    src={openIndex === index ? "/icons/arrow_up.svg" : "/icons/arrow_down.svg"}
+                                />
                             </div>
                         </div>
                         {openIndex === index && (
                             <div className={styles.info}>
                                 <div className={styles.sDContainer}>
-                                    <ul className={styles.sDI}>
-                                        <li className={styles.li}>{note.summary}</li>
-                                    </ul>
+                                    {/*<ul className={styles.sDI}>*/}
+                                        {/*<li className={styles.li}></li>*/}
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                            {note.summary}
+                                        </ReactMarkdown>
+                                    {/*</ul>*/}
                                 </div>
                             </div>
                         )}
