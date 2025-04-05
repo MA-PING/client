@@ -3,9 +3,9 @@ import Image from 'next/image';
 import styles from '../styles/home.header.module.css';
 import Footer from "@/component/footer";
 import PatchNotice from '@/component/home/patchNote';
-import Banner from "@/component/home/banner";
 import APIContents from "@/component/home/APIContents";
 import FloatingButton from "@/component/FloatingButton";
+import Frame from "@/component/home/banner2";
 
 interface PatchNote {
     title: string;
@@ -42,7 +42,7 @@ export default async function Home() {
   return(
   <div>
       <Header/>
-      <Banner/>
+      <Frame/>
       <APIContents/>
       <PatchNotice patchNotes={patchNotes}/>
       <Footer/>

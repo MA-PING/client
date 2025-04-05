@@ -55,7 +55,6 @@ const PatchNotice: NextPage<Props> = ({ patchNotes }) => {
                             <div className={styles.info}>
                                 <div className={styles.sDContainer}>
                                     <ul className={styles.sDI}>
-                                        {/*<li className={styles.li}></li>*/}
                                         <ReactMarkdown
                                             remarkPlugins={[remarkGfm]}
                                             components={{

@@ -1,3 +1,32 @@
+.frameChild {
+    position: absolute;
+    width: 100%;
+    top: -0.12px;
+    right: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 1080px;
+    object-fit: cover;
+}
+.frameItem {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.1));
+}
+.rectangleParent {
+    position: absolute;
+    width: 100%;
+    top: 0.12px;
+    right: 0px;
+    left: 0px;
+    height: 950px;
+}
 .div {
     position: relative;
     line-height: 150%;
@@ -38,16 +67,14 @@
     gap: 16px;
 }
 .display {
-    width: 358px;
-    margin: 0 !important;
     position: absolute;
-    top: 132px;
-    left: 362px;
+    top: 0px;
+    left: 0px;
+    width: 358px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
-    z-index: 0;
 }
 .characterChild {
     width: 240px;
@@ -61,7 +88,7 @@
     height: 84px;
     transform:  rotate(178deg);
     transform-origin: 0 0;
-    /*z-index: 0;*/
+    z-index: 0;
 }
 .vidIcon {
     width: 384px;
@@ -74,22 +101,24 @@
     z-index: 1;
 }
 .character {
-    width: 384px;
-    margin: 0 !important;
     position: absolute;
-    top: 280px;
-    left: 434px;
+    top: 148px;
+    left: 72px;
+    width: 384px;
     height: 540px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    z-index: 1;
 }
-.ai1 {
-    position: relative;
-    line-height: 150%;
-    font-weight: 600;
+.displayParent {
+    position: absolute;
+    height: 76%;
+    width: 23.75%;
+    top: 16.64%;
+    right: 57.4%;
+    bottom: 7.36%;
+    left: 18.85%;
 }
 .icon {
     width: 24px;
@@ -98,21 +127,58 @@
     overflow: hidden;
     flex-shrink: 0;
 }
-.div2 {
+.div1 {
+    width: 608px;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+.search {
+    align-self: stretch;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 2px solid #d4d4d6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    gap: 16px;
+}
+.ai1 {
+    align-self: stretch;
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.div3 {
     position: relative;
     letter-spacing: -0.02em;
     line-height: 150%;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-.div3 {
+.div4 {
+    flex: 1;
     position: relative;
     font-size: 15px;
     letter-spacing: -0.02em;
     line-height: 150%;
     color: rgba(14, 15, 20, 0.7);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .title1 {
-    width: 473px;
+    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -127,6 +193,11 @@
     justify-content: flex-start;
     gap: 4px;
 }
+.div5 {
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
 .inPageNavigationAtomic1 {
     width: 22px;
     border-radius: 16px;
@@ -139,16 +210,16 @@
     padding: 5px 9px;
     box-sizing: border-box;
 }
-.div5 {
-    width: 376px;
+.div6 {
+    flex: 1;
     position: relative;
     letter-spacing: -0.02em;
     line-height: 150%;
     color: rgba(14, 15, 20, 0.9);
     text-align: left;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .inPageNavigationAtomic {
     align-self: stretch;
@@ -195,26 +266,40 @@
     color: #4060ff;
 }
 .inPageNavigationLarge {
-    width: 510px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 16px;
 }
-.div1 {
-    width: 560px;
+.div2 {
+    align-self: stretch;
     border-radius: 12px;
     background-color: #fff;
     border: 1px solid #ededf0;
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     padding: 16px;
 }
+.div27 {
+    width: 376px;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.9);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
 .wrapRecommend {
+    align-self: stretch;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -223,60 +308,35 @@
     font-size: 20px;
 }
 .ai {
-    margin: 0 !important;
-    position: absolute;
-    top: 264px;
-    left: 972px;
+    align-self: stretch;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 24px;
-    z-index: 2;
+    font-size: 24px;
     color: rgba(14, 15, 20, 0.9);
 }
-.div27 {
-    width: 608px;
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-}
-.search {
-    width: 564px;
-    margin: 0 !important;
+.searchParent {
     position: absolute;
-    top: 165px;
-    left: 970px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 2px solid #d4d4d6;
-    box-sizing: border-box;
+    width: 29.38%;
+    top: 167px;
+    right: 20.16%;
+    left: 50.47%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 16px;
-    gap: 16px;
-    z-index: 3;
+    gap: 40px;
     font-size: 18px;
     color: rgba(14, 15, 20, 0.5);
 }
-.banner {
+.frameParent {
     width: 100%;
     position: relative;
     height: 950px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 10px;
-    background-image: url('/images/Banner.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
+    overflow: hidden;
+    flex-shrink: 0;
     text-align: left;
     font-size: 24px;
     color: rgba(14, 15, 20, 0.7);
