@@ -21,10 +21,13 @@ interface ApiResponse {
     data: PatchNote[];
     success: boolean;
 }
-
 async function getPatchNotes(): Promise<PatchNote[]> {
     try {
-        const response = await fetch('https://api.ma-ping.com/api/v1/ai/notice');
+        const response = await fetch('https://api.ma-ping.com/api/v1/ai/notice', {
+            next: {
+                revalidate: 43200, // 12시간 (초)
+            },
+        });
         const data: ApiResponse = await response.json();
         return data.data;
     } catch (error) {
@@ -32,6 +35,7 @@ async function getPatchNotes(): Promise<PatchNote[]> {
         return [];
     }
 }
+
 
 export default async function Home() {
     const patchNotes = await getPatchNotes();
