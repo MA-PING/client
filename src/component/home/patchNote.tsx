@@ -54,12 +54,19 @@ const PatchNotice: NextPage<Props> = ({ patchNotes }) => {
                         {openIndex === index && (
                             <div className={styles.info}>
                                 <div className={styles.sDContainer}>
-                                    {/*<ul className={styles.sDI}>*/}
+                                    <ul className={styles.sDI}>
                                         {/*<li className={styles.li}></li>*/}
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                        <ReactMarkdown
+                                            remarkPlugins={[remarkGfm]}
+                                            components={{
+                                                li: ({ ...props }) => (
+                                                    <li {...props} className={styles.li} />
+                                                ),
+                                            }}
+                                        >
                                             {note.summary}
                                         </ReactMarkdown>
-                                    {/*</ul>*/}
+                                    </ul>
                                 </div>
                             </div>
                         )}

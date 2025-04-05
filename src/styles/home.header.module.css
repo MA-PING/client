@@ -44,6 +44,28 @@
     box-sizing: border-box;
     z-index: 1;
 }
+
+.button1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+
+.buttonLongin {
+    width: 120px;
+    position: relative;
+    border-radius: 6px;
+    background-color: #4060ff;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    font-size: 14px;
+    color: #fff;
+}
 .div {
     align-self: stretch;
     position: relative;

@@ -76,36 +76,12 @@ function Header(){
                     </Link>
                 </div>
             </div>
-            <div className={styles.button}>
-                <Image className={styles.icon} width={40} height={40} alt="" src="/icons/profile.png" />
-            </div>
+            {/*<div className={styles.button}>*/}
+            {/*    <Image className={styles.icon} width={40} height={40} alt="" src="/icons/profile.png" />*/}
+            {/*</div>*/}
+            <Link href='/login' className={styles.buttonLongin}>
+                <div className={styles.button1}>로그인</div>
+            </Link>
         </div>
     );
 }
-//
-// export async function getServerSideProps() {
-//     console.log('getServerSideProps 실행');
-//     try {
-//         console.log('API 호출 시작'); // 추가
-//         const response = await fetch('https://api.ma-ping.com/api/v1/ai/notice');
-//         const data: ApiResponse = await response.json(); // 타입 정의 적용
-//
-//
-//
-//         // API 응답에서 patchNotes 데이터 추출
-//         const patchNotes = data.data;
-//         // console.log('getServerSideProps data:', patchNotes); // 데이터 확인
-//         return {
-//             props: {
-//                 patchNotes,
-//             },
-//         };
-//     } catch (error) {
-//         console.error('패치 노트 가져오기 오류:', error);
-//         return {
-//             props: {
-//                 patchNotes: [], // 에러 발생 시 빈 배열 전달
-//             },
-//         };
-//     }
-// }
