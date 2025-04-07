@@ -153,13 +153,11 @@
     z-index: 1;
 }
 .div6 {
-    width: 188px;
+    flex: 1;
     position: relative;
     letter-spacing: -0.02em;
     line-height: 150%;
     font-weight: 500;
-    display: inline-block;
-    flex-shrink: 0;
 }
 .icon2 {
     width: 20px;
@@ -326,11 +324,10 @@
 .div {
     width: 100%;
     position: relative;
+    max-width: 432px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 104px 744px;
+    padding-top: 104px;
     box-sizing: border-box;
     gap: 48px;
     text-align: left;
@@ -338,4 +335,8 @@
     color: #0e0f14;
     font-family: Pretendard;
 }
-
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content:center;/* 원하는 최대 너비 설정 */
+}
