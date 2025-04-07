@@ -11,7 +11,7 @@ const Frame:NextPage = () => {
                 <div className={styles.div2}>나에게 딱 맞는 메이플 길라잡이 메이핑에 오신것을 환영해요!</div>
             </div>
             <div className={styles.containerGroup}>
-                <div className={styles.wrapButton}>
+                <div className={styles.title}>
                     <div className={styles.btnSocialLogin}>
                         <div className={styles.label}>
                             <div className={styles.wrap}>
@@ -24,7 +24,7 @@ const Frame:NextPage = () => {
                     </div>
                     <div className={styles.btnSocialLogin1}>
                         <div className={styles.label1}>
-                            <div className={styles.wrap1}>
+                            <div className={styles.wrap}>
                                 <Image className={styles.icon} width={24} height={24} alt="" src="/icons/sns-naver.svg" />
                                 <div className={styles.googleContainer}>{`Naver `}
                                     <span className={styles.span}>계정으로 계속하기</span>
@@ -55,7 +55,7 @@ const Frame:NextPage = () => {
                             </div>
                             <div className={styles.textInput2}>
                                 <div className={styles.textInput1}>
-                                    <div className={styles.div7}>비밀번호를 입력해주세요</div>
+                                    <div className={styles.div4}>비밀번호를 입력해주세요</div>
                                 </div>
                             </div>
                         </div>
