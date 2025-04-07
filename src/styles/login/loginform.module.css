@@ -19,10 +19,10 @@
     justify-content: flex-start;
     gap: 8px;
 }
-.iconsnsGoogle {
-    width: 23px;
+.icon {
+    width: 24px;
     position: relative;
-    height: 23px;
+    height: 24px;
     overflow: hidden;
     flex-shrink: 0;
     object-fit: cover;
@@ -45,11 +45,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 14px;
+    gap: 16px;
     z-index: 0;
 }
 .label {
-    align-self: stretch;
+    width: 300px;
     height: 24px;
     display: flex;
     flex-direction: row;
@@ -70,20 +70,12 @@
     justify-content: center;
     padding: 15px 24px;
 }
-.iconsnsNaver {
-    width: 24px;
-    position: relative;
-    height: 24px;
-    overflow: hidden;
-    flex-shrink: 0;
-    object-fit: cover;
-}
 .wrap1 {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 14px;
+    gap: 16px;
 }
 .label1 {
     margin: 0 !important;
@@ -92,8 +84,8 @@
     left: 24px;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-end;
+    justify-content: center;
     z-index: 0;
 }
 .btnSocialLogin1 {
@@ -141,7 +133,7 @@
     color: rgba(14, 15, 20, 0.7);
 }
 .div4 {
-    width: 85px;
+    width: 99px;
     position: absolute;
     margin: 0 !important;
     top: 12px;
@@ -166,13 +158,13 @@
     position: relative;
 }
 .textInput {
-    width: 160px;
+    width: 240px;
     height: 48px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    z-index: 3;
+    z-index: 2;
 }
 .div5 {
     width: 13px;
@@ -184,37 +176,18 @@
     align-items: center;
     height: 48px;
     flex-shrink: 0;
-    z-index: 2;
-}
-.div6 {
-    width: 75px;
-    position: absolute;
-    margin: 0 !important;
-    top: 12px;
-    left: 16px;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    display: inline-block;
-    z-index: 0;
-}
-.textInput2 {
-    width: 113px;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
     z-index: 1;
 }
-.div7 {
+.div6 {
     width: 103px;
     position: relative;
     letter-spacing: -0.02em;
     line-height: 150%;
+    font-weight: 500;
     display: inline-block;
     flex-shrink: 0;
 }
-.icon {
+.icon2 {
     width: 20px;
     position: relative;
     height: 20px;
@@ -235,6 +208,7 @@
     padding: 12px 16px;
     gap: 0px;
     z-index: 0;
+    color: rgba(14, 15, 20, 0.9);
 }
 .input {
     align-self: stretch;
@@ -246,7 +220,7 @@
     gap: 8px;
     z-index: 1;
 }
-.div8 {
+.div7 {
     width: 152px;
     position: absolute;
     margin: 0 !important;
@@ -257,7 +231,7 @@
     display: inline-block;
     z-index: 0;
 }
-.textInput4 {
+.textInput2 {
     align-self: stretch;
     height: 48px;
     display: flex;
@@ -266,7 +240,7 @@
     justify-content: flex-start;
     z-index: 0;
 }
-.icon1 {
+.icon3 {
     width: 16px;
     position: relative;
     height: 16px;
@@ -387,110 +361,13 @@
     color: rgba(14, 15, 20, 0.9);
 }
 .div {
-    position: absolute;
-    top: 160px;
-    left: 744px;
-    width: 432px;
+    width: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 48px;
-}
-.logoMapingIcon {
-    width: 30px;
-    position: relative;
-    height: 22px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-.logoIcon {
-    width: 129.8px;
-    position: relative;
-    height: 20.4px;
-}
-.logo {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 168px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-}
-.logoMaping {
-    width: 168px;
-    position: relative;
-    height: 22px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-.header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: #fff;
-    width: 1920px;
-    height: 56px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 24px;
-    box-sizing: border-box;
-}
-.infoChild {
-    width: 1px;
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    height: 8px;
-}
-.div11 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    text-align: left;
-}
-.info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 16px;
-}
-.container1 {
-    width: 555px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-.footer {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    background-color: #fff;
-    width: 1920px;
-    height: 64px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 360px;
-    box-sizing: border-box;
-    text-align: right;
-    font-size: 14px;
-    color: rgba(14, 15, 20, 0.7);
-}
-.defualt {
-    width: 100%;
-    position: relative;
-    background-color: #fff;
-    height: 1080px;
-    overflow: hidden;
     text-align: left;
     font-size: 32px;
     color: #0e0f14;
