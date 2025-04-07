@@ -26,8 +26,8 @@
 }
 .imageIcon {
     position: absolute;
-    top: calc(50% - 212px);
-    left: calc(50% - 395px);
+    top: 0px;
+    left: 0px;
     border-radius: 12px;
     width: 790px;
     height: 424px;
@@ -35,144 +35,12 @@
 }
 .image156Icon {
     position: absolute;
-    top: calc(50% - 100px);
-    left: calc(50% - 112px);
+    top: 112px;
+    left: 275px;
     border-radius: 2px;
     width: 240px;
     height: 240px;
     object-fit: cover;
-}
-.div {
-    width: 150px;
-    position: absolute;
-    margin: 0 !important;
-    top: 12px;
-    left: 16px;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    display: inline-block;
-    z-index: 0;
-}
-.textInput1 {
-    flex: 1;
-    border-radius: 8px;
-    background-color: #fff;
-    border: 1px solid #d4d4d6;
-    box-sizing: border-box;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 12px 16px;
-    position: relative;
-}
-.textInput {
-    align-self: stretch;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-}
-.button1 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 500;
-}
-.button {
-    border-radius: 8px;
-    background-color: #f0f3ff;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
-}
-.button2 {
-    border-radius: 8px;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
-    color: rgba(14, 15, 20, 0.9);
-}
-.wrapBtn {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    font-size: 17px;
-    color: #4060ff;
-}
-.wrapInput {
-    width: 486px;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 16px;
-}
-.dividerIcon {
-    width: 216px;
-    position: relative;
-    border-radius: 4px;
-    height: 0px;
-}
-.div1 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 140%;
-}
-.dividerIcon1 {
-    width: 214px;
-    position: relative;
-    border-radius: 4px;
-    height: 0px;
-}
-.divider {
-    display: none;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    text-align: center;
-    font-size: 14px;
-    color: rgba(14, 15, 20, 0.7);
-}
-.button4 {
-    align-self: stretch;
-    border-radius: 8px;
-    background-color: #4060ff;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
-    font-size: 17px;
-    color: #fff;
-}
-.container1 {
-    position: absolute;
-    bottom: 24px;
-    left: calc(50% - 113px);
-    width: 226px;
-    height: 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 40px;
 }
 .iconcircleSuccess {
     width: 16px;
@@ -217,7 +85,7 @@
     overflow: hidden;
     flex-shrink: 0;
 }
-.button6 {
+.button {
     width: 28px;
     border-radius: 6px;
     background-color: #fff;
@@ -232,25 +100,66 @@
 .wrapChange {
     position: absolute;
     top: 16px;
-    right: 221px;
+    left: 561px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-end;
     gap: 8px;
+}
+.wrapImg {
+    flex: 1;
+    position: relative;
+    height: 424px;
+    z-index: 0;
+}
+.button2 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.button1 {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #4060ff;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+.container1 {
+    width: 226px;
+    margin: 0 !important;
+    position: absolute;
+    top: 352px;
+    left: calc(50% - 113px);
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
+    font-size: 17px;
+    color: #fff;
+}
+.ctaApi {
+    width: 790px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 24px;
+    text-align: left;
     font-size: 13px;
     color: #05843e;
 }
-.imageParent {
-    width: 1200px;
-    flex: 1;
-    position: relative;
-    text-align: left;
-    font-size: 16px;
-    color: rgba(14, 15, 20, 0.5);
-}
 .container {
-    height: 564px;
+    align-self: stretch;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -258,69 +167,57 @@
     gap: 32px;
 }
 .ai1 {
+    flex: 1;
     position: relative;
     line-height: 150%;
     font-weight: 600;
 }
 .title1 {
+    align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 .characterApiConnectedIcon {
-    width: 160px;
     position: absolute;
-    margin: 0 !important;
     top: 66px;
     left: 70px;
-    max-height: 100%;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
-    z-index: 0;
 }
-.characterStatus {
-    align-self: stretch;
-    border-radius: 8px;
-    height: 266px;
+.statusIndicator1 {
+    position: absolute;
+    top: 16px;
+    left: 61.5px;
+    border-radius: 24px;
+    background-color: #e7f6ee;
+    border: 1px solid #06a54d;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0px 49px;
-    box-sizing: border-box;
+    justify-content: center;
+    padding: 4px 8px;
+}
+.characterStatus {
+    align-self: stretch;
     position: relative;
+    border-radius: 8px;
+    height: 266px;
     background-image: url('/images/character-status.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
 }
-.content {
-    position: absolute;
-    top: 0.44px;
-    left: 0px;
+.content1 {
     width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 16px;
 }
-.label1 {
-    flex: 1;
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 500;
-}
-.statusIndicator2 {
-    width: 92px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 4px;
-}
-.div5 {
+.div3 {
     align-self: stretch;
     position: relative;
     font-size: 16px;
@@ -328,23 +225,15 @@
     line-height: 150%;
     color: rgba(14, 15, 20, 0.9);
 }
-.statusIndicatorParent {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 8px;
-}
 .wrapAlert2 {
     flex: 1;
-    height: 62px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    gap: 8px;
 }
-.button7 {
+.button3 {
     border-radius: 8px;
     background-color: #f0f3ff;
     height: 40px;
@@ -358,39 +247,50 @@
     font-size: 14px;
     color: #4060ff;
 }
-.wrapAlertParent {
+.container2 {
     align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: 0px;
+    justify-content: flex-start;
+    gap: 24px;
 }
-.frameParent {
-    position: absolute;
-    width: calc(100% - 324px);
-    top: 16px;
-    right: 0px;
-    left: 324px;
+.alert2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.content2 {
+    align-self: stretch;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 24px;
+}
+.ai2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-size: 20px;
     color: #eb3b24;
 }
-.contentParent {
+.content {
     align-self: stretch;
-    position: relative;
-    height: 310px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
     text-align: left;
     font-size: 13px;
     color: #05843e;
 }
 .aiApiConnected {
     align-self: stretch;
-    height: 370.9px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -411,5 +311,6 @@
     text-align: center;
     font-size: 24px;
     color: rgba(14, 15, 20, 0.9);
+    font-family: Pretendard;
 }
 

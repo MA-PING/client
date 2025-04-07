@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <div>
             <Header/>
-            <div style={{justifyContent: "center" }}>
+            <div className="flex justify-center items-center h-screen">
                 <Loginform />
             </div>
             <Loginfooter/>
