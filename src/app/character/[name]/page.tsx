@@ -1,7 +1,11 @@
+interface CharacterPageProps {
+    params: {
+        name: string;
+    };
+}
 
-export default async function CharacterPage({ params }: { params: { name: string } }) {
-
-    const { name } = await params;
+export default async function CharacterPage({ params }: CharacterPageProps) {
+    const { name } = params;
 
     return (
         <div>
