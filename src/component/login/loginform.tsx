@@ -9,7 +9,7 @@ const Frame: NextPage = () => {
     const [password, setPassword] = useState('');
     const [isSelectOpen, setIsSelectOpen] = useState(false);
     const [selectedDomain, setSelectedDomain] = useState('');
-    const [fullEmail, setFullEmail] = useState('');
+    const [, setFullEmail] = useState('');
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const domains = ['kakao.com', 'google.com', 'naver.com', 'nate.com', 'daum.net'];
