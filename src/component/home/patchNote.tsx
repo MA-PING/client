@@ -1,7 +1,7 @@
 'use client'
 import type { NextPage } from 'next';
 import Image from "next/image";
-import styles from '../../styles/home/patchNote1.module.css';
+import styles from '../../styles/home/patchNote.module.css';
 import { useState } from 'react';
 import ReactMarkdown from "react-markdown";
 import remarkGfm from 'remark-gfm'

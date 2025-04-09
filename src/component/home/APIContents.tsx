@@ -21,7 +21,7 @@ const APIContents:NextPage = () => {
                             <div className={styles.statusIndicator}>
                                 <div className={styles.wrapAlert}>
                                     <div className={styles.alert}>
-                                        <Image className={styles.iconcircleSuccess} width={16} height={16} alt="" src="icon/circle_success.svg" />
+                                        <Image className={styles.iconcircleSuccess} width={16} height={16} alt="" src="/icons/circle_succes.svg" />
                                         <div className={styles.apiKey}>API Key 연결됨</div>
                                     </div>
                                     <div className={styles.apiKey}>:</div>
