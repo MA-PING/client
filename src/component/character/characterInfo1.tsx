@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
-import styles from '../../styles/character/characterInfo.module.css';
+import styles from '../../styles/character/characterInfo1.module.css';
 
 
 const Frame:NextPage = () => {
@@ -144,7 +144,9 @@ const Frame:NextPage = () => {
                                 <div className={styles.item}>
                                     <div className={styles.button1}>전투력</div>
                                     <div className={styles.div16}>999억 9999만 9999</div>
-                                    <Image className={styles.icon3} width={24} height={24} alt="" src="/icons/blue_question_mark.svg" />
+                                    <button>
+                                        <Image className={styles.icon3} width={24} height={24} alt="" src="/icons/blue_question_mark.svg" />
+                                    </button>
                                 </div>
                                 <div className={styles.wrapPreset}>
                                     <div className={styles.presetAbility}>

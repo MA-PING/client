@@ -7,9 +7,7 @@ export default function Home() {
     return (
         <div>
             <Header/>
-            <div style={{justifyContent: "center" }}>
-                <CharacterInfo/>
-            </div>
+            <CharacterInfo/>
             <Footer/>
         </div>
     );
