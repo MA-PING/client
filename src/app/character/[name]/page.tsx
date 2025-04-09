@@ -1,10 +1,14 @@
-import { useRouter } from 'next/router'
+import Header from "@/component/header";
+import Footer from "@/component/footer";
 
-export default function Home() {
-    const router = useRouter()
+export default async function Home({params,}: {
+    params: Promise<{ name: string }>
+}) {
+    const { name } = await params
     return (
         <div>
-            <h1>캐릭터 이름: {router.query.name}</h1>
-        </div>
-    );
+            <Header/>
+            <h1>name: {name}</h1>
+            <Footer/>
+        </div>)
 }
