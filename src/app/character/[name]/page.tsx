@@ -1,15 +1,10 @@
-interface CharacterPageProps {
-    params: {
-        name: string;
-    };
-}
+import { useRouter } from 'next/router'
 
-export default async function CharacterPage({ params }: CharacterPageProps) {
-    const { name } = params;
-
+export default function Home() {
+    const router = useRouter()
     return (
         <div>
-            <h1>캐릭터 이름: {name}</h1>
+            <h1>캐릭터 이름: {router.query.name}</h1>
         </div>
     );
 }
