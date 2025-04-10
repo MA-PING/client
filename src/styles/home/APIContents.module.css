@@ -205,7 +205,7 @@
     position: relative;
     border-radius: 8px;
     height: 266px;
-    background-image: url('/images/character-status.png');
+    background-image: url('/images/character-status.avif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
@@ -228,6 +228,7 @@
 .wrapAlert2 {
     flex: 1;
     display: flex;
+    min-width: 291px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
@@ -237,6 +238,7 @@
     border-radius: 8px;
     background-color: #f0f3ff;
     height: 40px;
+    min-width: 115px;
     display: flex;
     flex-direction: row;
     align-items: center;

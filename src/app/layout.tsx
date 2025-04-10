@@ -11,7 +11,7 @@ const pretendard = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "MA-PING",
+  title: "MA-PING : 나에게 딱 맞는 메이플 길라잡이 메이핑",
   description: "나에게 딱 맞는 메이플 길라잡이 메이핑",
 };
 

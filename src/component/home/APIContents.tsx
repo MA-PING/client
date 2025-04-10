@@ -15,7 +15,7 @@ const APIContents:NextPage = () => {
                 </div>
                 <div className={styles.ctaApi}>
                     <div className={styles.wrapImg}>
-                        <Image className={styles.imageIcon} width={790} height={424} alt="" src="/images/characterBackground.png" />
+                        <Image className={styles.imageIcon} width={790} height={424} alt="" src="/images/characterBackground.avif" />
                         <Image className={styles.image156Icon} width={240} height={240} alt="" src="/images/characterImage.png" />
                         <div className={styles.wrapChange}>
                             <div className={styles.statusIndicator}>
