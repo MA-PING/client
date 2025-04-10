@@ -5,7 +5,7 @@ import Footer from "@/component/footer";
 import PatchNotice from '@/component/home/patchNote';
 import APIContents1 from "@/component/home/APIContents";
 import FloatingButton from "@/component/FloatingButton";
-import Frame from "@/component/home/banner";
+import Banner from "@/component/home/banner";
 
 interface PatchNote {
     title: string;
@@ -42,7 +42,7 @@ export default async function Home() {
   return(
   <div>
       <Header/>
-      <Frame/>
+      <Banner/>
       <APIContents1/>
       <PatchNotice patchNotes={patchNotes}/>
       <Footer/>
