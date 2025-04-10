@@ -56,8 +56,8 @@ function Header(){
         <div className={styles.statusloginTypenonSearch}>
             <div className={styles.logoMaping}>
                 <Link href="/" className={styles.logo}>
-                    <Image className={styles.logoMapingIcon} width={30} height={22} alt="" src="/icons/Maping.svg" />
-                    <Image className={styles.logoIcon} width={130} height={20} alt="" src="/icons/Logo.svg" />
+                    <Image className={styles.logoMapingIcon} width={30} height={22} alt="메인 페이지로 바로 가기" src="/icons/Maping.svg" />
+                    <Image className={styles.logoIcon} width={130} height={20} alt="메인 페이지로 바로 가기" src="/icons/Logo.svg" />
                 </Link>
             </div>
             <div className={styles.container}>
