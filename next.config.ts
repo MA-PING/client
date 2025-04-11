@@ -3,7 +3,7 @@ const nextConfig: NextConfig = {
     images: {
         formats: ['image/avif', 'image/webp'],
     },
-  /* config options here */
+    assetPrefix: '.',
 };
 
 export default nextConfig;
