@@ -5,7 +5,7 @@ import styles from '../../styles/home/banner.module.css';
 
 const Banner:NextPage = () => {
     return (
-        <div className={styles.banner}>
+        <div className="relative w-full h-[950px] flex flex-row items-center justify-center bg-[url('/images/Banner.avif')] bg-cover bg-no-repeat bg-top text-left text-2xl text-gray-800/70">
             <div className={styles.home}>
                 <div className={styles.logocharacter}>
                     <div className={styles.display}>
