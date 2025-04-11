@@ -65,13 +65,13 @@ function Header(){
                     <Link href="/" scroll={false} prefetch={false} className={styles.item}>
                         <div className={styles.div}>홈</div>
                     </Link>
-                    <Link href="my-character" scroll={false} prefetch={false} className={styles.item1}>
+                    <Link href="/my-character" scroll={false} prefetch={false} className={styles.item1}>
                         <div className={styles.div1}>내 캐릭터 정보</div>
                     </Link>
-                    <Link href="simulator" scroll={false} prefetch={false} className={styles.item1}>
+                    <Link href="/simulator" scroll={false} prefetch={false} className={styles.item1}>
                         <div className={styles.div1}>시뮬레이터</div>
                     </Link>
-                    <Link href="ranking" scroll={false} prefetch={false} className={styles.item1}>
+                    <Link href="/ranking" scroll={false} prefetch={false} className={styles.item1}>
                         <div className={styles.div1}>랭커정보</div>
                     </Link>
                 </div>
