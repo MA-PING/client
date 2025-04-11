@@ -13,13 +13,14 @@ const pretendard = localFont({
 export const metadata: Metadata = {
   title: "MA-PING",
   description: "MA-PING : 나에게 딱 맞는 메이플 길라잡이 메이핑",
-
     metadataBase: new URL('https://ma-ping.com'),
 
     openGraph: {
+        url: "https://ma-ping.com",
+        type: "website",
         images: [
             {
-                url: '/icons/logo-maping.png',
+                url: '/icons/Maping.png',
                 alt: '로고',
             },
         ],
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     twitter: {
         images: [
             {
-                url: '/icons/logo-maping.png',
+                url: '/icons/Maping.png',
                 alt: '로고',
             },
         ],
