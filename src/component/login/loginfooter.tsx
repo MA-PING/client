@@ -9,7 +9,7 @@ const Footer:NextPage = () => {
             <div className={styles.container}>
                 <div className={styles.info}>
                     <div className={styles.div}>개인정보처리방침</div>
-                    <Image className={styles.infoChild} width={1} height={8} alt="" src="Vector 1.svg" />
+                    <Image className={styles.infoChild} width={1} height={8} alt="" src="/icons/Vector 1.svg" />
                     <div className={styles.div1}>이용약관</div>
                 </div>
             </div>
