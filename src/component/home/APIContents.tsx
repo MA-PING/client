@@ -46,7 +46,7 @@ const APIContents:NextPage = () => {
                 </div>
                 <div className={styles.content}>
                     <div className={styles.content1}>
-                        <div className={styles.characterStatus}>
+                        <div className="self-stretch relative rounded-md h-[266px] bg-[url('/images/character-status.avif')] bg-cover bg-no-repeat bg-top">
                             <Image className={styles.characterApiConnectedIcon} width={160} height={160} alt="" src="/images/character-api-connected.png" />
                             <div className={styles.statusIndicator1}>
                                 <div className={styles.wrapAlert}>
