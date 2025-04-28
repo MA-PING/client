@@ -185,6 +185,7 @@
 .footer {
     width: 100%;
     position: relative;
+    bottom : 0;
     background-color: #fff;
     height: 314px;
     display: flex;

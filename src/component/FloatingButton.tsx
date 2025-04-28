@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '../styles/FloatingButton.module.css';
 
-
 const FloatingButton:NextPage = () => {
     return (
         <div className={styles.wrapChatbot}>

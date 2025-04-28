@@ -1,0 +1,200 @@
+.div1 {
+    flex: 1;
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
+.title {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.div2 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.div3 {
+    align-self: stretch;
+    position: relative;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.9);
+}
+.wrapText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.button1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.button {
+    flex: 0.7288;
+    border-radius: 8px;
+    background-color: #f0f3ff;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    font-size: 17px;
+    color: #4060ff;
+}
+.updateInfo {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+}
+.characterProfileIcon {
+    width: 149px;
+    position: relative;
+    border-radius: 4px;
+    height: 149px;
+    object-fit: cover;
+}
+.serverPngIcon {
+    width: 20px;
+    position: relative;
+    height: 20px;
+    object-fit: cover;
+}
+.wrapPrimaryInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.lv280 {
+    width: 180px;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.div5 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 24px;
+}
+.wrapSubInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.wrapCharacterInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    z-index: 0;
+}
+.unionIcon {
+    position: absolute;
+    height: 62.5%;
+    width: 72.08%;
+    top: 17.88%;
+    right: 14.02%;
+    bottom: 19.62%;
+    left: 13.9%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.icon {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.button2 {
+    width: 32px;
+    margin: 0 !important;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border-radius: 8px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.character {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #b8c3ff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+    gap: 16px;
+    font-size: 24px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.character1 {
+    width: 289px;
+    border-radius: 8px;
+    background-color: #fff;
+    height: 114px;
+    display: none;
+}
+.wrap {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.div {
+    /*width: 100%;*/
+    /*position: relative;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: flex-start;*/
+    /*justify-content: flex-start;*/
+    /*gap: 40px;*/
+    /*text-align: left;*/
+    /*font-size: 32px;*/
+    /*color: rgba(14, 15, 20, 0.9);*/
+}
+
