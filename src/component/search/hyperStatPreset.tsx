@@ -6,7 +6,7 @@ interface HyperStatPresetProps {
     hyperStat: HyperStatPreset[]
 }
 
-const HyperStatPreset: NextPage<HyperStatPresetProps> = ({hyperStat}) => {
+const HyperPreset: NextPage<HyperStatPresetProps> = ({hyperStat}) => {
     console.log(hyperStat)
     return (
         <div className={styles.preset1}>
@@ -43,4 +43,4 @@ const HyperStatPreset: NextPage<HyperStatPresetProps> = ({hyperStat}) => {
         </div>);
 };
 
-export default HyperStatPreset;
+export default HyperPreset;

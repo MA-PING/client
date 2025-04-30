@@ -4,7 +4,7 @@ import styles from '../../styles/search/characterTotalStat.module.css';
 import {Ability, FinalStat, HyperStat, Stat} from "@/interfaces/character";
 import {useState} from "react";
 import AbilityPreset from "@/component/search/abilityPreset";
-import HyperStatPreset from "@/component/search/hyperStatPreset";
+import HyperPreset from "@/component/search/hyperStatPreset";
 
 
 interface TotalStatProps {
@@ -163,9 +163,9 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                             </button>
                         </div>
                     </div>
-                    {activeStatTab === 1 && <HyperStatPreset hyperStat={HyperStat.hyper_stat_preset_1}/>}
-                    {activeStatTab === 2 && <HyperStatPreset hyperStat={HyperStat.hyper_stat_preset_2}/>}
-                    {activeStatTab === 3 && <HyperStatPreset hyperStat={HyperStat.hyper_stat_preset_3}/>}
+                    {activeStatTab === 1 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_1}/>}
+                    {activeStatTab === 2 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_2}/>}
+                    {activeStatTab === 3 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_3}/>}
                 </div>
             </div>
             <div className={styles.stat}>
