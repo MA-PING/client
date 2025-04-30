@@ -1,0 +1,575 @@
+.div1 {
+    flex: 1;
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
+.title {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.div4 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 600;
+    color: #4060ff;
+}
+.wrapArcane {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.div5 {
+    position: relative;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: #d4d4d6;
+}
+.title1 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+.item {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #f7f7fa;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 24px;
+}
+.div8 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.title2 {
+    align-self: stretch;
+    border-bottom: 1px solid #ededf0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+.imgArcforceIcon {
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 40px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.badge {
+    border-radius: 26px;
+    background-color: #e0e5ff;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    box-sizing: border-box;
+}
+.wrap1 {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.arc {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.div10 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.wrapDetail {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.wrap2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    font-size: 13px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.container1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: left;
+    font-size: 14px;
+}
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.title3 {
+    width: 130px;
+    border-bottom: 1px solid #ededf0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+.wrap4 {
+    width: 79px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    font-size: 13px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.container3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: left;
+    font-size: 14px;
+}
+.lane01 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.lane02 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.wrapSymbol {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.div2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+}
+.content12 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.lane022 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.wrap {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 17px;
+    font-size: 14px;
+}
+.div {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 32px;
+}
+.div106 {
+    align-self: stretch;
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
+.tabAtomic {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #ededf0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 16px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.label1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.tabAtomic1 {
+    border-radius: 8px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px 16px;
+    box-sizing: border-box;
+}
+.tab {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.tabSmallHorizontal {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.itemChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 76px;
+    height: 88px;
+}
+.div107 {
+    position: absolute;
+    top: 46px;
+    left: 4px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 68px;
+}
+.imgSkill5Icon {
+    position: absolute;
+    top: 16px;
+    left: 23px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+.badge13 {
+    position: absolute;
+    bottom: 2px;
+    left: calc(50% - 16px);
+    border-radius: 26px;
+    background-color: #e0e5ff;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 14px;
+}
+.item2 {
+    position: absolute;
+    top: 72px;
+    left: 40px;
+    width: 76px;
+    height: 88px;
+}
+.item3 {
+    position: absolute;
+    top: 72px;
+    left: 120px;
+    width: 76px;
+    height: 88px;
+}
+.item4 {
+    position: absolute;
+    top: 72px;
+    left: 200px;
+    width: 76px;
+    height: 88px;
+}
+.item5 {
+    position: absolute;
+    top: 72px;
+    left: 280px;
+    width: 76px;
+    height: 88px;
+}
+.item6 {
+    position: absolute;
+    top: 72px;
+    left: 360px;
+    width: 76px;
+    height: 88px;
+}
+.item7 {
+    position: absolute;
+    top: 72px;
+    left: 440px;
+    width: 76px;
+    height: 88px;
+}
+.item8 {
+    position: absolute;
+    top: 72px;
+    left: 520px;
+    width: 76px;
+    height: 88px;
+}
+.item9 {
+    position: absolute;
+    top: 72px;
+    left: 600px;
+    width: 76px;
+    height: 88px;
+}
+.item10 {
+    position: absolute;
+    top: 72px;
+    left: 680px;
+    width: 76px;
+    height: 88px;
+}
+.item11 {
+    position: absolute;
+    top: 72px;
+    left: 760px;
+    width: 76px;
+    height: 88px;
+}
+.item12 {
+    position: absolute;
+    top: 144px;
+    left: 0px;
+    width: 76px;
+    height: 88px;
+}
+.item14 {
+    position: absolute;
+    top: 144px;
+    left: 80px;
+    width: 76px;
+    height: 88px;
+}
+.item15 {
+    position: absolute;
+    top: 0px;
+    left: 80px;
+    width: 76px;
+    height: 88px;
+}
+.item16 {
+    position: absolute;
+    top: 144px;
+    left: 160px;
+    width: 76px;
+    height: 88px;
+}
+.item17 {
+    position: absolute;
+    top: 0px;
+    left: 160px;
+    width: 76px;
+    height: 88px;
+}
+.item18 {
+    position: absolute;
+    top: 144px;
+    left: 240px;
+    width: 76px;
+    height: 88px;
+}
+.item19 {
+    position: absolute;
+    top: 0px;
+    left: 240px;
+    width: 76px;
+    height: 88px;
+}
+.item20 {
+    position: absolute;
+    top: 144px;
+    left: 320px;
+    width: 76px;
+    height: 88px;
+}
+.item21 {
+    position: absolute;
+    top: 0px;
+    left: 320px;
+    width: 76px;
+    height: 88px;
+}
+.item22 {
+    position: absolute;
+    top: 144px;
+    left: 400px;
+    width: 76px;
+    height: 88px;
+}
+.item23 {
+    position: absolute;
+    top: 0px;
+    left: 400px;
+    width: 76px;
+    height: 88px;
+}
+.item24 {
+    position: absolute;
+    top: 144px;
+    left: 480px;
+    width: 76px;
+    height: 88px;
+}
+.item25 {
+    position: absolute;
+    top: 0px;
+    left: 480px;
+    width: 76px;
+    height: 88px;
+}
+.item26 {
+    position: absolute;
+    top: 144px;
+    left: 560px;
+    width: 76px;
+    height: 88px;
+}
+.item27 {
+    position: absolute;
+    top: 0px;
+    left: 560px;
+    width: 76px;
+    height: 88px;
+}
+.item28 {
+    position: absolute;
+    top: 144px;
+    left: 640px;
+    width: 76px;
+    height: 88px;
+}
+.item29 {
+    position: absolute;
+    top: 0px;
+    left: 640px;
+    width: 76px;
+    height: 88px;
+}
+.item30 {
+    position: absolute;
+    top: 144px;
+    left: 720px;
+    width: 76px;
+    height: 88px;
+}
+.item31 {
+    position: absolute;
+    top: 0px;
+    left: 720px;
+    width: 76px;
+    height: 88px;
+}
+.skiil {
+    align-self: stretch;
+    position: relative;
+    height: 232px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.content13 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.div105 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 32px;
+    color: #000;
+}
+.container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 64px;
+    text-align: left;
+    font-size: 24px;
+    color: rgba(14, 15, 20, 0.9);
+    font-family: Pretendard;
+}
+

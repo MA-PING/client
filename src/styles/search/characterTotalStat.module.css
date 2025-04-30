@@ -1,53 +1,10 @@
-.div1 {
-    flex: 1;
-    position: relative;
-    line-height: 150%;
-    font-weight: 600;
-}
-.title {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-.label {
+.div {
     position: relative;
     letter-spacing: -0.02em;
     line-height: 150%;
     font-weight: 500;
 }
-.tabAtomic {
-    border-radius: 10px;
-    background-color: #ededf0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 24px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.label1 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-}
-.tabAtomic1 {
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 8px 24px;
-}
-.tab {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-}
-.div3 {
+.div1 {
     width: 220px;
     position: relative;
     font-size: 24px;
@@ -87,9 +44,9 @@
     position: absolute;
     height: 31.25%;
     width: 26.67%;
-    top: 28.77%;
+    top: 28.78%;
     right: 36.66%;
-    bottom: 39.98%;
+    bottom: 39.97%;
     left: 36.67%;
     max-width: 100%;
     overflow: hidden;
@@ -117,7 +74,7 @@
     gap: 0px;
     font-size: 18px;
 }
-.tabAtomic4 {
+.tabAtomic {
     border-radius: 8px;
     background-color: #ededf0;
     height: 32px;
@@ -129,7 +86,12 @@
     box-sizing: border-box;
     color: rgba(14, 15, 20, 0.9);
 }
-.tabAtomic5 {
+.label1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.tabAtomic1 {
     border-radius: 8px;
     height: 32px;
     display: flex;
@@ -139,7 +101,7 @@
     padding: 4px 16px;
     box-sizing: border-box;
 }
-.tab1 {
+.tab {
     height: 128px;
     display: flex;
     flex-direction: column;
@@ -152,7 +114,7 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
-.div4 {
+.div2 {
     flex: 1;
     position: relative;
     letter-spacing: -0.02em;
@@ -222,7 +184,7 @@
     padding: 4px;
     box-sizing: border-box;
 }
-.div7 {
+.div5 {
     flex: 1;
     position: relative;
     letter-spacing: -0.02em;
@@ -266,7 +228,7 @@
     letter-spacing: -0.02em;
     line-height: 150%;
 }
-.div12 {
+.div10 {
     flex: 1;
     position: relative;
     letter-spacing: -0.02em;
@@ -283,7 +245,7 @@
     justify-content: space-between;
     gap: 0px;
 }
-.wrap1 {
+.wrap {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -351,44 +313,16 @@
     color: rgba(14, 15, 20, 0.7);
 }
 .totalStat {
-    align-self: stretch;
+    width: 100%;
+    position: relative;
     height: 1047px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 32px;
-}
-.wrap {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    text-align: left;
     font-size: 14px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.content {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 32px;
-    font-size: 16px;
-    color: rgba(14, 15, 20, 0.5);
-}
-.div {
-    /*flex: 1;*/
-    /*width: 100%;*/
-    /*position: relative;*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-    /*justify-content: flex-start;*/
-    /*gap: 40px;*/
-    /*text-align: left;*/
-    /*font-size: 32px;*/
     color: rgba(14, 15, 20, 0.9);
 }
 
