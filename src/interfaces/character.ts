@@ -472,23 +472,22 @@ export interface UnionArtifact {
 
 // --- Character Aggregate Interface ---
 export interface Character {
-    stat: Stat;
     ocid: string;
     basic: basic;
-    Stat: Stat; // Property names should conventionally start with lowercase (e.g., stat)
-    HyperStat: HyperStat; // e.g., hyperStat
-    Ability: Ability; // e.g., ability
+    stat: Stat; // Property names should conventionally start with lowercase (e.g., stat)
+    hyperStat: HyperStat; // e.g., hyperStat
+    ability: Ability; // e.g., ability
     ItemEquipment: ItemEquipment; // e.g., itemEquipment
-    SymbolEquipment: SymbolEquipment; // e.g., symbolEquipment
-    Skill5: Skill; // e.g., skill5 or VSkill?
-    Skill6: Skill; // e.g., skill6 or hexSkill?
-    LinkSkill: LinkSkill; // e.g., linkSkill
-    VMatrix: VMatrix; // e.g., vMatrix
-    HexaMatrix: HexaMatrix; // e.g., hexaMatrix
-    HexaMatrixStat: HexaMatrixStat; // e.g., hexaMatrixStat
-    Union: Union; // e.g., union
-    UnionRaider: UnionRaider; // e.g., unionRaider
-    UnionArtifact: UnionArtifact; // e.g., unionArtifact
+    symbolEquipment: SymbolEquipment; // e.g., symbolEquipment
+    skill5: Skill; // e.g., skill5 or VSkill?
+    skill6: Skill; // e.g., skill6 or hexSkill?
+    linkSkill: LinkSkill; // e.g., linkSkill
+    vMatrix: VMatrix; // e.g., vMatrix
+    hexaMatrix: HexaMatrix; // e.g., hexaMatrix
+    hexaMatrixStat: HexaMatrixStat; // e.g., hexaMatrixStat
+    union: Union; // e.g., union
+    unionRaider: UnionRaider; // e.g., unionRaider
+    unionArtifact: UnionArtifact; // e.g., unionArtifact
 }
 
 // --- API Response Wrapper ---

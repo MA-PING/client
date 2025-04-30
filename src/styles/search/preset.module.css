@@ -1,0 +1,160 @@
+.wrapPreset {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 16px;
+    gap: 16px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.presetAbility {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.tabSmallVertical {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.tab {
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.tabAtomic {
+    border-radius: 8px;
+    background-color: #ededf0;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 16px;
+    box-sizing: border-box;
+    color: rgba(14, 15, 20, 0.9);
+}
+.div {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.tabAtomic1 {
+    border-radius: 8px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px 16px;
+    box-sizing: border-box;
+}
+.label1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.preset {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.div2 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.atomic {
+    align-self: stretch;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #e2f6bc;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+}
+.preset1 {
+    width: 219px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    font-size: 13px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.atomic3 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.lv0Wrapper {
+    width: 35px;
+    border-radius: 4px;
+    background-color: #f7f7fa;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    box-sizing: border-box;
+}
+.hp {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.div5 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.9);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.atomic1 {
+    align-self: stretch;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #fee3bc;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+}
+.atomic2 {
+    align-self: stretch;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #dfc6f3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+}
