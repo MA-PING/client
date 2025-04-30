@@ -9,8 +9,8 @@ interface TotalStatProps {
 }
 
 const TotalStat: NextPage<TotalStatProps> = ({Stat}) => {
-    const finalStat: FinalStat[] = Stat.final_stat;
-    const statName: string[] = ["HP", "MP", "STR", "DEX", "INT", "LUK", "스타포스", "어센틱포스", "재사용 대기시간 미적용", "상태 이상 추가 데미지"];
+    // const finalStat: FinalStat[] = Stat.final_stat;
+    // const statName: string[] = ["HP", "MP", "STR", "DEX", "INT", "LUK", "스타포스", "어센틱포스", "재사용 대기시간 미적용", "상태 이상 추가 데미지"];
     // const HP: FinalStat | undefined = finalStat.find(stat => stat.stat_name == "HP");
     // const MP: FinalStat | undefined = finalStat.find(stat => stat.stat_name == "MP");
     return (
