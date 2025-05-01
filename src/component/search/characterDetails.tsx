@@ -57,7 +57,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
                         </button>
                     </div>
                 </div>
-                {activeTab === 'stats' && <TotalStat Stat={Stat} Ability={Ability} HyperStat={HyperStat}/>}
+                {activeTab === 'stats' && <TotalStat Stat={Stat}  Ability={Ability} HyperStat={HyperStat}/>}
                 {/*{activeTab === 'equipment' && <WrapEquipment />}*/}
                 {/*{activeTab === 'union' && <Union />}*/}
                 {/*{activeTab === 'skills' && <Skill />}*/}

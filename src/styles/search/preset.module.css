@@ -101,7 +101,7 @@
     font-size: 13px;
     color: rgba(14, 15, 20, 0.7);
 }
-.atomic3 {
+.atomic10 {
     align-self: stretch;
     display: flex;
     flex-direction: row;
@@ -110,7 +110,8 @@
     gap: 4px;
 }
 .lv0Wrapper {
-    width: 35px;
+    width: 44px;
+    position: relative;
     border-radius: 4px;
     background-color: #f7f7fa;
     display: flex;
@@ -158,3 +159,13 @@
     justify-content: flex-start;
     padding: 8px;
 }
+.noHyper {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
