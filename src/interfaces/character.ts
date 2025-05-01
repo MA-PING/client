@@ -477,7 +477,7 @@ export interface Character {
     stat: Stat; // Property names should conventionally start with lowercase (e.g., stat)
     hyperStat: HyperStat; // e.g., hyperStat
     ability: Ability; // e.g., ability
-    ItemEquipment: ItemEquipment; // e.g., itemEquipment
+    itemEquipment: ItemEquipment; // e.g., itemEquipment
     symbolEquipment: SymbolEquipment; // e.g., symbolEquipment
     skill5: Skill; // e.g., skill5 or VSkill?
     skill6: Skill; // e.g., skill6 or hexSkill?

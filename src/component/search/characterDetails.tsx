@@ -4,8 +4,8 @@ import type {NextPage} from 'next';
 import styles from "@/styles/search/character.module.css";
 import TotalStat from "@/component/search/CharacterTotalStat";
 import {useState} from "react";
-// import WrapEquipment from "@/component/search/item";
-import {Stat, Character, Ability, HyperStat} from "@/interfaces/character";
+import {Stat, Character, Ability, HyperStat, ItemEquipment} from "@/interfaces/character";
+import WrapEquipment from "@/component/search/item";
 // import Union from "@/component/search/union";
 // import Skill from "@/component/search/skill";
 
@@ -17,6 +17,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
     const Stat: Stat = character.stat;
     const Ability: Ability = character.ability;
     const HyperStat: HyperStat = character.hyperStat;
+    const Item: ItemEquipment = character.itemEquipment
     const [activeTab, setActiveTab] = useState<string>('stats'); // 'stats', 'equipment', 'union', 'skills'
 
     // 탭 클릭 시 activeTab 상태를 업데이트하는 함수
@@ -58,7 +59,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
                     </div>
                 </div>
                 {activeTab === 'stats' && <TotalStat Stat={Stat}  Ability={Ability} HyperStat={HyperStat}/>}
-                {/*{activeTab === 'equipment' && <WrapEquipment />}*/}
+                {activeTab === 'equipment' && <WrapEquipment Item={Item}/>}
                 {/*{activeTab === 'union' && <Union />}*/}
                 {/*{activeTab === 'skills' && <Skill />}*/}
             </div>
