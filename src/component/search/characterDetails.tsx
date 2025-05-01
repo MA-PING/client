@@ -18,6 +18,12 @@ const Details: NextPage<DetailsProps> = ({character}) => {
     const Ability: Ability = character.ability;
     const HyperStat: HyperStat = character.hyperStat;
     const Item: ItemEquipment = character.itemEquipment
+    // const itemList: string[] = [];
+    // for(const item of Item.item_equipment){
+    //     itemList.push(item.item_equipment_slot)
+    // }
+    const result = Item.item_equipment.filter(item => item.item_equipment_slot == "무기");
+    console.log(result)
     const [activeTab, setActiveTab] = useState<string>('stats'); // 'stats', 'equipment', 'union', 'skills'
 
     // 탭 클릭 시 activeTab 상태를 업데이트하는 함수

@@ -2,14 +2,20 @@
     width: 56px;
     position: relative;
     height: 56px;
-    z-index: 0;
+    /*z-index: 0;*/
+}
+.imgRing01Icon {
+    width: 100%;
+    position: relative;
+    height: 48px;
+    object-fit: cover;
 }
 .label {
-    width: 41px;
+    width: 43px;
     position: absolute;
     margin: 0 !important;
     top: 30px;
-    left: 19px;
+    left: 18px;
     letter-spacing: -0.02em;
     line-height: 150%;
     display: inline-block;
@@ -26,6 +32,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    text-align: center;
     padding: 10px;
     position: relative;
     gap: 10px;

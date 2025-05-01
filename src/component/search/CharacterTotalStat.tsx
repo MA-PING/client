@@ -334,7 +334,7 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                         <div className={styles.item1}>
                             <div className={styles.hp}>스탯 공격력</div>
                             <div
-                                className={styles.div10}>{formatNumberToKorean(finalStatMap.get("최소 스탯공격력") as string)} {formatNumberToKorean(finalStatMap.get("최대 스탯공격력") as string)}</div>
+                                className={styles.div10}>{formatNumberToKorean(finalStatMap.get("최대 스탯공격력") as string)}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>데미지</div>
