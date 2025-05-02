@@ -6,8 +6,10 @@ import TotalStat from "@/component/search/CharacterTotalStat";
 import {useState} from "react";
 import {Stat, Character, Ability, HyperStat, ItemEquipment} from "@/interfaces/character";
 import WrapEquipment from "@/component/search/item";
-// import Union from "@/component/search/union";
-// import Skill from "@/component/search/skill";
+import Union from "@/component/search/union";
+import Artifact from "@/component/search/artifact";
+import Symbol from "@/component/search/symbole";
+import Skill from "@/component/search/skill";
 
 interface DetailsProps {
     character: Character
@@ -17,13 +19,14 @@ const Details: NextPage<DetailsProps> = ({character}) => {
     const Stat: Stat = character.stat;
     const Ability: Ability = character.ability;
     const HyperStat: HyperStat = character.hyperStat;
-    const Item: ItemEquipment = character.itemEquipment
-    // const itemList: string[] = [];
-    // for(const item of Item.item_equipment){
-    //     itemList.push(item.item_equipment_slot)
-    // }
-    const result = Item.item_equipment.filter(item => item.item_equipment_slot == "무기");
-    console.log(result)
+    const Item: ItemEquipment = character.itemEquipment;
+    const union = character.union;
+    const unionRaider = character.unionRaider;
+    const unionArtifact = character.unionArtifact;
+    const symbol = character.symbolEquipment;
+    const skill5 = character.skill5;
+    const skill6 = character.skill6;
+    const linkSkill = character.linkSkill;
     const [activeTab, setActiveTab] = useState<string>('stats'); // 'stats', 'equipment', 'union', 'skills'
 
     // 탭 클릭 시 activeTab 상태를 업데이트하는 함수
@@ -66,8 +69,18 @@ const Details: NextPage<DetailsProps> = ({character}) => {
                 </div>
                 {activeTab === 'stats' && <TotalStat Stat={Stat}  Ability={Ability} HyperStat={HyperStat}/>}
                 {activeTab === 'equipment' && <WrapEquipment Item={Item}/>}
-                {/*{activeTab === 'union' && <Union />}*/}
-                {/*{activeTab === 'skills' && <Skill />}*/}
+                {activeTab === 'union' &&
+                    <div className={styles.unionContainer}>
+                        <Union union={union} unionRaider={unionRaider}/>
+                        <Artifact union={union} unionArtifact={unionArtifact}/>
+                    </div>
+                }
+                {activeTab === 'skills' &&
+                    <div className={styles.skillContainer}>
+                        <Symbol symbol={symbol}/>
+                        <Skill skill5={skill5} skill6={skill6} linkSkill={linkSkill}/>
+                    </div>
+                }
             </div>
         </div>
     )

@@ -178,7 +178,7 @@
     transform:  rotate(90deg);
     transform-origin: 0 0;
 }
-.div2 {
+.div1 {
     position: absolute;
     top: 48px;
     left: 12px;
@@ -187,7 +187,7 @@
     font-weight: 600;
     text-shadow: 0px 0px 1px rgba(14, 15, 20, 0.05), 0px 4px 8px rgba(14, 15, 20, 0.05);
 }
-.div1 {
+.div {
     position: absolute;
     top: 80px;
     left: 80px;
@@ -684,7 +684,7 @@
     transform:  rotate(90deg);
     transform-origin: 0 0;
 }
-.div4 {
+.div3 {
     position: absolute;
     top: 40px;
     left: 20px;
@@ -693,7 +693,7 @@
     font-weight: 600;
     text-shadow: 0px 0px 1px rgba(14, 15, 20, 0.05), 0px 4px 8px rgba(14, 15, 20, 0.05);
 }
-.div3 {
+.div2 {
     position: absolute;
     top: 240px;
     left: 176px;
@@ -1100,7 +1100,7 @@
     transform:  rotate(90deg);
     transform-origin: 0 0;
 }
-.div6 {
+.div5 {
     position: absolute;
     top: -60px;
     left: 20px;
@@ -1109,7 +1109,7 @@
     font-weight: 600;
     text-shadow: 0px 0px 1px rgba(14, 15, 20, 0.05), 0px 4px 8px rgba(14, 15, 20, 0.05);
 }
-.div5 {
+.div4 {
     position: absolute;
     top: 80px;
     left: 176px;
@@ -1347,7 +1347,7 @@
 .p {
     margin: 0;
 }
-.div8 {
+.div7 {
     position: absolute;
     top: 40px;
     left: 23px;
@@ -1356,7 +1356,7 @@
     font-weight: 600;
     text-shadow: 0px 0px 1px rgba(14, 15, 20, 0.05), 0px 4px 8px rgba(14, 15, 20, 0.05);
 }
-.div7 {
+.div6 {
     position: absolute;
     top: 160px;
     left: 0px;
@@ -1842,7 +1842,7 @@
     width: 17px;
     height: 17px;
 }
-.div10 {
+.div9 {
     position: absolute;
     top: -80px;
     left: 18px;
@@ -1875,319 +1875,11 @@
     height: 320px;
 }
 .union {
-    width: 352px;
+    width: 100%;
     position: relative;
     height: 320px;
     overflow: hidden;
     flex-shrink: 0;
-}
-.label {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 500;
-}
-.tabAtomic {
-    align-self: stretch;
-    border-radius: 8px;
-    background-color: #ededf0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 16px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.label1 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-}
-.tabAtomic1 {
-    border-radius: 8px;
-    height: 32px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 4px 16px;
-    box-sizing: border-box;
-}
-.tab {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.tabNum {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    font-size: 14px;
-    color: rgba(14, 15, 20, 0.5);
-}
-.wrap {
-    width: 352px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 16px;
-}
-.imgCharacterIcon {
-    width: 68px;
-    position: relative;
-    border-radius: 64px;
-    height: 68px;
-    object-fit: cover;
-}
-.div12 {
-    align-self: stretch;
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 600;
-}
-.lv6278 {
-    align-self: stretch;
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    color: rgba(14, 15, 20, 0.5);
-}
-.title {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 4px;
-}
-.wrap1 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 24px;
-}
-.tabAtomic5 {
-    align-self: stretch;
-    border-radius: 8px;
-    background-color: #ededf0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 16px;
-}
-.tabAtomic6 {
-    border-radius: 8px;
-    height: 32px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 4px 16px;
-    box-sizing: border-box;
-    color: rgba(14, 15, 20, 0.5);
-}
-.tabSmallHorizontal {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-.sss1 {
-    flex: 1;
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 600;
-}
-.container {
-    align-self: stretch;
-    border-radius: 4px;
-    background-color: #f7f7fa;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 16px;
-}
-.imgCharacterIcon1 {
-    width: 32px;
-    position: relative;
-    border-radius: 1000px;
-    height: 32px;
-    object-fit: cover;
-}
-.lv290 {
-    position: relative;
-    font-size: 14px;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    color: rgba(14, 15, 20, 0.5);
-}
-.wrapItem {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-}
-.div17 {
-    flex: 1;
-    position: relative;
-    font-size: 14px;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 500;
-    text-align: right;
-}
-.wrapInfo {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px;
-    gap: 0px;
-}
-.container1 {
-    width: 467px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 4px;
-    text-align: left;
-    font-size: 16px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.sss {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 8px;
-    text-align: center;
-}
-.wrapInfo3 {
-    width: 467px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px;
-    box-sizing: border-box;
-    gap: 0px;
-    text-align: left;
-    font-size: 16px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.s1 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 600;
-}
-.wrapInfo4 {
-    width: 467px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px;
-    box-sizing: border-box;
-    gap: 0px;
-    font-size: 16px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.s {
-    width: 467px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 8px;
-}
-.wrapInfo5 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px;
-    gap: 0px;
-    font-size: 16px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.div15 {
-    flex: 1;
-    height: 360px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 24px;
-}
-.scrollerChild {
-    width: 4px;
-    position: relative;
-    border-radius: 12px;
-    background-color: #d4d4d6;
-    height: 40px;
-}
-.scroller {
-    width: 4px;
-    height: 360px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-.div14 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    color: #4060ff;
-}
-.div13 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 24px;
-    font-size: 14px;
-}
-.div11 {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 32px;
-    font-size: 20px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.div {
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 40px;
     text-align: left;
     font-size: 13px;
     color: #fff;

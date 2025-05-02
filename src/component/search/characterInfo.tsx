@@ -43,7 +43,9 @@ const CharacterInfo: NextPage<CharacterInfoProps> = ({response}) => {
                             <div className={styles.wrapSubInfo}>
                                 <div
                                     className={styles.lv280}>LV. {Character.basic.character_level} | {Character.basic.character_class}</div>
-                                <div className={styles.div5}>길드: {Character.basic.character_guild_name}</div>
+                                {Character.basic.character_guild_name !== null ?
+                                    <div className={styles.div5}>길드: {Character.basic.character_guild_name}</div> : <div/>
+                                }
                             </div>
                         </div>
                     </div>

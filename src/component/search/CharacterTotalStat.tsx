@@ -208,7 +208,9 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                 {/*<div className={styles.divider}>*/}
                 {/*    <Image className={styles.dividerIcon} width={900} height={1} alt="" src="divider.svg" />*/}
                 {/*</div>*/}
-                <Image className={styles.dividerIcon1} width={900} height={1} alt="" src="divider.svg"/>
+                <svg width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                </svg>
                 <div className={styles.wrapItem1}>
                     <div className={styles.wrap}>
                         <div className={styles.item1}>
@@ -259,7 +261,9 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                         </div>
                     </div>
                 </div>
-                <Image className={styles.dividerIcon1} width={900} height={1} alt="" src="divider.svg"/>
+                <svg width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                </svg>
                 <div className={styles.wrapItem}>
                     <div className={styles.wrap}>
                         <div className={styles.item1}>
@@ -328,7 +332,9 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                         </div>
                     </div>
                 </div>
-                <Image className={styles.dividerIcon1} width={900} height={1} alt="" src="divider.svg"/>
+                <svg width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                </svg>
                 <div className={styles.wrapItem3}>
                     <div className={styles.wrap}>
                         <div className={styles.item1}>

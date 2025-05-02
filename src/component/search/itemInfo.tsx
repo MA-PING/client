@@ -20,72 +20,73 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
         <div className={styles.itemDetail}>
             <div className={styles.content}>
                     <div className={styles.container}>
-                        <div className={styles.div}>
+                        {parseInt(ItemInfo.starforce) === 0 ? <div/>:
+                            <div className={styles.div}>
                             <div className={styles.wrapStarforces}>
                                 <div className={styles.wrapStarforce}>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 1 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 2 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 3 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 4 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
-                                    </div>
-                                </div>
-                                <div className={styles.wrapStarforce}>
-                                    <div className={styles.starforce}>
-                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
-                                    </div>
-                                    <div className={styles.starforce}>
-                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
-                                    </div>
-                                    <div className={styles.starforce}>
-                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
-                                    </div>
-                                    <div className={styles.starforce}>
-                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
-                                    </div>
-                                    <div className={styles.starforce}>
-                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 5 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                 </div>
                                 <div className={styles.wrapStarforce}>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 6 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 7 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 8 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 9 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 10 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                </div>
+                                <div className={styles.wrapStarforce}>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 11 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 12 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 13 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 14 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 15 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                 </div>
                             </div>
@@ -93,62 +94,64 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
                                 <div className={styles.wrapStarforce}>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 16 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 17 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 18 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 19 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 20 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                 </div>
                                 <div className={styles.wrapStarforce}>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 21 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 22 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 23 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 24 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                     <div className={styles.starforce}>
                                         <Image className={styles.starforceChild} width={12} height={12} alt=""
-                                               src="/icons/Star 1.svg"/>
+                                               src={parseInt(ItemInfo.starforce) >= 25 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
+
                         <div className={styles.wrapName}>
                             <div className={styles.div1}>{itemSoul}</div>
                             <div className={styles.wrap}>
                                 <div className={styles.wrap1}>
                                     <div className={styles.div2}>{itemName} (+{ItemInfo.scroll_upgrade})</div>
                                 </div>
-                                <div className={styles.div3}>({ItemInfo.potential_option_grade} 등급)</div>
+                                {ItemInfo.potential_option_grade !== null ?
+                                    <div className={styles.div3}>({ItemInfo.potential_option_grade} 등급)</div> : <div/>
+                                }
+
                             </div>
                         </div>
                         <div className={styles.wrap2}>
-                            <svg width="324" height="2" viewBox="0 0 324 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 1H324" stroke="#565657" stroke-dasharray="4 4"/>
-                            </svg>
+                            <Image className={styles.dividerIcon} width={324} height={1} alt="" src="/icons/divider_item.svg" />
                             <div className={styles.itemInfo}>
                                 <div className={styles.wrap3}>
                                     <div className={styles.thumbnailItem}>
@@ -157,9 +160,7 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
                                     <div className={styles.reqLev}>REQ LEV : {ItemInfo.item_base_option.base_equipment_level}</div>
                                 </div>
                             </div>
-                            <svg width="324" height="2" viewBox="0 0 324 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 1H324" stroke="#565657" stroke-dasharray="4 4"/>
-                            </svg>
+                            <Image className={styles.dividerIcon} width={324} height={1} alt="" src="/icons/divider_item.svg" />
                         </div>
                         <div className={styles.wrap}>
                             <div className={styles.str}>장비 분류 : {ItemInfo.item_equipment_slot}</div>
@@ -185,16 +186,14 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
                             <div className={styles.str}>황금망치 제련 {ItemInfo.golden_hammer_flag}</div>
                             <div className={styles.div16}>가위 사용 가능 횟수 : {ItemInfo.cuttable_count}회</div>
                         </div>
-                        <svg width="324" height="2" viewBox="0 0 324 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 1H324" stroke="#565657" stroke-dasharray="4 4"/>
-                        </svg>
+                        <Image className={styles.dividerIcon} width={324} height={1} alt="" src="/icons/divider_item.svg" />
                         <div className={styles.wrap}>
                             <div className={styles.div17}>
                                 <div className={styles.iconGrade}>
-                                    <Image className={styles.unionIcon} width={14} height={14} alt="" src="Union.svg"/>
-                                    <Image className={styles.unionIcon1} width={10} height={10} alt="" src="Union.svg"/>
-                                    <Image className={styles.eIcon} width={4} height={6} alt="" src="E.svg"/>
-                                    <Image className={styles.unionIcon2} width={12} height={12} alt="" src="Union.svg"/>
+                                    <Image className={styles.unionIcon} width={14} height={14} alt="" src="/icons/E.png"/>
+                                    {/*<Image className={styles.unionIcon1} width={10} height={10} alt="" src="Union.svg"/>*/}
+                                    {/*<Image className={styles.eIcon} width={4} height={6} alt="" src="/icons/E.svg"/>*/}
+                                    {/*<Image className={styles.unionIcon2} width={12} height={12} alt="" src="Union.svg"/>*/}
                                 </div>
                                 <div className={styles.div18}>잠재옵션</div>
                             </div>
@@ -214,18 +213,16 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
                             <div className={styles.str}>보스 공격 시 데미지 : +총 수치%</div>
                             <div className={styles.str}>방어력 무시 : +총 수치%</div>
                         </div>
-                        <svg width="324" height="2" viewBox="0 0 324 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 1H324" stroke="#565657" stroke-dasharray="4 4"/>
-                        </svg>
+                        <Image className={styles.dividerIcon} width={324} height={1} alt="" src="/icons/divider_item.svg" />
                         <div className={styles.wrap}>
                             <div className={styles.div17}>
                                 <div className={styles.iconGrade}>
-                                    <Image className={styles.unionIcon} width={14} height={14} alt="" src="Union.svg"/>
-                                    <Image className={styles.unionIcon1} width={10} height={10} alt="" src="Union.svg"/>
-                                    <Image className={styles.eIcon} width={4} height={6} alt="" src="E.svg"/>
-                                    <Image className={styles.unionIcon2} width={12} height={12} alt="" src="Union.svg"/>
+                                    <Image className={styles.unionIcon} width={14} height={14} alt="" src="/icons/E.png"/>
+                                    {/*<Image className={styles.unionIcon1} width={10} height={10} alt="" src="Union.svg"/>*/}
+                                    {/*<Image className={styles.eIcon} width={4} height={6} alt="" src="/icons/E.svg"/>*/}
+                                    {/*<Image className={styles.unionIcon2} width={12} height={12} alt="" src="Union.svg"/>*/}
                                 </div>
-                                <div className={styles.div18}>잠재옵션</div>
+                                <div className={styles.div18}>에디셔널옵션</div>
                             </div>
                             <div className={styles.str}>STR : +총 수치</div>
                             <div className={styles.str}>DEX : +총 수치</div>
