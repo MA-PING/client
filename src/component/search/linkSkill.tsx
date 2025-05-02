@@ -1,5 +1,4 @@
 import type {NextPage} from 'next';
-import Image from "next/image";
 import styles from '../../styles/search/linkSkill.module.css';
 import {LinkSkill} from "@/interfaces/character";
 import {useState} from "react";

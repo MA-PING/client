@@ -19,8 +19,6 @@ const Skill1: NextPage<Symbol1Props> = ({symbol}) => {
         stat[3] += parseInt(s.symbol_luk, 10);
         stat[4] += parseInt(s.symbol_hp, 10);
     }
-    const symbol1: SymbolEquipmentInfo[] = symbol.slice(0, 3);
-    const symbol2: SymbolEquipmentInfo[] = symbol.slice(3, 6);
     return (
         <div className={styles.div2}>
             <div className={styles.item}>
