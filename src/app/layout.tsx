@@ -1,7 +1,6 @@
 import type {Metadata, Viewport} from "next";
 import "./globals.css";
 import localFont from 'next/font/local'
-import Head from "next/head";
 
 const pretendard = localFont({
     src: '../../public/fonts/PretendardVariable.woff2',
@@ -50,10 +49,10 @@ export default function RootLayout({
 
   return (
     <html lang="ko">
-      <Head>
-        <meta charSet="UTF-8"/>
+      <head>
+        <script type="text/javascript" src="https://openapi.nexon.com/js/analytics.js?app_id=139195" async></script>
         <title>MA-PING : 나에게 딱 맞는 메이플 길라잡이</title>
-      </Head>
+      </head>
       <body className={`${pretendard.variable} font-pretendard`}>
         {children}
       </body>

@@ -470,6 +470,81 @@ export interface UnionArtifact {
     union_artifact_remain_ap: number;
 }
 
+export interface AndroidEquipmentHair {
+    hair_name: string;
+    base_color: string;
+    mix_color: string;
+    mix_rate: string;
+}
+
+export interface AndroidEquipmentFace {
+    face_name: string;
+    base_color: string;
+    mix_color: string;
+    mix_rate: string;
+}
+
+export interface AndroidEquipmentSkin {
+    skin_name: string;
+    color_style: string;
+    hue: number;
+    saturation: number;
+    brightness: number;
+}
+
+export interface AndroidCashItemEquipmentOption {
+    option_type: string;
+    option_value: string;
+}
+
+export interface AndroidCashItemEquipmentColoringPrism {
+    color_range: string;
+    hue: number;
+    saturation: number;
+    value: number;
+}
+
+export interface AndroidCashItemEquipment {
+    cash_item_equipment_part: string;
+    cash_item_equipment_slot: string;
+    cash_item_name: string;
+    cash_item_icon: string;
+    cash_item_description: string;
+    cash_item_option: AndroidCashItemEquipmentOption[];
+    date_expire: string;
+    date_option_expire: string;
+    cash_item_label: string;
+    cash_item_coloring_prism: AndroidCashItemEquipmentColoringPrism;
+}
+
+export interface AndroidEquipmentPreset {
+    color_range: string;
+    hue: number;
+    saturation: number;
+    value: number;
+}
+
+export interface AndroidEquipment {
+    date: string;
+    android_name: string;
+    android_nickname: string;
+    android_icon: string;
+    android_description: string;
+    android_hair: AndroidEquipmentHair;
+    android_face: AndroidEquipmentFace;
+    android_skin: AndroidEquipmentSkin;
+    android_cash_item_equipment: AndroidCashItemEquipment[];
+    android_ear_sensor_clip_flag: string;
+    android_gender: string;
+    android_grade: string;
+    android_non_humanoid_flag: string;
+    android_shop_usable_flag: string;
+    preset_no: number;
+    android_preset_1: AndroidEquipmentPreset;
+    android_preset_2: AndroidEquipmentPreset;
+    android_preset_3: AndroidEquipmentPreset;
+}
+
 // --- Character Aggregate Interface ---
 export interface Character {
     ocid: string;
@@ -481,6 +556,7 @@ export interface Character {
     symbolEquipment: SymbolEquipment; // e.g., symbolEquipment
     skill5: Skill; // e.g., skill5 or VSkill?
     skill6: Skill; // e.g., skill6 or hexSkill?
+    androidEquipment: AndroidEquipment;
     linkSkill: LinkSkill; // e.g., linkSkill
     vMatrix: VMatrix; // e.g., vMatrix
     hexaMatrix: HexaMatrix; // e.g., hexaMatrix

@@ -1,17 +1,19 @@
 import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '../../styles/search/item.module.css';
-import {ItemEquipment, ItemEquipmentInfo} from "@/interfaces/character";
+import type {ItemEquipment, ItemEquipmentInfo, AndroidEquipment} from "@/interfaces/character";
 import {useState} from "react";
 import ItemInfo from "@/component/search/itemInfo";
 
 
 interface WrapEquipmentProps {
-    Item: ItemEquipment
+    item: ItemEquipment
+    android: AndroidEquipment
 }
 
-const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
-    const item_equipment: ItemEquipmentInfo[] = Item.item_equipment;
+const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
+    const item_equipment: ItemEquipmentInfo[] = item.item_equipment;
+    const title = item.title;
     const itemIconMap = new Map<string, string>();
     for (const item of item_equipment) {
         itemIconMap.set(item.item_equipment_slot, item.item_icon);
@@ -33,7 +35,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("반지1")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("반지1") || "/icons/empty/png"}
+                                src={itemIconMap.get("반지1") || "/icons/empty.png"}
                                 alt={"반지1"}
                             />
                         ) : (
@@ -47,7 +49,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("반지2")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("반지2") || "/icons/empty/png"}
+                                src={itemIconMap.get("반지2") || "/icons/empty.png"}
                                 alt={"반지2"}
                             />
                         ) : (
@@ -61,7 +63,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("반지3")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("반지3") || "/icons/empty/png"}
+                                src={itemIconMap.get("반지3") || "/icons/empty.png"}
                                 alt={"반지3"}
                             />
                         ) : (
@@ -75,7 +77,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("반지4")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("반지4") || "/icons/empty/png"}
+                                src={itemIconMap.get("반지4") || "/icons/empty.png"}
                                 alt={"반지4"}
                             />
                         ) : (
@@ -89,7 +91,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("포켓 아이템")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("포켓 아이템") || "/icons/empty/png"}
+                                src={itemIconMap.get("포켓 아이템") || "/icons/empty.png"}
                                 alt={"포켓 아이템"}
                             />
                         ) : (
@@ -97,8 +99,17 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                         )}
                     </div>
                     <div className={styles.equipmentAtomic}>
-                        <div className={styles.imgRing01}/>
-                        <div className={styles.label4}>칭호</div>
+                        {title.title_name !== undefined ?
+                            <Image
+                                className={styles.imgRing01}
+                                onClick={() => handleItemTabClick("칭호")}
+                                width={48}
+                                height={48}
+                                src={title.title_icon || "/icons/empty.png"}
+                                alt={"칭호"}
+                            /> :
+                            <div className={styles.label4}>칭호</div>
+                        }
                     </div>
                 </div>
                 <div className={styles.wrapItem1}>
@@ -109,7 +120,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("펜던트")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("펜던트") || "/icons/empty/png"}
+                                src={itemIconMap.get("펜던트") || "/icons/empty.png"}
                                 alt={"펜던트"}
                             />
                         ) : (
@@ -123,7 +134,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("펜던트2")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("펜던트2") || "/icons/empty/png"}
+                                src={itemIconMap.get("펜던트2") || "/icons/empty.png"}
                                 alt={"펜던트2"}
                             />
                         ) : (
@@ -137,7 +148,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("무기")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("무기") || "/icons/empty/png"}
+                                src={itemIconMap.get("무기") || "/icons/empty.png"}
                                 alt={"무기"}
                             />
                         ) : (
@@ -151,7 +162,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("벨트")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("벨트") || "/icons/empty/png"}
+                                src={itemIconMap.get("벨트") || "/icons/empty.png"}
                                 alt={"벨트"}
                             />
                         ) : (
@@ -167,7 +178,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("모자")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("모자") || "/icons/empty/png"}
+                                src={itemIconMap.get("모자") || "/icons/empty.png"}
                                 alt={"모자"}
                             />
                         ) : (
@@ -181,7 +192,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("얼굴장식")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("얼굴장식") || "/icons/empty/png"}
+                                src={itemIconMap.get("얼굴장식") || "/icons/empty.png"}
                                 alt={"얼굴장식"}
                             />
                         ) : (
@@ -195,7 +206,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("눈장식")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("눈장식") || "/icons/empty/png"}
+                                src={itemIconMap.get("눈장식") || "/icons/empty.png"}
                                 alt={"눈장식"}
                             />
                         ) : (
@@ -209,7 +220,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("상의")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("상의") || "/icons/empty/png"}
+                                src={itemIconMap.get("상의") || "/icons/empty.png"}
                                 alt={"상의"}
                             />
                         ) : (
@@ -223,7 +234,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("하의")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("하의") || "/icons/empty/png"}
+                                src={itemIconMap.get("하의") || "/icons/empty.png"}
                                 alt={"하의"}
                             />
                         ) : (
@@ -237,7 +248,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("신발")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("신발") || "/icons/empty/png"}
+                                src={itemIconMap.get("신발") || "/icons/empty.png"}
                                 alt={"신발"}
                             />
                         ) : (
@@ -253,7 +264,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("귀고리")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("귀고리") || "/icons/empty/png"}
+                                src={itemIconMap.get("귀고리") || "/icons/empty.png"}
                                 alt={"귀고리"}
                             />
                         ) : (
@@ -267,7 +278,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("어깨장식")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("어깨장식") || "/icons/empty/png"}
+                                src={itemIconMap.get("어깨장식") || "/icons/empty.png"}
                                 alt={"어깨장식"}
                             />
                         ) : (
@@ -281,7 +292,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("장갑")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("장갑") || "/icons/empty/png"}
+                                src={itemIconMap.get("장갑") || "/icons/empty.png"}
                                 alt={"장갑"}
                             />
                         ) : (
@@ -289,8 +300,18 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                         )}
                     </div>
                     <div className={styles.equipmentAtomic}>
-                        <div className={styles.imgRing01}/>
-                        <div className={styles.label4}>안드로이드</div>
+                        {android != undefined ? (
+                            <Image
+                                className={styles.imgRing01}
+                                onClick={() => handleItemTabClick("안드로이드")}
+                                width={48}
+                                height={48}
+                                src={android.android_icon || "/icons/empty.png"}
+                                alt={"안드로이드"}
+                            />
+                        ) : (
+                            <div className={styles.label4}>안드로이드</div>
+                        )}
                     </div>
                 </div>
                 <div className={styles.wrapItem4}>
@@ -301,7 +322,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("엠블렘")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("엠블렘") || "/icons/empty/png"}
+                                src={itemIconMap.get("엠블렘") || "/icons/empty.png"}
                                 alt={"엠블렘"}
                             />
                         ) : (
@@ -315,7 +336,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("뱃지")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("뱃지") || "/icons/empty/png"}
+                                src={itemIconMap.get("뱃지") || "/icons/empty.png"}
                                 alt={"뱃지"}
                             />
                         ) : (
@@ -329,7 +350,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("훈장")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("훈장") || "/icons/empty/png"}
+                                src={itemIconMap.get("훈장") || "/icons/empty.png"}
                                 alt={"훈장"}
                             />
                         ) : (
@@ -343,7 +364,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("보조무기")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("보조무기") || "/icons/empty/png"}
+                                src={itemIconMap.get("보조무기") || "/icons/empty.png"}
                                 alt={"보조무기"}
                             />
                         ) : (
@@ -357,7 +378,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("망토")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("망토") || "/icons/empty/png"}
+                                src={itemIconMap.get("망토") || "/icons/empty.png"}
                                 alt={"망토"}
                             />
                         ) : (
@@ -371,7 +392,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                                 onClick={() => handleItemTabClick("기계 심장")}
                                 width={48}
                                 height={48}
-                                src={itemIconMap.get("기계 심장") || "/icons/empty/png"}
+                                src={itemIconMap.get("기계 심장") || "/icons/empty.png"}
                                 alt={"기계 심장"}
                             />
                         ) : (
@@ -393,8 +414,12 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({Item}) => {
                         </div>
                     </div>
                 }
-                {activeItemTab !== "0" &&
+                {activeItemTab !== "0" && activeItemTab !== "칭호" &&
                     <ItemInfo ItemInfo={item_equipment.filter(item => item.item_equipment_slot == activeItemTab)[0]}/>
+                }
+                {activeItemTab !== "0" && activeItemTab === "칭호" &&
+                    <div/>
+                    // <ItemInfo ItemInfo={item_equipment.filter(item => item.item_equipment_slot == activeItemTab)[0]}/>
                 }
             </div>);
 };

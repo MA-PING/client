@@ -4,13 +4,12 @@ import type {NextPage} from 'next';
 import styles from "@/styles/search/character.module.css";
 import TotalStat from "@/component/search/CharacterTotalStat";
 import {useState} from "react";
-import {Stat, Character, Ability, HyperStat, ItemEquipment} from "@/interfaces/character";
+import {Stat, Character, Ability, HyperStat, ItemEquipment, AndroidEquipment} from "@/interfaces/character";
 import WrapEquipment from "@/component/search/item";
 import Union from "@/component/search/union";
 import Artifact from "@/component/search/artifact";
 import Symbol from "@/component/search/symbole";
 import Skill from "@/component/search/skill";
-
 interface DetailsProps {
     character: Character
 }
@@ -19,7 +18,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
     const Stat: Stat = character.stat;
     const Ability: Ability = character.ability;
     const HyperStat: HyperStat = character.hyperStat;
-    const Item: ItemEquipment = character.itemEquipment;
+    const item: ItemEquipment = character.itemEquipment;
     const union = character.union;
     const unionRaider = character.unionRaider;
     const unionArtifact = character.unionArtifact;
@@ -27,6 +26,8 @@ const Details: NextPage<DetailsProps> = ({character}) => {
     const skill5 = character.skill5;
     const skill6 = character.skill6;
     const linkSkill = character.linkSkill;
+    const android: AndroidEquipment = character.androidEquipment;
+    console.log(character.androidEquipment)
     const [activeTab, setActiveTab] = useState<string>('stats'); // 'stats', 'equipment', 'union', 'skills'
 
     // 탭 클릭 시 activeTab 상태를 업데이트하는 함수
@@ -68,7 +69,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
                     </div>
                 </div>
                 {activeTab === 'stats' && <TotalStat Stat={Stat}  Ability={Ability} HyperStat={HyperStat}/>}
-                {activeTab === 'equipment' && <WrapEquipment Item={Item}/>}
+                {activeTab === 'equipment' && <WrapEquipment item={item} android={android}/>}
                 {activeTab === 'union' &&
                     <div className={styles.unionContainer}>
                         <Union union={union} unionRaider={unionRaider}/>

@@ -1,0 +1,135 @@
+.sss1 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 600;
+}
+.container {
+    align-self: stretch;
+    border-radius: 4px;
+    background-color: #f7f7fa;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+}
+.imgCharacterIcon {
+    width: 40px;
+    position: relative;
+    border-radius: 1000px;
+    height: 40px;
+    object-fit: cover;
+}
+.div1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.lv290 {
+    position: relative;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.5);
+}
+.wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.wrapItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.mp10 {
+    flex: 1;
+    position: relative;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+    text-align: right;
+}
+.wrapInfo {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    gap: 0px;
+}
+.container1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    text-align: left;
+    color: rgba(14, 15, 20, 0.9);
+}
+.sss {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: center;
+}
+.container3 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    color: rgba(14, 15, 20, 0.9);
+}
+.s1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 600;
+}
+.container5 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: rgba(14, 15, 20, 0.9);
+}
+.s {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.div {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    height: 360px;
+    overflow-y: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    text-align: left;
+    font-size: 14px;
+    color: #4060ff;
+}
+

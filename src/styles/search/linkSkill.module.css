@@ -55,8 +55,8 @@
     position: relative;
     letter-spacing: -0.02em;
     line-height: 150%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: auto;
+    /*text-overflow: ellipsis;*/
     white-space: nowrap;
 }
 .wrapSkill {

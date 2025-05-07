@@ -62,8 +62,8 @@
     line-height: 150%;
     align-items: flex-start;
     justify-content: flex-start;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: auto;
+    /*text-overflow: ellipsis;*/
     white-space: nowrap;
 }
 .wrapSkill {

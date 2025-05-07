@@ -4,6 +4,7 @@ import styles from '../../styles/search/union.module.css';
 import type { Union, UnionRaider } from "@/interfaces/character";
 import {useState} from "react";
 import UnionInnerStat from "@/component/search/unionInnerStat";
+import UnionEffect from "@/component/search/unionEffect";
 
 
 interface UnionProps {
@@ -51,28 +52,7 @@ const Union: NextPage<UnionProps> = ({union, unionRaider}) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.div11}>
-                <div className={styles.wrap1}>
-                    <Image className={styles.imgCharacterIcon} width={68} height={68} alt="" src="/icons/empty.svg"/>
-                    <div className={styles.title}>
-                        <div className={styles.div12}>{union.union_grade}</div>
-                        <div className={styles.lv6278}>LV. {union.union_level}</div>
-                    </div>
-                </div>
-                <div className={styles.div13}>
-                    <div className={styles.tabSmallHorizontal}>
-                        <div className={styles.tab}>
-                            <div className={styles.tabAtomic5}>
-                                <div className={styles.label}>공격대원 효과</div>
-                            </div>
-                            <div className={styles.tabAtomic6}>
-                                <div className={styles.label1}>공격대 점령 효과</div>
-                            </div>
-                        </div>
-                    </div>
-                    {}
-                </div>
-            </div>
+            {<UnionEffect union={union} unionRaider={unionRaider}/>}
         </div>);
 };
 
