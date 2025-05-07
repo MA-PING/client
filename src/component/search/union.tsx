@@ -1,5 +1,5 @@
 import type {NextPage} from 'next';
-import Image from "next/image";
+// import Image from "next/image";
 import styles from '../../styles/search/union.module.css';
 import type { Union, UnionRaider } from "@/interfaces/character";
 import {useState} from "react";
