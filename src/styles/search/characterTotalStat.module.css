@@ -327,3 +327,32 @@
     color: rgba(14, 15, 20, 0.9);
 }
 
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (max-width: 1199px) {
+    .wrapPreset {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 0px 16px;
+        gap: 16px;
+        color: rgba(14, 15, 20, 0.5);
+    }
+}
+
+@media screen and (max-width: 901px) {
+    .wrapPreset {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 0px 16px;
+        gap: 16px;
+        color: rgba(14, 15, 20, 0.5);
+    }
+}

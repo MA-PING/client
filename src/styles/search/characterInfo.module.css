@@ -187,6 +187,7 @@
     color: rgba(14, 15, 20, 0.7);
 }
 .div {
+    width: 260px;
     /*width: 100%;*/
     /*position: relative;*/
     /*display: flex;*/
@@ -198,4 +199,16 @@
     /*font-size: 32px;*/
     /*color: rgba(14, 15, 20, 0.9);*/
 }
-
+@media screen and (max-width: 1280px) {
+}
+@media screen and (max-width: 1199px) {
+}
+@media screen and (max-width: 901px) {
+}
+@media screen and (max-width: 720px) {
+}
+@media screen and (max-width: 580px) {
+    .div {
+        width: 328px;
+    }
+}
