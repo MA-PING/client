@@ -199,3 +199,274 @@
     color: rgba(14, 15, 20, 0.7);
 }
 
+/*@media screen and (max-width: 1280px) {*/
+/*}*/
+/*@media screen and (max-width: 1199px) {*/
+/*}*/
+@media screen and (max-width: 900px) {
+    .logoMapingIcon {
+        width: 25px;
+        position: relative;
+        height: 18px;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    .mapingIcon {
+        position: absolute;
+        height: 100%;
+        width: 100.41%;
+        top: 0%;
+        right: -0.41%;
+        bottom: 0%;
+        left: 0%;
+        max-width: 100%;
+        overflow: hidden;
+        max-height: 100%;
+    }
+    .logoMaping1 {
+        width: 24.5px;
+        position: relative;
+        height: 18px;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    .logo {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .logoMaping {
+        width: 160px;
+        position: relative;
+        height: 18px;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    .logoIcon {
+        position: relative;
+        /*top: 0px;*/
+        /*left: 0px;*/
+        width: 117px;
+        height: 18px;
+    }
+    .logoMaping2 {
+        width: 117px;
+        position: relative;
+        height: 18px;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    .logoMapingParent {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+    .div {
+        align-self: stretch;
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 150%;
+    }
+    .wrapLogo {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+    .title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .ai {
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 150%;
+        font-weight: 500;
+    }
+    .quickPanel {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+        color: rgba(14, 15, 20, 0.9);
+    }
+    .wrapQuickPanel {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 8px;
+        color: rgba(14, 15, 20, 0.7);
+    }
+    .container {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
+    }
+    .div7 {
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 150%;
+    }
+    .infoChild {
+        width: 1px;
+        position: relative;
+        max-width: 100%;
+        overflow: hidden;
+        height: 10px;
+    }
+    .div8 {
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 150%;
+        text-align: left;
+    }
+    .info {
+        width: 180px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 16px;
+        text-align: right;
+    }
+    .background {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0%;
+        right: 0%;
+        bottom: 0%;
+        left: 0%;
+        background-color: #5262f3;
+    }
+    .symbolIcon {
+        position: absolute;
+        height: 47%;
+        width: 62.5%;
+        top: 25.78%;
+        right: 18.75%;
+        bottom: 27.22%;
+        left: 18.75%;
+        max-width: 100%;
+        overflow: hidden;
+        max-height: 100%;
+    }
+    .circlePurple {
+        width: 40px;
+        position: relative;
+        border-radius: 400px;
+        height: 40px;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    .snskakaotalkIcon {
+        width: 40px;
+        position: relative;
+        height: 40px;
+    }
+    .quickPanel1 {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
+    }
+    .p {
+        margin: 0;
+    }
+    .wrap {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+        font-size: 12px;
+    }
+    .container1 {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 8px;
+        font-size: 13px;
+    }
+    .info1 {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+        font-size: 12px;
+    }
+    .shortcut {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
+        font-size: 14px;
+        color: rgba(14, 15, 20, 0.7);
+    }
+    .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
+    }
+    .footer {
+        width: auto;
+        position: relative;
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        margin-right: 16px;
+        margin-left: 16px;
+        box-sizing: border-box;
+        text-align: left;
+        font-size: 13px;
+        color: rgba(14, 15, 20, 0.9);
+    }
+}
+/*@media screen and (max-width: 720px) {*/
+/*}*/
+@media screen and (max-width: 580px) {
+    .footer {
+        width: auto;
+        margin-top: 1200px;
+        position: relative;
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        margin-right: 16px;
+        margin-left: 16px;
+        box-sizing: border-box;
+        text-align: left;
+        font-size: 13px;
+        color: rgba(14, 15, 20, 0.9);
+    }
+}

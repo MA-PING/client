@@ -2,9 +2,10 @@ import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '../../styles/search/characterTotalStat.module.css';
 import {Ability, FinalStat, HyperStat, Stat} from "@/interfaces/character";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import AbilityPreset from "@/component/search/abilityPreset";
 import HyperPreset from "@/component/search/hyperStatPreset";
+import {useMediaQuery} from "react-responsive";
 
 
 interface TotalStatProps {
@@ -82,6 +83,19 @@ function formatNumberToKorean(numString: string): string {
 }
 
 const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
+    // 컴포넌트가 클라이언트에 마운트되었는지 추적하는 상태
+    const [isClient, setIsClient] = useState(false);
+
+    // 미디어 쿼리 훅
+    // isClient가 true가 된 후 정확한 값을 반환하게 됩니다.
+    const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 581px)' });
+    const isMobile = useMediaQuery({ query: '(max-width: 580px)' }); // 모바일 (900px 이하 태블릿 포함)
+
+    useEffect(() => {
+        // 이 useEffect는 클라이언트에서 초기 렌더링 후 한 번만 실행됩니다.
+        setIsClient(true);
+    }, []); // 빈 의존성 배열은 마운트 시 1회 실행을 의미합니다.
+
     const [activeAbilityTab, setActiveAbilityTab] = useState<number>(Ability.preset_no);
 
     const handleAbilityTabClick = (tabName: number) => {
@@ -112,292 +126,515 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                     {/*<Image className={styles.ellipse4Stroke} width={6} height={8} alt="" src="Ellipse 4 (Stroke).svg" />*/}
                 </div>
             </div>
-            <div className={styles.wrapPreset}>
-                <div className={styles.presetAbility}>
-                    <div className={styles.tabSmallVertical}>
-                        <div className={styles.tab}>
-                            <button
-                                className={activeAbilityTab === 1 ? styles.tabAtomic : styles.tabAtomic1}
-                                onClick={() => handleAbilityTabClick(1)}
-                            >
-                                <div className={activeAbilityTab === 1 ? styles.div : styles.label1}>프리셋 01</div>
-                            </button>
-                            <button
-                                className={activeAbilityTab === 2 ? styles.tabAtomic : styles.tabAtomic1}
-                                onClick={() => handleAbilityTabClick(2)}
-                            >
-                                <div className={activeAbilityTab === 2 ? styles.div : styles.label1}>프리셋 02</div>
-                            </button>
-                            <button
-                                className={activeAbilityTab === 3 ? styles.tabAtomic : styles.tabAtomic1}
-                                onClick={() => handleAbilityTabClick(3)}
-                            >
-                                <div className={activeAbilityTab === 3 ? styles.div : styles.label1}>프리셋 03</div>
-                            </button>
+            {isClient && isDesktopOrLaptop &&
+                <div className={styles.wrapPreset}>
+                    <div className={styles.presetAbility}>
+                        <div className={styles.tabSmallVertical}>
+                            <div className={styles.tab}>
+                                <button
+                                    className={activeAbilityTab === 1 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleAbilityTabClick(1)}
+                                >
+                                    <div className={activeAbilityTab === 1 ? styles.div : styles.label1}>프리셋 01</div>
+                                </button>
+                                <button
+                                    className={activeAbilityTab === 2 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleAbilityTabClick(2)}
+                                >
+                                    <div className={activeAbilityTab === 2 ? styles.div : styles.label1}>프리셋 02</div>
+                                </button>
+                                <button
+                                    className={activeAbilityTab === 3 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleAbilityTabClick(3)}
+                                >
+                                    <div className={activeAbilityTab === 3 ? styles.div : styles.label1}>프리셋 03</div>
+                                </button>
+                            </div>
+                        </div>
+                        {activeAbilityTab === 1 && <AbilityPreset ability={Ability.ability_preset_1.ability_info}/>}
+                        {activeAbilityTab === 2 && <AbilityPreset ability={Ability.ability_preset_2.ability_info}/>}
+                        {activeAbilityTab === 3 && <AbilityPreset ability={Ability.ability_preset_3.ability_info}/>}
+                    </div>
+                    <div className={styles.presetAbility}>
+                        <div className={styles.tabSmallVertical}>
+                            <div className={styles.tab}>
+                                <button
+                                    className={activeStatTab === 1 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleStatTabClick(1)}
+                                >
+                                    <div className={activeStatTab === 1 ? styles.div : styles.label1}>프리셋 01</div>
+                                </button>
+                                <button
+                                    className={activeStatTab === 2 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleStatTabClick(2)}
+                                >
+                                    <div className={activeStatTab === 2 ? styles.div : styles.label1}>프리셋 02</div>
+                                </button>
+                                <button
+                                    className={activeStatTab === 3 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleStatTabClick(3)}
+                                >
+                                    <div className={activeStatTab === 3 ? styles.div : styles.label1}>프리셋 03</div>
+                                </button>
+                            </div>
+                        </div>
+                        {activeStatTab === 1 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_1}/>}
+                        {activeStatTab === 2 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_2}/>}
+                        {activeStatTab === 3 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_3}/>}
+                    </div>
+                </div>
+            }
+            {isClient && isMobile &&
+                <div className={styles.wrapPreset}>
+                    <div className={styles.presetAbility}>
+                        {activeAbilityTab === 1 && <AbilityPreset ability={Ability.ability_preset_1.ability_info}/>}
+                        {activeAbilityTab === 2 && <AbilityPreset ability={Ability.ability_preset_2.ability_info}/>}
+                        {activeAbilityTab === 3 && <AbilityPreset ability={Ability.ability_preset_3.ability_info}/>}
+                        <div className={styles.tabNum}>
+                            <div className={styles.tab}>
+                                <button
+                                    className={activeAbilityTab === 1 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleAbilityTabClick(1)}
+                                >
+                                    <div className={activeAbilityTab === 1 ? styles.label : styles.label1}>1</div>
+                                </button>
+                                <button
+                                    className={activeAbilityTab === 2 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleAbilityTabClick(2)}
+                                >
+                                    <div className={activeAbilityTab === 2 ? styles.label : styles.label1}>2</div>
+                                </button>
+                                <button
+                                    className={activeAbilityTab === 3 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleAbilityTabClick(3)}
+                                >
+                                    <div className={activeAbilityTab === 3 ? styles.label : styles.label1}>3</div>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    {activeAbilityTab === 1 && <AbilityPreset ability={Ability.ability_preset_1.ability_info}/>}
-                    {activeAbilityTab === 2 && <AbilityPreset ability={Ability.ability_preset_2.ability_info}/>}
-                    {activeAbilityTab === 3 && <AbilityPreset ability={Ability.ability_preset_3.ability_info}/>}
-                </div>
-                <div className={styles.presetAbility}>
-                    <div className={styles.tabSmallVertical}>
-                        <div className={styles.tab}>
-                            <button
-                                className={activeStatTab === 1 ? styles.tabAtomic : styles.tabAtomic1}
-                                onClick={() => handleStatTabClick(1)}
-                            >
-                                <div className={activeStatTab === 1 ? styles.div : styles.label1}>프리셋 01</div>
-                            </button>
-                            <button
-                                className={activeStatTab === 2 ? styles.tabAtomic : styles.tabAtomic1}
-                                onClick={() => handleStatTabClick(2)}
-                            >
-                                <div className={activeStatTab === 2 ? styles.div : styles.label1}>프리셋 02</div>
-                            </button>
-                            <button
-                                className={activeStatTab === 3 ? styles.tabAtomic : styles.tabAtomic1}
-                                onClick={() => handleStatTabClick(3)}
-                            >
-                                <div className={activeStatTab === 3 ? styles.div : styles.label1}>프리셋 03</div>
-                            </button>
+                    <div className={styles.presetAbility1}>
+                        {activeStatTab === 1 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_1}/>}
+                        {activeStatTab === 2 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_2}/>}
+                        {activeStatTab === 3 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_3}/>}
+                        <div className={styles.tabNum}>
+                            <div className={styles.tab}>
+                                <button
+                                    className={activeStatTab === 1 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleStatTabClick(1)}
+                                >
+                                    <div className={activeStatTab === 1 ? styles.label : styles.label1}>1</div>
+                                </button>
+                                <button
+                                    className={activeStatTab === 2 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleStatTabClick(2)}
+                                >
+                                    <div className={activeStatTab === 2 ? styles.label : styles.label1}>2</div>
+                                </button>
+                                <button
+                                    className={activeStatTab === 3 ? styles.tabAtomic : styles.tabAtomic1}
+                                    onClick={() => handleStatTabClick(3)}
+                                >
+                                    <div className={activeStatTab === 3 ? styles.label : styles.label1}>3</div>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    {activeStatTab === 1 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_1}/>}
-                    {activeStatTab === 2 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_2}/>}
-                    {activeStatTab === 3 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_3}/>}
                 </div>
-            </div>
-            <div className={styles.stat}>
-                <div className={styles.wrapItem}>
+            }
+            {isClient && isDesktopOrLaptop &&
+                <div className={styles.stat}>
+                    <div className={styles.wrapItem}>
+                        <div className={styles.wrap}>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>HP</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("HP") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>MP</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("MP") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>STR</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("STR") as string, 10).toLocaleString()}</div>
+                            </div>
+                        </div>
+                        <div className={styles.wrap}>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>DEX</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("DEX") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>INT</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("INT") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>LUK</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("LUK") as string, 10).toLocaleString()}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {/*<div className={styles.divider}>*/}
+                    {/*    <Image className={styles.dividerIcon} width={900} height={1} alt="" src="divider.svg" />*/}
+                    {/*</div>*/}
+                    <svg className={styles.dividerSize} width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                    </svg>
+                    <div className={styles.wrapItem1}>
+                        <div className={styles.wrap}>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>스타포스</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("스타포스") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>어센틱포스</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("어센틱포스") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>재사용 대기시간 미적용</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("재사용 대기시간 미적용") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>상태이상 추가 데미지</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("상태이상 추가 데미지") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.wrap}>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>아케인포스</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("아케인포스") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>재사용 대기시간 감소</div>
+                                <div
+                                    className={styles.div10}>{finalStatMap.get("재사용 대기시간 감소 (초)") as string}초 {finalStatMap.get("재사용 대기시간 감소 (%)") as string}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>속성 내성 무시</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("속성 내성 무시") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>상태이상 내성</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("상태이상 내성") as string, 10).toLocaleString()}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <svg className={styles.dividerSize} width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                    </svg>
+                    <div className={styles.wrapItem}>
+                        <div className={styles.wrap}>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>방어력</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("방어력") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>버프 지속시간</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("버프 지속시간") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>이동속도</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("이동속도") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>점프력</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("점프력") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>메소 획득량</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("메소 획득량") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.wrap}>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>추가 경험치 획득</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("추가 경험치 획득") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>소환수 지속시간 증가</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("소환수 지속시간 증가") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>무기 숙련도</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("무기 숙련도") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>스탠스</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("스탠스") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>아이템 드롭률</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("아이템 드롭률") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>공격 속도</div>
+                                <div className={styles.div10}>{finalStatMap.get("공격 속도") as string}단계</div>
+                            </div>
+                        </div>
+                    </div>
+                    <svg className={styles.dividerSize} width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                    </svg>
+                    <div className={styles.wrapItem3}>
+                        <div className={styles.wrap}>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>스탯 공격력</div>
+                                <div
+                                    className={styles.div10}>{formatNumberToKorean(finalStatMap.get("최대 스탯공격력") as string)}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>데미지</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("데미지") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>최종 데미지</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("최종 데미지") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>보스 몬스터 데미지</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("보스 몬스터 데미지") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>일반 몬스터 데미지</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("일반 몬스터 데미지") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.wrap}>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>공격력</div>
+                                <div className={styles.div10}>{finalStatMap.get("공격력") as string}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>마력</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("마력") as string, 10).toLocaleString()}</div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>방어율 무시</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("방어율 무시") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>크리티컬 확률</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("크리티컬 확률") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                            <div className={styles.item1}>
+                                <div className={styles.hp}>크리티컬 데미지</div>
+                                <div
+                                    className={styles.div10}>{parseInt(finalStatMap.get("크리티컬 데미지") as string, 10).toLocaleString()}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            {isClient && isMobile &&
+                <div className={styles.stat}>
                     <div className={styles.wrap}>
                         <div className={styles.item1}>
                             <div className={styles.hp}>HP</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("HP") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("HP") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>MP</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("MP") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("MP") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>STR</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("STR") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("STR") as string, 10).toLocaleString()}</div>
                         </div>
-                    </div>
-                    <div className={styles.wrap}>
                         <div className={styles.item1}>
                             <div className={styles.hp}>DEX</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("DEX") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("DEX") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>INT</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("INT") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("INT") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>LUK</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("LUK") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("LUK") as string, 10).toLocaleString()}</div>
                         </div>
                     </div>
-                </div>
-                {/*<div className={styles.divider}>*/}
-                {/*    <Image className={styles.dividerIcon} width={900} height={1} alt="" src="divider.svg" />*/}
-                {/*</div>*/}
-                <svg width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
-                </svg>
-                <div className={styles.wrapItem1}>
+                    <svg className={styles.dividerSize} width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                    </svg>
                     <div className={styles.wrap}>
                         <div className={styles.item1}>
                             <div className={styles.hp}>스타포스</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("스타포스") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("스타포스") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>어센틱포스</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("어센틱포스") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("어센틱포스") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>재사용 대기시간 미적용</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("재사용 대기시간 미적용") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("재사용 대기시간 미적용") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
-                            <div className={styles.hp}>상태이상 추가 데미지</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("상태이상 추가 데미지") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.hp}>상태 이상 추가 데미지</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("상태이상 추가 데미지") as string, 10).toLocaleString()}%</div>
                         </div>
-                    </div>
-                    <div className={styles.wrap}>
                         <div className={styles.item1}>
                             <div className={styles.hp}>아케인포스</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("아케인포스") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("아케인포스") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>재사용 대기시간 감소</div>
-                            <div
-                                className={styles.div10}>{finalStatMap.get("재사용 대기시간 감소 (초)") as string}초 {finalStatMap.get("재사용 대기시간 감소 (%)") as string}%
-                            </div>
+                            <div className={styles.div10}>{finalStatMap.get("재사용 대기시간 감소 (초)") as string}초 {finalStatMap.get("재사용 대기시간 감소 (%)") as string}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>속성 내성 무시</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("속성 내성 무시") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("속성 내성 무시") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>상태이상 내성</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("상태이상 내성") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("상태이상 내성") as string, 10).toLocaleString()}</div>
                         </div>
                     </div>
-                </div>
-                <svg width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
-                </svg>
-                <div className={styles.wrapItem}>
+                    <svg className={styles.dividerSize} width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                    </svg>
                     <div className={styles.wrap}>
                         <div className={styles.item1}>
                             <div className={styles.hp}>방어력</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("방어력") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("방어력") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>버프 지속시간</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("버프 지속시간") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("버프 지속시간") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>이동속도</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("이동속도") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("이동속도") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>점프력</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("점프력") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("점프력") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>메소 획득량</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("메소 획득량") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("메소 획득량") as string, 10).toLocaleString()}%</div>
                         </div>
-                    </div>
-                    <div className={styles.wrap}>
                         <div className={styles.item1}>
                             <div className={styles.hp}>추가 경험치 획득</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("추가 경험치 획득") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("추가 경험치 획득") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>소환수 지속시간 증가</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("소환수 지속시간 증가") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("소환수 지속시간 증가") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>무기 숙련도</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("무기 숙련도") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("무기 숙련도") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>스탠스</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("스탠스") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("스탠스") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>아이템 드롭률</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("아이템 드롭률") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("아이템 드롭률") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>공격 속도</div>
-                            <div className={styles.div10}>{finalStatMap.get("공격 속도") as string}단계</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("공격 속도") as string, 10).toLocaleString()}단계</div>
                         </div>
                     </div>
-                </div>
-                <svg width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
-                </svg>
-                <div className={styles.wrapItem3}>
+                    <svg className={styles.dividerSize} width="900" height="2" viewBox="0 0 900 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1L900 1.00008" stroke="#EDEEF0"/>
+                    </svg>
                     <div className={styles.wrap}>
                         <div className={styles.item1}>
                             <div className={styles.hp}>스탯 공격력</div>
-                            <div
-                                className={styles.div10}>{formatNumberToKorean(finalStatMap.get("최대 스탯공격력") as string)}</div>
+                            <div className={styles.div10}>{formatNumberToKorean(finalStatMap.get("최대 스탯공격력") as string)}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>데미지</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("데미지") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("데미지") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>최종 데미지</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("최종 데미지") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("최종 데미지") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>보스 몬스터 데미지</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("보스 몬스터 데미지") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("보스 몬스터 데미지") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>일반 몬스터 데미지</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("일반 몬스터 데미지") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("일반 몬스터 데미지") as string, 10).toLocaleString()}%</div>
                         </div>
-                    </div>
-                    <div className={styles.wrap}>
                         <div className={styles.item1}>
                             <div className={styles.hp}>공격력</div>
-                            <div className={styles.div10}>{finalStatMap.get("공격력") as string}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("공격력") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>마력</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("마력") as string, 10).toLocaleString()}</div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("마력") as string, 10).toLocaleString()}</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>방어율 무시</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("방어율 무시") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("방어율 무시") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>크리티컬 확률</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("크리티컬 확률") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("크리티컬 확률") as string, 10).toLocaleString()}%</div>
                         </div>
                         <div className={styles.item1}>
                             <div className={styles.hp}>크리티컬 데미지</div>
-                            <div
-                                className={styles.div10}>{parseInt(finalStatMap.get("크리티컬 데미지") as string, 10).toLocaleString()}%
-                            </div>
+                            <div className={styles.div10}>{parseInt(finalStatMap.get("크리티컬 데미지") as string, 10).toLocaleString()}%</div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>);
 };
 

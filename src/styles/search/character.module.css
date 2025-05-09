@@ -70,7 +70,8 @@
 }
 
 .tab {
-    flex: 1;
+    width: 100%;
+    /*flex: 1;*/
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -137,23 +138,49 @@
 @media screen and (max-width: 1280px) {
     .detailsDiv {
         width: auto;
-        margin-bottom: auto;
+        height: 1199px;
+        margin-bottom: 200px;
+        position: relative;
         /*margin-left: 40px;*/
         color: rgba(14, 15, 20, 0.9);
+    }
+    .content {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 32px;
+        font-size: 14px;
+        color: rgba(14, 15, 20, 0.5);
     }
 }
 @media screen and (max-width: 1199px) {
     .detailsDiv {
         width: 715px;
-        margin-bottom: auto;
+        height: 1343px;
+        margin-bottom: 200px;
+        position: relative;
         /*margin-left: 40px;*/
         color: rgba(14, 15, 20, 0.9);
     }
+    .content {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 32px;
+        font-size: 14px;
+        color: rgba(14, 15, 20, 0.5);
+    }
 }
-@media screen and (max-width: 901px) {
+@media screen and (max-width: 900px) {
     .detailsDiv {
         width: 752px;
-        margin-bottom: auto;
+        height: 1343px;
+        margin-bottom: 200px;
+        position: relative;
         /*margin-left: 40px;*/
         color: rgba(14, 15, 20, 0.9);
     }
@@ -174,20 +201,54 @@
         margin-bottom: auto;
         color: rgba(14, 15, 20, 0.9);
     }
+    .content {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 32px;
+        font-size: 14px;
+        color: rgba(14, 15, 20, 0.5);
+    }
 }
 @media screen and (max-width: 720px) {
     .detailsDiv {
         width: 453px;
-        margin-bottom: auto;
+        height: 1454px;
+        margin-bottom: 200px;
+        position: relative;
         /*margin-left: 40px;*/
         color: rgba(14, 15, 20, 0.9);
+    }
+    .content {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 32px;
+        font-size: 14px;
+        color: rgba(14, 15, 20, 0.5);
     }
 }
 @media screen and (max-width: 580px) {
     .detailsDiv {
         width: 360px;
-        margin-bottom: auto;
+        height: 100%;
+        margin-bottom: 200px;
+        position: relative;
         /*margin-left: 40px;*/
         color: rgba(14, 15, 20, 0.9);
+    }
+    .content {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 32px;
+        font-size: 14px;
+        color: rgba(14, 15, 20, 0.5);
     }
 }

@@ -14,6 +14,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    text-align: left;
     flex-shrink: 0;
 }
 .iconChild {
@@ -326,9 +327,16 @@
     font-size: 14px;
     color: rgba(14, 15, 20, 0.9);
 }
-
+.dividerSize {
+    width: 900px;
+    height: 2px;
+}
 
 @media screen and (max-width: 1280px) {
+    .dividerSize {
+        width: 796px;
+        height: 2px;
+    }
 }
 
 @media screen and (max-width: 1199px) {
@@ -342,9 +350,12 @@
         gap: 16px;
         color: rgba(14, 15, 20, 0.5);
     }
+    .dividerSize {
+        width: 715px;
+        height: 2px;
+    }
 }
-
-@media screen and (max-width: 901px) {
+@media screen and (max-width: 900px) {
     .wrapPreset {
         align-self: stretch;
         display: flex;
@@ -354,5 +365,170 @@
         padding: 0px 16px;
         gap: 16px;
         color: rgba(14, 15, 20, 0.5);
+    }
+    .dividerSize {
+        width: 752px;
+        height: 2px;
+    }
+}
+@media screen and (max-width: 720px) {
+    .dividerSize {
+        width: 453px;
+        height: 2px;
+    }
+}
+@media screen and (max-width: 580px) {
+    .dividerSize {
+        width: 328px;
+        height: 2px;
+    }
+    /*.div {*/
+    /*    flex: 1;*/
+    /*    position: relative;*/
+    /*    letter-spacing: -0.02em;*/
+    /*    line-height: 150%;*/
+    /*    overflow: hidden;*/
+    /*    text-overflow: ellipsis;*/
+    /*    white-space: nowrap;*/
+    /*}*/
+    .mobileAtomic {
+        align-self: stretch;
+        border-radius: 4px;
+        background-color: #fff;
+        border: 1px solid #e2f6bc;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 4px 8px;
+    }
+    .presetMobile {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+    .label {
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 150%;
+        font-weight: 500;
+    }
+    .tabAtomic {
+        align-self: stretch;
+        border-radius: 8px;
+        background-color: #ededf0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 16px;
+        color: rgba(14, 15, 20, 0.9);
+    }
+    .label1 {
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 150%;
+    }
+    .tabAtomic1 {
+        align-self: stretch;
+        border-radius: 8px;
+        height: 32px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 16px;
+        box-sizing: border-box;
+    }
+    .tab {
+        height: 128px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .tabNum {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 14px;
+        color: rgba(14, 15, 20, 0.5);
+    }
+    .presetAbility {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    .lv0 {
+        flex: 1;
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 150%;
+    }
+    .lv0Wrapper {
+        width: 35px;
+        border-radius: 4px;
+        background-color: #f7f7fa;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 4px;
+        box-sizing: border-box;
+    }
+    .div3 {
+        flex: 1;
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 150%;
+        color: rgba(14, 15, 20, 0.9);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .atomic {
+        align-self: stretch;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+    .presetAbility1 {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: rgba(14, 15, 20, 0.7);
+    }
+    .wrapPreset {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 24px;
+        text-align: left;
+        font-size: 13px;
+        color: rgba(14, 15, 20, 0.9);
+    }
+    .wrap {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
     }
 }
