@@ -10,8 +10,7 @@ import {
     Ability,
     HyperStat,
     ItemEquipment,
-    AndroidEquipment,
-    type AndroidEquipmentPreset
+    AndroidEquipment
 } from "@/interfaces/character";
 import WrapEquipment from "@/component/search/item";
 import Union from "@/component/search/union";
