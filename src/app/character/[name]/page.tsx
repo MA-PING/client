@@ -58,6 +58,5 @@ export default async function Home({params,}: {
                 <CharacterInfo response={response}/>
                 <Details character={Character}/>
             </div>
-            <Footer/>
         </div>)
 }

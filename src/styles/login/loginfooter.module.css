@@ -31,15 +31,16 @@
     justify-content: flex-start;
 }
 .footer {
-    width: 100%;
+    width: auto;
     position: relative;
+    transform: translateY(-100%);
     background-color: #fff;
     height: 64px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 0px 360px;
+    /*padding: 0px 360px;*/
     box-sizing: border-box;
     text-align: right;
     font-size: 14px;

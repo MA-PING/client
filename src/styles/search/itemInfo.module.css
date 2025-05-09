@@ -197,7 +197,7 @@
     letter-spacing: -0.02em;
     line-height: 150%;
 }
-.div17 {
+.epic {
     align-self: stretch;
     display: flex;
     flex-direction: row;
@@ -206,6 +206,43 @@
     gap: 4px;
     color: #943ed6;
 }
+.unique {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    text-align: left;
+    font-size: 14px;
+    color: #fba11e;
+}
+.rare {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    text-align: left;
+    font-size: 14px;
+    color: #4bd8f5;
+}
+.legendary {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    text-align: left;
+    font-size: 14px;
+    color: #9de01f;
+}
+
 .container {
     align-self: stretch;
     border-radius: 8px;
@@ -241,6 +278,6 @@
     text-align: left;
     font-size: 14px;
     color: #f7f7fa;
-    width: 360px;
+    width: 370px;
 }
 

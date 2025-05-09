@@ -1,6 +1,7 @@
 import type {Metadata, Viewport} from "next";
 import "./globals.css";
 import localFont from 'next/font/local'
+import Footer from "@/component/footer";
 
 const pretendard = localFont({
     src: '../../public/fonts/PretendardVariable.woff2',
@@ -55,7 +56,12 @@ export default function RootLayout({
         <title>MA-PING : 나에게 딱 맞는 메이플 길라잡이</title>
       </head>
       <body className={`${pretendard.variable} font-pretendard`}>
-        {children}
+        <div id='wrapper'>
+            {children}
+        </div>
+        {/*<div className="h-[312px] relative -translate-y-full">*/}
+            <Footer/>
+        {/*</div>*/}
       </body>
     </html>
   );

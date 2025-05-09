@@ -1,7 +1,7 @@
 import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '../../styles/search/artifact.module.css';
-import {Union, UnionArtifact} from "@/interfaces/character";
+import {FinalStat, Union, UnionArtifact, UnionArtifactCrystal} from "@/interfaces/character";
 
 
 interface ArtifactProps {
@@ -10,6 +10,12 @@ interface ArtifactProps {
 }
 
 const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
+    // const artifactCrystal = unionArtifact.union_artifact_crystal
+    // const finalStatMap = new Map<string, UnionArtifactCrystal[]>();
+    //
+    // artifactCrystal.forEach(Crystal => {
+    //     finalStatMap.set(Crystal.name, Crystal);
+    // });
     return (
         <div className={styles.div}>
             <div className={styles.title}>
@@ -34,6 +40,20 @@ const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
                             </div>
                         </div>
                     )}
+                    {/*<div className={styles.artifact}>*/}
+                    {/*    <div className={styles.wrapItem}>*/}
+                    {/*        <Image className={styles.itemIcon} width={8} height={8} alt="" src={crystal.level >= 1 ? "/icons/artifact-on.svg" : "/icons/artifact-off.svg"}/>*/}
+                    {/*        <Image className={styles.itemIcon} width={8} height={8} alt="" src={crystal.level >= 2 ? "/icons/artifact-on.svg" : "/icons/artifact-off.svg"}/>*/}
+                    {/*        <Image className={styles.itemIcon} width={8} height={8} alt="" src={crystal.level >= 3 ? "/icons/artifact-on.svg" : "/icons/artifact-off.svg"}/>*/}
+                    {/*        <Image className={styles.itemIcon} width={8} height={8} alt="" src={crystal.level >= 4 ? "/icons/artifact-on.svg" : "/icons/artifact-off.svg"}/>*/}
+                    {/*        <Image className={styles.itemIcon} width={8} height={8} alt="" src={crystal.level >= 5 ? "/icons/artifact-on.svg" : "/icons/artifact-off.svg"}/>*/}
+                    {/*    </div>*/}
+                    {/*    <div className={styles.wrap}>*/}
+                    {/*        <Image className={styles.imgArtifactIcon} width={72} height={64} alt="주황버섯"*/}
+                    {/*               src={"/images/주황버섯.png"}/>*/}
+                    {/*        <div className={styles.div2}>주황버섯</div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
                 <div className={styles.effect}>
                     {unionArtifact.union_artifact_effect[0]!== undefined ?

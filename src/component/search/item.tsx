@@ -4,6 +4,8 @@ import styles from '../../styles/search/item.module.css';
 import type {ItemEquipment, ItemEquipmentInfo, AndroidEquipment} from "@/interfaces/character";
 import {useState} from "react";
 import ItemInfo from "@/component/search/itemInfo";
+import TitleInfo from "@/component/search/titleInfo";
+import AndroidInfo from "@/component/search/androidInfo";
 
 
 interface WrapEquipmentProps {
@@ -418,8 +420,10 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                     <ItemInfo ItemInfo={item_equipment.filter(item => item.item_equipment_slot == activeItemTab)[0]}/>
                 }
                 {activeItemTab !== "0" && activeItemTab === "칭호" &&
-                    <div/>
-                    // <ItemInfo ItemInfo={item_equipment.filter(item => item.item_equipment_slot == activeItemTab)[0]}/>
+                    <TitleInfo titleInfo={title}/>
+                }
+                {activeItemTab !== "0" && activeItemTab === "안드로이드" &&
+                    <AndroidInfo androidInfo={android}/>
                 }
             </div>);
 };

@@ -4,7 +4,15 @@ import type {NextPage} from 'next';
 import styles from "@/styles/search/character.module.css";
 import TotalStat from "@/component/search/CharacterTotalStat";
 import {useState} from "react";
-import {Stat, Character, Ability, HyperStat, ItemEquipment, AndroidEquipment} from "@/interfaces/character";
+import {
+    Stat,
+    Character,
+    Ability,
+    HyperStat,
+    ItemEquipment,
+    AndroidEquipment,
+    type AndroidEquipmentPreset
+} from "@/interfaces/character";
 import WrapEquipment from "@/component/search/item";
 import Union from "@/component/search/union";
 import Artifact from "@/component/search/artifact";
@@ -27,7 +35,8 @@ const Details: NextPage<DetailsProps> = ({character}) => {
     const skill6 = character.skill6;
     const linkSkill = character.linkSkill;
     const android: AndroidEquipment = character.androidEquipment;
-    console.log(character.androidEquipment)
+
+
     const [activeTab, setActiveTab] = useState<string>('stats'); // 'stats', 'equipment', 'union', 'skills'
 
     // 탭 클릭 시 activeTab 상태를 업데이트하는 함수

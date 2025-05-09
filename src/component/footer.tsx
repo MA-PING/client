@@ -6,8 +6,12 @@ import styles from '../styles/footer.module.css';
 import Link from "next/link";
 import {useMediaQuery} from "react-responsive";
 import {useEffect, useState} from "react";
+import {usePathname} from "next/navigation";
+import Loginfooter from "@/component/login/loginfooter";
 
 const Footer:NextPage = () => {
+    const pathname = usePathname();
+
     const [isClient, setIsClient] = useState(false);
 
     const isDesktop = useMediaQuery({ query: '(min-width: 901px)' });
@@ -17,6 +21,13 @@ const Footer:NextPage = () => {
         // 이 useEffect는 클라이언트에서 초기 렌더링 후 한 번만 실행됩니다.
         setIsClient(true);
     }, []); // 빈 의존성 배열은 마운트 시 1회 실행을 의미합니다.
+
+    if(pathname == '/login') {
+        return (
+            <Loginfooter/>
+        );
+    }
+
     if (!isClient) {
         return null; // 또는 로딩 스피너, 또는 기본 비반응형 푸터
     }

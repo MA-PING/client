@@ -194,7 +194,7 @@ export interface ItemEquipmentInfo {
     additional_potential_option_3: string;
     equipment_level_increase: number;
     item_exceptional_option: ItemEquipmentExceptionalOption;
-    itemAddOption: ItemEquipmentAddOption; // Corrected interface name reference
+    item_add_option: ItemEquipmentAddOption; // Corrected interface name reference
     growth_exp: number;
     growth_level: number;
     scroll_upgrade: string;

@@ -164,21 +164,54 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
                         </div>
                         <div className={styles.wrap}>
                             <div className={styles.str}>장비 분류 : {ItemInfo.item_equipment_slot}</div>
-                            <div className={styles.str}>STR : +{ItemInfo.item_total_option.str}({ItemInfo.item_base_option.str}+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>DEX : +{ItemInfo.item_total_option.dex}({ItemInfo.item_base_option.dex}+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>INT : +{ItemInfo.item_total_option.int}({ItemInfo.item_base_option.int}+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>LUK : +{ItemInfo.item_total_option.luk}({ItemInfo.item_base_option.luk}+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>최대 HP : +{ItemInfo.item_total_option.max_hp}({ItemInfo.item_base_option.max_hp}+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>최대 MP : +{ItemInfo.item_total_option.max_mp}({ItemInfo.item_base_option.max_mp}+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>공격력 : +{ItemInfo.item_total_option.attack_power}({ItemInfo.item_base_option.attack_power}+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>마력 : +{ItemInfo.item_total_option.magic_power}(기본+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>방어력 : +{ItemInfo.item_total_option.armor}({ItemInfo.item_base_option.armor}+잠옵+추옵+강화)</div>
-                            <div className={styles.str}>올스탯 : +{ItemInfo.item_total_option.all_stat}({ItemInfo.item_base_option.all_stat}+잠옵+추옵)</div>
-                            <div className={styles.str}>데미지 : +{ItemInfo.item_total_option.damage}(기본+잠옵+추옵)</div>
-                            <div className={styles.str}>점프력 : +{ItemInfo.item_total_option.jump}({ItemInfo.item_base_option.jump}+추옵)</div>
-                            <div className={styles.str}>이동속도 : +{ItemInfo.item_total_option.speed}({ItemInfo.item_base_option.speed}+추옵)</div>
-                            <div className={styles.str}>보스 공격 시 데미지 : +{ItemInfo.item_total_option.boss_damage}({ItemInfo.item_base_option.boss_damage}+잠옵+추옵)</div>
-                            <div className={styles.str}>방어력 무시 : +{ItemInfo.item_total_option.ignore_monster_armor}%</div>
+                            {ItemInfo.item_total_option.str !== '0' &&
+                                <div className={styles.str}>STR : +{ItemInfo.item_total_option.str}({ItemInfo.item_base_option.str}+{ItemInfo.item_add_option.str}+{ItemInfo.item_etc_option.str}+{ItemInfo.item_starforce_option.str})</div>
+                            }
+                            {ItemInfo.item_total_option.dex !== '0' &&
+                                <div className={styles.str}>DEX : +{ItemInfo.item_total_option.dex}({ItemInfo.item_base_option.dex}+{ItemInfo.item_add_option.dex}+{ItemInfo.item_etc_option.dex}+{ItemInfo.item_starforce_option.dex})</div>
+                            }
+                            {ItemInfo.item_total_option.dex !== '0' &&
+                                <div className={styles.str}>DEX : +{ItemInfo.item_total_option.dex}({ItemInfo.item_base_option.dex}+{ItemInfo.item_add_option.dex}+{ItemInfo.item_etc_option.dex}+{ItemInfo.item_starforce_option.dex})</div>
+                            }
+                            {ItemInfo.item_total_option.int !== '0' &&
+                                <div className={styles.str}>INT : +{ItemInfo.item_total_option.int}({ItemInfo.item_base_option.int}+{ItemInfo.item_add_option.int}+{ItemInfo.item_etc_option.int}+{ItemInfo.item_starforce_option.int})</div>
+                            }
+                            {ItemInfo.item_total_option.luk !== '0' &&
+                                <div className={styles.str}>LUK : +{ItemInfo.item_total_option.luk}({ItemInfo.item_base_option.luk}+{ItemInfo.item_add_option.luk}+{ItemInfo.item_etc_option.luk}+{ItemInfo.item_starforce_option.luk})</div>
+                            }
+                            {ItemInfo.item_total_option.max_hp !== '0' &&
+                                <div className={styles.str}>최대 HP : +{ItemInfo.item_total_option.max_hp}({ItemInfo.item_base_option.max_hp}+{ItemInfo.item_add_option.max_hp}+{ItemInfo.item_etc_option.max_hp}+{ItemInfo.item_starforce_option.max_hp})</div>
+                            }
+                            {ItemInfo.item_total_option.max_mp !== '0' &&
+                                <div className={styles.str}>최대 MP : +{ItemInfo.item_total_option.max_mp}({ItemInfo.item_base_option.max_mp}+{ItemInfo.item_add_option.max_mp}+{ItemInfo.item_etc_option.max_mp}+{ItemInfo.item_starforce_option.max_mp})</div>
+                            }
+                            {ItemInfo.item_total_option.attack_power !== '0' &&
+                                <div className={styles.str}>공격력 : +{ItemInfo.item_total_option.attack_power}({ItemInfo.item_base_option.attack_power}+{ItemInfo.item_add_option.attack_power}+{ItemInfo.item_etc_option.attack_power}+{ItemInfo.item_starforce_option.attack_power})</div>
+                            }
+                            {ItemInfo.item_total_option.magic_power !== '0' &&
+                                <div className={styles.str}>마력 : +{ItemInfo.item_total_option.magic_power}({ItemInfo.item_base_option.magic_power}+{ItemInfo.item_add_option.magic_power}+{ItemInfo.item_etc_option.magic_power}+{ItemInfo.item_starforce_option.magic_power})</div>
+                            }
+                            {ItemInfo.item_total_option.armor !== '0' &&
+                                <div className={styles.str}>방어력 : +{ItemInfo.item_total_option.armor}({ItemInfo.item_base_option.armor}+{ItemInfo.item_add_option.armor}+{ItemInfo.item_etc_option.armor}+{ItemInfo.item_starforce_option.armor})</div>
+                            }
+                            {ItemInfo.item_total_option.all_stat !== '0' &&
+                                <div className={styles.str}>올스탯 : +{ItemInfo.item_total_option.all_stat}({ItemInfo.item_base_option.all_stat}+{ItemInfo.item_add_option.all_stat})</div>
+                            }
+                            {ItemInfo.item_total_option.damage !== '0' &&
+                                <div className={styles.str}>데미지 : +{ItemInfo.item_total_option.damage}({ItemInfo.item_add_option.damage})</div>
+                            }
+                            {ItemInfo.item_total_option.jump !== '0' &&
+                                <div className={styles.str}>점프력 : +{ItemInfo.item_total_option.jump}({ItemInfo.item_base_option.jump}+{ItemInfo.item_add_option.jump}+{ItemInfo.item_etc_option.jump}+{ItemInfo.item_starforce_option.jump})</div>
+                            }
+                            {ItemInfo.item_total_option.speed !== '0' &&
+                                <div className={styles.str}>이동속도 : +{ItemInfo.item_total_option.speed}({ItemInfo.item_base_option.speed}+{ItemInfo.item_add_option.speed}+{ItemInfo.item_etc_option.speed}+{ItemInfo.item_starforce_option.speed})</div>
+                            }
+                            {ItemInfo.item_total_option.boss_damage !== '0' &&
+                                <div className={styles.str}>보스 공격 시 데미지 : +{ItemInfo.item_total_option.boss_damage}({ItemInfo.item_base_option.boss_damage}+{ItemInfo.item_add_option.boss_damage})</div>
+                            }
+                            {ItemInfo.item_total_option.ignore_monster_armor !== '0' &&
+                                <div className={styles.str}>방어력 무시 : +{ItemInfo.item_total_option.ignore_monster_armor}%</div>
+                            }
                             <div className={styles.str}>
                                 <span>업그레이드 가능 횟수 : {ItemInfo.scroll_upgradeable_count}회</span>
                                 <span className={styles.span}> (복구 가능 횟수 : {ItemInfo.scroll_resilience_count}회)</span>
@@ -186,59 +219,92 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
                             <div className={styles.str}>황금망치 제련 {ItemInfo.golden_hammer_flag}</div>
                             <div className={styles.div16}>가위 사용 가능 횟수 : {ItemInfo.cuttable_count}회</div>
                         </div>
-                        <Image className={styles.dividerIcon} width={324} height={1} alt="" src="/icons/divider_item.svg" />
+                        {ItemInfo.potential_option_grade !== null &&
+                            <Image className={styles.dividerIcon} width={324} height={1} alt="" src="/icons/divider_item.svg" />
+                        }
                         <div className={styles.wrap}>
-                            <div className={styles.div17}>
-                                <div className={styles.iconGrade}>
-                                    <Image className={styles.unionIcon} width={14} height={14} alt="" src="/icons/E.png"/>
-                                    {/*<Image className={styles.unionIcon1} width={10} height={10} alt="" src="Union.svg"/>*/}
-                                    {/*<Image className={styles.eIcon} width={4} height={6} alt="" src="/icons/E.svg"/>*/}
-                                    {/*<Image className={styles.unionIcon2} width={12} height={12} alt="" src="Union.svg"/>*/}
+                            {ItemInfo.potential_option_grade === '레어' &&
+                                <div className={styles.rare}>
+                                    <div className={styles.iconGrade}>
+                                        <Image className={styles.unionIcon} width={16} height={16} alt="" src="/icons/R.png"/>
+                                    </div>
+                                    <div className={styles.div18}>잠재옵션</div>
+                                </div>}
+                            {ItemInfo.potential_option_grade === '에픽' &&
+                                <div className={styles.epic}>
+                                    <div className={styles.iconGrade}>
+                                        <Image className={styles.unionIcon} width={16} height={16} alt="" src="/icons/E.png"/>
+                                    </div>
+                                    <div className={styles.div18}>잠재옵션</div>
                                 </div>
-                                <div className={styles.div18}>잠재옵션</div>
-                            </div>
-                            <div className={styles.str}>STR : +총 수치</div>
-                            <div className={styles.str}>DEX : +총 수치</div>
-                            <div className={styles.str}>INT : +총 수치</div>
-                            <div className={styles.str}>LUK : +총 수치</div>
-                            <div className={styles.str}>최대 HP : +총 수치</div>
-                            <div className={styles.str}>최대 MP : +총 수치</div>
-                            <div className={styles.str}>공격력 : +총 수치</div>
-                            <div className={styles.str}>마력 : +총 수치</div>
-                            <div className={styles.str}>방어력 : +총 수치</div>
-                            <div className={styles.str}>올스탯 : +총 수치</div>
-                            <div className={styles.str}>데미지 : +총 수치%</div>
-                            <div className={styles.str}>점프력 : +총 수치</div>
-                            <div className={styles.str}>이동속도 : +총 수치</div>
-                            <div className={styles.str}>보스 공격 시 데미지 : +총 수치%</div>
-                            <div className={styles.str}>방어력 무시 : +총 수치%</div>
+                            }
+                            {ItemInfo.potential_option_grade === '유니크' &&
+                                <div className={styles.unique}>
+                                    <div className={styles.iconGrade}>
+                                        <Image className={styles.unionIcon} width={16} height={16} alt="" src="/icons/U.png"/>
+                                    </div>
+                                    <div className={styles.div18}>잠재옵션</div>
+                                </div>}
+                            {ItemInfo.potential_option_grade === '레전드리' &&
+                                <div className={styles.legendary}>
+                                    <div className={styles.iconGrade}>
+                                        <Image className={styles.unionIcon} width={16} height={16} alt="" src="/icons/L.png"/>
+                                    </div>
+                                    <div className={styles.div18}>잠재옵션</div>
+                                </div>}
+
+                            {ItemInfo.potential_option_1 !== null &&
+                                <div className={styles.str}>{ItemInfo.potential_option_1}</div>
+                            }
+                            {ItemInfo.potential_option_2 !== null &&
+                                <div className={styles.str}>{ItemInfo.potential_option_2}</div>
+                            }
+                            {ItemInfo.potential_option_3 !== null &&
+                                <div className={styles.str}>{ItemInfo.potential_option_3}</div>
+                            }
                         </div>
-                        <Image className={styles.dividerIcon} width={324} height={1} alt="" src="/icons/divider_item.svg" />
+                        {ItemInfo.additional_potential_option_grade !== null &&
+                            <Image className={styles.dividerIcon} width={324} height={1} alt="" src="/icons/divider_item.svg" />
+                        }
                         <div className={styles.wrap}>
-                            <div className={styles.div17}>
-                                <div className={styles.iconGrade}>
-                                    <Image className={styles.unionIcon} width={14} height={14} alt="" src="/icons/E.png"/>
-                                    {/*<Image className={styles.unionIcon1} width={10} height={10} alt="" src="Union.svg"/>*/}
-                                    {/*<Image className={styles.eIcon} width={4} height={6} alt="" src="/icons/E.svg"/>*/}
-                                    {/*<Image className={styles.unionIcon2} width={12} height={12} alt="" src="Union.svg"/>*/}
+                            {ItemInfo.additional_potential_option_grade === '레어' &&
+                                <div className={styles.rare}>
+                                    <div className={styles.iconGrade}>
+                                        <Image className={styles.unionIcon} width={16} height={16} alt="" src="/icons/R.png"/>
+                                    </div>
+                                    <div className={styles.div18}>에디셔널옵션</div>
+                                </div>}
+                            {ItemInfo.additional_potential_option_grade === '에픽' &&
+                                <div className={styles.epic}>
+                                    <div className={styles.iconGrade}>
+                                        <Image className={styles.unionIcon} width={16} height={16} alt="" src="/icons/E.png"/>
+                                    </div>
+                                    <div className={styles.div18}>에디셔널옵션</div>
                                 </div>
-                                <div className={styles.div18}>에디셔널옵션</div>
-                            </div>
-                            <div className={styles.str}>STR : +총 수치</div>
-                            <div className={styles.str}>DEX : +총 수치</div>
-                            <div className={styles.str}>INT : +총 수치</div>
-                            <div className={styles.str}>LUK : +총 수치</div>
-                            <div className={styles.str}>최대 HP : +총 수치</div>
-                            <div className={styles.str}>최대 MP : +총 수치</div>
-                            <div className={styles.str}>공격력 : +총 수치</div>
-                            <div className={styles.str}>마력 : +총 수치</div>
-                            <div className={styles.str}>방어력 : +총 수치</div>
-                            <div className={styles.str}>올스탯 : +총 수치</div>
-                            <div className={styles.str}>데미지 : +총 수치%</div>
-                            <div className={styles.str}>점프력 : +총 수치</div>
-                            <div className={styles.str}>이동속도 : +총 수치</div>
-                            <div className={styles.str}>보스 공격 시 데미지 : +총 수치%</div>
-                            <div className={styles.str}>방어력 무시 : +총 수치%</div>
+                            }
+                            {ItemInfo.additional_potential_option_grade === '유니크' &&
+                                <div className={styles.unique}>
+                                    <div className={styles.iconGrade}>
+                                        <Image className={styles.unionIcon} width={16} height={16} alt="" src="/icons/U.png"/>
+                                    </div>
+                                    <div className={styles.div18}>에디셔널옵션</div>
+                                </div>}
+                            {ItemInfo.additional_potential_option_grade== '레전드리' &&
+                                <div className={styles.legendary}>
+                                    <div className={styles.iconGrade}>
+                                        <Image className={styles.unionIcon} width={16} height={16} alt="" src="/icons/L.png"/>
+                                    </div>
+                                    <div className={styles.div18}>에디셔널옵션</div>
+                                </div>}
+                            {ItemInfo.additional_potential_option_1 !== null &&
+                                <div className={styles.str}>{ItemInfo.additional_potential_option_1}</div>
+                            }
+                            {ItemInfo.additional_potential_option_2 !== null &&
+                                <div className={styles.str}>{ItemInfo.additional_potential_option_2}</div>
+                            }
+                            {ItemInfo.additional_potential_option_3 !== null &&
+                                <div className={styles.str}>{ItemInfo.additional_potential_option_3}</div>
+                            }
                         </div>
                     </div>
                 </div>

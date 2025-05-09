@@ -8,7 +8,6 @@ export default function Home() {
         <div>
             <Header/>
             <CharacterInfo/>
-            <Footer/>
         </div>
     );
 }
