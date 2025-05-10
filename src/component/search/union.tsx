@@ -52,7 +52,7 @@ const Union: NextPage<UnionProps> = ({union, unionRaider}) => {
                     </div>
                 </div>
             </div>
-            {<UnionEffect union={union} unionRaider={unionRaider}/>}
+            {activeUnionTab === 1 && <UnionEffect union={union} unionRaider={unionRaider.union_raider_preset_1}/>}
         </div>);
 };
 

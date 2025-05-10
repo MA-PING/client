@@ -1,0 +1,122 @@
+.div {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 600;
+}
+.wrapName {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    font-size: 18px;
+}
+.imgIcon {
+    width: 64px;
+    position: relative;
+    height: 64px;
+    object-fit: cover;
+}
+.div1 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.wrapTextInput {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+}
+.wrap1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.itemInfo {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px 16px;
+}
+.dividerIcon {
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.wrap {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.p {
+    margin: 0;
+}
+.mp2400Container {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.wrapDetail {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.container {
+    align-self: stretch;
+    border-radius: 8px;
+    border: 2px solid #242424;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    gap: 16px;
+}
+.content {
+    flex: 1;
+    border-radius: 8px;
+    background-color: #2e2e2e;
+    border: 3px solid #f7f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.property1 {
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+    background-color: rgba(14, 15, 20, 0.6);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 14px;
+    color: #fff;
+}
+

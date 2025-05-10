@@ -1,38 +1,52 @@
-import type { NextPage } from 'next';
+import type {NextPage} from 'next';
 import styles from '@/styles/search/occupationEffect.module.css';
+import {UnionRaiderPreset} from "@/interfaces/character";
 
 
-const SSS:NextPage = () => {
+interface SSSProps {
+    unionRaider: UnionRaiderPreset | null
+}
+
+const SSS: NextPage<SSSProps> = ({unionRaider}) => {
+    if(unionRaider === null){
+        return (
+            <div className={styles.sss}>
+                <div className={styles.container}>
+                    <div className={styles.div}>점령 효과</div>
+                </div>
+                <div className={styles.container1}>
+                    <div className={styles.wrapInfo}>
+                        <div className={styles.dex5}>점령 효과가 없습니다.</div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    if(unionRaider.union_occupied_stat === null){
+        return (
+            <div className={styles.sss}>
+                <div className={styles.container}>
+                    <div className={styles.div}>점령 효과</div>
+                </div>
+                <div className={styles.container1}>
+                    <div className={styles.wrapInfo}>
+                        <div className={styles.dex5}>점령 효과가 없습니다.</div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
     return (
         <div className={styles.sss}>
             <div className={styles.container}>
                 <div className={styles.div}>점령 효과</div>
             </div>
             <div className={styles.container1}>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.dex5}>DEX 5 증가</div>
-                </div>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.dex5}>STR 75 증가</div>
-                </div>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.dex5}>공격력 15 증가</div>
-                </div>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.dex5}>방어율 무시 40% 증가</div>
-                </div>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.dex5}>버프 지속시간 22% 증가</div>
-                </div>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.dex5}>보스 몬스터 공격 시 데미지 40% 증가</div>
-                </div>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.dex5}>크리티컬 데미지 20.00% 증가</div>
-                </div>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.dex5}>크리티컬 확률 5% 증가</div>
-                </div>
+                {unionRaider.union_occupied_stat.map((stat, index) => (
+                    <div key={index} className={styles.wrapInfo}>
+                        <div className={styles.dex5}>{stat}</div>
+                    </div>
+                ))}
             </div>
         </div>);
 };

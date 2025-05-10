@@ -1,14 +1,14 @@
 import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '../../styles/search/union.module.css';
-import {Union, UnionRaider} from "@/interfaces/character";
+import {Union, UnionRaiderPreset} from "@/interfaces/character";
 import {useState} from "react";
 import CrewEffect from "@/component/search/crewEffect";
 import SSS from "@/component/search/occupationEffect";
 
 interface UnionEffectProps {
-    union: Union
-    unionRaider: UnionRaider
+    union: Union,
+    unionRaider: UnionRaiderPreset | null
 }
 
 const UnionEffect: NextPage<UnionEffectProps> = ({union, unionRaider}) => {
@@ -22,7 +22,7 @@ const UnionEffect: NextPage<UnionEffectProps> = ({union, unionRaider}) => {
         <div className={styles.div11}>
             <div className={styles.wrap1}>
                 <Image className={styles.imgCharacterIcon} width={68} height={68} alt=""
-                       src={"/icons/유니온/" + union.union_grade + ".webp"}/>
+                       src={"/icons/union/" + union.union_grade + ".webp"}/>
                 <div className={styles.title}>
                     <div className={styles.div12}>{union.union_grade}</div>
                     <div className={styles.lv6278}>LV. {union.union_level}</div>
@@ -44,7 +44,7 @@ const UnionEffect: NextPage<UnionEffectProps> = ({union, unionRaider}) => {
                     </div>
                 </div>
                 {activeUnionTab === 3 && <CrewEffect/>}
-                {activeUnionTab === 1 && <SSS/>}
+                {activeUnionTab === 1 && <SSS unionRaider={unionRaider}/>}
             </div>
         </div>
     )

@@ -1,7 +1,9 @@
 import type {NextPage} from 'next';
 import styles from '../../styles/search/skill.module.css';
 import Image from "next/image";
-import {Skill} from "@/interfaces/character";
+import {Skill, SkillInfo} from "@/interfaces/character";
+import {useState} from "react";
+import SkillDetailInfo from "@/component/search/skillInfo";
 
 
 interface Skill5Props {
@@ -9,6 +11,7 @@ interface Skill5Props {
 }
 
 const Skill5: NextPage<Skill5Props> = ({skill}) => {
+    const [hoveredSkill, setHoveredSkill] = useState<SkillInfo | null>(null);
     if (skill.character_skill_grade === null){
         return(
             <div className={styles.noWrapLink}>
@@ -24,7 +27,11 @@ const Skill5: NextPage<Skill5Props> = ({skill}) => {
     return (
         <div className={styles.wrapLink}>
             {skill.character_skill.map(skill =>
-                <div key={skill.skill_name} className={styles.item}>
+                <div key={skill.skill_name}
+                     onMouseEnter={() => setHoveredSkill(skill)} // 마우스 진입 시 상태 업데이트
+                     onMouseLeave={() => setHoveredSkill(null)}       // 마우스 이탈 시 상태 초기화
+                     className={styles.item}
+                >
                     <div className={styles.wrapSkill}>
                         <Image className={styles.imgSkill5Icon} width={40} height={40} alt="" src={skill.skill_icon}/>
                         <div className={styles.div2}>{skill.skill_name}</div>
@@ -32,6 +39,9 @@ const Skill5: NextPage<Skill5Props> = ({skill}) => {
                     <div className={styles.badge}>
                         <div className={styles.label}>{skill.skill_level}</div>
                     </div>
+                    {hoveredSkill && hoveredSkill.skill_name === skill.skill_name && (
+                        <SkillDetailInfo skill={hoveredSkill} />
+                    )}
                 </div>
             )}
         </div>);
