@@ -59,9 +59,7 @@ export default function RootLayout({
         <div id='wrapper'>
             {children}
         </div>
-        {/*<div className="h-[312px] relative -translate-y-full">*/}
-            <Footer/>
-        {/*</div>*/}
+        <Footer/>
       </body>
     </html>
   );

@@ -105,8 +105,8 @@
     justify-content: flex-start;
 }
 .property1 {
-    width: 100%;
-    position: relative;
+    width: 360px;
+    position: absolute;
     border-radius: 10px;
     background-color: rgba(14, 15, 20, 0.6);
     display: flex;

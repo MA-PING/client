@@ -24,7 +24,7 @@ const SkillDetailInfo: NextPage<SkillDetailInfoProps> = ({skill}) => {
                     <div className={styles.wrap}>
                         <div className={styles.itemInfo}>
                             <div className={styles.wrap1}>
-                                <Image className={styles.imgIcon} fill alt="스킬 아이콘" src={skill.skill_icon}/>
+                                <Image className={styles.imgIcon} width={64} height={64} alt="스킬 아이콘" src={skill.skill_icon}/>
                                 <div className={styles.wrapTextInput}>
                                     <div className={styles.div1}>{parts[0]}</div>
                                     <div className={styles.mp2400Container}>{parts[1]}</div>
@@ -35,7 +35,7 @@ const SkillDetailInfo: NextPage<SkillDetailInfoProps> = ({skill}) => {
                                src="/icons/divider_item.svg"/>
                     </div>
                     <div className={styles.wrapDetail}>
-                        <div className={styles.mp2400Container}>{skill.skill_level}</div>
+                        <div className={styles.mp2400Container}>[현재 레벨 {skill.skill_level}]</div>
                         <div className={styles.mp2400Container}>
                             <p className={styles.p}>{skill.skill_effect}</p>
                         </div>
