@@ -1,10 +1,10 @@
 import Header from "@/component/header";
-import Footer from "@/component/footer";
 import CharacterInfo from "@/component/search/characterInfo";
 import styles from "../../../styles/search/character.module.css"
 import Details from "@/component/search/characterDetails";
 
 import { ApiResponse } from '@/interfaces/character';
+import NoSearch from "@/component/search/noSearch";
 
 async function getCharacter(name:string): Promise<ApiResponse | null> {
     try {
@@ -42,8 +42,7 @@ export default async function Home({params,}: {
         return (
             <div>
                 <Header />
-                <h1>캐릭터 없음</h1>
-                <Footer />
+                <NoSearch  />
             </div>
         );
 

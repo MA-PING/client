@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Skill, SkillInfo } from "@/interfaces/character";
 import { useState, useRef, MouseEvent as ReactMouseEvent, useEffect } from "react"; // useRef, ReactMouseEvent, useEffect 추가
 import SkillDetailInfo from "@/component/search/skillInfo";
-import Portal from '@/component/Portal'; // 필요시 경로 조정
+import Portal from '@/component/Portal';
+import Sol from "@/component/search/sol"; // 필요시 경로 조정
 
 interface Skill5Props {
     skill: Skill;
@@ -82,6 +83,9 @@ const Skill5: NextPage<Skill5Props> = ({ skill }) => {
 
     return (
         <>
+            {skill.character_skill_grade === '6' &&
+                <Sol/>
+            }
             <div className={styles.wrapLink}>
                 {/* 'skill' 변수명 충돌을 피하기 위해 'charSkill'로 변경 */}
                 {skill.character_skill.map(charSkill => (

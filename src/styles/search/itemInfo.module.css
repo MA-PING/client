@@ -136,6 +136,28 @@
     letter-spacing: -0.02em;
     line-height: 150%;
 }
+.str1 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: #9de01f;
+}
+.str2 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: #943ed6;
+}
+.str3 {
+
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: #fba11e;
+}
 .span {
     color: #fba11e;
 }

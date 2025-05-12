@@ -165,49 +165,118 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
                         <div className={styles.wrap}>
                             <div className={styles.str}>장비 분류 : {ItemInfo.item_equipment_slot}</div>
                             {ItemInfo.item_total_option.str !== '0' &&
-                                <div className={styles.str}>STR : +{ItemInfo.item_total_option.str}({ItemInfo.item_base_option.str}+{ItemInfo.item_add_option.str}+{ItemInfo.item_etc_option.str}+{ItemInfo.item_starforce_option.str})</div>
+                                <div className={styles.str}>STR : +{ItemInfo.item_total_option.str}({ItemInfo.item_base_option.str}{ItemInfo.item_add_option.str !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.str}</span>
+                                } {ItemInfo.item_etc_option.str !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.str}</span>
+                                }{ItemInfo.item_starforce_option.str !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.str}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.dex !== '0' &&
-                                <div className={styles.str}>DEX : +{ItemInfo.item_total_option.dex}({ItemInfo.item_base_option.dex}+{ItemInfo.item_add_option.dex}+{ItemInfo.item_etc_option.dex}+{ItemInfo.item_starforce_option.dex})</div>
-                            }
-                            {ItemInfo.item_total_option.dex !== '0' &&
-                                <div className={styles.str}>DEX : +{ItemInfo.item_total_option.dex}({ItemInfo.item_base_option.dex}+{ItemInfo.item_add_option.dex}+{ItemInfo.item_etc_option.dex}+{ItemInfo.item_starforce_option.dex})</div>
+                                <div className={styles.str}>DEX : +{ItemInfo.item_total_option.dex}({ItemInfo.item_base_option.dex}{ItemInfo.item_add_option.dex !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.dex}</span>
+                                } {ItemInfo.item_etc_option.dex !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.dex}</span>
+                                }{ItemInfo.item_starforce_option.dex !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.dex}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.int !== '0' &&
-                                <div className={styles.str}>INT : +{ItemInfo.item_total_option.int}({ItemInfo.item_base_option.int}+{ItemInfo.item_add_option.int}+{ItemInfo.item_etc_option.int}+{ItemInfo.item_starforce_option.int})</div>
+                                <div className={styles.str}>INT : +{ItemInfo.item_total_option.int}({ItemInfo.item_base_option.int}{ItemInfo.item_add_option.int !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.int}</span>
+                                } {ItemInfo.item_etc_option.int !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.int}</span>
+                                }{ItemInfo.item_starforce_option.int !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.int}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.luk !== '0' &&
-                                <div className={styles.str}>LUK : +{ItemInfo.item_total_option.luk}({ItemInfo.item_base_option.luk}+{ItemInfo.item_add_option.luk}+{ItemInfo.item_etc_option.luk}+{ItemInfo.item_starforce_option.luk})</div>
+                                <div className={styles.str}>LUK : +{ItemInfo.item_total_option.luk}({ItemInfo.item_base_option.luk}{ItemInfo.item_add_option.luk !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.luk}</span>
+                                } {ItemInfo.item_etc_option.luk !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.luk}</span>
+                                }{ItemInfo.item_starforce_option.luk !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.luk}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.max_hp !== '0' &&
-                                <div className={styles.str}>최대 HP : +{ItemInfo.item_total_option.max_hp}({ItemInfo.item_base_option.max_hp}+{ItemInfo.item_add_option.max_hp}+{ItemInfo.item_etc_option.max_hp}+{ItemInfo.item_starforce_option.max_hp})</div>
+                                <div className={styles.str}>최대 HP : +{ItemInfo.item_total_option.max_hp}({ItemInfo.item_base_option.max_hp}{ItemInfo.item_add_option.max_hp !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.max_hp}</span>
+                                } {ItemInfo.item_etc_option.max_hp !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.max_hp}</span>
+                                }{ItemInfo.item_starforce_option.max_hp !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.max_hp}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.max_mp !== '0' &&
-                                <div className={styles.str}>최대 MP : +{ItemInfo.item_total_option.max_mp}({ItemInfo.item_base_option.max_mp}+{ItemInfo.item_add_option.max_mp}+{ItemInfo.item_etc_option.max_mp}+{ItemInfo.item_starforce_option.max_mp})</div>
+                                <div className={styles.str}>최대 MP : +{ItemInfo.item_total_option.max_mp}({ItemInfo.item_base_option.max_mp}{ItemInfo.item_add_option.max_mp !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.max_mp}</span>
+                                } {ItemInfo.item_etc_option.max_mp !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.max_mp}</span>
+                                }{ItemInfo.item_starforce_option.max_mp !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.max_mp}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.attack_power !== '0' &&
-                                <div className={styles.str}>공격력 : +{ItemInfo.item_total_option.attack_power}({ItemInfo.item_base_option.attack_power}+{ItemInfo.item_add_option.attack_power}+{ItemInfo.item_etc_option.attack_power}+{ItemInfo.item_starforce_option.attack_power})</div>
+                                <div className={styles.str}>공격력 : +{ItemInfo.item_total_option.attack_power}({ItemInfo.item_base_option.attack_power}{ItemInfo.item_add_option.attack_power !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.attack_power}</span>
+                                } {ItemInfo.item_etc_option.attack_power !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.attack_power}</span>
+                                }{ItemInfo.item_starforce_option.attack_power !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.attack_power}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.magic_power !== '0' &&
-                                <div className={styles.str}>마력 : +{ItemInfo.item_total_option.magic_power}({ItemInfo.item_base_option.magic_power}+{ItemInfo.item_add_option.magic_power}+{ItemInfo.item_etc_option.magic_power}+{ItemInfo.item_starforce_option.magic_power})</div>
+                                <div className={styles.str}>마력 : +{ItemInfo.item_total_option.magic_power}({ItemInfo.item_base_option.magic_power}{ItemInfo.item_add_option.magic_power !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.magic_power}</span>
+                                } {ItemInfo.item_etc_option.magic_power !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.magic_power}</span>
+                                }{ItemInfo.item_starforce_option.magic_power !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.magic_power}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.armor !== '0' &&
-                                <div className={styles.str}>방어력 : +{ItemInfo.item_total_option.armor}({ItemInfo.item_base_option.armor}+{ItemInfo.item_add_option.armor}+{ItemInfo.item_etc_option.armor}+{ItemInfo.item_starforce_option.armor})</div>
+                                <div className={styles.str}>방어력 : +{ItemInfo.item_total_option.armor}({ItemInfo.item_base_option.armor}{ItemInfo.item_add_option.armor !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.armor}</span>
+                                } {ItemInfo.item_etc_option.armor !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.armor}</span>
+                                }{ItemInfo.item_starforce_option.armor !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.armor}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.all_stat !== '0' &&
-                                <div className={styles.str}>올스탯 : +{ItemInfo.item_total_option.all_stat}({ItemInfo.item_base_option.all_stat}+{ItemInfo.item_add_option.all_stat})</div>
+                                <div className={styles.str}>올스탯 : +{ItemInfo.item_total_option.all_stat}({ItemInfo.item_base_option.all_stat}{ItemInfo.item_add_option.all_stat !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.all_stat}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.damage !== '0' &&
-                                <div className={styles.str}>데미지 : +{ItemInfo.item_total_option.damage}({ItemInfo.item_add_option.damage})</div>
+                                <div className={styles.str}>데미지 : +{ItemInfo.item_total_option.damage}({ItemInfo.item_add_option.damage !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.damage}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.jump !== '0' &&
-                                <div className={styles.str}>점프력 : +{ItemInfo.item_total_option.jump}({ItemInfo.item_base_option.jump}+{ItemInfo.item_add_option.jump}+{ItemInfo.item_etc_option.jump}+{ItemInfo.item_starforce_option.jump})</div>
+                                <div className={styles.str}>점프력 : +{ItemInfo.item_total_option.jump}({ItemInfo.item_base_option.jump}{ItemInfo.item_add_option.jump !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.jump}</span>
+                                } {ItemInfo.item_etc_option.jump !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.jump}</span>
+                                }{ItemInfo.item_starforce_option.jump !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.jump}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.speed !== '0' &&
-                                <div className={styles.str}>이동속도 : +{ItemInfo.item_total_option.speed}({ItemInfo.item_base_option.speed}+{ItemInfo.item_add_option.speed}+{ItemInfo.item_etc_option.speed}+{ItemInfo.item_starforce_option.speed})</div>
+                                <div className={styles.str}>이동속도 : +{ItemInfo.item_total_option.speed}({ItemInfo.item_base_option.speed}{ItemInfo.item_add_option.speed !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.speed}</span>
+                                } {ItemInfo.item_etc_option.speed !== '0' &&
+                                    <span className={styles.str2}>{"+" + ItemInfo.item_etc_option.speed}</span>
+                                }{ItemInfo.item_starforce_option.speed !== '0' &&
+                                    <span className={styles.str3}>{"+" + ItemInfo.item_starforce_option.speed}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.boss_damage !== '0' &&
-                                <div className={styles.str}>보스 공격 시 데미지 : +{ItemInfo.item_total_option.boss_damage}({ItemInfo.item_base_option.boss_damage}+{ItemInfo.item_add_option.boss_damage})</div>
+                                <div className={styles.str}>보스 공격 시 데미지 : +{ItemInfo.item_total_option.boss_damage}({ItemInfo.item_base_option.boss_damage}{ItemInfo.item_add_option.boss_damage !== '0' &&
+                                    <span className={styles.str1}>{"+" + ItemInfo.item_add_option.boss_damage}</span>
+                                })</div>
                             }
                             {ItemInfo.item_total_option.ignore_monster_armor !== '0' &&
                                 <div className={styles.str}>방어력 무시 : +{ItemInfo.item_total_option.ignore_monster_armor}%</div>

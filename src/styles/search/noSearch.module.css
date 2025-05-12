@@ -1,0 +1,287 @@
+.apiKey {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 160%;
+}
+.iconChild {
+    position: absolute;
+    height: 73.33%;
+    width: 73.33%;
+    top: 12.58%;
+    right: 14.08%;
+    bottom: 14.08%;
+    left: 12.58%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.icon {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.div {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.search {
+    align-self: stretch;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 2px solid #d4d4d6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    gap: 16px;
+    text-align: left;
+    font-size: 18px;
+}
+.wrapSearchj {
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+}
+.dividerIcon {
+    width: 215px;
+    position: relative;
+    border-radius: 4px;
+    max-height: 100%;
+}
+.div1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 140%;
+}
+.divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.iconItem {
+    position: absolute;
+    height: 83.44%;
+    width: 83.44%;
+    top: 8.33%;
+    right: 8.23%;
+    bottom: 8.23%;
+    left: 8.34%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector38Stroke {
+    position: absolute;
+    height: 25.31%;
+    width: 6.25%;
+    top: 30.59%;
+    right: 46.88%;
+    bottom: 44.1%;
+    left: 46.88%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.iconInner {
+    position: absolute;
+    height: 8.44%;
+    width: 8.44%;
+    top: 60.3%;
+    right: 45.73%;
+    bottom: 31.26%;
+    left: 45.83%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.icon1 {
+    width: 32px;
+    position: relative;
+    height: 32px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.apiKey1 {
+    flex: 1;
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
+.title {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.api {
+    margin: 0;
+}
+.apiContainer {
+    align-self: stretch;
+    position: relative;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 160%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.wrapTitle {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.div3 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 140%;
+    font-weight: 500;
+    white-space: pre-wrap;
+}
+.ai {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 140%;
+    font-weight: 500;
+}
+.wrapInfo {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 16px;
+}
+.container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.wrapIcon {
+    width: 48px;
+    height: 20px;
+}
+.textInput1 {
+    flex: 1;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    gap: 8px;
+}
+.textInput {
+    align-self: stretch;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.button1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.button {
+    flex: 1;
+    border-radius: 8px;
+    background-color: #f0f3ff;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+.button2 {
+    flex: 1;
+    border-radius: 8px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    color: rgba(14, 15, 20, 0.9);
+}
+.wrapBtn {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 17px;
+    color: #4060ff;
+}
+.container1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.content {
+    align-self: center;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px 306px;
+    gap: 32px;
+    text-align: left;
+    font-size: 32px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.apiX {
+    margin-top: 144px;
+    margin-bottom: 200px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 360px;
+    box-sizing: border-box;
+    gap: 48px;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(14, 15, 20, 0.5);
+}
+
