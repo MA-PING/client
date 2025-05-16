@@ -11,7 +11,7 @@ async function getCharacter(name: string): Promise<ApiResponse | null> {
 
         const response = await fetch('https://api.ma-ping.com/api/v1/character?characterName=' + name, {
             next: {
-                revalidate: 300000, // 5분
+                revalidate: 180000, // 2분
             },
         });
 
@@ -40,18 +40,18 @@ const Character: NextPage<CharacterProps> = async ({name}) => {
     const response = await getCharacter(name);
     if (response == null)
         return (
-            <div>
+            <>
                 <NoSearch/>
-            </div>
+            </>
         );
 
     return (
-        <div>
+        <>
             <div className={styles.div}>
                 <CharacterInfo response={response}/>
                 <Details character={response.data}/>
             </div>
-        </div>)
+        </>)
 
 }
 export default Character;
