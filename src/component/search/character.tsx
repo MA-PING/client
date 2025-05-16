@@ -1,4 +1,3 @@
-import Header from "@/component/header";
 import CharacterInfo from "@/component/search/characterInfo";
 import styles from "../../styles/search/character.module.css"
 import Details from "@/component/search/characterDetails";
@@ -6,7 +5,6 @@ import Details from "@/component/search/characterDetails";
 import {ApiResponse} from '@/interfaces/character';
 import NoSearch from "@/component/search/noSearch";
 import type {NextPage} from "next";
-import Artifact from "@/component/search/artifact";
 
 async function getCharacter(name: string): Promise<ApiResponse | null> {
     try {
@@ -57,9 +55,3 @@ const Character: NextPage<CharacterProps> = async ({name}) => {
 
 }
 export default Character;
-// export default async function Character({params, name}: {
-//     params: Promise<{ name: string }>,
-//     name?: string
-// }) {
-//
-// }
