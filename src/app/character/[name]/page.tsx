@@ -1,61 +1,26 @@
 import Header from "@/component/header";
-import CharacterInfo from "@/component/search/characterInfo";
-import styles from "../../../styles/search/character.module.css"
-import Details from "@/component/search/characterDetails";
+import { Suspense } from 'react';
+import Loading from '@/component/search/loading'; // 1단계에서 만든 로딩 컴포넌트
+import Character from '@/component/search/character'; // 2단계에서 만든 데이터 뷰 컴포넌트
 
-import { ApiResponse } from '@/interfaces/character';
-import NoSearch from "@/component/search/noSearch";
+// getCharacter 함수는 CharacterDataView 컴포넌트 내부로 이동했으므로 여기서는 필요 없습니다.
 
-async function getCharacter(name:string): Promise<ApiResponse | null> {
-    try {
-
-        const response = await fetch('https://api.ma-ping.com/api/v1/character?characterName=' + name, {
-            next: {
-                revalidate: 300000, // 5분
-            },
-        });
-
-        if (!response.ok) {
-            return null;
-        }
-
-
-        const data: ApiResponse = await response.json();
-        if (!data || !data.data) {
-            return null;
-        }
-
-        return data;
-    } catch (error) {
-        console.error('캐릭터 정보 가져오기 오류:', error);
-        return null;
-    }
-}
-
-
-export default async function Home({params,}: {
-    params: Promise<{ name: string }>
+export default function Home({ params }: {
+    params: { name: string } // params는 Promise가 아닌 객체입니다.
 }) {
-    const { name } = await params
-    const response= await getCharacter(name);
-    if (response == null)
-        return (
-            <div>
-                <Header />
-                <NoSearch  />
-            </div>
-        );
+    const { name } = params; // params에서 직접 name을 추출합니다.
 
-    const Character = response.data;
-    // console.log("stat", Character.stat);
-    // const responseAt: string = response.responseAt;
-    // const basic: basic = Character.basic;
     return (
         <div>
-            <Header/>
-            <div className={styles.div}>
-                <CharacterInfo response={response}/>
-                <Details character={Character}/>
-            </div>
-        </div>)
+            <Header />
+            <Suspense fallback={<Loading />}>
+                {/*
+                  CharacterDataView는 비동기 컴포넌트입니다.
+                  React Suspense는 이 컴포넌트의 데이터 로딩이 완료될 때까지 기다립니다.
+                  데이터를 가져오는 동안 fallback으로 LoadingSpinner가 표시됩니다.
+                */}
+                <Character name={name} />
+            </Suspense>
+        </div>
+    );
 }
