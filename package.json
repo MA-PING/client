@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.0",
+    "@mui/styled-engine-sc": "^7.1.0",
     "@suspensive/react": "^3.0.0",
     "@toss/utils": "^1.6.1",
     "axios": "^1.8.4",
@@ -22,6 +26,7 @@
     "redux": "^5.0.1",
     "remark-gfm": "^4.0.1",
     "sharp": "^0.33.5",
+    "styled-components": "^6.1.18",
     "update": "^0.7.4"
   },
   "devDependencies": {
