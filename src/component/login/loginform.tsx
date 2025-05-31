@@ -146,6 +146,7 @@ const Frame: NextPage = () => {
                                         "& .MuiOutlinedInput-root": {
                                             height: "48px",
                                             fontSize: "14px",
+                                            borderRadius: "7px",
                                         },
                                         "& input": {
                                             padding: "12px",
@@ -170,11 +171,13 @@ const Frame: NextPage = () => {
                                         width: "160px",
                                         height: "48px",
                                         fontSize: "14px",
+                                        borderRadius: "7px",
                                         "& .MuiSelect-select": {
                                             padding: "12px 16px",
                                             display: "flex",
                                             alignItems: "center",
                                             height: "48px",
+                                            borderRadius: "7px",
                                         },
                                     }}
                                     MenuProps={{
@@ -182,6 +185,7 @@ const Frame: NextPage = () => {
                                             sx: {
                                                 boxShadow: "none", // drop-shadow 제거
                                                 border: "1px solid rgba(0, 0, 0, 0.2)", // 드롭다운 테두리 적용
+                                                borderRadius: "10px",
                                             },
                                         },
                                     }}
@@ -196,12 +200,23 @@ const Frame: NextPage = () => {
 
                             <div className={styles.textInput2}>
                                 <div className={styles.textInput1}>
-                                    <input
+                                    <TextField
                                         type="password"
                                         placeholder="비밀번호를 입력해주세요"
+                                        variant="outlined"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className={styles.inputField}
+                                        sx={{
+                                            width: "432px",
+                                            "& .MuiOutlinedInput-root": {
+                                                height: "48px",
+                                                fontSize: "14px",
+                                                borderRadius: "7px",
+                                            },
+                                            "& input": {
+                                                padding: "12px",
+                                            },
+                                        }}
                                     />
                                 </div>
                             </div>
@@ -233,7 +248,6 @@ const Frame: NextPage = () => {
                         </div>
 
                         <div className={styles.wrapBtn}>
-                            <div className={styles.button2} onClick={handleLogin}>
                                 {/* {email && password && selectedDomain ? (
 									<div className={styles.button1}>로그인</div>
 								) : (
@@ -243,30 +257,32 @@ const Frame: NextPage = () => {
 								)} */}
                                 {/* <div className={styles.button1}>로그인</div> */}
                                 <Button
+                                    onClick={handleLogin}
                                     variant="contained"
                                     sx={{
-                                        width: "160px",
-                                        height: "48px",
-                                        fontSize: "14px",
-                                        backgroundColor:
-                                            email && password && selectedDomain ? "#000" : "#ccc",
-                                        color:
-                                            email && password && selectedDomain ? "#fff" : "#000",
+                                        width: "210px",
+                                        height: "54px",
+                                        fontSize: "18px",
+                                        fontFamily: "Pretendard",
+                                        fontWeight: 500,
+                                        lineHeight: "27px",
+                                        wordWrap: "break-word",
+                                        backgroundColor: email && password && selectedDomain ? "#4060FF" : "#ccc",
+                                        color: email && password && selectedDomain ? "#fff" : "rgba(14, 15, 20, 0.20)",
+                                        borderRadius: "8px",
                                     }}
                                 >
-                                    {email && password && selectedDomain
-                                        ? "로그인"
-                                        : "입력해주세요"}
+                                    로그인
                                 </Button>
-                            </div>
                             <div className={styles.button4}>
                                 <div className={styles.button1}>회원가입</div>
+                            </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 

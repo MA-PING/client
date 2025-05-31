@@ -118,7 +118,7 @@
     letter-spacing: -0.02em;
     line-height: 150%;
 }
-.textInput1 {
+/*.textInput1 {
     flex: 1;
     border-radius: 8px;
     background-color: #fff;
@@ -130,7 +130,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: 12px 16px;
-}
+}*/
 .textInput {
     flex: 1;
     height: 48px;
@@ -267,7 +267,7 @@
 }
 .button2 {
     flex: 1;
-    border-radius: 10px;
+    border-radius: 11px;
     background-color: #ededf0;
     height: 56px;
     display: flex;
