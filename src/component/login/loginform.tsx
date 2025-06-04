@@ -5,7 +5,9 @@ import styles from "../../styles/login/loginform.module.css";
 import { useEffect, useRef, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import {MenuItem, Select } from "@mui/material";
+import Checkbox from '@mui/material/Checkbox';
+
+import {MenuItem, Select, } from "@mui/material";
 
 const Frame: NextPage = () => {
     const [email, setEmail] = useState("");
@@ -223,14 +225,20 @@ const Frame: NextPage = () => {
 
                             <div className={styles.btnUtil}>
                                 <div className={styles.checkbox}>
+
                                     <div className={styles.checkboxItem}>
-                                        <Image
-                                            className={styles.icon3}
-                                            width={16}
-                                            height={16}
-                                            alt=""
-                                            src="/images/loginselect2.svg"
+                                        <Checkbox
+                                            defaultChecked={false}
+                                            sx={{
+                                                padding: 0,
+                                                marginRight: "8px",
+                                                color: "#4060FF",
+                                                '&.Mui-checked': {
+                                                    color: "#4060FF",
+                                                },
+                                            }}
                                         />
+
                                     </div>
                                     <div className={styles.div3}>로그인 유지하기</div>
                                 </div>
@@ -270,6 +278,14 @@ const Frame: NextPage = () => {
                                         backgroundColor: email && password && selectedDomain ? "#4060FF" : "#ccc",
                                         color: email && password && selectedDomain ? "#fff" : "rgba(14, 15, 20, 0.20)",
                                         borderRadius: "8px",
+                                        border: "1px solid #D4D4D6",
+                                        boxShadow: "none", // 기본 그림자 제거
+                                        "&:hover": {
+                                            boxShadow: "none", // hover 시 그림자 제거
+                                        },
+                                        "&:focus": {
+                                            boxShadow: "none", // focus 시 그림자 제거
+                                        },
                                     }}
                                 >
                                     로그인

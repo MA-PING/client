@@ -208,7 +208,7 @@
     overflow: hidden;
     flex-shrink: 0;
 }
-.checkboxItem {
+/*.checkboxItem {
     width: 24px;
     border-radius: 4px;
     background-color: #fff;
@@ -220,13 +220,13 @@
     align-items: center;
     justify-content: center;
     padding: 3px;
-}
+}*/
 .checkbox {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 8px;
+    gap: 0px;
 }
 .button1 {
     position: relative;
