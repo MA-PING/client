@@ -6,110 +6,86 @@ import { useEffect, useRef, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Checkbox from '@mui/material/Checkbox';
-
-import {MenuItem, Select, } from "@mui/material";
-
-const handleLogin = async () => {
-    if (!email || !selectedDomain || !password) {
-        alert("이메일, 도메인, 비밀번호를 모두 입력해주세요!");
-        return;
-    }
-
-    const completeEmail = `${email}@${selectedDomain}`;
-    setFullEmail(completeEmail);
-
-    try {
-        const response = await fetch("https://api.ma-ping.com/api/v1/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: completeEmail,
-                password: password,
-            }),
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error("로그인 실패:", errorData);
-            alert(`로그인 실패: ${errorData.message || response.statusText}`);
-            return;
-        }
-
-        const data = await response.json();
-        console.log("로그인 성공:", data);
-        alert("로그인 성공!");
-
-        // 예시: 토큰 저장하고 메인으로 이동
-        // localStorage.setItem("accessToken", data.token);
-        // router.push("/main");
-    } catch (error) {
-        console.error("로그인 에러:", error);
-        alert("로그인 중 문제가 발생했습니다.");
-    }
-};
+import { MenuItem, Select } from "@mui/material";
 
 const Frame: NextPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [, setIsSelectOpen] = useState(false);
     const [selectedDomain, setSelectedDomain] = useState("");
-    const [, setFullEmail] = useState("");
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const domains = [
-        {
-            value: "kakao.com",
-            label: "kakao.com",
-        },
-        {
-            value: "gmail.com",
-            label: "gmail.com",
-        },
-        {
-            value: "naver.com",
-            label: "naver.com",
-        },
-        {
-            value: "nate.com",
-            label: "nate.com",
-        },
-        {
-            value: "daum.net",
-            label: "daum.net",
-        },
+        { value: "kakao.com", label: "kakao.com" },
+        { value: "gmail.com", label: "gmail.com" },
+        { value: "naver.com", label: "naver.com" },
+        { value: "nate.com", label: "nate.com" },
+        { value: "daum.net", label: "daum.net" },
     ];
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (
-                dropdownRef.current &&
-                !dropdownRef.current.contains(event.target as Node)
-            ) {
-                setIsSelectOpen(false);
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                // 도메인 셀렉트 열림 여부 상태를 제어하려면 추가 상태 관리가 필요함
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    const handleLogin = () => {
-        if (!email || !selectedDomain) {
-            alert("이메일과 도메인을 모두 입력해주세요!");
+    const handleLogin = async () => {
+        if (!email || !selectedDomain || !password) {
+            alert("이메일, 도메인, 비밀번호를 모두 입력해주세요!");
             return;
         }
 
         const completeEmail = `${email}@${selectedDomain}`;
-        setFullEmail(completeEmail);
 
-        console.log("로그인 시도 이메일:", completeEmail);
-        console.log("비밀번호:", password);
+        try {
+            const response = await fetch("/api/proxy-login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: completeEmail,
+                    password,
+                }),
+            });
 
-        // 여기에 로그인 API 요청 로직을 추가할 수 있어요!
+            let data;
+
+            try {
+                data = await response.json();
+            } catch {
+                data = { message: "서버에서 유효한 JSON 응답을 받지 못했습니다." };
+            }
+
+            if (!response.ok) {
+                console.error("로그인 실패:", data.message || data);
+                alert(`로그인 실패: ${data.message || response.statusText || ""}`);
+                return;
+            }
+
+            console.log("로그인 성공:", data);
+            alert("로그인 성공!");
+
+
+            const { accessToken, refreshToken, expiresIn } = data.data;
+
+            localStorage.setItem("accessToken", accessToken);
+            localStorage.setItem("refreshToken", refreshToken);
+            localStorage.setItem("tokenExpiresAt", expiresIn.toString());
+
+            // 리다이렉트 (예: 홈으로)
+            window.location.href = "/";
+        } catch (error) {
+            console.error("로그인 에러:", error);
+            alert("로그인 중 문제가 발생했습니다.");
+        }
     };
+
+
+
 
     return (
         <div className={styles.wrapper}>
@@ -117,7 +93,7 @@ const Frame: NextPage = () => {
                 <div className={styles.title}>
                     <div className={styles.div1}>로그인</div>
                     <div className={styles.div2}>
-                        나에게 딱 맞는 메이플 길라잡이 메이핑에 오신것을 환영해요!
+                        나에게 딱 맞는 메이플 길라잡이 메이핑에 오신 것을 환영해요!
                     </div>
                 </div>
                 <div className={styles.containerGroup}>
@@ -125,16 +101,9 @@ const Frame: NextPage = () => {
                         <div className={styles.btnSocialLogin}>
                             <div className={styles.label}>
                                 <div className={styles.wrap}>
-                                    <Image
-                                        className={styles.icon}
-                                        width={24}
-                                        height={24}
-                                        alt=""
-                                        src="/icons/sns-google.png"
-                                    />
+                                    <Image src="/icons/sns-google.png" alt="" width={24} height={24} className={styles.icon} />
                                     <div className={styles.googleContainer}>
-                                        Google{" "}
-                                        <span className={styles.span}>계정으로 계속하기</span>
+                                        Google <span className={styles.span}>계정으로 계속하기</span>
                                     </div>
                                 </div>
                             </div>
@@ -142,13 +111,7 @@ const Frame: NextPage = () => {
                         <div className={styles.btnSocialLogin1}>
                             <div className={styles.label1}>
                                 <div className={styles.wrap}>
-                                    <Image
-                                        className={styles.icon}
-                                        width={24}
-                                        height={24}
-                                        alt=""
-                                        src="/icons/sns-naver.svg"
-                                    />
+                                    <Image src="/icons/sns-naver.svg" alt="" width={24} height={24} className={styles.icon} />
                                     <div className={styles.googleContainer}>
                                         Naver <span className={styles.span}>계정으로 계속하기</span>
                                     </div>
@@ -158,28 +121,15 @@ const Frame: NextPage = () => {
                     </div>
 
                     <div className={styles.divider}>
-                        <Image
-                            className={styles.dividerIcon}
-                            width={196}
-                            height={1}
-                            alt=""
-                            src="/images/Divider.svg"
-                        />
+                        <Image src="/images/Divider.svg" alt="" width={196} height={1} className={styles.dividerIcon} />
                         <div className={styles.div3}>또는</div>
-                        <Image
-                            className={styles.dividerIcon}
-                            width={196}
-                            height={1}
-                            alt=""
-                            src="/images/Divider.svg"
-                        />
+                        <Image src="/images/Divider.svg" alt="" width={196} height={1} className={styles.dividerIcon} />
                     </div>
 
                     <div className={styles.container}>
                         <div className={styles.wrapInput}>
                             <div className={styles.input}>
                                 <TextField
-                                    id="outlined-basic"
                                     placeholder="ex-Maping123"
                                     variant="outlined"
                                     value={email}
@@ -196,19 +146,10 @@ const Frame: NextPage = () => {
                                         },
                                     }}
                                 />
-                                {/* <div className={styles.textInput1}>
-									<input
-										type="text"
-										placeholder="ex-Maping123"
-										value={email}
-										onChange={(e) => setEmail(e.target.value)}
-										className={styles.inputField}
-									/>
-								</div> */}
                                 <div className={styles.div5}>@</div>
                                 <Select
                                     value={selectedDomain}
-                                    onChange={(e) => setSelectedDomain(e.target.value as string)}
+                                    onChange={(e) => setSelectedDomain(e.target.value)}
                                     renderValue={(selected) => selected || "선택하기"}
                                     sx={{
                                         width: "160px",
@@ -226,8 +167,8 @@ const Frame: NextPage = () => {
                                     MenuProps={{
                                         PaperProps: {
                                             sx: {
-                                                boxShadow: "none", // drop-shadow 제거
-                                                border: "1px solid rgba(0, 0, 0, 0.2)", // 드롭다운 테두리 적용
+                                                boxShadow: "none",
+                                                border: "1px solid rgba(0, 0, 0, 0.2)",
                                                 borderRadius: "10px",
                                             },
                                         },
@@ -242,104 +183,78 @@ const Frame: NextPage = () => {
                             </div>
 
                             <div className={styles.textInput2}>
-                                <div className={styles.textInput1}>
-                                    <TextField
-                                        type="password"
-                                        placeholder="비밀번호를 입력해주세요"
-                                        variant="outlined"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        sx={{
-                                            width: "432px",
-                                            "& .MuiOutlinedInput-root": {
-                                                height: "48px",
-                                                fontSize: "14px",
-                                                borderRadius: "7px",
-                                            },
-                                            "& input": {
-                                                padding: "12px",
-                                            },
-                                        }}
-                                    />
-                                </div>
+                                <TextField
+                                    type="password"
+                                    placeholder="비밀번호를 입력해주세요"
+                                    variant="outlined"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    sx={{
+                                        width: "432px",
+                                        "& .MuiOutlinedInput-root": {
+                                            height: "48px",
+                                            fontSize: "14px",
+                                            borderRadius: "7px",
+                                        },
+                                        "& input": {
+                                            padding: "12px",
+                                        },
+                                    }}
+                                />
                             </div>
 
                             <div className={styles.btnUtil}>
                                 <div className={styles.checkbox}>
-
-                                    <div className={styles.checkboxItem}>
-                                        <Checkbox
-                                            defaultChecked={false}
-                                            sx={{
-                                                padding: 0,
-                                                marginRight: "8px",
+                                    <Checkbox
+                                        sx={{
+                                            padding: 0,
+                                            marginRight: "8px",
+                                            color: "#4060FF",
+                                            '&.Mui-checked': {
                                                 color: "#4060FF",
-                                                '&.Mui-checked': {
-                                                    color: "#4060FF",
-                                                },
-                                            }}
-                                        />
-
-                                    </div>
+                                            },
+                                        }}
+                                    />
                                     <div className={styles.div3}>로그인 유지하기</div>
                                 </div>
                                 <div className={styles.button}>
                                     <div className={styles.button1}>비밀번호 찾기</div>
-                                    <Image
-                                        className={styles.icon3}
-                                        width={16}
-                                        height={16}
-                                        alt=""
-                                        src="/images/loginfollow.svg"
-                                    />
+                                    <Image src="/images/loginfollow.svg" alt="" width={16} height={16} className={styles.icon3} />
                                 </div>
                             </div>
                         </div>
 
                         <div className={styles.wrapBtn}>
-                                {/* {email && password && selectedDomain ? (
-									<div className={styles.button1}>로그인</div>
-								) : (
-									<div className={styles.button1} style={{ opacity: 0.5 }}>
-										안돼
-									</div>
-								)} */}
-                                {/* <div className={styles.button1}>로그인</div> */}
-                                <Button
-                                    onClick={handleLogin}
-                                    variant="contained"
-                                    sx={{
-                                        width: "210px",
-                                        height: "54px",
-                                        fontSize: "18px",
-                                        fontFamily: "Pretendard",
-                                        fontWeight: 500,
-                                        lineHeight: "27px",
-                                        wordWrap: "break-word",
-                                        backgroundColor: email && password && selectedDomain ? "#4060FF" : "#ccc",
-                                        color: email && password && selectedDomain ? "#fff" : "rgba(14, 15, 20, 0.20)",
-                                        borderRadius: "8px",
-                                        border: "1px solid #D4D4D6",
-                                        boxShadow: "none", // 기본 그림자 제거
-                                        "&:hover": {
-                                            boxShadow: "none", // hover 시 그림자 제거
-                                        },
-                                        "&:focus": {
-                                            boxShadow: "none", // focus 시 그림자 제거
-                                        },
-                                    }}
-                                >
-                                    로그인
-                                </Button>
+                            <Button
+                                onClick={handleLogin}
+                                variant="contained"
+                                disabled={!email || !password || !selectedDomain}
+                                sx={{
+                                    width: "210px",
+                                    height: "54px",
+                                    fontSize: "18px",
+                                    fontFamily: "Pretendard",
+                                    fontWeight: 500,
+                                    lineHeight: "27px",
+                                    backgroundColor: "#4060FF",
+                                    borderRadius: "8px",
+                                    border: "1px solid #D4D4D6",
+                                    boxShadow: "none",
+                                    "&:hover": {
+                                        boxShadow: "none",
+                                    },
+                                }}
+                            >
+                                로그인
+                            </Button>
                             <div className={styles.button4}>
                                 <div className={styles.button1}>회원가입</div>
-                            </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     );
 };
 
