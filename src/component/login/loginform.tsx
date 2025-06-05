@@ -9,6 +9,47 @@ import Checkbox from '@mui/material/Checkbox';
 
 import {MenuItem, Select, } from "@mui/material";
 
+const handleLogin = async () => {
+    if (!email || !selectedDomain || !password) {
+        alert("이메일, 도메인, 비밀번호를 모두 입력해주세요!");
+        return;
+    }
+
+    const completeEmail = `${email}@${selectedDomain}`;
+    setFullEmail(completeEmail);
+
+    try {
+        const response = await fetch("https://api.ma-ping.com/api/v1/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: completeEmail,
+                password: password,
+            }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error("로그인 실패:", errorData);
+            alert(`로그인 실패: ${errorData.message || response.statusText}`);
+            return;
+        }
+
+        const data = await response.json();
+        console.log("로그인 성공:", data);
+        alert("로그인 성공!");
+
+        // 예시: 토큰 저장하고 메인으로 이동
+        // localStorage.setItem("accessToken", data.token);
+        // router.push("/main");
+    } catch (error) {
+        console.error("로그인 에러:", error);
+        alert("로그인 중 문제가 발생했습니다.");
+    }
+};
+
 const Frame: NextPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
