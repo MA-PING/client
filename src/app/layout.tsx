@@ -1,14 +1,15 @@
 import type {Metadata, Viewport} from "next";
 import "./globals.css";
-import localFont from 'next/font/local'
+// import localFont from 'next/font/local'
 import Footer from "@/component/footer";
+import FloatingButton from "@/component/FloatingButton";
 
-const pretendard = localFont({
-    src: '../../public/fonts/PretendardVariable.woff2',
-    display: 'swap',
-    weight: '45 920',
-    variable: '--font-pretendard',
-})
+// const pretendard = localFont({
+//     src: '../../public/fonts/PretendardVariable.woff2',
+//     display: 'swap',
+//     weight: '45 920',
+//     variable: '--font-pretendard',
+// })
 
 export const metadata: Metadata = {
   title: "MA-PING",
@@ -51,15 +52,17 @@ export default function RootLayout({
 
   return (
     <html lang="ko">
-      <head>
+    <head>
         <script type="text/javascript" src="https://openapi.nexon.com/js/analytics.js?app_id=139195" async></script>
         <title>MA-PING : 나에게 딱 맞는 메이플 길라잡이</title>
-      </head>
-      <body className={`${pretendard.variable} font-pretendard`}>
+        <link rel="stylesheet" as="style" crossOrigin="anonymous" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    </head>
+      <body>
         <div id='wrapper'>
-            {children}
+          {children}
         </div>
         <Footer/>
+        <FloatingButton />
       </body>
     </html>
   );

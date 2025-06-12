@@ -1,0 +1,1746 @@
+.ai {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+.iconChild {
+    position: absolute;
+    height: 73.13%;
+    width: 100%;
+    top: 12.58%;
+    right: 14.29%;
+    bottom: 14.29%;
+    left: 12.58%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.icon {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.div {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 600;
+}
+.div1 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.title1 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.wrapTitle {
+    width: 360px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.div2 {
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
+.inPageNavigationAtomic1 {
+    width: 20px;
+    border-radius: 16px;
+    background-color: #f0f3ff;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 9px;
+    box-sizing: border-box;
+}
+.div3 {
+    flex: 1;
+    position: relative;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.9);
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.inPageNavigationAtomic {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 8px;
+}
+.div8 {
+    position: relative;
+    line-height: 150%;
+}
+.inPageNavigationAtomic7 {
+    width: 20px;
+    border-radius: 16px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 9px;
+    box-sizing: border-box;
+}
+.inPageNavigationAtomic6 {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 8px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: center;
+    font-size: 14px;
+    color: #4060ff;
+}
+.inPageNavigationSmall {
+    width: 360px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.title2 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.inPageNavigationSmall1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.content {
+    position: absolute;
+    top: 88px;
+    left: 24px;
+    width: 360px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    font-size: 13px;
+}
+.vector39Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 73.13%;
+    top: 21.85%;
+    right: 13.34%;
+    bottom: 71.9%;
+    left: 13.54%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector40Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 73.13%;
+    top: 46.87%;
+    right: 13.34%;
+    bottom: 46.88%;
+    left: 13.54%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector41Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 73.13%;
+    top: 71.87%;
+    right: 13.34%;
+    bottom: 21.88%;
+    left: 13.54%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.ellipse31Stroke {
+    position: absolute;
+    height: 23.13%;
+    width: 23.13%;
+    top: 63.54%;
+    right: 21.67%;
+    bottom: 13.33%;
+    left: 55.21%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.ellipse32Stroke {
+    position: absolute;
+    height: 23.13%;
+    width: 23.13%;
+    top: 13.54%;
+    right: 55%;
+    bottom: 63.33%;
+    left: 21.88%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.button {
+    border-radius: 6px;
+    background-color: #ededf0;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    box-sizing: border-box;
+    gap: 4px;
+}
+.dividerIcon {
+    width: 0px;
+    position: relative;
+    height: 18px;
+    object-fit: contain;
+}
+.div23 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.textInput1 {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: #ededf0;
+    height: 29px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 16px 8px 8px;
+    box-sizing: border-box;
+}
+.textInput {
+    width: 99px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.div24 {
+    position: relative;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.textInput2 {
+    width: 77px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.wrapFilter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.iconInner {
+    position: absolute;
+    height: 83.13%;
+    width: 83.13%;
+    top: 8.33%;
+    right: 8.54%;
+    bottom: 8.54%;
+    left: 8.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.ellipseIcon {
+    position: absolute;
+    height: 8.13%;
+    width: 8.13%;
+    top: 63.15%;
+    right: 46.99%;
+    bottom: 28.72%;
+    left: 44.88%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.ellipse4Stroke {
+    position: absolute;
+    height: 31.25%;
+    width: 26.88%;
+    top: 28.77%;
+    right: 36.45%;
+    bottom: 39.98%;
+    left: 36.68%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.ellipse5Stroke {
+    position: absolute;
+    height: 75%;
+    width: 75%;
+    top: 12.5%;
+    right: 16.67%;
+    bottom: 12.5%;
+    left: 8.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector7Stroke {
+    position: absolute;
+    height: 26.25%;
+    width: 26.25%;
+    top: 37.25%;
+    right: 7.34%;
+    bottom: 36.5%;
+    left: 66.41%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector16Stroke {
+    position: absolute;
+    height: 23.13%;
+    width: 6.25%;
+    top: 31.79%;
+    right: 51.04%;
+    bottom: 45.09%;
+    left: 42.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector17Stroke {
+    position: absolute;
+    height: 19.38%;
+    width: 19.38%;
+    top: 47.16%;
+    right: 49.63%;
+    bottom: 33.46%;
+    left: 31%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector13Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 64.38%;
+    top: 17.71%;
+    right: 17.92%;
+    bottom: 76.04%;
+    left: 17.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector14Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 64.38%;
+    top: 46.88%;
+    right: 17.92%;
+    bottom: 46.88%;
+    left: 17.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector15Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 64.38%;
+    top: 76.04%;
+    right: 17.92%;
+    bottom: 17.71%;
+    left: 17.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector2Stroke {
+    position: absolute;
+    height: 60.62%;
+    width: 60.62%;
+    top: 19.84%;
+    right: 19.53%;
+    bottom: 19.53%;
+    left: 19.84%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector3Stroke {
+    position: absolute;
+    height: 60.62%;
+    width: 60.62%;
+    top: 19.85%;
+    right: 19.64%;
+    bottom: 19.53%;
+    left: 19.74%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.wrapIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+.headerChatbot {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    width: 480px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    box-sizing: border-box;
+    gap: 0px;
+    color: rgba(14, 15, 20, 0.2);
+}
+.statusdefaultTypesmallLoChild {
+    position: absolute;
+    top: 173px;
+    left: 24px;
+    width: 386px;
+    height: 34px;
+}
+.statusdefaultTypesmallLoItem {
+    position: absolute;
+    top: 207px;
+    left: 24px;
+    width: 386px;
+    height: 34px;
+}
+.statusdefaultTypesmallLoInner {
+    position: absolute;
+    top: 241px;
+    left: 24px;
+    width: 386px;
+    height: 34px;
+}
+.rectangleDiv {
+    position: absolute;
+    top: 295px;
+    left: 43px;
+    width: 386px;
+    height: 34px;
+}
+.halo {
+    width: calc(100% + 6px);
+    position: absolute;
+    margin: 0 !important;
+    height: calc(100% + 6px);
+    top: -3px;
+    right: -3px;
+    bottom: -3px;
+    left: -3px;
+    border-radius: 11px;
+    background-color: #e0e5ff;
+    z-index: 0;
+}
+.div26 {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.textActive {
+    flex: 1;
+    position: relative;
+    height: 21px;
+}
+.actualChatInput {
+    width: 100%;
+    /*padding: 8px 10px;*/
+    /*!* 기본 테두리 스타일은 유지합니다. 예를 들어 연한 회색 테두리. *!*/
+    /*border: 1px solid #d0d0d0;*/
+    /*border-radius: 18px; !* 이전 스타일 유지 *!*/
+    /*background-color: transparent;*/
+    /* outline: none;
+      이 속성은 브라우저의 기본 포커스 표시(보통 파란색 또는 검은색 외곽선)를 제거합니다.
+      커스텀 포커스 스타일을 사용하지 않을 경우, 접근성을 위해 이 줄을 제거하여
+      브라우저 기본 포커스 표시가 나타나도록 하는 것을 권장합니다.
+      만약 이 줄을 유지한다면, 다른 방식의 포커스 표시를 고려해야 합니다.
+    */
+    outline: none;
+    /*font-size: 0.9rem;*/
+    /*color: #333;*/
+    /* 이전에 border-color와 box-shadow에 대한 transition이 있었다면,
+      해당 속성들이 :focus 상태에서 더 이상 변경되지 않으므로,
+      transition에서 해당 속성을 제거하거나 transition 자체를 수정/제거할 수 있습니다.
+      (아래는 transition을 제거한 예시입니다. 필요에 따라 유지하거나 수정하세요.)
+    */
+    /* transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; */
+}
+
+.actualChatInput::placeholder {
+    color: #888;
+}
+
+/*.actualChatInput:focus {*/
+/*    !* 파란색 테두리와 관련된 스타일을 여기서 제거합니다.*/
+/*      아래 두 줄을 주석 처리하거나 삭제하세요.*/
+/*    *!*/
+/*    !* border-color: #007bff; *! !* 파란색 테두리 제거 *!*/
+/*    !* box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); *! !* 파란색 box-shadow 제거 *!*/
+
+/*    !* 이제 .actualChatInput:focus 상태에서는 .actualChatInput의 기본 스타일이 그대로 적용됩니다.*/
+/*      (예: border: 1px solid #d0d0d0; 가 유지됩니다.)*/
+/*    *!*/
+
+/*    !* 접근성 참고:*/
+/*      만약 위의 .actualChatInput 스타일에서 `outline: none;`을 유지했다면,*/
+/*      현재 커스텀 포커스 스타일(파란 테두리)도 제거했으므로 키보드 사용자가*/
+/*      어떤 입력 필드에 포커스했는지 시각적으로 알기 어려울 수 있습니다.*/
+/*  */
+/*      권장 사항:*/
+/*      1. .actualChatInput의 `outline: none;`을 제거하여 브라우저 기본 포커스 아웃라인을 사용하거나,*/
+/*      2. 다른 미묘한 포커스 표시를 추가합니다. (예: 배경색 살짝 변경)*/
+/*         !* .actualChatInput:focus { background-color: #f8f9fa; } *!*/
+/*    *!*/
+/*}*/
+.iconChild1 {
+    position: absolute;
+    height: 83.33%;
+    width: 83.33%;
+    top: 8.33%;
+    right: 8.33%;
+    bottom: 8.33%;
+    left: 8.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector31Stroke {
+    position: absolute;
+    height: 30.42%;
+    width: 5.42%;
+    top: 36.88%;
+    right: 47.29%;
+    bottom: 32.71%;
+    left: 47.29%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector32Stroke {
+    position: absolute;
+    height: 17.92%;
+    width: 30.42%;
+    top: 34.79%;
+    right: 34.79%;
+    bottom: 47.29%;
+    left: 34.79%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.icon7 {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.textInput5 {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 2px solid #4060ff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    gap: 0px;
+    z-index: 1;
+}
+.textInputChatbot {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    gap: 10px;
+}
+.textInput4 {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 240px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), #fff 26.57%, #fff);
+    width: 480px;
+    height: 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+.scrollerChild {
+    width: 4px;
+    position: relative;
+    border-radius: 12px;
+    background-color: #d4d4d6;
+    height: 40px;
+}
+.scroller {
+    position: absolute;
+    top: 52px;
+    left: 468px;
+    height: 352px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.itemAtomic {
+    align-self: stretch;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px;
+    gap: 8px;
+}
+.wrap1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.itemAtomic3 {
+    align-self: stretch;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px;
+    gap: 8px;
+    color: rgba(14, 15, 20, 0.2);
+}
+.container {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.maAi10 {
+    align-self: stretch;
+    position: relative;
+    line-height: 150%;
+}
+.wrapInfo {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    font-size: 13px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.menuChatbot {
+    position: absolute;
+    top: 12px;
+    left: 228px;
+    box-shadow: 0px 0px 16px rgba(14, 15, 20, 0.05), 0px 6px 20px rgba(14, 15, 20, 0.05);
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 8px;
+}
+.iconChild2 {
+    position: absolute;
+    height: 83.13%;
+    width: 83.13%;
+    top: 91.67%;
+    right: -74.79%;
+    bottom: -74.79%;
+    left: 91.67%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.ellipse4Stroke1 {
+    position: absolute;
+    height: 31.25%;
+    width: 26.88%;
+    top: 28.77%;
+    right: 9.81%;
+    bottom: 39.98%;
+    left: 63.32%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.infoText {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.ai1 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.ol {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    padding-left: 19px;
+}
+.div34 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.image1Icon {
+    width: 100px;
+    position: relative;
+    max-height: 100%;
+    object-fit: cover;
+}
+.container1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.image2Icon {
+    width: 125px;
+    position: relative;
+    max-height: 100%;
+    object-fit: cover;
+}
+.image3Icon {
+    width: 110px;
+    position: relative;
+    max-height: 100%;
+    object-fit: cover;
+}
+.wrapImg {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.dividerIcon1 {
+    position: absolute;
+    width: 100%;
+    right: 0%;
+    left: 0%;
+    border-radius: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    height: 0px;
+}
+.divider {
+    width: 244px;
+    position: relative;
+    height: 0px;
+}
+.content1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.wrapText {
+    align-self: stretch;
+    width: 244px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    z-index: 0;
+}
+.arrowIcon {
+    width: 56px;
+    margin: 0 !important;
+    position: absolute;
+    top: 1px;
+    left: 276px;
+    height: 9px;
+    object-fit: contain;
+    z-index: 1;
+}
+.tooltipBox {
+    width: 300px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 24px;
+    position: relative;
+    gap: 8px;
+    z-index: 0;
+}
+.tooltip {
+    position: absolute;
+    top: 44px;
+    left: 163px;
+    box-shadow: 0px 0px 16px rgba(14, 15, 20, 0.05), 0px 6px 20px rgba(14, 15, 20, 0.05);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: #4060ff;
+}
+.textInput7 {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 29px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 16px 8px 8px;
+}
+.div37 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.div39 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.wrapInfo1 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.button6 {
+    width: 70px;
+    border-radius: 6px;
+    background-color: #4060ff;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    gap: 4px;
+    color: #fff;
+}
+.wrapText1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.title4 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 8px;
+    gap: 16px;
+}
+.dividerIcon2 {
+    width: 378px;
+    position: relative;
+    border-radius: 4px;
+    height: 0px;
+}
+.vector6Stroke {
+    position: absolute;
+    height: 23.13%;
+    width: 23.13%;
+    top: 13.54%;
+    right: 36.25%;
+    bottom: 63.33%;
+    left: 40.63%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector8Stroke {
+    position: absolute;
+    height: 23.13%;
+    width: 23.13%;
+    top: 86.46%;
+    right: 17.5%;
+    bottom: -9.58%;
+    left: 59.38%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.ellipse22Stroke {
+    position: absolute;
+    height: 68.75%;
+    width: 31.87%;
+    top: 16.72%;
+    right: 54.25%;
+    bottom: 14.53%;
+    left: 13.87%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.ellipse23Stroke {
+    position: absolute;
+    height: 68.75%;
+    width: 31.87%;
+    top: 83.39%;
+    right: -18%;
+    bottom: -52.14%;
+    left: 86.13%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.button8 {
+    width: 362px;
+    border-radius: 6px;
+    background-color: #f0f3ff;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    gap: 4px;
+    font-size: 14px;
+    color: #4060ff;
+}
+.ellipse16Stroke {
+    position: absolute;
+    height: 33.13%;
+    width: 33.13%;
+    top: 8.33%;
+    right: 33.54%;
+    bottom: 58.54%;
+    left: 33.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.rectangle4Stroke {
+    position: absolute;
+    height: 39.38%;
+    width: 63.75%;
+    top: 46.88%;
+    right: 17.99%;
+    bottom: 13.75%;
+    left: 18.26%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.filterCharacterAtomicChild {
+    width: 38px;
+    position: relative;
+    border-radius: 4px;
+    height: 38px;
+    object-fit: cover;
+}
+.label {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.badge {
+    border-radius: 6px;
+    border: 1px solid #4060ff;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+}
+.div41 {
+    align-self: stretch;
+    position: relative;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wrapCharacter {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.filterCharacterAtomic {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 8px;
+    color: #4060ff;
+}
+.filterCharacterAtomicItem {
+    width: 38px;
+    position: relative;
+    height: 38px;
+    object-fit: cover;
+}
+.badge1 {
+    border-radius: 6px;
+    border: 1px solid #bbbbbd;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+}
+.filterCharacterAtomic1 {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 8px;
+}
+.wrapCharacters {
+    align-self: stretch;
+    height: 256px;
+    overflow-y: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.characters {
+    align-self: stretch;
+    width: 198px;
+    overflow-y: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.scroller1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.container2 {
+    height: 288px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.vector39Stroke1 {
+    position: absolute;
+    height: 6.25%;
+    width: 73.13%;
+    top: 21.89%;
+    right: 13.34%;
+    bottom: 71.86%;
+    left: 13.54%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector40Stroke1 {
+    position: absolute;
+    height: 6.25%;
+    width: 73.13%;
+    top: 46.91%;
+    right: 13.34%;
+    bottom: 46.84%;
+    left: 13.54%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector41Stroke1 {
+    position: absolute;
+    height: 6.25%;
+    width: 73.13%;
+    top: 71.91%;
+    right: 13.34%;
+    bottom: 21.84%;
+    left: 13.54%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.filterOptionAtomic {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.wrapOption {
+    align-self: stretch;
+    height: 256px;
+    overflow-y: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 13px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.container3 {
+    width: 120px;
+    height: 282px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.scroller2 {
+    height: 282px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.filter {
+    align-self: stretch;
+    height: 282px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px 8px;
+    box-sizing: border-box;
+    gap: 24px;
+    font-size: 12px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.content2 {
+    width: 378px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    z-index: 0;
+}
+.vector2Stroke1 {
+    position: absolute;
+    height: 60.5%;
+    width: 60.5%;
+    top: 19.84%;
+    right: 19.66%;
+    bottom: 19.66%;
+    left: 19.84%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector3Stroke1 {
+    position: absolute;
+    height: 60.5%;
+    width: 60.5%;
+    top: 19.84%;
+    right: -40.66%;
+    bottom: 19.66%;
+    left: 80.16%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.icon17 {
+    width: 20px;
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.button10 {
+    width: 32px;
+    margin: 0 !important;
+    position: absolute;
+    top: 8px;
+    left: 354px;
+    border-radius: 6px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.chatbotFilter {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    box-shadow: 0px 0px 16px rgba(14, 15, 20, 0.05), 0px 6px 20px rgba(14, 15, 20, 0.05);
+    border-radius: 6px;
+    background-color: #fff;
+    overflow: hidden;
+    display: none;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8px;
+    gap: 10px;
+    font-size: 20px;
+}
+.statusdefaultTypesmallLo {
+    /*width: 100%;*/
+    /*position: relative;*/
+    /*box-shadow: 0px 0px 40px rgba(14, 15, 20, 0.05), 0px 6px 60px rgba(14, 15, 20, 0.05);*/
+    /*border-radius: 8px;*/
+    /*background-color: #fff;*/
+    /*border: 1px solid #d4d4d6;*/
+    /*box-sizing: border-box;*/
+    /*height: 472px;*/
+    /*overflow: hidden;*/
+    /*text-align: left;*/
+    font-size: 14px;
+    /*color: rgba(14, 15, 20, 0.9);*/
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 480px; /* 채팅창 너비 */
+    height: 50vh; /* 화면 높이의 70% */
+    max-height: 800px; /* 최대 높이 */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0; /* 테두리 */
+    border-radius: 12px; /* 모서리 둥글게 */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* 그림자 효과 */
+    display: flex;
+    flex-direction: column; /* 내부 요소 세로 정렬 */
+    z-index: 1000; /* 다른 요소들 위에 표시 */
+    overflow: hidden; /* 내부 컨텐츠가 넘칠 경우를 대비 */
+}
+
+.statuschattingTypesmallLChild {
+    position: absolute;
+    top: 173px;
+    left: 24px;
+    width: 386px;
+    height: 34px;
+}
+.statuschattingTypesmallLItem {
+    position: absolute;
+    top: 207px;
+    left: 24px;
+    width: 386px;
+    height: 34px;
+}
+.statuschattingTypesmallLInner {
+    position: absolute;
+    top: 241px;
+    left: 24px;
+    width: 386px;
+    height: 34px;
+}
+.div {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.iconChildChat {
+    position: absolute;
+    height: 83.33%;
+    width: 83.33%;
+    top: 8.33%;
+    right: 8.33%;
+    bottom: 8.33%;
+    left: 8.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector31Stroke {
+    position: absolute;
+    height: 30.42%;
+    width: 5.42%;
+    top: 36.88%;
+    right: 47.29%;
+    bottom: 32.71%;
+    left: 47.29%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector32Stroke {
+    position: absolute;
+    height: 17.92%;
+    width: 30.42%;
+    top: 34.79%;
+    right: 34.79%;
+    bottom: 47.29%;
+    left: 34.79%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.icon {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.textInputChat1 {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    gap: 0px;
+}
+.textInputChat {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 240px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), #fff 26.57%, #fff);
+    width: 480px;
+    height: 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+.divChat1 {
+    position: fixed;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.vector4Stroke {
+    position: absolute;
+    height: 35.63%;
+    width: 100%;
+    top: 34.37%;
+    right: 12.48%;
+    bottom: 30%;
+    left: 12.52%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.icon1 {
+    width: 16px;
+    position: relative;
+    height: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.buttonChat {
+    width: 24px;
+    border-radius: 4px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.wrapTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.ellipse5Stroke {
+    position: absolute;
+    height: 75%;
+    width: 75%;
+    top: 12.5%;
+    right: 16.67%;
+    bottom: 12.5%;
+    left: 8.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector7Stroke {
+    position: absolute;
+    height: 26.25%;
+    width: 26.25%;
+    top: 37.25%;
+    right: 7.34%;
+    bottom: 36.5%;
+    left: 66.41%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector16Stroke {
+    position: absolute;
+    height: 23.13%;
+    width: 6.25%;
+    top: 31.79%;
+    right: 51.04%;
+    bottom: 45.09%;
+    left: 42.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector17Stroke {
+    position: absolute;
+    height: 19.38%;
+    width: 19.38%;
+    top: 47.16%;
+    right: 49.63%;
+    bottom: 33.46%;
+    left: 31%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.vector13Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 64.38%;
+    top: 17.71%;
+    right: 17.92%;
+    bottom: 76.04%;
+    left: 17.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector14Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 64.38%;
+    top: 46.88%;
+    right: 17.92%;
+    bottom: 46.88%;
+    left: 17.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector15Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 64.38%;
+    top: 76.04%;
+    right: 17.92%;
+    bottom: 17.71%;
+    left: 17.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector2Stroke {
+    position: absolute;
+    height: 60.62%;
+    width: 60.62%;
+    top: 19.84%;
+    right: 19.53%;
+    bottom: 19.53%;
+    left: 19.84%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.vector3Stroke {
+    position: absolute;
+    height: 60.62%;
+    width: 60.62%;
+    top: 19.85%;
+    right: 19.64%;
+    bottom: 19.53%;
+    left: 19.74%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.wrapBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+.headerChatbot {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    width: 480px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    box-sizing: border-box;
+    gap: 0px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.pm {
+    align-self: stretch;
+    width: 390px;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.title {
+    width: 394px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.div2 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.userInput {
+    border-radius: 4px;
+    background-color: #f7f7fa;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 10px;
+}
+.p {
+    margin: 0;
+}
+.span {
+    text-decoration: underline;
+    color: #4060ff;
+}
+.hp {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    padding-left: 19px;
+}
+.hpContainer {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    text-align: left;
+}
+.log {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: right;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.wrapLog {
+    position: absolute;
+    top: 88px;
+    left: 24px;
+    width: 428px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    text-align: center;
+    font-size: 12px;
+}
+.scrollerChild {
+    width: 4px;
+    position: relative;
+    border-radius: 12px;
+    background-color: #d4d4d6;
+    height: 40px;
+}
+.scroller {
+    position: absolute;
+    top: 52px;
+    left: 468px;
+    height: 352px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+
+

@@ -1,0 +1,142 @@
+/* 기존 FloatingButton.module.css 스타일 ... */
+
+/* 플로팅 버튼과 말풍선 컨테이너 기본 위치 (이미 설정되어 있다면 확인) */
+.wrapChatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999; /* 채팅창보다 아래에 있도록 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* 오른쪽 정렬 */
+}
+
+.chatbotShrink {
+    /* ... 기존 스타일 ... */
+    cursor: pointer; /* 클릭 가능함을 표시 */
+}
+
+/* 채팅 다이얼로그 스타일 */
+.chatDialog {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 370px; /* 채팅창 너비 */
+    height: 70vh; /* 화면 높이의 70% */
+    max-height: 580px; /* 최대 높이 */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0; /* 테두리 */
+    border-radius: 12px; /* 모서리 둥글게 */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* 그림자 효과 */
+    display: flex;
+    flex-direction: column; /* 내부 요소 세로 정렬 */
+    z-index: 1000; /* 다른 요소들 위에 표시 */
+    overflow: hidden; /* 내부 컨텐츠가 넘칠 경우를 대비 */
+}
+
+.chatDialogHeader {
+    background-color: #f5f5f5; /* 헤더 배경색 */
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    border-top-left-radius: 12px; /* 부모 radius와 맞춤 */
+    border-top-right-radius: 12px; /* 부모 radius와 맞춤 */
+    display: flex;
+    justify-content: space-between; /* 제목과 닫기 버튼 양쪽 정렬 */
+    align-items: center;
+}
+
+.chatDialogHeader span {
+    font-weight: 600; /* 글자 굵게 */
+    font-size: 1rem; /* 글자 크기 */
+    color: #333333;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555555; /* 아이콘 색상 */
+}
+
+.closeButton svg {
+    width: 20px; /* SVG 아이콘 크기 */
+    height: 20px;
+}
+
+.closeButton:hover {
+    color: #000000; /* 호버 시 아이콘 색상 변경 */
+}
+
+.chatDialogBody {
+    flex-grow: 1; /* 남은 공간 모두 차지 */
+    padding: 16px;
+    overflow-y: auto; /* 내용 많을 시 스크롤 */
+    background-color: #f9f9f9; /* 채팅 내용 영역 배경색 */
+}
+
+/* 예시 채팅 메시지 스타일 */
+.chatMessage {
+    margin-bottom: 12px;
+    display: flex;
+}
+.userMessage {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 18px 18px 4px 18px;
+    max-width: 70%;
+    margin-left: auto; /* 오른쪽 정렬 */
+    word-wrap: break-word;
+}
+.botMessage {
+    background-color: #e9ecef;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 18px 18px 18px 4px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+
+.chatDialogFooter {
+    padding: 12px 16px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #ffffff; /* 푸터 배경색 */
+    display: flex;
+    align-items: center;
+}
+
+.chatInput {
+    flex-grow: 1;
+    padding: 10px 12px;
+    border: 1px solid #d0d0d0;
+    border-radius: 20px; /* 둥근 입력창 */
+    margin-right: 10px;
+    font-size: 0.9rem;
+    outline: none; /* 포커스 시 기본 아웃라인 제거 */
+}
+
+.chatInput:focus {
+    border-color: #007bff; /* 포커스 시 테두리 색상 */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); /* 포커스 시 그림자 효과 */
+}
+
+.sendButton {
+    padding: 10px 18px;
+    background-color: #007bff; /* 전송 버튼 배경색 */
+    color: white;
+    border: none;
+    border-radius: 20px; /* 둥근 버튼 */
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease; /* 부드러운 색상 변경 */
+}
+
+.sendButton:hover {
+    background-color: #0056b3; /* 호버 시 버튼 배경색 변경 */
+}

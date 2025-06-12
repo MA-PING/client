@@ -14,17 +14,13 @@ async function getCharacter(name: string): Promise<ApiResponse | null> {
                 revalidate: 180000, // 2분
             },
         });
-
         if (!response.ok) {
             return null;
         }
-
-
         const data: ApiResponse = await response.json();
         if (!data || !data.data) {
             return null;
         }
-
         return data;
     } catch (error) {
         console.error('캐릭터 정보 가져오기 오류:', error);

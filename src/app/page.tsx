@@ -3,7 +3,6 @@ import Image from 'next/image';
 import styles from '../styles/home.header.module.css';
 import PatchNotice from '@/component/home/patchNote';
 import APIContents1 from "@/component/home/APIContents";
-import FloatingButton from "@/component/FloatingButton";
 import Banner from "@/component/home/banner";
 
 interface PatchNote {
@@ -44,7 +43,6 @@ export default async function Home() {
       <Banner/>
       <APIContents1/>
       <PatchNotice patchNotes={patchNotes}/>
-      <FloatingButton />
   </div>
     );
 }
