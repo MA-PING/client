@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from '../styles/FloatingButton.module.css'; // CSS Modules 사용
 import { usePathname } from "next/navigation";
 import { useState } from 'react';
-import ChatDialog from "@/component/chat/ChatDialog";
+// import ChatDialog from "@/component/chat/ChatDialog";
 import ChatBot from "@/component/chat/chatBot"; // useState 훅 임포트
 
 const FloatingButton: NextPage = () => {
