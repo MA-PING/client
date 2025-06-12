@@ -1,7 +1,7 @@
 import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '../../styles/search/item.module.css';
-import type {ItemEquipment, ItemEquipmentInfo, AndroidEquipment} from "@/interfaces/character";
+import type {ItemEquipment, ItemEquipmentInfo, AndroidEquipment, ItemEquipmentTitle} from "@/interfaces/character";
 import {useState} from "react";
 import ItemInfo from "@/component/search/itemInfo";
 import TitleInfo from "@/component/search/titleInfo";
@@ -15,7 +15,7 @@ interface WrapEquipmentProps {
 
 const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
     const item_equipment: ItemEquipmentInfo[] = item.item_equipment;
-    const title = item.title;
+    const title: ItemEquipmentTitle = item.title;
     const itemIconMap = new Map<string, string>();
     for (const item of item_equipment) {
         itemIconMap.set(item.item_equipment_slot, item.item_icon);
@@ -101,7 +101,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                         )}
                     </div>
                     <div className={styles.equipmentAtomic}>
-                        {title.title_name !== undefined ?
+                        {title && title.title_name !== undefined ?
                             <Image
                                 className={styles.imgRing01}
                                 onClick={() => handleItemTabClick("칭호")}
