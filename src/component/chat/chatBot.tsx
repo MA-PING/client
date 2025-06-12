@@ -3,29 +3,29 @@ import Image from "next/image";
 import styles from '@/styles/chat/chatBot.module.css';
 import Button from "@mui/material/Button";
 import {useState} from "react";
-import {ApiResponse} from "@/interfaces/character";
-
-async function getNoLoginChatMessage(data: string): Promise<ApiResponse | null> {
-    try {
-
-        const response = await fetch('https://api.ma-ping.com/api/v1/ai/chat/stream/guest', {
-            next: {
-                revalidate: 0, // 2분
-            },
-        });
-        if (!response.ok) {
-            return null;
-        }
-        const data: ApiResponse = await response.json();
-        if (!data || !data.data) {
-            return null;
-        }
-        return data;
-    } catch (error) {
-        console.error('캐릭터 정보 가져오기 오류:', error);
-        return null;
-    }
-}
+// import {ApiResponse} from "@/interfaces/character";
+//
+// async function getNoLoginChatMessage(data: string): Promise<ApiResponse | null> {
+//     try {
+//
+//         const response = await fetch('https://api.ma-ping.com/api/v1/ai/chat/stream/guest', {
+//             next: {
+//                 revalidate: 0, // 2분
+//             },
+//         });
+//         if (!response.ok) {
+//             return null;
+//         }
+//         const data: ApiResponse = await response.json();
+//         if (!data || !data.data) {
+//             return null;
+//         }
+//         return data;
+//     } catch (error) {
+//         console.error('캐릭터 정보 가져오기 오류:', error);
+//         return null;
+//     }
+// }
 
 interface ChatBotProps {
     onClose: () => void

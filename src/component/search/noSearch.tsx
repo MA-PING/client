@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '@/styles/search/noSearch.module.css';
-import Form from "next/form";
+import Search from "@/component/Search";
 
 
 const NoSearch:NextPage = () => {
@@ -9,13 +9,14 @@ const NoSearch:NextPage = () => {
         <div className={styles.apiX}>
             <div className={styles.wrapSearchj}>
                 <div className={styles.apiKey}>API Key를 입력하지 않아도 찾으시는 캐릭터를 검색할 수 있어요.</div>
-                <Form className={styles.search} action="/character/">
-                    <div className={styles.icon}>
-                        <Image className={styles.iconChild} fill alt="" src="/icons/Group 1.svg" />
-                    </div>
-                    {/*<div className={styles.div}>내용을 입력해주세요</div>*/}
-                    <input className={styles.div} type="text" placeholder="내용을 입력해주세요"/>
-                </Form>
+                {/*<Form className={styles.search} action="/character/">*/}
+                {/*    <div className={styles.icon}>*/}
+                {/*        <Image className={styles.iconChild} fill alt="" src="/icons/Group 1.svg" />*/}
+                {/*    </div>*/}
+                {/*    /!*<div className={styles.div}>내용을 입력해주세요</div>*!/*/}
+                {/*    <input className={styles.div} type="text" placeholder="내용을 입력해주세요"/>*/}
+                {/*</Form>*/}
+                <Search/>
             </div>
             <div className={styles.divider}>
                 <Image className={styles.dividerIcon} width={215} height={1} alt="" src="/icons/divider_item.svg" />

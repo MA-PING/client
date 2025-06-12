@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '../../styles/home/banner.module.css';
+import Search from "@/component/Search";
 
 
 const Banner:NextPage = () => {
@@ -23,10 +24,11 @@ const Banner:NextPage = () => {
                     </div>
                 </div>
                 <div className={styles.wrap}>
-                    <div className={styles.search}>
-                        <Image className={styles.icon} width={24} height={24} alt="" src="icons/Group 1.svg" />
-                        <div className={styles.div1}>캐릭터 이름을 검색해 주세요</div>
-                    </div>
+                    {/*<div className={styles.search}>*/}
+                    {/*    <Image className={styles.icon} width={24} height={24} alt="" src="icons/Group 1.svg" />*/}
+                    {/*    <div className={styles.div1}>캐릭터 이름을 검색해 주세요</div>*/}
+                    {/*</div>*/}
+                    <Search/>
                     <div className={styles.ai}>
                         <div className={styles.ai1}>메이 AI 추천 질문</div>
                         <div className={styles.wrapRecommend}>
