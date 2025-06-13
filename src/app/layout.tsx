@@ -60,6 +60,7 @@ export default function RootLayout({
       <body>
         <div id='wrapper'>
           {children}
+          <div id="portal-root" />
         </div>
         <Footer/>
         <FloatingButton />
