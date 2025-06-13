@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useRouter } from 'next/navigation';
 import styles from '@/styles/Search.module.css';
 import {useRef, useState} from "react";
-import SearchPortal from "@/component/SearchPortal";
 import Portal from "@/component/Portal";
 
 
