@@ -34,7 +34,7 @@ const Search:NextPage = () => {
         const rect = searchRef.current.getBoundingClientRect();
         return {
             // window.scrollY를 더해 스크롤 위치를 보정합니다.
-            top: `${rect.bottom + window.scrollY}px`, // 8px 간격
+            top: `${rect.bottom + window.scrollY }px`, // 8px 간격
             left: `${rect.left + window.scrollX}px`,
             width: `${rect.width}px`,
         };
