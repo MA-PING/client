@@ -3,98 +3,146 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
+import { useState, useEffect, useRef } from "react";
 import styles from '@/styles/Search.module.css';
-import {useRef, useState} from "react";
 import Portal from "@/component/Portal";
 
+// 캐릭터 데이터 타입 (기존과 동일)
+interface Character {
+    nickname: string;
+    world: string;
+    className: string;
+    image: string;
+    level: number;
+}
 
-const Search:NextPage = () => {
+const Search: NextPage = () => {
+    // state 및 ref 선언 (기존과 동일)
     const [inputValue, setInputValue] = useState('');
-    // [1] 모달의 표시 여부를 관리하는 state 추가
     const [isModalOpen, setIsModalOpen] = useState(false);
-    // [2] 검색창의 위치와 크기를 얻기 위한 ref 추가
-    const searchRef = useRef<HTMLDivElement>(null);
+    const [recentSearches, setRecentSearches] = useState<Character[]>([]);
     const router = useRouter();
+    const searchBarRef = useRef<HTMLDivElement>(null);
+    const modalRef = useRef<HTMLDivElement>(null);
+    const [modalStyle, setModalStyle] = useState({});
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter' && inputValue.trim() !== '') {
-            router.push(`/character/${encodeURIComponent(inputValue)}`);
-        }
-    };
+    // 모달 위치 계산 및 Click Outside 로직 (기존과 동일)
+    useEffect(() => {
+        const updateModalPosition = () => { if (searchBarRef.current) { const rect = searchBarRef.current.getBoundingClientRect(); setModalStyle({ position: 'absolute', top: `${rect.bottom + window.scrollY + 4}px`, left: `${rect.left + window.scrollX}px`, width: `${rect.width}px` }); } };
+        if (isModalOpen) { updateModalPosition(); window.addEventListener('resize', updateModalPosition); window.addEventListener('scroll', updateModalPosition, true); }
+        return () => { window.removeEventListener('resize', updateModalPosition); window.removeEventListener('scroll', updateModalPosition, true); };
+    }, [isModalOpen]);
 
-    const searchClassName = `${styles.search} ${
-        inputValue.trim() !== '' ? styles.searchActive : ''
-    }`;
-
-    // [3] 모달을 동적으로 위치시키기 위한 스타일 객체
-    const getModalStyle = () => {
-        if (!searchRef.current) {
-            return { display: 'none' };
-        }
-        const rect = searchRef.current.getBoundingClientRect();
-        return {
-            // window.scrollY를 더해 스크롤 위치를 보정합니다.
-            top: `${rect.bottom + window.scrollY }px`, // 8px 간격
-            left: `${rect.left + window.scrollX}px`,
-            width: `${rect.width}px`,
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as Node;
+            if (searchBarRef.current && !searchBarRef.current.contains(target) && modalRef.current && !modalRef.current.contains(target)) { setIsModalOpen(false); }
         };
+        if (isModalOpen) { document.addEventListener('mousedown', handleClickOutside); }
+        return () => { document.removeEventListener('mousedown', handleClickOutside); };
+    }, [isModalOpen]);
+
+    // localStorage 데이터 로딩 (기존과 동일)
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            try {
+                const savedStateJSON = localStorage.getItem('maple-search-state');
+                if (savedStateJSON) { const savedState = JSON.parse(savedStateJSON); if (savedState && Array.isArray(savedState.recent)) { setRecentSearches(savedState.recent); } }
+            } catch (error) { console.error("Failed to parse state from localStorage", error); }
+        }
+    }, []);
+
+    // // localStorage 데이터 저장 함수 (기존과 동일)
+    // const addRecentSearch = (character: Character) => {
+    //     const filteredSearches = recentSearches.filter(c => c.nickname !== character.nickname);
+    //     const newRecentSearches = [character, ...filteredSearches].slice(0, 5);
+    //     setRecentSearches(newRecentSearches);
+    //     if (typeof window !== 'undefined') {
+    //         try { const newState = { recent: newRecentSearches }; localStorage.setItem('maple-search-state', JSON.stringify(newState)); } catch (error) { console.error("Failed to save state to localStorage", error); }
+    //     }
+    // };
+
+    // [추가] 최근 검색어 삭제 함수
+    const handleDeleteRecent = (nicknameToDelete: string) => {
+        const newRecentSearches = recentSearches.filter(
+            (char) => char.nickname !== nicknameToDelete
+        );
+        setRecentSearches(newRecentSearches);
+        if (typeof window !== 'undefined') {
+            try { const newState = { recent: newRecentSearches }; localStorage.setItem('maple-search-state', JSON.stringify(newState)); } catch (error) { console.error("Failed to save state to localStorage", error); }
+        }
     };
+
+    // Form Submit 핸들러 (기존과 동일)
+    const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const nickname = inputValue.trim();
+        if (nickname !== '') {
+            // const dummyCharacter: Character = {
+            //     nickname: nickname, world: '스카니아', className: '패스파인더',
+            //     image: 'https://open.api.nexon.com/static/maplestory/character/look/IEHJAGKABEEOEMNEFJPAHIEJMOOCCCLCCHOEGJKFFGJCGPHMKNNFDEKMBDPICEKOLBNIAKHJNMIOGPAECKDCHIJLGIGABOPNDKPKJMFAHFMJKODHKNFIJFGECHPINNIJBPCBBJKIGOLDBGKIOOABGCAHJOMLMLJNIKINGCENFBPJFBILHPGCFENCBKIAGNNNJPJEIGMAANLABMPLMOOCNIKAEMIDKPCEMCHLIHEHKHFFAFHJNGEEMCLEOFPPIOPE',
+            //     level: 275
+            // };
+            // addRecentSearch(dummyCharacter);
+            router.push(`/c/${encodeURIComponent(nickname)}`);
+        }
+    };
+
+    const isActive = inputValue.trim() !== '' || isModalOpen;
+    const searchBarClassName = `${styles.searchBar} ${isActive ? styles.searchBarActive : ''}`;
 
     return (
-        <div className={styles.statusnoRecordSizelarge}>
-            <div
-                ref={searchRef}
-                 className={searchClassName}
-                 onFocus={() => setIsModalOpen(true)}
-                 onBlur={() => setIsModalOpen(false)}
-            >
-                <div className={styles.icon}>
-                    <Image
-                        className={styles.iconChild}
-                        width={17.6}
-                        height={17.6}
-                        sizes="100vw"
-                        alt="search icon"
-                        src="/icons/Group 1.svg"
-                    />
+        <div className={styles.container}>
+            {isActive && <div className={styles.halo} />}
+            <form className={styles.searchForm} onSubmit={handleFormSubmit}>
+                <div ref={searchBarRef} className={searchBarClassName}>
+                    <div className={styles.iconWrapper}><Image fill sizes="100vw" alt="search icon" src="/icons/Group 1.svg" /></div>
+                    <input className={styles.inputField} type="text" placeholder="내용을 입력해주세요" value={inputValue} onChange={(e) => setInputValue(e.target.value)} onFocus={() => setIsModalOpen(true)} />
                 </div>
-                <input
-                    className={styles.inputField} // CSS 클래스 이름을 명확하게 변경 (styles.div -> styles.inputField)
-                    type="text"
-                    placeholder="내용을 입력해주세요"
-                    value={inputValue} // state와 input 값 동기화
-                    onChange={(e) => setInputValue(e.target.value)} // 입력값이 변경될 때마다 state 업데이트
-                    onKeyDown={handleKeyDown} // 키를 누를 때마다 함수 실행
-                />
-            </div>
+            </form>
+
             {isModalOpen && (
                 <Portal>
-                    <div style={getModalStyle()} className={styles.resultModal}>
-                        <div className={styles.characterNoData}>
-                            <div className={styles.characterMaping}>
-                                <Image className={styles.mapingIcon} width={119.8} height={88.8} sizes="100vw" alt="" src="/icons/chatbot.svg" />
+                    <div ref={modalRef} style={modalStyle} className={styles.modal}>
+                        {recentSearches.length > 0 ? (
+                            <div className={styles.wrapRecent}>
+                                {recentSearches.map((char) => (
+                                    <div key={char.nickname} className={styles.searchAtomic}>
+                                        <div className={styles.wrapCharacterInfo} onMouseDown={() => router.push(`/c/${char.nickname}`)}>
+                                            <Image className={styles.characterProfileIcon} width={48} height={48} alt={char.nickname} src={char.image} />
+                                            <div className={styles.wrapInfo}>
+                                                <div className={styles.info}>
+                                                    <Image className={styles.icon} width={18} height={18} alt={char.world} src={"/icons/server/" + char.world + ".png"} />
+                                                    <div className={styles.div}>{char.nickname}</div>
+                                                </div>
+                                                <div className={styles.lv280}>LV. {char.level} | {char.className}</div>
+                                            </div>
+                                        </div>
+                                        <div className={styles.wrapIcon}>
+                                            <button type="button" className={styles.button} title="즐겨찾기">
+                                                <div className={styles.icon1}><Image fill alt="즐겨찾기" src="/icons/heart.svg" /></div>
+                                            </button>
+                                            <button type="button" className={styles.button1} title="삭제" onMouseDown={(e) => { e.stopPropagation(); handleDeleteRecent(char.nickname); }}>
+                                                <div className={styles.icon1}><Image fill alt="삭제" src="/icons/cancel.svg" /></div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                            <div className={styles.div1}>
-                                <p className={styles.p}>최근에 검색해본 유저가 없어요.</p>
-                                <p className={styles.p}>어떤 유저의 정보가 궁금하신가요?</p>
+                        ) : (
+                            // 기존 "최근 검색어 없음" UI
+                            <div className={styles.modalContent}>
+                                <div className={styles.imageWrapper}>
+                                    <Image className={styles.mapingIcon} fill sizes="100vw" alt="Mapping Illustration" src="/icons/Maping.png" />
+                                </div>
+                                <div className={styles.textWrapper}><p>최근에 검색해본 유저가 없어요.</p><p>어떤 유저의 정보가 궁금하신가요?</p></div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </Portal>
             )}
-            {/*<div className={styles.result}>*/}
-            {/*    <div className={styles.characterNoData}>*/}
-            {/*        <div className={styles.characterMaping}>*/}
-            {/*            <Image className={styles.mapingIcon} width={119.8} height={88.8} sizes="100vw" alt="" src="/icons/Maping.png" />*/}
-            {/*        </div>*/}
-            {/*        <div className={styles.div1}>*/}
-            {/*            <p className={styles.p}>최근에 검색해본 유저가 없어요.</p>*/}
-            {/*            <p className={styles.p}>어떤 유저의 정보가 궁금하신가요?</p>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            <div className={styles.halo} />
-        </div>);
+        </div>
+    );
 };
 
 export default Search;

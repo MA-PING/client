@@ -3,7 +3,7 @@
 import type {NextPage} from 'next';
 import styles from "@/styles/search/character.module.css";
 import TotalStat from "@/component/search/CharacterTotalStat";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {
     Stat,
     Character,
@@ -17,11 +17,51 @@ import Union from "@/component/search/union";
 import Artifact from "@/component/search/artifact";
 import Symbol from "@/component/search/symbole";
 import Skill from "@/component/search/skill";
+
 interface DetailsProps {
     character: Character
 }
-
+interface recentCharacter {
+    nickname: string;
+    world: string;
+    className: string;
+    image: string;
+    level: number;
+}
 const Details: NextPage<DetailsProps> = ({character}) => {
+    useEffect(() => {
+        // character 데이터나 basic 정보가 없으면 실행하지 않습니다.
+        if (!character || !character.basic) {
+            return;
+        }
+
+        const newCharacterToSave: recentCharacter = {
+            nickname: character.basic.character_name,
+            world: character.basic.world_name,
+            className: character.basic.character_class,
+            image: character.basic.character_image,
+            level: character.basic.character_level,
+        };
+
+        try {
+            const savedStateJSON = localStorage.getItem('maple-search-state');
+            const recentSearches: recentCharacter[] = savedStateJSON ? JSON.parse(savedStateJSON).recent || [] : [];
+
+            const filteredSearches = recentSearches.filter(
+                c => c.nickname !== newCharacterToSave.nickname
+            );
+
+            const newRecentSearches = [newCharacterToSave, ...filteredSearches].slice(0, 5); // 최대 5개 유지
+
+            const newState = { recent: newRecentSearches };
+            localStorage.setItem('maple-search-state', JSON.stringify(newState));
+
+        } catch (error) {
+            console.error("Failed to save character to localStorage", error);
+        }
+
+    }, [character]);
+
     const Stat: Stat = character.stat;
     const Ability: Ability = character.ability;
     const HyperStat: HyperStat = character.hyperStat;

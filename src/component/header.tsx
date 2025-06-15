@@ -7,6 +7,7 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 import { useMediaQuery } from 'react-responsive'
 import {useEffect, useState} from "react";
+import Search from "@/component/Search";
 
 
 const Header:NextPage = () => {
@@ -50,9 +51,9 @@ const Header:NextPage = () => {
                     </div>
                     {isDesktopOrLaptop &&
                         <div className={styles.search}>
-                            <Image className={styles.icon1} width={16} height={16} alt="" src="/icons/Group 1.svg" />
-                            <div className={styles.div4}>내용을 입력해주세요</div>
+                            <Search/>
                         </div>
+
                     }
                 </div>
             }

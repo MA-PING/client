@@ -12,7 +12,7 @@ import FloatingButton from "@/component/FloatingButton";
 // })
 
 export const metadata: Metadata = {
-  title: "MA-PING",
+  title: "MA-PING : 나에게 딱 맞는 메이플 길라잡이",
   description: "MA-PING : 나에게 딱 맞는 메이플 길라잡이 메이핑",
     metadataBase: new URL('https://ma-ping.com'),
 
@@ -54,7 +54,6 @@ export default function RootLayout({
     <html lang="ko">
     <head>
         <script type="text/javascript" src="https://openapi.nexon.com/js/analytics.js?app_id=139195" async></script>
-        <title>MA-PING : 나에게 딱 맞는 메이플 길라잡이</title>
         <link rel="stylesheet" as="style" crossOrigin="anonymous" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     </head>
       <body>
