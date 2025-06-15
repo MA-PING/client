@@ -44,7 +44,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
         };
 
         try {
-            const savedStateJSON = localStorage.getItem('maple-search-state');
+            const savedStateJSON = localStorage.getItem('recentSearches');
             const recentSearches: recentCharacter[] = savedStateJSON ? JSON.parse(savedStateJSON).recent || [] : [];
 
             const filteredSearches = recentSearches.filter(
@@ -54,7 +54,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
             const newRecentSearches = [newCharacterToSave, ...filteredSearches].slice(0, 5); // 최대 5개 유지
 
             const newState = { recent: newRecentSearches };
-            localStorage.setItem('maple-search-state', JSON.stringify(newState));
+            localStorage.setItem('recentSearches', JSON.stringify(newState));
 
         } catch (error) {
             console.error("Failed to save character to localStorage", error);

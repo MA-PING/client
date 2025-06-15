@@ -42,25 +42,16 @@ const Search: NextPage = () => {
         return () => { document.removeEventListener('mousedown', handleClickOutside); };
     }, [isModalOpen]);
 
-    // localStorage 데이터 로딩 (기존과 동일)
+    // localStorage 데이터 로딩
     useEffect(() => {
         if (typeof window !== 'undefined') {
             try {
-                const savedStateJSON = localStorage.getItem('maple-search-state');
+                const savedStateJSON = localStorage.getItem('recentSearches');
                 if (savedStateJSON) { const savedState = JSON.parse(savedStateJSON); if (savedState && Array.isArray(savedState.recent)) { setRecentSearches(savedState.recent); } }
             } catch (error) { console.error("Failed to parse state from localStorage", error); }
         }
     }, []);
 
-    // // localStorage 데이터 저장 함수 (기존과 동일)
-    // const addRecentSearch = (character: Character) => {
-    //     const filteredSearches = recentSearches.filter(c => c.nickname !== character.nickname);
-    //     const newRecentSearches = [character, ...filteredSearches].slice(0, 5);
-    //     setRecentSearches(newRecentSearches);
-    //     if (typeof window !== 'undefined') {
-    //         try { const newState = { recent: newRecentSearches }; localStorage.setItem('maple-search-state', JSON.stringify(newState)); } catch (error) { console.error("Failed to save state to localStorage", error); }
-    //     }
-    // };
 
     // [추가] 최근 검색어 삭제 함수
     const handleDeleteRecent = (nicknameToDelete: string) => {
@@ -69,7 +60,7 @@ const Search: NextPage = () => {
         );
         setRecentSearches(newRecentSearches);
         if (typeof window !== 'undefined') {
-            try { const newState = { recent: newRecentSearches }; localStorage.setItem('maple-search-state', JSON.stringify(newState)); } catch (error) { console.error("Failed to save state to localStorage", error); }
+            try { const newState = { recent: newRecentSearches }; localStorage.setItem('recentSearches', JSON.stringify(newState)); } catch (error) { console.error("Failed to save state to localStorage", error); }
         }
     };
 
@@ -78,12 +69,6 @@ const Search: NextPage = () => {
         e.preventDefault();
         const nickname = inputValue.trim();
         if (nickname !== '') {
-            // const dummyCharacter: Character = {
-            //     nickname: nickname, world: '스카니아', className: '패스파인더',
-            //     image: 'https://open.api.nexon.com/static/maplestory/character/look/IEHJAGKABEEOEMNEFJPAHIEJMOOCCCLCCHOEGJKFFGJCGPHMKNNFDEKMBDPICEKOLBNIAKHJNMIOGPAECKDCHIJLGIGABOPNDKPKJMFAHFMJKODHKNFIJFGECHPINNIJBPCBBJKIGOLDBGKIOOABGCAHJOMLMLJNIKINGCENFBPJFBILHPGCFENCBKIAGNNNJPJEIGMAANLABMPLMOOCNIKAEMIDKPCEMCHLIHEHKHFFAFHJNGEEMCLEOFPPIOPE',
-            //     level: 275
-            // };
-            // addRecentSearch(dummyCharacter);
             router.push(`/c/${encodeURIComponent(nickname)}`);
         }
     };
