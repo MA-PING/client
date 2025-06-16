@@ -18,7 +18,9 @@ function abilityGrade(grade: string): string {
         return styles.atomic4;
 }
 const AbilityPreset: NextPage<AbilityPresetProps> = ({ability}) => {
-
+    if(ability[0] === undefined){
+        return <></>
+    }
     return (
         <div className={styles.preset}>
             <div className={abilityGrade(ability[0].ability_grade)}>
