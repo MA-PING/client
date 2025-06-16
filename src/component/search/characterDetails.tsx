@@ -22,7 +22,7 @@ interface DetailsProps {
     character: Character
 }
 interface recentCharacter {
-    nickname: string;
+    characterName: string;
     world: string;
     className: string;
     image: string;
@@ -36,7 +36,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
         }
 
         const newCharacterToSave: recentCharacter = {
-            nickname: character.basic.character_name,
+            characterName: character.basic.character_name,
             world: character.basic.world_name,
             className: character.basic.character_class,
             image: character.basic.character_image,
@@ -48,7 +48,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
             const recentSearches: recentCharacter[] = savedStateJSON ? JSON.parse(savedStateJSON).recent || [] : [];
 
             const filteredSearches = recentSearches.filter(
-                c => c.nickname !== newCharacterToSave.nickname
+                c => c.characterName !== newCharacterToSave.characterName
             );
 
             const newRecentSearches = [newCharacterToSave, ...filteredSearches].slice(0, 5); // 최대 5개 유지
