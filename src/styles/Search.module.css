@@ -170,7 +170,7 @@
 .searchAtomic {
     flex: 1;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -180,11 +180,28 @@
     cursor: pointer;
     transition: background-color 0.2s;
 }
+.searchAtomicHeader {
+    width: 100%;
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 16px;
+    color: rgba(14, 15, 20, 0.9);
+    transition: background-color 0.2s;
+}
 
 .searchAtomic:hover {
     background-color: #f7f7fa;
 }
-
+.searchAtomicHeader:hover {
+    background-color: #f7f7fa;
+}
 /* 캐릭터 정보 부분 (왼쪽) */
 .wrapCharacterInfo {
     flex: 1;

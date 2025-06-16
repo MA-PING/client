@@ -233,7 +233,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
     const searchBarClassName = `${searchBarHeader} ${isActive ? styles.searchBarActive : ''}`;
 
     const renderCharacterItem = (char: Character, isRecent: boolean) => (
-        <div key={char.characterName} className={styles.searchAtomic}>
+        <div key={char.characterName} className={header ? styles.searchAtomicHeader : styles.searchAtomic}>
             <div className={styles.wrapCharacterInfo} onMouseDown={() => handleSelectCharacter(char)}>
                 <Image className={styles.characterProfileIcon} width={48} height={48} alt={char.characterName}
                        src={char.image || '/default-image.png'} unoptimized/>
