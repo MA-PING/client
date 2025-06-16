@@ -16,7 +16,7 @@ const NoSearch:NextPage = () => {
                 {/*    /!*<div className={styles.div}>내용을 입력해주세요</div>*!/*/}
                 {/*    <input className={styles.div} type="text" placeholder="내용을 입력해주세요"/>*/}
                 {/*</Form>*/}
-                <Search/>
+                <Search header={false}/>
             </div>
             <div className={styles.divider}>
                 <Image className={styles.dividerIcon} width={215} height={1} alt="" src="/icons/divider_item.svg" />

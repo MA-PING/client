@@ -149,15 +149,14 @@
 .container {
     margin: 0 !important;
     position: relative;
-    top: 9.5px;
     /*left: 523px;*/
-    height: 37px;
+    height: 40px;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     text-align: left;
-    gap: 32px;
+    /*gap: 32px;*/
     z-index: 2;
 }
 .header {

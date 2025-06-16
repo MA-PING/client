@@ -51,7 +51,7 @@ const Header:NextPage = () => {
                     </div>
                     {isDesktopOrLaptop &&
                         <div className={styles.search}>
-                            <Search/>
+                            <Search header={true}/>
                         </div>
 
                     }

@@ -51,7 +51,7 @@ const Details: NextPage<DetailsProps> = ({character}) => {
                 c => c.characterName !== newCharacterToSave.characterName
             );
 
-            const newRecentSearches = [newCharacterToSave, ...filteredSearches].slice(0, 5); // 최대 5개 유지
+            const newRecentSearches = [newCharacterToSave, ...filteredSearches].slice(0, 10); // 최대 5개 유지
 
             const newState = { recent: newRecentSearches };
             localStorage.setItem('recentSearches', JSON.stringify(newState));
