@@ -17,7 +17,6 @@ const UnionEffect: NextPage<UnionEffectProps> = ({union, unionRaider}) => {
     const handleUnionTabClick = (tabName: number) => {
         setActiveUnionTab(tabName);
     };
-    console.log(unionRaider)
     return (
         <div className={styles.div11}>
             <div className={styles.wrap1}>

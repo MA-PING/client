@@ -18,10 +18,15 @@ const Union: NextPage<UnionProps> = ({union, unionRaider}) => {
     const handleUnionTabClick = (tabName: number) => {
         setActiveUnionTab(tabName);
     };
+
     return (
         <div className={styles.div}>
             <div className={styles.wrap}>
-                <UnionInnerStat/>
+                {activeUnionTab === 1 && <UnionInnerStat unionBlock={unionRaider.union_raider_preset_1?.union_block}/>}
+                {activeUnionTab === 2 && <UnionInnerStat unionBlock={unionRaider.union_raider_preset_2?.union_block}/>}
+                {activeUnionTab === 3 && <UnionInnerStat unionBlock={unionRaider.union_raider_preset_3?.union_block}/>}
+                {activeUnionTab === 4 && <UnionInnerStat unionBlock={unionRaider.union_raider_preset_4?.union_block}/>}
+                {activeUnionTab === 5 && <UnionInnerStat unionBlock={unionRaider.union_raider_preset_5?.union_block}/>}
                 <div className={styles.tabNum}>
                     <div className={styles.tab}>
                         <button className={activeUnionTab === 1 ? styles.tabAtomic : styles.tabAtomic1}
