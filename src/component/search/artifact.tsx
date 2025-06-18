@@ -204,7 +204,7 @@ const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
                             </div>
                             <div className={styles.wrap}>
                                 <Image className={styles.iconcircleNegative} width={24} height={24} alt="" src="/icons/x.svg" />
-                                <div className={styles.div}>발록</div>
+                                <div className={styles.div2}>발록</div>
                             </div>
                         </div>
                     }

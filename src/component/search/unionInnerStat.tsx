@@ -10,7 +10,40 @@ interface UnionInnerStatProps {
 
 const UnionInnerStat: NextPage<UnionInnerStatProps> = ({unionBlock}) => {
     if (!unionBlock || unionBlock.length === 0) {
-        return <Image className={styles.lineIcon} width={352} height={320} sizes="100vw" alt="" src="/icons/line.svg"/>;
+        return (<div className={styles.container}>
+            <Image className={styles.lineIcon} width={352} height={320} sizes="100vw" alt="" src="/icons/line.svg"/>
+            <div className={styles.gridNo}/>
+            <div className={styles.property1hide}>
+                <div className={styles.div}>공격력</div>
+                <div className={styles.mp}>MP</div>
+                <div className={styles.dex}>DEX</div>
+                <div className={styles.div1}>마력</div>
+                <div className={styles.div2}>버프지속시간</div>
+                <div className={styles.div3}>상태이상내성</div>
+                <div className={styles.div4}>일반데미지</div>
+                <div className={styles.div5}>획득경험치</div>
+                <div className={styles.hp}>HP</div>
+                <div className={styles.luk}>LUK</div>
+                <div className={styles.str}>STR</div>
+                <div className={styles.int}>INT</div>
+                <div className={styles.div6}>
+                    <p className={styles.p}>크리티컬</p>
+                    <p className={styles.p}>데미지</p>
+                </div>
+                <div className={styles.div7}>
+                    <p className={styles.p}>보스</p>
+                    <p className={styles.p}>공격력</p>
+                </div>
+                <div className={styles.div8}>
+                    <p className={styles.p}>크리티컬</p>
+                    <p className={styles.p}>확률</p>
+                </div>
+                <div className={styles.div9}>
+                    <p className={styles.p}>방어율</p>
+                    <p className={styles.p}>무시</p>
+                </div>
+            </div>
+        </div>);
     }
     // 1. 좌표를 추출하고 변환합니다.
     const adjustedPositions = unionBlock.flatMap(block =>

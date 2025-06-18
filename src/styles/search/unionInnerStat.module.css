@@ -165,7 +165,13 @@
     /* gap을 주면 뒤에 있는 lineIcon이 보이게 됩니다. */
     /* gap: 1px; */
 }
+.gridNo {
+    display: grid;
+    grid-template-columns: repeat(22, 1fr);
+    grid-template-rows: repeat(20, 1fr);
 
+    background-color: #0E0F14E6;
+}
 .gridOrange {
     background-color: #C98018;
 }
@@ -176,6 +182,7 @@
 .canvas,
 .lineIcon,
 .grid,
+.gridNo,
 .property1hide {
     position: absolute;
     top: 0;
@@ -191,7 +198,8 @@
 .lineIcon {
     z-index: 3;
 }
-.grid {
+.grid,
+.gridNo {
     z-index: 2;
 }
 .property1hide {
