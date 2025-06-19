@@ -83,6 +83,19 @@ function formatNumberToKorean(numString: string): string {
 }
 
 const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
+    let ability = 0;
+    let hyperStat = '0';
+    if (!HyperStat) {
+        hyperStat = '0'
+    }else{
+        hyperStat = HyperStat.use_preset_no;
+    }
+    if(!Ability){
+        ability = 0;
+    }else{
+        ability = Ability.preset_no;
+    }
+
     // 컴포넌트가 클라이언트에 마운트되었는지 추적하는 상태
     const [isClient, setIsClient] = useState(false);
 
@@ -96,13 +109,13 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
         setIsClient(true);
     }, []); // 빈 의존성 배열은 마운트 시 1회 실행을 의미합니다.
 
-    const [activeAbilityTab, setActiveAbilityTab] = useState<number>(Ability.preset_no);
+    const [activeAbilityTab, setActiveAbilityTab] = useState<number>(ability);
 
     const handleAbilityTabClick = (tabName: number) => {
         setActiveAbilityTab(tabName);
     };
 
-    const [activeStatTab, setActiveStatTab] = useState<number>(parseInt(HyperStat.use_preset_no));
+    const [activeStatTab, setActiveStatTab] = useState<number>(parseInt(hyperStat));
 
     const handleStatTabClick = (tabName: number) => {
         setActiveStatTab(tabName);
@@ -128,7 +141,8 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
             </div>
             {isClient && isDesktopOrLaptop &&
                 <div className={styles.wrapPreset}>
-                    <div className={styles.presetAbility}>
+                    {activeAbilityTab !== 0 &&
+                        <div className={styles.presetAbility}>
                         <div className={styles.tabSmallVertical}>
                             <div className={styles.tab}>
                                 <button
@@ -154,8 +168,9 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                         {activeAbilityTab === 1 && <AbilityPreset ability={Ability.ability_preset_1.ability_info}/>}
                         {activeAbilityTab === 2 && <AbilityPreset ability={Ability.ability_preset_2.ability_info}/>}
                         {activeAbilityTab === 3 && <AbilityPreset ability={Ability.ability_preset_3.ability_info}/>}
-                    </div>
-                    <div className={styles.presetAbility}>
+                    </div>}
+                    {activeStatTab !== 0 &&
+                        <div className={styles.presetAbility}>
                         <div className={styles.tabSmallVertical}>
                             <div className={styles.tab}>
                                 <button
@@ -181,12 +196,13 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                         {activeStatTab === 1 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_1}/>}
                         {activeStatTab === 2 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_2}/>}
                         {activeStatTab === 3 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_3}/>}
-                    </div>
+                    </div>}
                 </div>
             }
             {isClient && isMobile &&
                 <div className={styles.wrapPreset}>
-                    <div className={styles.presetAbility}>
+                    {activeAbilityTab !== 0 &&
+                        <div className={styles.presetAbility}>
                         {activeAbilityTab === 1 && <AbilityPreset ability={Ability.ability_preset_1.ability_info}/>}
                         {activeAbilityTab === 2 && <AbilityPreset ability={Ability.ability_preset_2.ability_info}/>}
                         {activeAbilityTab === 3 && <AbilityPreset ability={Ability.ability_preset_3.ability_info}/>}
@@ -212,8 +228,9 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                                 </button>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.presetAbility1}>
+                    </div>}
+                    {activeStatTab !== 0 &&
+                        <div className={styles.presetAbility1}>
                         {activeStatTab === 1 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_1}/>}
                         {activeStatTab === 2 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_2}/>}
                         {activeStatTab === 3 && <HyperPreset hyperStat={HyperStat.hyper_stat_preset_3}/>}
@@ -239,7 +256,7 @@ const TotalStat: NextPage<TotalStatProps> = ({Stat, Ability, HyperStat}) => {
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </div>}
                 </div>
             }
             {isClient && isDesktopOrLaptop &&

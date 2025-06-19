@@ -11,7 +11,7 @@ async function getCharacter(name: string): Promise<ApiResponse | null> {
 
         const response = await fetch('https://api.ma-ping.com/api/v1/character?characterName=' + name, {
             next: {
-                revalidate: 180000, // 2분
+                revalidate: 1000,
             },
         });
         if (!response.ok) {

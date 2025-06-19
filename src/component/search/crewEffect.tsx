@@ -1,9 +1,17 @@
-import type { NextPage } from 'next';
+import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '@/styles/search/crewEffect.module.css';
+import {UnionRaiderPreset} from "@/interfaces/character";
 
 
-const CrewEffect:NextPage = () => {
+interface CrewEffectProps {
+    unionRaider: UnionRaiderPreset | null;
+}
+
+const CrewEffect: NextPage<CrewEffectProps> = ({unionRaider}) => {
+    if(unionRaider === undefined){
+        return (<></>);
+    }
     return (
         <div className={styles.div}>
             <div className={styles.sss}>
@@ -13,7 +21,8 @@ const CrewEffect:NextPage = () => {
                 <div className={styles.container1}>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
-                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt="" src="img-character.png" />
+                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
+                                   src="img-character.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
@@ -23,7 +32,8 @@ const CrewEffect:NextPage = () => {
                     </div>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
-                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt="" src="img-character.png" />
+                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
+                                   src="img-character.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
@@ -33,7 +43,8 @@ const CrewEffect:NextPage = () => {
                     </div>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
-                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt="" src="img-character.png" />
+                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
+                                   src="img-character.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
@@ -50,7 +61,8 @@ const CrewEffect:NextPage = () => {
                 <div className={styles.container3}>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
-                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt="" src="img-character.png" />
+                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
+                                   src="img-character.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
@@ -67,7 +79,8 @@ const CrewEffect:NextPage = () => {
                 <div className={styles.container5}>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
-                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt="" src="img-character.png" />
+                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
+                                   src="img-character.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
@@ -84,7 +97,8 @@ const CrewEffect:NextPage = () => {
                 <div className={styles.container5}>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
-                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt="" src="img-character.png" />
+                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
+                                   src="img-character.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
@@ -101,7 +115,8 @@ const CrewEffect:NextPage = () => {
                 <div className={styles.container5}>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
-                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt="" src="img-character.png" />
+                            <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
+                                   src="img-character.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>

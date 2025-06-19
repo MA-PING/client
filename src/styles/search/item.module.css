@@ -37,6 +37,22 @@
     position: relative;
     gap: 10px;
 }
+.equipmentAtomicClick {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #f7f7fa;
+    border: 2px solid #b8c3ff;
+    box-sizing: border-box;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    gap: 10px;
+}
 .label1 {
     width: 43px;
     position: absolute;

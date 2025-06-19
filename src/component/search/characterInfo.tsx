@@ -15,7 +15,7 @@ const CharacterInfo: NextPage<CharacterInfoProps> = ({response}) => {
     const serverImage: string = "/icons/server/" + Character.basic.world_name + ".png"
 
     return (
-        <div className={styles.div}>
+        <div className={styles.div11}>
             <div className={styles.title}>
                 <div className={styles.div1}>캐릭터 정보</div>
             </div>

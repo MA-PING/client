@@ -30,7 +30,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
         <div className={styles.wrapEquipment}>
             <div className={styles.equipment}>
                 <div className={styles.wrapItem}>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "반지1" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("반지1") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -44,7 +44,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>반지 01</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "반지2" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("반지2") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -58,7 +58,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>반지 02</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "반지3" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("반지3") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -72,7 +72,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>반지 03</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "반지4" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("반지4") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -86,7 +86,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>반지 04</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "포켓 아이템" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("포켓 아이템") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -100,7 +100,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>포켓 아이템</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "칭호" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {title && title.title_name !== undefined ?
                             <Image
                                 className={styles.imgRing01}
@@ -115,7 +115,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                     </div>
                 </div>
                 <div className={styles.wrapItem1}>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "펜던트" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("펜던트") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -129,7 +129,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>펜던트</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "펜던트2" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("펜던트2") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -143,7 +143,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>펜던트2</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "무기" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("무기") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -157,7 +157,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>무기</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "벨트" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("벨트") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -173,7 +173,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                     </div>
                 </div>
                 <div className={styles.wrapItem2}>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "모자" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("모자") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -187,7 +187,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>모자</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "얼굴장식" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("얼굴장식") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -201,7 +201,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>얼굴장식</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "눈장식" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("눈장식") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -215,7 +215,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>눈장식</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "상의" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("상의") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -229,7 +229,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>상의</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "하의" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("하의") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -243,7 +243,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>하의</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "신발" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("신발") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -259,7 +259,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                     </div>
                 </div>
                 <div className={styles.wrapItem3}>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "귀고리" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("귀고리") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -273,7 +273,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>귀고리</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "어깨장식" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("어깨장식") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -287,7 +287,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>어깨장식</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "장갑" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("장갑") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -301,7 +301,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>장갑</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "안드로이드" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {android != undefined ? (
                             <Image
                                 className={styles.imgRing01}
@@ -317,7 +317,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                     </div>
                 </div>
                 <div className={styles.wrapItem4}>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "엠블렘" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("엠블렘") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -331,7 +331,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>엠블렘</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "뱃지" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("뱃지") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -345,7 +345,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>뱃지</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "훈장" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("훈장") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -359,7 +359,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>훈장</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "보조무기" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("보조무기") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -373,7 +373,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>보조무기</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "망토" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("망토") != null ? (
                             <Image
                                 className={styles.imgRing01}
@@ -387,7 +387,7 @@ const WrapEquipment: NextPage<WrapEquipmentProps> = ({item, android}) => {
                             <div className={styles.label4}>망토</div>
                         )}
                     </div>
-                    <div className={styles.equipmentAtomic}>
+                    <div className={activeItemTab === "기계 심장" ? styles.equipmentAtomicClick : styles.equipmentAtomic}>
                         {itemIconMap.get("기계 심장") != null ? (
                             <Image
                                 className={styles.imgRing01}
