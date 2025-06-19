@@ -10,7 +10,6 @@ interface UnionEffectProps {
     union: Union,
     unionRaider: UnionRaiderPreset | null
 }
-
 const UnionEffect: NextPage<UnionEffectProps> = ({union, unionRaider}) => {
     const [activeUnionTab, setActiveUnionTab] = useState<number>(0);
 
@@ -21,7 +20,7 @@ const UnionEffect: NextPage<UnionEffectProps> = ({union, unionRaider}) => {
         <div className={styles.div11}>
             <div className={styles.wrap1}>
                 <Image className={styles.imgCharacterIcon} width={68} height={68} alt=""
-                       src={"/icons/union/" + union.union_grade + ".webp"}/>
+                       src={`/icons/union/${union.union_grade}.webp`}/>
                 <div className={styles.title}>
                     <div className={styles.div12}>{union.union_grade}</div>
                     <div className={styles.lv6278}>LV. {union.union_level}</div>

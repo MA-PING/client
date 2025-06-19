@@ -9,6 +9,7 @@ interface UnionInnerStatProps {
 }
 
 const UnionInnerStat: NextPage<UnionInnerStatProps> = ({unionBlock}) => {
+
     if (!unionBlock || unionBlock.length === 0) {
         return (<div className={styles.container}>
             <Image className={styles.lineIcon} width={352} height={320} sizes="100vw" alt="" src="/icons/line.svg"/>
@@ -74,7 +75,6 @@ const UnionInnerStat: NextPage<UnionInnerStatProps> = ({unionBlock}) => {
     }
     return (
         <div className={styles.container}>
-            <canvas className={styles.canvas} width={352} height={320}/>
             <Image className={styles.lineIcon} width={352} height={320} sizes="100vw" alt="" src="/icons/line.svg"/>
             <div className={styles.grid}>
                 {gridCells}
