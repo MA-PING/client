@@ -78,7 +78,7 @@ const UnionEffect: NextPage<UnionEffectProps> = ({union, unionRaider}) => {
                         </button>
                     </div>
                 </div>
-                {activeUnionTab === 3 && <CrewEffect unionRaider={unionRaider}/>}
+                {activeUnionTab === 0 && <CrewEffect unionRaider={unionRaider}/>}
                 {activeUnionTab === 1 && <SSS unionRaider={unionRaider}/>}
             </div>
         </div>

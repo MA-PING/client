@@ -22,35 +22,35 @@ const CrewEffect: NextPage<CrewEffectProps> = ({unionRaider}) => {
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
                             <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
-                                   src="img-character.png"/>
+                                   src="/icons/class/히어로.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
                             </div>
                         </div>
-                        <div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>
+                        {/*<div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>*/}
                     </div>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
                             <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
-                                   src="img-character.png"/>
+                                   src="/icons/class/히어로.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
                             </div>
                         </div>
-                        <div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>
+                        {/*<div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>*/}
                     </div>
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
                             <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
-                                   src="img-character.png"/>
+                                   src="/icons/class/히어로.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
                             </div>
                         </div>
-                        <div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>
+                        {/*<div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>*/}
                     </div>
                 </div>
             </div>
@@ -62,13 +62,13 @@ const CrewEffect: NextPage<CrewEffectProps> = ({unionRaider}) => {
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
                             <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
-                                   src="img-character.png"/>
+                                   src="/icons/class/히어로.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
                             </div>
                         </div>
-                        <div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>
+                        {/*<div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>*/}
                     </div>
                 </div>
             </div>
@@ -80,13 +80,13 @@ const CrewEffect: NextPage<CrewEffectProps> = ({unionRaider}) => {
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
                             <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
-                                   src="img-character.png"/>
+                                   src="/icons/class/히어로.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
                             </div>
                         </div>
-                        <div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>
+                        {/*<div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>*/}
                     </div>
                 </div>
             </div>
@@ -98,13 +98,13 @@ const CrewEffect: NextPage<CrewEffectProps> = ({unionRaider}) => {
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
                             <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
-                                   src="img-character.png"/>
+                                   src="/icons/class/히어로.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
                             </div>
                         </div>
-                        <div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>
+                        {/*<div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>*/}
                     </div>
                 </div>
             </div>
@@ -116,13 +116,13 @@ const CrewEffect: NextPage<CrewEffectProps> = ({unionRaider}) => {
                     <div className={styles.wrapInfo}>
                         <div className={styles.wrapItem}>
                             <Image className={styles.imgCharacterIcon} width={40} height={40} alt=""
-                                   src="img-character.png"/>
+                                   src="/icons/class/히어로.png"/>
                             <div className={styles.wrap}>
                                 <div className={styles.div1}>신궁</div>
                                 <div className={styles.lv290}>LV. 290</div>
                             </div>
                         </div>
-                        <div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>
+                        {/*<div className={styles.mp10}>타격 성공 시 70%의 확률로 최대 MP의 10% 회복</div>*/}
                     </div>
                 </div>
             </div>

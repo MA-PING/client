@@ -31,9 +31,11 @@
     gap: 2px;
 }
 .imgArtifactIcon {
-    width: 72px;
+    width: auto;
+    height: auto;
+    /*width: 72px;*/
     position: relative;
-    height: 64px;
+    /*height: 64px;*/
     object-fit: cover;
     z-index: 0;
 }

@@ -1,317 +1,272 @@
-.kingkoo {
-    align-self: stretch;
-    position: relative;
-    line-height: 150%;
-    font-weight: 600;
-}
-.ai {
-    margin: 0;
-}
-.aiContainer {
-    align-self: stretch;
-    position: relative;
-    font-size: 16px;
-    letter-spacing: -0.02em;
-    line-height: 160%;
-    color: rgba(14, 15, 20, 0.7);
-}
-.title {
-    align-self: stretch;
-    height: 108px;
+/* 기본 스타일 (모바일 우선) */
+.apiContents {
+    width: 100%;
+    background-color: #fcfcfc;
+    padding: 60px 24px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 48px;
+    text-align: center;
+}
+
+/* --- 상단 환영 섹션 --- */
+.heroSection {
+    width: 100%;
+    max-width: 790px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
-.imageIcon {
-    position: absolute;
-    top: 0px;
-    left: 0px;
+
+.welcomeTitle {
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(14, 15, 20, 0.9);
+    margin: 0;
+}
+
+.aiMessage {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(14, 15, 20, 0.7);
+}
+.aiMessage p {
+    margin: 0;
+}
+
+/* --- 캐릭터 카드 --- */
+.characterCard {
+    width: 100%;
+    position: relative;
     border-radius: 12px;
-    width: 790px;
-    height: 424px;
-    object-fit: cover;
-}
-.image156Icon {
-    position: absolute;
-    top: 112px;
-    left: 275px;
-    border-radius: 2px;
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-}
-.iconcircleSuccess {
-    width: 16px;
-    position: relative;
-    height: 16px;
     overflow: hidden;
-    flex-shrink: 0;
+    display: grid; /* Grid를 사용하여 요소들을 겹치게 배치 */
+    place-items: center; /* 자식 요소들을 중앙에 배치 */
 }
-.apiKey {
+
+.characterImageWrapper {
+    grid-area: 1 / 1 / 2 / 2; /* 그리드의 첫번째 칸을 모두 차지 */
+    width: 100%;
+    aspect-ratio: 790 / 424; /* 원본 비율 유지 */
     position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
 }
-.alert {
+
+.characterBgImage {
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.characterImage {
+    grid-area: 1 / 1 / 2 / 2;
+    width: 60%; /* 너비를 %로 지정하여 반응형으로 */
+    max-width: 240px; /* 최대 크기 제한 */
+    height: auto;
+    z-index: 2;
+    align-self: center; /* 수직 중앙 정렬 */
+}
+
+.apiKeyInfo {
+    grid-area: 1 / 1 / 2 / 2;
+    position: absolute;
+    top: 16px;
+    right: 16px;
     display: flex;
-    flex-direction: row;
+    gap: 8px;
     align-items: center;
-    justify-content: flex-start;
-    gap: 4px;
+    z-index: 3;
 }
-.wrapAlert {
+
+.statusIndicator, .aiApiKeyStatus {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 2px;
-}
-.statusIndicator {
+    gap: 6px;
+    padding: 4px 10px;
     border-radius: 24px;
     background-color: #e7f6ee;
     border: 1px solid #06a54d;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 8px;
+    font-size: 13px;
+    color: #05843e;
+    white-space: nowrap;
 }
-.icon {
-    width: 20px;
-    position: relative;
-    height: 20px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-.button {
+
+.changeButton {
     width: 28px;
+    height: 28px;
     border-radius: 6px;
     background-color: #fff;
     border: 1px solid #d4d4d6;
-    box-sizing: border-box;
-    height: 28px;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
-.wrapChange {
-    position: absolute;
-    top: 16px;
-    left: 561px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-end;
-    gap: 8px;
-}
-.wrapImg {
-    flex: 1;
-    position: relative;
-    height: 424px;
-    z-index: 0;
-}
-.button2 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 500;
-}
-.button1 {
-    align-self: stretch;
+
+.ctaButton {
+    grid-area: 1 / 1 / 2 / 2;
+    align-self: end; /* 맨 아래에 배치 */
+    margin-bottom: 24px;
     border-radius: 8px;
     background-color: #4060ff;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
-}
-.container1 {
-    width: 226px;
-    margin: 0 !important;
-    position: absolute;
-    top: 352px;
-    left: calc(50% - 113px);
-    height: 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    z-index: 1;
-    font-size: 17px;
-    color: #fff;
-}
-.ctaApi {
-    width: 790px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    gap: 24px;
-    text-align: left;
-    font-size: 13px;
-    color: #05843e;
-}
-.container {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 32px;
-}
-.ai1 {
-    flex: 1;
-    position: relative;
-    line-height: 150%;
-    font-weight: 600;
-}
-.title1 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.characterApiConnectedIcon {
-    position: absolute;
-    top: 66px;
-    left: 70px;
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-}
-.statusIndicator1 {
-    position: absolute;
-    top: 16px;
-    left: 61.5px;
-    border-radius: 24px;
-    background-color: #e7f6ee;
-    border: 1px solid #06a54d;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 8px;
-}
-.characterStatus {
-    align-self: stretch;
-    position: relative;
-    border-radius: 8px;
-    height: 266px;
-    background-image: url('/images/character-status.avif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-}
-.content1 {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-.div3 {
-    align-self: stretch;
-    position: relative;
+    padding: 14px 24px;
     font-size: 16px;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    color: rgba(14, 15, 20, 0.9);
+    font-weight: 500;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
 }
-.wrapAlert2 {
-    flex: 1;
-    display: flex;
-    min-width: 291px;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 8px;
-}
-.button3 {
-    border-radius: 8px;
-    background-color: #f0f3ff;
-    height: 40px;
-    min-width: 115px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
-    gap: 4px;
-    font-size: 14px;
-    color: #4060ff;
-}
-.container2 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 24px;
-}
-.alert2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-}
-.content2 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 24px;
-}
-.ai2 {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size: 20px;
-    color: #eb3b24;
-}
-.content {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 24px;
-    text-align: left;
-    font-size: 13px;
-    color: #05843e;
-}
-.aiApiConnected {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 24px;
-}
-.apiContents {
+
+/* --- AI 도우미 섹션 --- */
+.aiAssistantSection {
     width: 100%;
-    position: relative;
-    background-color: #fcfcfc;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
-    padding: 120px 360px 60px;
-    box-sizing: border-box;
-    gap: 60px;
-    text-align: center;
-    font-size: 24px;
+    gap: 24px;
+}
+
+.sectionTitle {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
     color: rgba(14, 15, 20, 0.9);
 }
 
+.aiContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* 모바일에서는 세로로 쌓임 */
+    gap: 24px;
+    align-items: center;
+}
+
+.aiCharacterStatus {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background: url('/images/character-status.avif') no-repeat center center / cover;
+}
+
+.aiCharacterImageWrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aiAnalysis {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: left;
+}
+
+.analysisItem {
+    display: flex;
+    flex-direction: column; /* 모바일에서는 세로로 쌓임 */
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 24px;
+    /*border-bottom: 1px solid #e9ecef;*/
+}
+.analysisItem:last-child {
+    border-bottom: none;
+}
+
+.analysisText {
+    flex: 1;
+}
+
+.analysisTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.analysisTitle h4 {
+    margin: 0;
+    font-size: 20px;
+    color: #eb3b24;
+}
+.analysisText p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(14, 15, 20, 0.9);
+}
+
+.detailsButton {
+    border-radius: 8px;
+    background-color: #f0f3ff;
+    padding: 10px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4060ff;
+    border: none;
+    cursor: pointer;
+}
+
+/* -------------------------------------- */
+/* --- 태블릿 & 데스크톱 스타일 (768px 이상) --- */
+/* -------------------------------------- */
+@media (min-width: 768px) {
+    .aiContent {
+        flex-direction: row; /* 가로 배치 시작 */
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .aiCharacterStatus {
+        flex-shrink: 0; /* 줄어들지 않음 */
+        width: 300px; /* 너비 고정 */
+        height: 300px;
+    }
+
+    .analysisItem {
+        flex-direction: row; /* 가로 배치 */
+        align-items: center;
+        gap: 24px;
+    }
+
+    .detailsButton {
+        flex-shrink: 0; /* 버튼 크기 유지 */
+    }
+}
+
+/* -------------------------------------- */
+/* --- 넓은 데스크톱 스타일 (1024px 이상) --- */
+/* -------------------------------------- */
+@media (min-width: 1024px) {
+    .apiContents {
+        padding: 120px 40px 60px;
+        gap: 60px;
+    }
+
+    .welcomeTitle, .sectionTitle {
+        font-size: 24px;
+    }
+
+    .aiMessage {
+        font-size: 16px;
+    }
+}

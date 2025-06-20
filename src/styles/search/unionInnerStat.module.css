@@ -197,10 +197,12 @@
 }
 .lineIcon {
     z-index: 3;
+    pointer-events: none;
 }
 .grid,
 .gridNo {
     z-index: 2;
+    pointer-events: none;
 }
 .property1hide {
     z-index: 4; /* 텍스트를 가장 위로 */

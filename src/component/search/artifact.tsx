@@ -10,6 +10,7 @@ interface ArtifactProps {
 }
 
 const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
+
     const artifactCrystal = unionArtifact.union_artifact_crystal
     const crystalMap = new Map<string, number>();
 
@@ -59,7 +60,7 @@ const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
                             </div>
                             <div className={styles.wrap}>
                                 <Image className={styles.iconcircleNegative} width={24} height={24} alt="" src="/icons/x.svg" />
-                                <div className={styles.div}>주황버섯</div>
+                                <div className={styles.div2}>주황버섯</div>
                             </div>
                         </div>
                     }
@@ -88,7 +89,7 @@ const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
                             </div>
                             <div className={styles.wrap}>
                                 <Image className={styles.iconcircleNegative} width={24} height={24} alt="" src="/icons/x.svg" />
-                                <div className={styles.div}>슬라임</div>
+                                <div className={styles.div2}>슬라임</div>
                             </div>
                         </div>
                     }
@@ -117,7 +118,7 @@ const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
                             </div>
                             <div className={styles.wrap}>
                                 <Image className={styles.iconcircleNegative} width={24} height={24} alt="" src="/icons/x.svg" />
-                                <div className={styles.div}>뿔버섯</div>
+                                <div className={styles.div2}>뿔버섯</div>
                             </div>
                         </div>
                     }
@@ -146,7 +147,7 @@ const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
                             </div>
                             <div className={styles.wrap}>
                                 <Image className={styles.iconcircleNegative} width={24} height={24} alt="" src="/icons/x.svg" />
-                                <div className={styles.div}>스텀프</div>
+                                <div className={styles.div2}>스텀프</div>
                             </div>
                         </div>
                     }
@@ -175,7 +176,7 @@ const Artifact: NextPage<ArtifactProps> = ({union, unionArtifact}) => {
                             </div>
                             <div className={styles.wrap}>
                                 <Image className={styles.iconcircleNegative} width={24} height={24} alt="" src="/icons/x.svg" />
-                                <div className={styles.div}>스톤골렘</div>
+                                <div className={styles.div2}>스톤골렘</div>
                             </div>
                         </div>
                     }

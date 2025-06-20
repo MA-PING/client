@@ -1,269 +1,287 @@
-.div {
-    position: relative;
-    line-height: 150%;
-}
-.title {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    z-index: 0;
-}
-.logoMapingIcon {
-    width: 260px;
-    position: relative;
-    height: 40px;
-    overflow: hidden;
-    flex-shrink: 0;
-    z-index: 1;
-}
-.maskGroupIcon {
-    width: 64px;
-    position: absolute;
-    margin: 0 !important;
-    top: -44px;
-    left: 294px;
-    height: 64px;
-    object-fit: cover;
-    z-index: 2;
-}
-.display {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    position: relative;
-    gap: 16px;
-}
-.image157Icon {
-    width: 384px;
-    position: relative;
-    height: 554px;
-    object-fit: cover;
-}
-.character {
-    height: 540px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-.logocharacter {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 56px;
-}
-.icon {
-    width: 24px;
-    position: relative;
-    height: 24px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-.div1 {
-    flex: 1;
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-}
-.search {
-    width: 564px;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 2px solid #d4d4d6;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 16px;
-    gap: 16px;
-}
-.ai1 {
-    align-self: stretch;
-    position: relative;
-    line-height: 150%;
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.div3 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 600;
-}
-.div4 {
-    flex: 1;
-    position: relative;
-    font-size: 15px;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    color: rgba(14, 15, 20, 0.7);
-}
-.title1 {
-    width: 473px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-}
-.wrapTitle {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 4px;
-}
-.div5 {
-    position: relative;
-    line-height: 150%;
-    font-weight: 600;
-}
-.inPageNavigationAtomic1 {
-    width: 22px;
-    border-radius: 16px;
-    background-color: #f0f3ff;
-    height: 22px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 9px;
-    box-sizing: border-box;
-}
-.div6 {
-    flex: 1;
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    color: rgba(14, 15, 20, 0.9);
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.inPageNavigationAtomic {
-    align-self: stretch;
-    border-radius: 8px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 8px;
-    gap: 16px;
-}
-.inPageNavigationAtomic7 {
-    width: 22px;
-    border-radius: 16px;
-    height: 22px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 9px;
-    box-sizing: border-box;
-}
-.inPageNavigationAtomic6 {
-    align-self: stretch;
-    border-radius: 8px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 8px;
-    gap: 16px;
-    color: rgba(14, 15, 20, 0.7);
-}
-.list {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: center;
-    font-size: 15px;
-    color: #4060ff;
-}
-.inPageNavigationLarge {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 16px;
-}
-.div2 {
-    align-self: stretch;
-    border-radius: 12px;
-    background-color: #fff;
-    border: 1px solid #ededf0;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 16px;
-}
-.wrapRecommend {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 8px;
-    font-size: 20px;
-}
-.ai {
-    width: 562px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 24px;
-    font-size: 24px;
-    color: rgba(14, 15, 20, 0.9);
-}
-.wrap {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 40px;
-    font-size: 18px;
-    color: rgba(14, 15, 20, 0.5);
-}
-.home {
-    width: 1012px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 64px;
-}
+/* --- 기본 스타일 (모바일 우선) --- */
 .banner {
     width: 100%;
-    position: relative;
-    height: 950px;
+    height: auto; /* 높이를 콘텐츠에 맞게 자동 조정 */
+    padding: 60px 24px; /* 상하좌우 여백 */
+    box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* 콘텐츠를 세로로 정렬 */
     align-items: center;
     justify-content: center;
     background-image: url('/icons/banner.avif');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: center;
     text-align: left;
-    font-size: 24px;
+    font-size: 18px; /* 기본 폰트 크기 조정 */
     color: rgba(14, 15, 20, 0.7);
 }
 
+.home {
+    width: 100%;
+    max-width: 1200px; /* 최대 너비 설정 */
+    display: flex;
+    flex-direction: column; /* 모바일에서는 세로로 쌓임 */
+    align-items: center; /* 가운데 정렬 */
+    justify-content: flex-start;
+    gap: 48px; /* 요소 간의 간격 */
+}
+
+.logocharacter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 가운데 정렬 */
+    gap: 32px;
+    text-align: center;
+}
+
+.display {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 가운데 정렬 */
+    position: relative;
+    gap: 16px;
+}
+
+.title {
+    align-self: stretch;
+}
+
+.div {
+    position: relative;
+    line-height: 150%;
+    font-size: 20px;
+}
+
+.logoMapingIcon {
+    width: 220px; /* 로고 크기 조정 */
+    height: auto;
+}
+
+.maskGroupIcon {
+    width: 56px; /* 아이콘 크기 조정 */
+    height: 56px;
+    position: absolute;
+    top: -28px; /* 위치 조정 */
+    right: 0; /* 오른쪽 기준으로 변경 */
+    left: auto; /* 왼쪽 기준 제거 */
+}
+
+.character {
+    width: 100%;
+    max-width: 300px; /* 캐릭터 비디오 최대 너비 */
+    display: flex;
+    justify-content: center;
+}
+
+.vidIcon {
+    width: 100%;
+    height: auto; /* 비디오 비율 유지 */
+    object-fit: cover;
+}
+
+.wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    font-size: 16px; /* 폰트 크기 조정 */
+    color: rgba(14, 15, 20, 0.5);
+}
+
+/* AI 추천 섹션 */
+.ai {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 20px; /* 제목 폰트 크기 */
+    color: rgba(14, 15, 20, 0.9);
+}
+
+.ai1 {
+    align-self: stretch;
+    font-weight: 600;
+}
+
+.wrapRecommend {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 18px; /* 추천 질문 제목 폰트 크기 */
+}
+
+.div2 {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: #fff;
+    border: 1px solid #ededf0;
+    display: flex;
+    padding: 16px;
+}
+
+.inPageNavigationLarge {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.wrapTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.title1 {
+    display: flex;
+    flex-direction: column; /* 모바일에서는 세로로 쌓이도록 */
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+}
+
+.div3 {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.div4 {
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.7);
+}
+
+.list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15px;
+    color: #4060ff;
+}
+
+.inPageNavigationAtomic {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    gap: 12px;
+}
+
+.inPageNavigationAtomic1, .inPageNavigationAtomic7 {
+    width: 22px;
+    height: 22px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.inPageNavigationAtomic1 {
+    background-color: #f0f3ff;
+}
+
+.inPageNavigationAtomic7 {
+    color: rgba(14, 15, 20, 0.7);
+}
+
+.div5, .div {
+    font-weight: 600;
+}
+
+.div6 {
+    flex: 1;
+    color: rgba(14, 15, 20, 0.9);
+    white-space: normal; /* 글자 자동 줄바꿈 */
+}
+
+/* -------------------------------------- */
+/* --- 데스크톱 스타일 (1024px 이상) --- */
+/* -------------------------------------- */
+@media (min-width: 1024px) {
+    .banner {
+        padding: 80px 40px;
+    }
+
+    .home {
+        flex-direction: row; /* 가로 배치로 전환 */
+        align-items: flex-start; /* 위쪽 정렬 */
+        gap: 64px;
+    }
+
+    .logocharacter {
+        flex: 1; /* 왼쪽 컬럼이 차지할 공간 */
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .display {
+        align-items: flex-start;
+    }
+
+    .div {
+        font-size: 24px;
+    }
+
+    .logoMapingIcon {
+        width: 260px;
+    }
+
+    .maskGroupIcon {
+        width: 64px;
+        height: 64px;
+        top: -44px;
+        left: 294px; /* 데스크톱에서는 원래 위치로 */
+    }
+
+    .character {
+        max-width: 384px;
+    }
+
+    .wrap {
+        flex: 1.2; /* 오른쪽 컬럼이 차지할 공간 (조금 더 넓게) */
+        align-items: flex-start;
+        max-width: 562px; /* 최대 너비 제한 */
+    }
+
+    .ai {
+        align-items: flex-start;
+        font-size: 24px;
+    }
+
+    .wrapRecommend {
+        font-size: 20px;
+    }
+
+    .title1 {
+        flex-direction: row; /* 데스크톱에서는 가로로 배치 */
+        align-items: center;
+        gap: 8px;
+    }
+
+    .div3 {
+        font-size: 18px;
+    }
+
+    .div6 {
+        white-space: nowrap; /* 데스크톱에서는 한 줄로 표시 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

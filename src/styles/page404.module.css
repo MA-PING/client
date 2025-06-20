@@ -1,16 +1,19 @@
+/* 기존 스타일은 여기에 그대로 둡니다. */
+
 .img4042Icon {
-    width: 400px;
+    width: 100%; /* 너비를 100%로 설정 */
+    max-width: 400px; /* 최대 너비를 400px로 제한 */
     position: relative;
-    max-height: 100%;
+    height: auto; /* 높이를 자동으로 조절 */
     object-fit: cover;
 }
 .div {
-    align-self: stretch;
-    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex: 1; /* flex 비율 유지 */
+    min-width: 300px; /* 최소 너비 지정 */
 }
 .error {
     align-self: stretch;
@@ -22,6 +25,7 @@
     position: relative;
     font-size: 54px;
     color: #0e0f14;
+    word-break: keep-all; /* 단어 깨짐 방지 */
 }
 .title {
     align-self: stretch;
@@ -50,12 +54,6 @@
     justify-content: flex-start;
     gap: 24px;
 }
-.button1 {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 150%;
-    font-weight: 500;
-}
 .button {
     width: 160px;
     border-radius: 10px;
@@ -69,29 +67,96 @@
     box-sizing: border-box;
     font-size: 18px;
     color: #fff;
+    cursor: pointer;
+    text-decoration: none; /* Link 태그 사용 시 밑줄 제거 */
+    transition: background-color 0.2s; /* 부드러운 효과 */
 }
+
+.button:hover {
+    background-color: #334dcc;
+}
+
 .container {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center; /* 세로 중앙 정렬 */
     gap: 40px;
+    max-width: 500px; /* 텍스트 영역 최대 너비 제한 */
 }
 .content {
     width: 100%;
-    position: relative;
-    height: 560px;
+    max-width: 1200px; /* 페이지 전체 최대 너비 */
+    margin: 100px auto 0 auto; /* 상단 마진 줄이고, 좌우 자동 마진으로 중앙 정렬 */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /*padding: 0px 448px;*/
-    margin-top: 160px;
+    padding: 0 40px; /* 좌우 패딩 */
     box-sizing: border-box;
-    gap: 40px;
+    gap: 60px; /* 간격 증가 */
     text-align: left;
     font-size: 32px;
     color: rgba(14, 15, 20, 0.9);
 }
 
+
+/* ▼▼▼▼▼ 반응형 적용을 위한 미디어 쿼리 ▼▼▼▼▼ */
+
+/* 태블릿 사이즈 (1024px 이하) */
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: column; /* 세로 배치로 변경 */
+        margin-top: 60px;
+        gap: 40px; /* 간격 줄임 */
+    }
+
+    .container {
+        align-items: center; /* 컨텐츠 중앙 정렬 */
+        text-align: center; /* 텍스트 중앙 정렬 */
+        max-width: 100%;
+    }
+
+    .title, .wrap, .div1 {
+        align-items: center; /* 내부 아이템들도 중앙 정렬 */
+    }
+
+    .pageNotFound {
+        font-size: 48px; /* 폰트 크기 줄임 */
+    }
+
+    .error {
+        font-size: 28px;
+    }
+}
+
+
+/* 모바일 사이즈 (768px 이하) */
+@media (max-width: 768px) {
+    .content {
+        padding: 0 24px; /* 좌우 패딩 더 줄임 */
+        margin-top: 40px;
+    }
+
+    .img4042Icon {
+        max-width: 300px; /* 이미지 최대 크기 줄임 */
+    }
+
+    .pageNotFound {
+        font-size: 36px; /* 폰트 크기 더 줄임 */
+    }
+
+    .error {
+        font-size: 22px;
+    }
+
+    .div1 {
+        font-size: 16px;
+    }
+
+    .button {
+        width: 100%; /* 버튼 너비를 100%로 확장 */
+        font-size: 16px;
+    }
+}

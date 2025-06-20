@@ -17,7 +17,7 @@ const Banner:NextPage = () => {
                         <Image className={styles.maskGroupIcon} width={64} height={64} alt="" src="/icons/maple.png" />
                     </div>
                     <div className={styles.character}>
-                        <video className={styles.vidIcon} width="384" height="526" autoPlay loop muted>
+                        <video className={styles.vidIcon} width="384" height="526" autoPlay loop muted playsInline>
                             <source src="/images/MAPING.webm" type="video/webm" />
                             Your browser does not support the video tag.
                         </video>
@@ -56,13 +56,13 @@ const Banner:NextPage = () => {
                                             </div>
                                             <div className={styles.div6}>링크 스킬과 유니온이 뭔가요?</div>
                                         </div>
-                                        <div className={styles.inPageNavigationAtomic6}>
+                                        <div className={styles.inPageNavigationAtomic}>
                                             <div className={styles.inPageNavigationAtomic7}>
                                                 <div className={styles.div}>4</div>
                                             </div>
                                             <div className={styles.div6}>무자본 스킬트리 추천</div>
                                         </div>
-                                        <div className={styles.inPageNavigationAtomic6}>
+                                        <div className={styles.inPageNavigationAtomic}>
                                             <div className={styles.inPageNavigationAtomic7}>
                                                 <div className={styles.div}>5</div>
                                             </div>
@@ -99,13 +99,13 @@ const Banner:NextPage = () => {
                                             </div>
                                             <div className={styles.div6}>링크 스킬과 유니온이 뭔가요?</div>
                                         </div>
-                                        <div className={styles.inPageNavigationAtomic6}>
+                                        <div className={styles.inPageNavigationAtomic}>
                                             <div className={styles.inPageNavigationAtomic7}>
                                                 <div className={styles.div}>4</div>
                                             </div>
                                             <div className={styles.div6}>무자본 스킬트리 추천</div>
                                         </div>
-                                        <div className={styles.inPageNavigationAtomic6}>
+                                        <div className={styles.inPageNavigationAtomic}>
                                             <div className={styles.inPageNavigationAtomic7}>
                                                 <div className={styles.div}>5</div>
                                             </div>
