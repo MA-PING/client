@@ -184,20 +184,17 @@
 }
 .footer {
     width: auto;
-    position: relative;
-    transform: translateY(-100%);
-    /*bottom : 0;*/
     background-color: #fff;
-    height: 314px;
+    height: 314px; /* 푸터 높이는 유지 */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /*margin-top: 120px;*/
     box-sizing: border-box;
     text-align: left;
     font-size: 14px;
     color: rgba(14, 15, 20, 0.7);
+    margin-top: 120px;
 }
 
 /*@media screen and (max-width: 1280px) {*/
@@ -438,8 +435,7 @@
     .footer {
         height: 314px;
         width: auto;
-        position: relative;
-        transform: translateY(-100%);
+        margin-top: 100px; /* 모바일에서의 상단 여백 */
         background-color: #fff;
         display: flex;
         flex-direction: row;
@@ -458,10 +454,6 @@
 @media screen and (max-width: 580px) {
     .footer {
         width: auto;
-        height: 503px;
-        /*margin-top: 1200px;*/
-        position: relative;
-        transform: translateY(-100%);
         background-color: #fff;
         display: flex;
         flex-direction: row;
@@ -469,6 +461,7 @@
         justify-content: center;
         margin-right: 16px;
         margin-left: 16px;
+        /*margin-top: 100px;*/
         box-sizing: border-box;
         text-align: left;
         font-size: 13px;

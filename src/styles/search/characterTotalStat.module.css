@@ -317,7 +317,7 @@
 .totalStat {
     width: 100%;
     position: relative;
-    height: 1047px;
+    /*height: 1047px;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -512,7 +512,7 @@
     }
     .wrapPreset {
         width: 100%;
-        position: relative;
+        /*position: relative;*/
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -524,7 +524,7 @@
     }
     .wrap {
         width: 100%;
-        flex: 1;
+        /*flex: 1;*/
         display: flex;
         flex-direction: column;
         align-items: flex-start;

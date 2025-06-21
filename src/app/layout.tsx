@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import Footer from "@/component/footer";
 import FloatingButton from "@/component/FloatingButton";
 import Script from "next/script";
+import styles from "./layout.module.css";
 
 const pretendard = localFont({
     src: '../data/fonts/PretendardVariable.woff2',
@@ -53,18 +54,18 @@ export default function RootLayout({
 
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable} font-pretendard`}>
+      <body className={`${pretendard.variable} font-pretendard ${styles.body}`}>
           <Script
               id="nexon-analytics"
               strategy="afterInteractive"
               src="https://openapi.nexon.com/js/analytics.js?app_id=139195"
           />
-        <div id='wrapper'>
+        <main className={styles.main}>
           {children}
-          <div id="portal-root" />
-        </div>
+        </main>
         <Footer/>
         <FloatingButton />
+        <div id="portal-root" />
       </body>
     </html>
   );

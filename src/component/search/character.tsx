@@ -25,7 +25,7 @@ async function getCharacter(name: string): Promise<ApiResponse | null> {
                 if (characterData[key as keyof Character] === null) {
                     // 어떤 키가 null인지 서버 콘솔에 로그를 남김
                     console.log(`'${name}' 캐릭터 데이터 검증 실패: '${key}' 속성 값이 null입니다.`);
-                    await refreshCharacterData(characterData.basic.character_name);
+                    // await refreshCharacterData(characterData.basic.character_name);
                     // 함수를 중단하고 null을 반환
                     return null;
                 }
@@ -45,13 +45,14 @@ interface CharacterProps {
 const Character: NextPage<CharacterProps> = async ({name}) => {
 
     const response = await getCharacter(name);
-    if (response == null)
+    if (response == null) {
+        await refreshCharacterData(name);
         return (
             <>
                 <NoSearch/>
             </>
         );
-
+    }
     return (
         <>
             <div className={styles.div}>
