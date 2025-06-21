@@ -4,7 +4,6 @@ import Details from "@/component/search/characterDetails";
 import type {ApiResponse, Character} from '@/interfaces/character';
 import NoSearch from "@/component/search/noSearch";
 import type {NextPage} from "next";
-import {refreshCharacterData} from "@/app/actions";
 
 async function getCharacter(name: string): Promise<ApiResponse | null> {
     try {
@@ -46,7 +45,6 @@ const Character: NextPage<CharacterProps> = async ({name}) => {
 
     const response = await getCharacter(name);
     if (response == null) {
-        await refreshCharacterData(name);
         return (
             <>
                 <NoSearch/>
