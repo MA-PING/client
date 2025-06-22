@@ -10,8 +10,7 @@ import ChatBot from "@/component/chat/chatBot"; // useState 훅 임포트
 
 const FloatingButton: NextPage = () => {
     const pathname = usePathname();
-    const [isChatOpen, setIsChatOpen] = useState(false); // 채팅창 열림 상태 관리
-
+    const [isChatOpen, setIsChatOpen] = useState(false);
     // 채팅창 열림/닫힘 토글 함수
     const toggleChat = () => {
         setIsChatOpen(!isChatOpen);
@@ -23,7 +22,7 @@ const FloatingButton: NextPage = () => {
         pathname === '/my-character' ||
         pathname === '/simulator' ||
         pathname === '/ranking' ||
-        pathname.startsWith('/character/');
+        pathname.startsWith('/c/');
 
     // 해당 경로가 아니면 아무것도 렌더링하지 않음
     if (!shouldShowFloatingUI) {
@@ -34,7 +33,7 @@ const FloatingButton: NextPage = () => {
         <>
             {/* 채팅창이 닫혀 있을 때 플로팅 버튼과 말풍선 표시 */}
             {!isChatOpen && (
-                <div className={styles.wrapChatbot}> {/* 버튼과 말풍선을 감싸는 컨테이너 */}
+                <div className={styles.wrapChatbot}>
                     <div className={styles.bubbleChatbot}>
                         <div className={styles.wrap}>
                             <div className={styles.div}>내 캐릭터에 딱 맞는 맞춤 정보를 원한다면?</div>

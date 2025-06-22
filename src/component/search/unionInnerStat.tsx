@@ -12,7 +12,7 @@ const UnionInnerStat: NextPage<UnionInnerStatProps> = ({unionBlock}) => {
 
     if (!unionBlock || unionBlock.length === 0) {
         return (<div className={styles.container}>
-            <Image className={styles.lineIcon} width={352} height={320} sizes="100vw" alt="" src="/icons/line.svg"/>
+            <Image className={styles.lineIcon} width={352} height={320} sizes="100vw" alt="" src="/icons/Union.png"/>
             <div className={styles.gridNo}/>
             <div className={styles.property1hide}>
                 <div className={styles.div}>공격력</div>

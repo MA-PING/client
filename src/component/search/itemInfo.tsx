@@ -135,6 +135,28 @@ const ItemInfo: NextPage<ItemInfoProps> = ({ItemInfo}) => {
                                                src={parseInt(ItemInfo.starforce) >= 25 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
                                     </div>
                                 </div>
+                                <div className={styles.wrapStarforce}>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 26 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 27 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 28 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 29 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                    <div className={styles.starforce}>
+                                        <Image className={styles.starforceChild} width={12} height={12} alt=""
+                                               src={parseInt(ItemInfo.starforce) >= 30 ? "/icons/Star_on.svg" : "/icons/Star_off.svg"}/>
+                                    </div>
+                                </div>
                             </div>
                         </div>}
 
