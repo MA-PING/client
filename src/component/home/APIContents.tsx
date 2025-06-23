@@ -18,7 +18,14 @@ const APIContents: NextPage = () => {
                 {/* 캐릭터 정보 카드 */}
                 <div className={styles.characterCard}>
                     <div className={styles.characterImageWrapper}>
-                        <Image className={styles.characterBgImage} layout="fill" objectFit="cover" alt="캐릭터 배경" src="/images/characterBackground.avif" />
+                        <Image
+                            className={styles.characterBgImage}
+                            src="/images/characterBackground.avif"
+                            alt="캐릭터 배경 이미지"
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                     </div>
                     <Image className={styles.characterImage} width={240} height={240} alt="대표 캐릭터" src="/images/no-character.png" />
                     <div className={styles.apiKeyInfo}>

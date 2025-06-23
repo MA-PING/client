@@ -1,7 +1,10 @@
-import type { NextPage } from 'next';
+import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '@/styles/chat/chatBot.module.css';
-import { useState, useEffect, useRef } from "react";
+import React, {useEffect, useRef, useState} from "react";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from "remark-gfm";
+import Link from "next/link";
 
 interface aiBody {
     chatId: string | null;
@@ -33,7 +36,7 @@ async function getNewGuestMessage(
     onStreamError: (errorContent: string) => void // 스트림 오류 시 호출될 콜백 추가
 ): Promise<void> {
     try {
-        const response = await fetch('http://localhost:38587/api/v1/ai/chat/stream/guest', {
+        const response = await fetch('https://api.ma-ping.com/api/v1/ai/chat/stream/guest', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +64,7 @@ async function getNewGuestMessage(
         let receivedText = '';
 
         while (true) {
-            const { done, value } = await reader.read();
+            const {done, value} = await reader.read();
 
             if (done) {
                 console.log('스트림이 종료되었습니다.');
@@ -70,7 +73,7 @@ async function getNewGuestMessage(
             }
 
             if (value) {
-                receivedText += decoder.decode(value, { stream: true });
+                receivedText += decoder.decode(value, {stream: true});
             }
 
             const lines = receivedText.split('\n');
@@ -99,12 +102,13 @@ async function getNewGuestMessage(
 
 
 interface ChatBotProps {
-    onClose: () => void
+    onClose: () => void,
+    size: boolean
 }
 
 let messageIdCounter = 0; // 컴포넌트 외부에서 고유 ID를 위한 카운터
 
-const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
+const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
     const [inputValue, setInputValue] = useState('');
     const [pageValue, setPageValue] = useState<string>('default');
     const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
@@ -112,10 +116,13 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
     const [currentChatTopic, setCurrentChatTopic] = useState<string>('새로운 대화'); // 초기 토픽
     const [currentChatId, setCurrentChatId] = useState<string | null>(null); // 현재 채팅의 chatId 상태
 
+    const handlePageClick = (page: string) => {
+        setPageValue(page);
+    };
     // 채팅 내용이 업데이트될 때마다 맨 아래로 스크롤
     useEffect(() => {
         if (chatEndRef.current) {
-            chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+            chatEndRef.current.scrollIntoView({behavior: 'smooth'});
         }
     }, [chatHistory]);
 
@@ -123,13 +130,19 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
         setInputValue(event.target.value);
     };
 
+
     const handleSendMessage = async () => {
         const message = inputValue.trim();
         if (message === '') return;
 
         // 사용자 메시지에 고유 ID 할당
         const userMessageId = `user-${Date.now()}-${messageIdCounter++}`; // 더 고유한 ID
-        setChatHistory((prevHistory) => [...prevHistory, { type: 'user', text: message, timestamp: new Date(), id: userMessageId }]);
+        setChatHistory((prevHistory) => [...prevHistory, {
+            type: 'user',
+            text: message,
+            timestamp: new Date(),
+            id: userMessageId
+        }]);
 
         // 페이지가 'chat'이 아니면 'chat'으로 설정
         if (pageValue !== 'chat') {
@@ -140,7 +153,12 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
 
         // AI 응답을 위한 플레이스홀더 메시지 추가 (고유 ID 할당)
         const aiMessageId = `ai-placeholder-${Date.now()}-${messageIdCounter++}`; // 더 고유한 ID
-        setChatHistory((prevHistory) => [...prevHistory, { type: 'ai', text: 'AI가 응답을 생성 중입니다...', timestamp: new Date(), id: aiMessageId }]);
+        setChatHistory((prevHistory) => [...prevHistory, {
+            type: 'ai',
+            text: 'AI가 응답을 생성 중입니다...',
+            timestamp: new Date(),
+            id: aiMessageId
+        }]);
 
         // 스트림 데이터를 처리하는 콜백 함수
         const handleStreamData = (data: aiGuestStream) => {
@@ -150,11 +168,11 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
                 // **첫 번째 AI 응답 시 uuid와 topic을 저장합니다.**
                 if (currentChatId === null && data.uuid) { // currentChatId가 null일 때만 저장
                     setCurrentChatId(data.uuid);
-                    console.log("새 채팅 ID 설정:", data.uuid); // 디버깅
+                    // console.log("새 채팅 ID 설정:", data.uuid); // 디버깅
                 }
                 if (data.topic && data.topic !== currentChatTopic) {
                     setCurrentChatTopic(data.topic);
-                    console.log("새 토픽 설정:", data.topic); // 디버깅
+                    // console.log("새 토픽 설정:", data.topic); // 디버깅
                 }
 
                 if (lastAiMessageIndex !== -1) {
@@ -169,7 +187,12 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
                 } else {
                     // 예상치 못한 상황: 플레이스홀더를 찾지 못함. 새 메시지로 추가
                     console.warn("AI 플레이스홀더 메시지를 찾을 수 없습니다. 새 AI 메시지를 추가합니다.");
-                    return [...prevHistory, { type: 'ai', text: data.content, timestamp: new Date(), id: `ai-new-${Date.now()}-${messageIdCounter++}` }];
+                    return [...prevHistory, {
+                        type: 'ai',
+                        text: data.content,
+                        timestamp: new Date(),
+                        id: `ai-new-${Date.now()}-${messageIdCounter++}`
+                    }];
                 }
             });
         };
@@ -178,14 +201,13 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
         const handleStreamEnd = () => {
             setChatHistory((prevHistory) => {
                 // 스트림 종료 후 플레이스홀더 메시지(있는 경우) 최종 처리 또는 제거
-                const newHistory = prevHistory.map(msg => {
+                return prevHistory.map(msg => {
                     if (msg.id === aiMessageId && msg.text === 'AI가 응답을 생성 중입니다...') {
                         // 만약 스트림이 아무 내용도 보내지 않고 종료되었다면
-                        return { ...msg, text: 'AI가 응답을 생성하지 못했습니다.', timestamp: new Date() };
+                        return {...msg, text: 'AI가 응답을 생성하지 못했습니다.', timestamp: new Date()};
                     }
                     return msg;
                 });
-                return newHistory;
             });
         };
 
@@ -203,7 +225,12 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
                     };
                     return newHistory;
                 }
-                return [...prevHistory, { type: 'ai', text: `AI와 통신 중 오류 발생: ${errorContent}`, timestamp: new Date(), id: `ai-error-${Date.now()}-${messageIdCounter++}` }];
+                return [...prevHistory, {
+                    type: 'ai',
+                    text: `AI와 통신 중 오류 발생: ${errorContent}`,
+                    timestamp: new Date(),
+                    id: `ai-error-${Date.now()}-${messageIdCounter++}`
+                }];
             });
         };
 
@@ -227,10 +254,19 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
                 if (lastAiMessage) {
                     const updatedHistory = [...prevHistory];
                     const index = updatedHistory.indexOf(lastAiMessage);
-                    updatedHistory[index] = { ...lastAiMessage, text: (lastAiMessage.text === 'AI가 응답을 생성 중입니다...' ? '' : lastAiMessage.text) + ' (전송 실패: 네트워크 오류)', timestamp: new Date() };
+                    updatedHistory[index] = {
+                        ...lastAiMessage,
+                        text: (lastAiMessage.text === 'AI가 응답을 생성 중입니다...' ? '' : lastAiMessage.text) + ' (전송 실패: 네트워크 오류)',
+                        timestamp: new Date()
+                    };
                     return updatedHistory;
                 }
-                return [...prevHistory, { type: 'ai', text: 'AI와 통신 중 네트워크 오류가 발생했습니다.', timestamp: new Date(), id: `ai-final-error-${Date.now()}-${messageIdCounter++}` }];
+                return [...prevHistory, {
+                    type: 'ai',
+                    text: 'AI와 통신 중 네트워크 오류가 발생했습니다.',
+                    timestamp: new Date(),
+                    id: `ai-final-error-${Date.now()}-${messageIdCounter++}`
+                }];
             });
         }
     };
@@ -267,7 +303,7 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
     };
 
     return (
-        <div className={styles.statusdefaultTypesmallLo}>
+        <div className={!size ? styles.statusdefaultTypesmallLo : styles.statusdefaultTypesmallLoBig}>
             {/* 기본 페이지 (default) */}
             {pageValue === 'default' && (
                 <>
@@ -276,7 +312,8 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
                             <div className={styles.button}>
                                 <div className={styles.ai}>검색필터</div>
                             </div>
-                            <Image className={styles.dividerIcon} width={0} height={18} sizes="100vw" alt="" src="/icons/divider.png" />
+                            <Image className={styles.dividerIcon} width={1} height={18} sizes="100vw" alt=""
+                                   src="/icons/Divider1.svg"/>
                             <div className={styles.wrap}>
                                 <div className={styles.textInput}>
                                     <div className={styles.textInput1}>
@@ -299,16 +336,16 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
                                 </div>
                             </div>
                             <div className={styles.bubuttonChattton}>
-                                <div className={styles.icon}>
+                                <button onClick={() => handlePageClick('history')} className={styles.icon}>
                                     <Image className={styles.vector2Stroke} width={24} height={24} sizes="100vw" alt=""
                                            src="/icons/history.svg"/>
-                                </div>
+                                </button>
                             </div>
                             <div className={styles.buttonChat}>
-                                <div className={styles.icon}>
+                                <button className={styles.icon}>
                                     <Image className={styles.vector2Stroke} width={24} height={24} sizes="100vw" alt=""
                                            src="/icons/menu.svg"/>
-                                </div>
+                                </button>
                             </div>
                             <div className={styles.buttonChat}>
                                 <button onClick={onClose} className={styles.icon}>
@@ -422,22 +459,23 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
                             <div className={styles.divChat1}>{currentChatTopic}</div>
                             <button className={styles.buttonChat}>
                                 <div className={styles.icon1}>
-                                    <Image className={styles.vector4Stroke} width={24} height={24} sizes="100vw" alt="" src="/icons/arrow_down.svg" />
+                                    <Image className={styles.vector4Stroke} width={24} height={24} sizes="100vw" alt=""
+                                           src="/icons/arrow_down.svg"/>
                                 </div>
                             </button>
                         </div>
                         <div className={styles.wrapBtn}>
                             <div className={styles.buttonChat}>
-                                <div className={styles.icon}>
+                                <button onClick={() => handlePageClick('history')} className={styles.icon}>
                                     <Image className={styles.vector2Stroke} width={24} height={24} sizes="100vw" alt=""
                                            src="/icons/history.svg"/>
-                                </div>
+                                </button>
                             </div>
                             <div className={styles.buttonChat}>
-                                <div className={styles.icon}>
+                                <button className={styles.icon}>
                                     <Image className={styles.vector2Stroke} width={24} height={24} sizes="100vw" alt=""
                                            src="/icons/menu.svg"/>
-                                </div>
+                                </button>
                             </div>
                             <div className={styles.buttonChat}>
                                 <button onClick={onClose} className={styles.icon}>
@@ -461,78 +499,186 @@ const ChatBot: NextPage<ChatBotProps> = ({ onClose }) => {
                                     {message.type === 'user' ? (
                                         <div className={styles.div2}>{message.text}</div>
                                     ) : (
-                                        <p className={styles.p}>{message.text}</p>
+                                        <ReactMarkdown
+                                            remarkPlugins={[remarkGfm]}
+                                            components={{
+                                                li: ({...props}) => (
+                                                    <li {...props} className={styles.p}/>
+                                                ),
+                                                p: ({...props}) => (
+                                                    <p {...props} className={styles.p}/>
+                                                ),
+                                            }}
+                                        >
+                                            {message.text}
+                                        </ReactMarkdown>
                                     )}
                                 </div>
                             </div>
                         ))}
-                        <div ref={chatEndRef} /> {/* 채팅 맨 아래로 스크롤하기 위한 마커 */}
+                        <div ref={chatEndRef}/>
+                        {/* 채팅 맨 아래로 스크롤하기 위한 마커 */}
                     </div>
                 </>
             )}
-
-            {/* 하단 입력창 (default와 chat 모두에 존재) */}
-            <div className={styles.textInput4}>
-                <div className={styles.textInputChatbot}>
-                    {styles.halo && <div className={styles.halo} />}
-                    <div className={styles.textInput5}>
-                        <div className={styles.textActive}>
-                            <input
-                                type="text"
-                                className={styles.actualChatInput}
-                                value={inputValue}
-                                onChange={handleInputChange}
-                                onKeyPress={handleKeyPress}
-                                placeholder='내용을 입력하세요'
-                                aria-label="채팅 메시지 입력"
-                            />
+            {pageValue === 'history' &&
+                <>
+                    <div className={styles.headerChatbot}>
+                        <div className={styles.wrapTitle}>
+                            <button onClick={() => handlePageClick('default')} className={styles.buttonChat}>
+                                <div className={styles.icon1}>
+                                    <Image className={styles.vector4Stroke} width={24} height={24} sizes="100vw" alt=""
+                                           src="/icons/arrow_left.svg"/>
+                                </div>
+                            </button>
+                            <div className={styles.divChat1}>대화 기록 보기</div>
                         </div>
-                        <button
-                            type="button"
-                            className={styles.icon7}
-                            onClick={handleSendMessage}
-                            aria-label="전송"
-                            disabled={!inputValue.trim()}
-                        >
-                            <Image
-                                className={styles.iconChild1}
-                                width={24}
-                                height={24}
-                                sizes="100vw"
-                                alt="전송 아이콘"
-                                src="/icons/send_off.svg"
-                            />
-                        </button>
+                        <div className={styles.wrapBtn}>
+                            <div className={styles.buttonChat}>
+                                <button onClick={() => handlePageClick('chat')} className={styles.icon}>
+                                    <Image className={styles.vector2Stroke} width={24} height={24} sizes="100vw" alt=""
+                                           src="/icons/newchatting.svg"/>
+                                </button>
+                            </div>
+                            <div className={styles.buttonChat}>
+                                <button onClick={onClose} className={styles.icon}>
+                                    <Image className={styles.vector2Stroke} width={24} height={24} sizes="100vw" alt=""
+                                           src="/icons/cancel.svg"/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={styles.wrapLog}>
+                        <div className={styles.title}>
+                            <div className={styles.pm}>오늘</div>
+                        </div>
+                        <div className={styles.log}>
+                            <div className={styles.infoTextLogin}>
+                                <div className={styles.iconBlue}>
+                                    <Image className={styles.iconChildBlue} width={16} height={16} sizes="100vw" alt="" src="/icons/blue_mark.svg" />
+                                </div>
+                                <div className={styles.divLogin}>대화 기록을 저장하려면 로그인이 필요해요</div>
+                            </div>
+                            <Link href='/login' className={styles.buttonLogin}>
+                                <div className={styles.divLogin}>로그인</div>
+                            </Link>
+                        </div>
+                        <div className={styles.historyAtomic}>
+                            <div onClick={() => handlePageClick('chat')} className={styles.wrapItem}>
+                                <div className={styles.wrapInfo}>
+                                    <Image className={styles.iconBlue} width={16} height={16} sizes="100vw" alt="" src="icons/newchatting.svg" />
+                                    <div className={styles.divHistory}>새로운 채팅 시작하기</div>
+                                </div>
+                            </div>
+                        </div>
+                        {/*<div className={styles.div2}>메시지</div>*/}
+                        <div ref={chatEndRef}/>
+                        {/* 채팅 맨 아래로 스크롤하기 위한 마커 */}
+                    </div>
+                </>
+            }
+
+            {/* 하단 입력창 (페이지 값에 따라 조건부 렌더링) */}
+            {(pageValue === 'chat' || pageValue === 'default') && (
+                <div className={styles.textInput4}>
+                    <div className={styles.textInputChatbot}>
+                        {styles.halo && <div className={styles.halo}/>}
+                        <div className={styles.textInput5}>
+                            <div className={styles.textActive}>
+                                <input
+                                    type="text"
+                                    className={styles.actualChatInput}
+                                    value={inputValue}
+                                    onChange={handleInputChange}
+                                    onKeyPress={handleKeyPress}
+                                    placeholder='내용을 입력하세요'
+                                    aria-label="채팅 메시지 입력"
+                                />
+                            </div>
+                            <button
+                                type="button"
+                                className={styles.icon7}
+                                onClick={handleSendMessage}
+                                aria-label="전송"
+                                disabled={!inputValue.trim()}
+                            >
+                                <Image
+                                    className={styles.iconChild1}
+                                    width={24}
+                                    height={24}
+                                    sizes="100vw"
+                                    alt="전송 아이콘"
+                                    src="/icons/send_off.svg"
+                                />
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
 
+            {pageValue === 'history' && (
+                <div className={styles.textInput4}>
+                    <div className={styles.textInputChatbot}>
+                        <div className={styles.textInput51}>
+                            <div className={styles.textActive}>
+                                <input
+                                    type="text"
+                                    className={styles.actualChatInput}
+                                    // value={inputValue} // 이 값은 검색을 위한 별도의 상태여야 합니다.
+                                    // onChange={handleInputChange} // 이 핸들러는 검색을 위한 별도의 핸들러여야 합니다.
+                                    // onKeyPress={handleKeyPress} // 이 핸들러는 검색을 위한 별도의 핸들러여야 합니다.
+                                    placeholder='찾으려는 대화를 검색해보세요'
+                                    aria-label="대화 검색 입력"
+                                />
+                            </div>
+                            <button
+                                type="button"
+                                className={styles.icon7}
+                                // onClick={handleSendMessage} // 이 버튼의 기능은 검색이어야 합니다.
+                                // aria-label="전송"
+                                // disabled={!inputValue.trim()}
+                            >
+                                <Image
+                                    className={styles.iconChild1}
+                                    width={24}
+                                    height={24}
+                                    sizes="100vw"
+                                    alt="검색 아이콘" // alt 텍스트를 명확하게 변경
+                                    src="/icons/send_off.svg" // 여기에 검색 아이콘을 고려해 보세요
+                                />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             {/* 메뉴 챗봇 (항상 표시되지만 CSS로 숨김 처리 가능) */}
-            <div className={styles.menuChatbot}>
-                <div className={styles.container}>
-                    <div className={styles.wrap1}>
-                        <div className={styles.itemAtomic}>
-                            <div className={styles.div23}>크게 보기</div>
+            {pageValue === 'menu' &&
+                <div className={styles.menuChatbot}>
+                    <div className={styles.container}>
+                        <div className={styles.wrap1}>
+                            <div className={styles.itemAtomic}>
+                                <div className={styles.div23}>크게 보기</div>
+                            </div>
+                        </div>
+                        <div className={styles.wrap1}>
+                            <div className={styles.itemAtomic}>
+                                <div className={styles.div23}>새로운 대화</div>
+                            </div>
+                            <div className={styles.itemAtomic}>
+                                <div className={styles.div23}>대화 기록 보기</div>
+                            </div>
+                        </div>
+                        <div className={styles.itemAtomic3}>
+                            <div className={styles.div23}>구독 설정</div>
                         </div>
                     </div>
-                    <div className={styles.wrap1}>
-                        <div className={styles.itemAtomic}>
-                            <div className={styles.div23}>새로운 대화</div>
-                        </div>
-                        <div className={styles.itemAtomic}>
-                            <div className={styles.div23}>대화 기록 보기</div>
-                        </div>
+                    <div className={styles.wrapInfo}>
+                        <div className={styles.maAi10}>MA-AI 1.0</div>
+                        <div className={styles.maAi10}>무료 모델 구독 중</div>
+                        <div className={styles.maAi10}>마지막 업데이트 : 1시간 전</div>
                     </div>
-                    <div className={styles.itemAtomic3}>
-                        <div className={styles.div23}>구독 설정</div>
-                    </div>
-                </div>
-                <div className={styles.wrapInfo}>
-                    <div className={styles.maAi10}>MA-AI 1.0</div>
-                    <div className={styles.maAi10}>무료 모델 구독 중</div>
-                    <div className={styles.maAi10}>마지막 업데이트 : 1시간 전</div>
-                </div>
-            </div>
+                </div>}
         </div>
     );
 };

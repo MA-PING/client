@@ -51,7 +51,7 @@ const FloatingButton: NextPage = () => {
             {/* 채팅창이 열려 있을 때 채팅 다이얼로그 표시 */}
             {isChatOpen && (
                 // <ChatDialog onClose={toggleChat} />
-                <ChatBot onClose={toggleChat} />
+                <ChatBot onClose={toggleChat} size={false}/>
             )}
         </>
     );
