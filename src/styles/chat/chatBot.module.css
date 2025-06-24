@@ -84,7 +84,29 @@
     font-weight: 500;
     color: rgba(14, 15, 20, 0.9); /* 기존에는 0.2였으나, 헤더 제목이므로 진하게 변경 */
 }
-
+@keyframes text-fade-in {
+    0% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+.maAi {
+    flex: 1;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+    color: rgba(14, 15, 20, 0.9);
+    text-align: left;
+    /*display: inline-block;*/
+    animation: text-fade-in 1s infinite;
+}
 .dividerIcon {
     width: 0px;
     position: relative;
@@ -509,7 +531,7 @@
     position: relative;
 }
 
-/* 메시지 날짜/시간 표시 */
+/* 메시지 날짜/시간 표시 (if you re-add it) */
 .pm {
     width: 100%;
     position: relative;
@@ -523,17 +545,22 @@
     font-size: 12px;
     margin: 16px 0; /* 날짜 구분선 위아래 여백 */
 }
+
+.dateSeparator {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px; /* Adjust spacing as needed */
+}
+
+/* Wrapper for user messages to align them to the right */
 .userMessageWrapper {
-    /* 이 div가 wrapLog 내에서 오른쪽으로 정렬되도록 합니다. */
     align-self: flex-end;
-    /* 추가적으로, 이 래퍼의 너비가 내부 콘텐츠에 맞춰지도록 설정합니다. */
-    /* 이렇게 해야 버블이 오른쪽으로 잘 붙고 배경이 텍스트에 맞춰집니다. */
     width: fit-content;
-    max-width: 100%; /* 부모 wrapLog를 벗어나지 않도록 합니다. */
-    display: flex; /* 내부 아이템(날짜/메시지버블)을 정렬하기 위해 flex로 설정 */
-    flex-direction: column; /* 날짜가 있으면 메시지버블 위에 오도록 */
-    align-items: flex-end; /* 날짜와 버블 모두 오른쪽 정렬 */
-    gap: 4px; /* 날짜와 버블 사이의 간격 (선택 사항) */
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align contents to the right */
+    gap: 4px;
 }
 
 /* 사용자 메시지 스타일 */
@@ -541,22 +568,39 @@
     border-radius: 4px;
     background-color: #f7f7fa;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start; /* 텍스트는 버블 내에서 왼쪽 정렬 */
+    flex-direction: column; /* Changed to column to stack text and timestamp */
+    align-items: flex-end; /* Align text and timestamp to the right within the bubble */
+    justify-content: flex-start;
     padding: 8px 10px;
-    width: fit-content; /* 콘텐츠에 맞춰 너비 조절 */
-    max-width: 100%; /* 너무 길어지지 않도록 최대 너비 설정 */
-    align-self: flex-end; /* 이 부분이 중요합니다: 플렉스 컨테이너 내에서 오른쪽 끝으로 정렬 */
-    text-align: left; /* 텍스트 정렬은 기본적으로 왼쪽 */
+    width: fit-content;
+    max-width: 100%;
+    text-align: left;
     word-break: break-word;
     box-sizing: border-box;
+}
+.aiMessageWrapper {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row; /* Keep as row to place AI icon next to text */
+    align-items: flex-start;
+    gap: 8px; /* Space between AI icon and message bubble */
+    max-width: 100%; /* Ensure it doesn't overflow parent */
+    word-break: break-word; /* Important for wrapping within the wrapper */
 }
 .div2 { /* userInput 내부의 텍스트 */
     position: relative;
     letter-spacing: -0.02em;
     line-height: 150%;
     font-weight: normal; /* 기존 font-weight: 600 에서 일반으로 변경하여 자연스럽게 */
+    /* 다음 속성들이 텍스트 끊김을 방지하고 자동 줄바꿈을 유도합니다. */
+    white-space: pre-wrap; /* 공백과 줄바꿈을 유지하면서 자동 줄바꿈 */
+    overflow-wrap: break-word; /* 긴 단어가 오버플로우될 때 강제로 줄바꿈 */
+}
+
+.timestamp {
+    font-size: 10px; /* Smaller font size for timestamp */
+    color: rgba(14, 15, 20, 0.5); /* Lighter color for timestamp */
+    margin-top: 4px; /* Space above timestamp */
 }
 
 
@@ -567,15 +611,20 @@
     letter-spacing: -0.02em;
     line-height: 150%;
     text-align: left;
-    padding: 8px 10px;
+    /*padding: 8px 10px;*/
     background-color: #ffffff; /* AI 응답 배경색 (예시) */
     border-radius: 4px;
-    max-width: 80%;
+    max-width: 80%; /* AI 메시지 버블의 최대 너비를 줄여서 왼쪽 공간 확보 및 가독성 향상 */
     word-break: break-word; /* 긴 단어 줄바꿈 */
+    white-space: pre-wrap; /* AI 응답도 줄바꿈 처리 */
+    overflow-wrap: break-word; /* 긴 단어가 오버플로우될 때 강제로 줄바꿈 */
 }
 
 .p {
     margin: 0;
+    /* ReactMarkdown 내부의 p 태그에도 줄바꿈 속성 적용 */
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 .span {
@@ -588,6 +637,8 @@
     font-family: inherit;
     font-size: inherit;
     padding-left: 19px; /* 목록 항목 들여쓰기 */
+    white-space: pre-wrap; /* Ensure wrapping for list items too */
+    overflow-wrap: break-word;
 }
 
 
@@ -842,6 +893,56 @@
     letter-spacing: -0.02em;
     line-height: 150%;
 }
+.mapingIcon {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: -0.33%;
+    bottom: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.logo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.logoMaping {
+    width: 30px;
+    position: relative;
+    height: 22px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.divModel {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-items: flex-start;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+.aiContentAndTimestamp {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align AI content and timestamp to the left */
+    background-color: #f7f7fa; /* AI message bubble background */
+    border-radius: 4px;
+    padding: 8px 10px;
+    max-width: calc(100% - 38px); /* Adjust max-width to account for the AI icon */
+}
+
 @media screen and (max-width: 580px) {
     .statusdefaultTypesmallLo {
         position: fixed; /* 화면에 고정 */
@@ -861,6 +962,10 @@
         font-size: 14px; /* 기본 폰트 사이즈 */
         color: rgba(14, 15, 20, 0.9); /* 기본 텍스트 색상 */
         text-align: left; /* 기본 텍스트 정렬 */
+    }
+    /* Small screen adjustments for max-width of chat bubbles */
+    .hpContainer {
+        max-width: 90%; /* Adjust for smaller screens if needed */
     }
 }
 

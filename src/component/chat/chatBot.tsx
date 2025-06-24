@@ -1,3 +1,4 @@
+// ChatBot.tsx
 import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '@/styles/chat/chatBot.module.css';
@@ -26,6 +27,8 @@ interface ChatMessage {
     text: string;
     timestamp: Date; // 메시지 시간을 추가
     id: string; // 각 메시지를 고유하게 식별할 ID (스트림 연결용)
+    // Add a 'pending' flag to indicate if AI response is still loading
+    pending?: boolean;
 }
 
 // getNewGuestMessage 함수는 그대로 유지
@@ -152,12 +155,14 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
         setInputValue(''); // 메시지 전송 후 즉시 입력창 비우기
 
         // AI 응답을 위한 플레이스홀더 메시지 추가 (고유 ID 할당)
+        // pending: true를 추가하여 스켈레톤을 표시하도록 합니다.
         const aiMessageId = `ai-placeholder-${Date.now()}-${messageIdCounter++}`; // 더 고유한 ID
         setChatHistory((prevHistory) => [...prevHistory, {
             type: 'ai',
-            text: '메이 AI가 열심히 생각중이에요... 🔍',
+            text: '', // 텍스트는 빈 문자열로 시작하고 스트림 데이터를 받을 때 채워집니다.
             timestamp: new Date(),
-            id: aiMessageId
+            id: aiMessageId,
+            pending: true // AI 응답이 로딩 중임을 나타냅니다.
         }]);
 
         // 스트림 데이터를 처리하는 콜백 함수
@@ -177,11 +182,12 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
 
                 if (lastAiMessageIndex !== -1) {
                     const newHistory = [...prevHistory];
-                    // 기존 메시지 텍스트에 새로운 content를 추가
+                    // 기존 메시지 텍스트에 새로운 content를 추가하고 pending 상태를 false로 변경합니다.
                     newHistory[lastAiMessageIndex] = {
                         ...newHistory[lastAiMessageIndex],
-                        text: (newHistory[lastAiMessageIndex].text === '메이 AI가 열심히 생각중이에요... 🔍' ? '' : newHistory[lastAiMessageIndex].text) + data.content,
-                        timestamp: new Date() // 메시지 업데이트 시간 갱신 (선택 사항)
+                        text: newHistory[lastAiMessageIndex].text + data.content,
+                        timestamp: new Date(),
+                        pending: false // 첫 데이터가 오면 pending을 false로 설정
                     };
                     return newHistory;
                 } else {
@@ -191,7 +197,8 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                         type: 'ai',
                         text: data.content,
                         timestamp: new Date(),
-                        id: `ai-new-${Date.now()}-${messageIdCounter++}`
+                        id: `ai-new-${Date.now()}-${messageIdCounter++}`,
+                        pending: false
                     }];
                 }
             });
@@ -202,9 +209,15 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
             setChatHistory((prevHistory) => {
                 // 스트림 종료 후 플레이스홀더 메시지(있는 경우) 최종 처리 또는 제거
                 return prevHistory.map(msg => {
-                    if (msg.id === aiMessageId && msg.text === 'AI가 응답을 생성 중입니다...') {
-                        // 만약 스트림이 아무 내용도 보내지 않고 종료되었다면
-                        return {...msg, text: 'AI가 응답을 생성하지 못했습니다.', timestamp: new Date()};
+                    if (msg.id === aiMessageId) {
+                        // pending 상태를 false로 확실히 변경
+                        return {
+                            ...msg,
+                            pending: false,
+                            // 만약 스트림이 아무 내용도 보내지 않고 종료되었다면
+                            text: msg.text === '' ? 'AI가 응답을 생성하지 못했습니다.' : msg.text,
+                            timestamp: new Date()
+                        };
                     }
                     return msg;
                 });
@@ -217,11 +230,12 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                 const lastAiMessageIndex = prevHistory.findIndex(msg => msg.id === aiMessageId);
                 if (lastAiMessageIndex !== -1) {
                     const newHistory = [...prevHistory];
-                    // 오류 메시지로 플레이스홀더를 업데이트하거나 새 오류 메시지를 추가
+                    // 오류 메시지로 플레이스홀더를 업데이트하거나 새 오류 메시지를 추가하고 pending 상태를 false로 변경합니다.
                     newHistory[lastAiMessageIndex] = {
                         ...newHistory[lastAiMessageIndex],
-                        text: (newHistory[lastAiMessageIndex].text === '메이 AI가 열심히 생각중이에요... 🔍' ? '' : newHistory[lastAiMessageIndex].text) + ` (오류: ${errorContent})`,
-                        timestamp: new Date()
+                        text: (newHistory[lastAiMessageIndex].text === '' ? '' : newHistory[lastAiMessageIndex].text) + ` (오류: ${errorContent})`,
+                        timestamp: new Date(),
+                        pending: false // 오류 발생 시 pending을 false로 설정
                     };
                     return newHistory;
                 }
@@ -229,7 +243,8 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     type: 'ai',
                     text: `AI와 통신 중 오류 발생: ${errorContent}`,
                     timestamp: new Date(),
-                    id: `ai-error-${Date.now()}-${messageIdCounter++}`
+                    id: `ai-error-${Date.now()}-${messageIdCounter++}`,
+                    pending: false
                 }];
             });
         };
@@ -256,8 +271,9 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     const index = updatedHistory.indexOf(lastAiMessage);
                     updatedHistory[index] = {
                         ...lastAiMessage,
-                        text: (lastAiMessage.text === '메이 AI가 열심히 생각중이에요... 🔍' ? '' : lastAiMessage.text) + ' (전송 실패: 네트워크 오류)',
-                        timestamp: new Date()
+                        text: (lastAiMessage.text === '' ? '' : lastAiMessage.text) + ' (전송 실패: 네트워크 오류)',
+                        timestamp: new Date(),
+                        pending: false // 오류 발생 시 pending을 false로 설정
                     };
                     return updatedHistory;
                 }
@@ -265,7 +281,8 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     type: 'ai',
                     text: 'AI와 통신 중 네트워크 오류가 발생했습니다.',
                     timestamp: new Date(),
-                    id: `ai-final-error-${Date.now()}-${messageIdCounter++}`
+                    id: `ai-final-error-${Date.now()}-${messageIdCounter++}`,
+                    pending: false
                 }];
             });
         }
@@ -278,29 +295,34 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
         }
     };
 
-    // 날짜 포맷팅 헬퍼 함수
-    // const formatDate = (date: Date) => {
-    //     const today = new Date();
-    //     const yesterday = new Date(today);
-    //     yesterday.setDate(today.getDate() - 1);
-    //
-    //     const isToday = date.toDateString() === today.toDateString();
-    //     const isYesterday = date.toDateString() === yesterday.toDateString();
-    //
-    //     const hours = date.getHours();
-    //     const minutes = date.getMinutes();
-    //     const ampm = hours >= 12 ? 'PM' : 'AM';
-    //     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-    //     const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-    //
-    //     if (isToday) {
-    //         return `오늘 ${formattedHours}:${formattedMinutes} ${ampm}`;
-    //     } else if (isYesterday) {
-    //         return `어제 ${formattedHours}:${formattedMinutes} ${ampm}`;
-    //     } else {
-    //         return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${formattedHours}:${formattedMinutes} ${ampm}`;
-    //     }
-    // };
+    // 날짜 부분만 포맷팅하는 헬퍼 함수
+    const formatDateOnly = (date: Date) => {
+        const today = new Date();
+        const yesterday = new Date(today);
+        yesterday.setDate(today.getDate() - 1);
+
+        const isToday = date.toDateString() === today.toDateString();
+        const isYesterday = date.toDateString() === yesterday.toDateString();
+
+        if (isToday) {
+            return `오늘`;
+        } else if (isYesterday) {
+            return `어제`;
+        } else {
+            return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+        }
+    };
+
+    // 시간 부분만 포맷팅하는 헬퍼 함수
+    const formatTimeOnly = (date: Date) => {
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+        const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+        return `${formattedHours}:${formattedMinutes} ${ampm}`;
+    };
+
 
     return (
         <div className={!size ? styles.statusdefaultTypesmallLo : styles.statusdefaultTypesmallLoBig}>
@@ -487,37 +509,62 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     </div>
 
                     <div className={styles.wrapLog}>
-                        {chatHistory.map((message) => (
-                            <div key={message.id} className={message.type === 'user' ? styles.userMessageWrapper : styles.aiMessageWrapper}> {/* key를 message.id로 변경 */}
-                                {/*/!* 날짜/시간 표시 (이전 메시지와 날짜가 다를 경우) *!/*/}
-                                {/*{(index === 0 || formatDate(chatHistory[index - 1].timestamp) !== formatDate(message.timestamp)) && (*/}
-                                {/*    <div className={styles.title}>*/}
-                                {/*        <div className={styles.pm}>{formatDate(message.timestamp)}</div>*/}
-                                {/*    </div>*/}
-                                {/*)}*/}
-                                <div className={message.type === 'user' ? styles.userInput : styles.hpContainer}>
+                        {chatHistory.map((message, index) => (
+                            <React.Fragment key={message.id}>
+                                {/* Date separator */}
+                                {(index === 0 || formatDateOnly(chatHistory[index - 1].timestamp) !== formatDateOnly(message.timestamp)) && (
+                                    <div className={styles.dateSeparator}>
+                                        <div className={styles.timestamp}>{formatDateOnly(message.timestamp)} {formatTimeOnly(message.timestamp)}</div>
+                                    </div>
+                                )}
+
+                                <div
+                                    className={message.type === 'user' ? styles.userMessageWrapper : styles.aiMessageWrapper}
+                                >
                                     {message.type === 'user' ? (
-                                        <div className={styles.div2}>{message.text}</div>
+                                        // User message
+                                        <div className={styles.userInput}>
+                                            <div className={styles.div2}>{message.text}</div>
+                                            {/*<div className={styles.timestamp}>{formatTimeOnly(message.timestamp)}</div>*/}
+                                        </div>
                                     ) : (
-                                        <ReactMarkdown
-                                            remarkPlugins={[remarkGfm]}
-                                            components={{
-                                                li: ({...props}) => (
-                                                    <li {...props} className={styles.p}/>
-                                                ),
-                                                p: ({...props}) => (
-                                                    <p {...props} className={styles.p}/>
-                                                ),
-                                            }}
-                                        >
-                                            {message.text}
-                                        </ReactMarkdown>
+                                        // AI message
+                                        <div className={styles.divModel}>
+                                            <div className={styles.logoMaping}>
+                                                <div className={styles.logo}>
+                                                    <div className={styles.logoMaping}>
+                                                        <Image className={styles.mapingIcon} width={30} height={22} sizes="100vw" alt="" src="/icons/chatbot.svg" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {message.pending ? (
+                                                <p className={styles.maAi}>메이 AI가 열심히 생각중이에요... 🔍</p>
+                                            ) : (
+                                                <div className={styles.aiContentAndTimestamp}>
+                                                    <div>
+                                                        <ReactMarkdown
+                                                            remarkPlugins={[remarkGfm]}
+                                                            components={{
+                                                                li: ({...props}) => (
+                                                                    <li {...props} className={styles.p}/>
+                                                                ),
+                                                                p: ({...props}) => (
+                                                                    <p {...props} className={styles.p}/>
+                                                                ),
+                                                            }}
+                                                        >
+                                                            {message.text}
+                                                        </ReactMarkdown>
+                                                    </div>
+                                                    {/*<div className={styles.timestamp}>{formatTimeOnly(message.timestamp)}</div>*/}
+                                                </div>
+                                            )}
+                                        </div>
                                     )}
                                 </div>
-                            </div>
+                            </React.Fragment>
                         ))}
                         <div ref={chatEndRef}/>
-                        {/* 채팅 맨 아래로 스크롤하기 위한 마커 */}
                     </div>
                 </>
             )}
