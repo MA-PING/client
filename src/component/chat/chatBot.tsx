@@ -155,7 +155,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
         const aiMessageId = `ai-placeholder-${Date.now()}-${messageIdCounter++}`; // 더 고유한 ID
         setChatHistory((prevHistory) => [...prevHistory, {
             type: 'ai',
-            text: 'AI가 응답을 생성 중입니다...',
+            text: '메이 AI가 열심히 생각중이에요... 🔍',
             timestamp: new Date(),
             id: aiMessageId
         }]);
@@ -180,7 +180,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     // 기존 메시지 텍스트에 새로운 content를 추가
                     newHistory[lastAiMessageIndex] = {
                         ...newHistory[lastAiMessageIndex],
-                        text: (newHistory[lastAiMessageIndex].text === 'AI가 응답을 생성 중입니다...' ? '' : newHistory[lastAiMessageIndex].text) + data.content,
+                        text: (newHistory[lastAiMessageIndex].text === '메이 AI가 열심히 생각중이에요... 🔍' ? '' : newHistory[lastAiMessageIndex].text) + data.content,
                         timestamp: new Date() // 메시지 업데이트 시간 갱신 (선택 사항)
                     };
                     return newHistory;
@@ -220,7 +220,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     // 오류 메시지로 플레이스홀더를 업데이트하거나 새 오류 메시지를 추가
                     newHistory[lastAiMessageIndex] = {
                         ...newHistory[lastAiMessageIndex],
-                        text: (newHistory[lastAiMessageIndex].text === 'AI가 응답을 생성 중입니다...' ? '' : newHistory[lastAiMessageIndex].text) + ` (오류: ${errorContent})`,
+                        text: (newHistory[lastAiMessageIndex].text === '메이 AI가 열심히 생각중이에요... 🔍' ? '' : newHistory[lastAiMessageIndex].text) + ` (오류: ${errorContent})`,
                         timestamp: new Date()
                     };
                     return newHistory;
@@ -256,7 +256,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     const index = updatedHistory.indexOf(lastAiMessage);
                     updatedHistory[index] = {
                         ...lastAiMessage,
-                        text: (lastAiMessage.text === 'AI가 응답을 생성 중입니다...' ? '' : lastAiMessage.text) + ' (전송 실패: 네트워크 오류)',
+                        text: (lastAiMessage.text === '메이 AI가 열심히 생각중이에요... 🔍' ? '' : lastAiMessage.text) + ' (전송 실패: 네트워크 오류)',
                         timestamp: new Date()
                     };
                     return updatedHistory;
@@ -279,28 +279,28 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
     };
 
     // 날짜 포맷팅 헬퍼 함수
-    const formatDate = (date: Date) => {
-        const today = new Date();
-        const yesterday = new Date(today);
-        yesterday.setDate(today.getDate() - 1);
-
-        const isToday = date.toDateString() === today.toDateString();
-        const isYesterday = date.toDateString() === yesterday.toDateString();
-
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-        const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-
-        if (isToday) {
-            return `오늘 ${formattedHours}:${formattedMinutes} ${ampm}`;
-        } else if (isYesterday) {
-            return `어제 ${formattedHours}:${formattedMinutes} ${ampm}`;
-        } else {
-            return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${formattedHours}:${formattedMinutes} ${ampm}`;
-        }
-    };
+    // const formatDate = (date: Date) => {
+    //     const today = new Date();
+    //     const yesterday = new Date(today);
+    //     yesterday.setDate(today.getDate() - 1);
+    //
+    //     const isToday = date.toDateString() === today.toDateString();
+    //     const isYesterday = date.toDateString() === yesterday.toDateString();
+    //
+    //     const hours = date.getHours();
+    //     const minutes = date.getMinutes();
+    //     const ampm = hours >= 12 ? 'PM' : 'AM';
+    //     const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    //     const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    //
+    //     if (isToday) {
+    //         return `오늘 ${formattedHours}:${formattedMinutes} ${ampm}`;
+    //     } else if (isYesterday) {
+    //         return `어제 ${formattedHours}:${formattedMinutes} ${ampm}`;
+    //     } else {
+    //         return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${formattedHours}:${formattedMinutes} ${ampm}`;
+    //     }
+    // };
 
     return (
         <div className={!size ? styles.statusdefaultTypesmallLo : styles.statusdefaultTypesmallLoBig}>
@@ -487,14 +487,14 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     </div>
 
                     <div className={styles.wrapLog}>
-                        {chatHistory.map((message, index) => (
-                            <div key={message.id}> {/* key를 message.id로 변경 */}
-                                {/* 날짜/시간 표시 (이전 메시지와 날짜가 다를 경우) */}
-                                {(index === 0 || formatDate(chatHistory[index - 1].timestamp) !== formatDate(message.timestamp)) && (
-                                    <div className={styles.title}>
-                                        <div className={styles.pm}>{formatDate(message.timestamp)}</div>
-                                    </div>
-                                )}
+                        {chatHistory.map((message) => (
+                            <div key={message.id} className={message.type === 'user' ? styles.userMessageWrapper : styles.aiMessageWrapper}> {/* key를 message.id로 변경 */}
+                                {/*/!* 날짜/시간 표시 (이전 메시지와 날짜가 다를 경우) *!/*/}
+                                {/*{(index === 0 || formatDate(chatHistory[index - 1].timestamp) !== formatDate(message.timestamp)) && (*/}
+                                {/*    <div className={styles.title}>*/}
+                                {/*        <div className={styles.pm}>{formatDate(message.timestamp)}</div>*/}
+                                {/*    </div>*/}
+                                {/*)}*/}
                                 <div className={message.type === 'user' ? styles.userInput : styles.hpContainer}>
                                     {message.type === 'user' ? (
                                         <div className={styles.div2}>{message.text}</div>

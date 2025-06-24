@@ -546,7 +546,7 @@
     justify-content: flex-start; /* 텍스트는 버블 내에서 왼쪽 정렬 */
     padding: 8px 10px;
     width: fit-content; /* 콘텐츠에 맞춰 너비 조절 */
-    max-width: 80%; /* 너무 길어지지 않도록 최대 너비 설정 */
+    max-width: 100%; /* 너무 길어지지 않도록 최대 너비 설정 */
     align-self: flex-end; /* 이 부분이 중요합니다: 플렉스 컨테이너 내에서 오른쪽 끝으로 정렬 */
     text-align: left; /* 텍스트 정렬은 기본적으로 왼쪽 */
     word-break: break-word;
@@ -568,7 +568,7 @@
     line-height: 150%;
     text-align: left;
     padding: 8px 10px;
-    background-color: #e6e6e6; /* AI 응답 배경색 (예시) */
+    background-color: #ffffff; /* AI 응답 배경색 (예시) */
     border-radius: 4px;
     max-width: 80%;
     word-break: break-word; /* 긴 단어 줄바꿈 */
