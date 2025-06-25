@@ -1,0 +1,443 @@
+/* styles/drawer.module.css */
+
+.typetabletmobileLoginno {
+    width: 100%; /* 또는 고정 너비 334px (선택 사항) */
+    min-width: 250px; /* 최소 너비 보장 */
+    max-width: 334px; /* 스크린샷 기반 */
+    background-color: #fff;
+    /* height: 1000px; - 이 높이는 너무 고정적일 수 있습니다. 콘텐츠가 높이를 정의하도록 하거나 min-height/max-height 사용 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+    box-sizing: border-box;
+    gap: 16px;
+    text-align: left;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.9); /* 항목의 기본 텍스트 색상 */
+}
+
+.wrapBtn {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: 14px; /* 로그인/회원가입 버튼용 */
+}
+
+.button {
+    flex: 1;
+    border-radius: 8px;
+    background-color: #4060ff;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    gap: 4px;
+    color: #fff; /* 활성 로그인 버튼의 텍스트 색상 */
+}
+
+.button1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+
+.button2 {
+    flex: 1;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    color: rgba(14, 15, 20, 0.9); /* 회원가입 버튼의 텍스트 색상 */
+}
+
+/* 로그인 버튼 아이콘 */
+.loginIcon {
+    width: 16px;
+    position: relative;
+    height: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.loginIcon .vector37Stroke {
+    position: absolute;
+    height: 73.13%;
+    width: 39.38%;
+    top: 13.54%;
+    right: 47.08%;
+    bottom: 13.33%;
+    left: 13.54%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.loginIcon .vector31Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 41.88%;
+    top: 46.88%;
+    right: 13.33%;
+    bottom: 46.88%;
+    left: 44.79%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.loginIcon .vector32Stroke {
+    position: absolute;
+    height: 35.63%;
+    width: 20.63%;
+    top: 32.29%;
+    right: 34.58%;
+    bottom: 32.08%;
+    left: 44.79%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+.container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 16px; /* 메뉴 항목의 텍스트 크기 */
+    color: rgba(14, 15, 20, 0.9);
+}
+
+.wrapItem {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.menuAtomic {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 8px;
+}
+
+/* 메뉴 항목의 기본 아이콘 스타일링 */
+.menuIcon {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.divider {
+    width: 100%; /* 드로어 너비에 맞게 조정 */
+    position: relative;
+    height: 1px; /* 보이도록 설정 */
+    background-color: #e0e0e0; /* 구분선 예시 색상 */
+    margin: 8px 0; /* 간격 추가 */
+}
+
+/* 특정 아이콘 스타일 */
+.homeIcon .vector353Stroke {
+    position: absolute;
+    height: 75%;
+    width: 75%;
+    top: 12.4%;
+    right: 12.51%;
+    bottom: 12.6%;
+    left: 12.49%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.homeIcon .rectangle12464Stroke {
+    position: absolute;
+    height: 34.58%;
+    width: 29.58%;
+    top: 53.1%;
+    right: 35.21%;
+    bottom: 12.32%;
+    left: 35.21%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.characterIcon .rectangle12466Stroke {
+    position: absolute;
+    height: 75%;
+    width: 66.67%;
+    top: 12.5%;
+    right: 12.45%;
+    bottom: 12.5%;
+    left: 20.88%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.characterIcon .ellipse16Stroke {
+    position: absolute;
+    height: 24.17%;
+    width: 24.17%;
+    top: 23.94%;
+    right: 33.78%;
+    bottom: 51.9%;
+    left: 42.05%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.characterIcon .rectangle4Stroke {
+    position: absolute;
+    height: 23.33%;
+    width: 35.42%;
+    top: 53.07%;
+    right: 28%;
+    bottom: 23.59%;
+    left: 36.58%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.characterIcon .vector355Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 11.67%;
+    top: 20.81%;
+    right: 75.83%;
+    bottom: 72.94%;
+    left: 12.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.characterIcon .vector356Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 11.67%;
+    top: 72.88%;
+    right: 75.83%;
+    bottom: 20.87%;
+    left: 12.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.characterIcon .vector357Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 11.67%;
+    top: 55.53%;
+    right: 75.83%;
+    bottom: 38.22%;
+    left: 12.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.characterIcon .vector358Stroke {
+    position: absolute;
+    height: 6.25%;
+    width: 11.67%;
+    top: 38.17%;
+    right: 75.83%;
+    bottom: 55.58%;
+    left: 12.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.simulatorIcon .iconChild {
+    position: absolute;
+    height: 75%;
+    width: 100%; /* 이미지 src/차원 기준. 원본 CSS는 100%였지만 이미지가 18x18이므로 24px 컨테이너에 대해 75%일 수 있습니다. 명확히 합시다. */
+    top: 12.57%;
+    right: 12.49%;
+    bottom: 12.43%;
+    left: 12.51%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.rankerIcon .rectangle12461Stroke {
+    position: absolute;
+    height: 58.33%;
+    width: 29.17%;
+    top: 29.17%;
+    right: 58.33%;
+    bottom: 12.5%;
+    left: 12.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.rankerIcon .rectangle12462Stroke {
+    position: absolute;
+    height: 75%;
+    width: 29.17%;
+    top: 12.5%;
+    right: 35.42%;
+    bottom: 12.5%;
+    left: 35.42%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.rankerIcon .rectangle12463Stroke {
+    position: absolute;
+    height: 41.67%;
+    width: 29.17%;
+    top: 45.83%;
+    right: 12.5%;
+    bottom: 12.5%;
+    left: 58.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.bookmarkIcon .unionIcon {
+    position: absolute;
+    height: 65%;
+    width: 100%; /* 이 너비와 왼쪽/오른쪽 오프셋은 24px 컨테이너 및 18px 소스와 관련하여 잘못된 것 같습니다. 100%를 사용하고 수평으로 중앙에 배치합니다. */
+    top: 16.67%;
+    right: 12.5%;
+    bottom: 18.33%;
+    left: 12.5%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+/* 24x24 컨테이너 내에서 원본 이미지 치수(18x15.6)를 기반으로 책갈피 아이콘 위치 재평가 */
+.bookmarkIcon .unionIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 아이콘 중앙 정렬 */
+    width: 18px; /* 아이콘 이미지의 원본 너비 */
+    height: 15.6px; /* 아이콘 이미지의 원본 높이 */
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+
+.accountSettingsIcon .ellipse16Stroke1 {
+    position: absolute;
+    height: 31.25%;
+    width: 31.25%;
+    top: 12.5%;
+    right: 42.92%;
+    bottom: 56.25%;
+    left: 25.83%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.accountSettingsIcon .rectangle4Stroke1 {
+    position: absolute;
+    height: 38.75%;
+    width: 58.33%;
+    top: 48.98%;
+    right: 29.18%;
+    bottom: 12.27%;
+    left: 12.48%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.accountSettingsIcon .vector25Stroke {
+    position: absolute;
+    height: 50.83%;
+    width: 50.83%;
+    top: 29.79%;
+    right: -29.83%;
+    bottom: 19.38%;
+    left: 79%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+/* vector25Stroke를 보이게 조정합니다. (아이콘의 일부라고 가정).
+   현재 위치는 주 아이콘 영역 밖에 있음을 의미합니다.
+   만약 24x24 아이콘 *내부* 요소라면, top/left/right/bottom은 해당 컨테이너에 상대적이어야 합니다.
+   일단은 원본 상대 값을 기반으로 보이게만 합시다. */
+.accountSettingsIcon .vector25Stroke {
+    position: absolute;
+    top: 50%; /* 수직 중앙 정렬 */
+    left: 50%; /* 수평 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 실제 중앙으로 조정 */
+    width: 12.2px; /* 원본 너비 */
+    height: 12.2px; /* 원본 높이 */
+    max-width: none; /* 원본 비율을 위해 24px를 초과할 수 있도록 허용 */
+    max-height: none;
+    overflow: visible; /* 필요한 경우 부모 밖에서 렌더링 허용 */
+    object-fit: contain;
+}
+
+
+.logoutIcon .vector37Stroke1 {
+    position: absolute;
+    height: 72.92%;
+    width: 39.58%;
+    top: 13.54%;
+    right: 46.88%;
+    bottom: 13.54%;
+    left: 13.54%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.logoutIcon .vector31Stroke1 {
+    position: absolute;
+    height: 6.25%;
+    width: 41.67%;
+    top: 53.13%;
+    right: 13.54%;
+    bottom: 40.63%;
+    left: 44.79%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.logoutIcon .vector32Stroke1 {
+    position: absolute;
+    height: 35.42%;
+    width: 20.83%;
+    top: 67.71%;
+    right: 13.54%;
+    bottom: -3.12%;
+    left: 65.63%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}

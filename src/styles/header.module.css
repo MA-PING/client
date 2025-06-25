@@ -131,6 +131,7 @@
 .search {
     width: 440px;
     height: 44px;
+    margin-right: 32px;
     /*border-radius: 8px;*/
     /*background-color: #fff;*/
     /*border: 1px solid #d4d4d6;*/
@@ -174,7 +175,35 @@
     font-size: 16px;
     color: rgba(14, 15, 20, 0.5);
 }
-
+.buttonLongin {
+    width: 120px;
+    position: relative;
+    border-radius: 6px;
+    background-color: #4060ff;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    font-size: 14px;
+    color: #fff;
+}
+.button1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.wrapBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    font-size: 14px;
+    color: #fff;
+}
 @media screen and (max-width: 1280px) {
     .header {
         max-width: 1280px;

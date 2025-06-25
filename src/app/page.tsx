@@ -4,6 +4,7 @@ import styles from '../styles/home.header.module.css';
 import PatchNotice from '@/component/home/patchNote';
 import APIContents1 from "@/component/home/APIContents";
 import Banner from "@/component/home/banner";
+import Header from "@/component/header";
 
 interface PatchNote {
     title: string;
@@ -44,40 +45,5 @@ export default async function Home() {
       <APIContents1/>
       <PatchNotice patchNotes={patchNotes}/>
   </div>
-    );
-}
-
-function Header(){
-    return(
-        <div className={styles.statusloginTypenonSearch}>
-            <div className={styles.logoMaping}>
-                <Link href="/" className={styles.logo}>
-                    <Image className={styles.logoMapingIcon} width={30} height={22} alt="메인 페이지로 바로 가기" src="/icons/Maping.svg" />
-                    <Image className={styles.logoIcon} width={130} height={20} alt="메인 페이지로 바로 가기" src="/icons/Logo.svg" />
-                </Link>
-            </div>
-            <div className={styles.container}>
-                <div className={styles.wrapItem}>
-                    <Link href="/" scroll={false} className={styles.item}>
-                        <div className={styles.div}>홈</div>
-                    </Link>
-                    <Link href="/my-character" scroll={false} className={styles.item1}>
-                        <div className={styles.div1}>내 캐릭터 정보</div>
-                    </Link>
-                    <Link href="/simulator" scroll={false} className={styles.item1}>
-                        <div className={styles.div1}>시뮬레이터</div>
-                    </Link>
-                    <Link href="/ranking" scroll={false} className={styles.item1}>
-                        <div className={styles.div1}>랭커정보</div>
-                    </Link>
-                </div>
-            </div>
-            {/*<div className={styles.button}>*/}
-            {/*    <Image className={styles.icon} width={40} height={40} alt="" src="/icons/profile.png" />*/}
-            {/*</div>*/}
-            <Link href='/login' className={styles.buttonLongin}>
-                <div className={styles.button1}>로그인</div>
-            </Link>
-        </div>
     );
 }

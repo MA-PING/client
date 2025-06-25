@@ -937,7 +937,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Align AI content and timestamp to the left */
-    background-color: #f7f7fa; /* AI message bubble background */
     border-radius: 4px;
     padding: 8px 10px;
     max-width: calc(100% - 38px); /* Adjust max-width to account for the AI icon */
