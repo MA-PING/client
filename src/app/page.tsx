@@ -1,6 +1,3 @@
-import Link from "next/link";
-import Image from 'next/image';
-import styles from '../styles/home.header.module.css';
 import PatchNotice from '@/component/home/patchNote';
 import APIContents1 from "@/component/home/APIContents";
 import Banner from "@/component/home/banner";
