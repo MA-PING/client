@@ -23,7 +23,7 @@ const CharacterInfo: NextPage<CharacterInfoProps> = ({ response }) => {
     const handleRefresh = async () => {
         startTransition(async () => {
             // 서버에 있는 캐시를 먼저 무효화합니다.
-            await refreshCharacterData(Character.basic.character_name);
+            await refreshCharacterData(encodeURIComponent(Character.basic.character_name));
             // 그 다음, 새로운 데이터를 가져오도록 페이지를 새로고침합니다.
             router.refresh();
         });

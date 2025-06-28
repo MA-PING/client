@@ -1,23 +1,23 @@
-
 'use client';
 
 import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '../../styles/search/characterInfo.module.css';
 import {ApisResponse, characterMainList} from "@/interfaces/character";
-import {useState} from "react";
+import {useState, useTransition} from "react";
 import {serverImageMap} from "@/interfaces/serverImageMap";
+import {refreshCharacterData} from "@/app/actions";
 
 interface CharacterInfosProps {
-    response: ApisResponse;
-    onCharacterChange: (characterName: string) => void;
+    response: ApisResponse,
+    onCharacterChange: (characterName: string) => void,
+    date: string
 }
 
-const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterChange}) => {
+const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterChange, date}) => {
     const characterList: characterMainList[] = response.data?.characterList || [];
-
     const initialMainCharacter = characterList.find(char => char.main_character);
-
+    const [isPending, startTransition] = useTransition();
     const [selectedMainCharacter, setSelectedMainCharacter] = useState<characterMainList | undefined>(initialMainCharacter);
 
     if (!selectedMainCharacter) {
@@ -30,7 +30,12 @@ const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterCha
         setSelectedMainCharacter(char);
         onCharacterChange(char.character_name);
     };
-
+    const handleRefresh = async () => {
+        startTransition(async () => {
+            await refreshCharacterData(selectedMainCharacter.character_name);
+            handleCharacterChange(selectedMainCharacter);
+        });
+    };
     return (
         <div className={styles.divApi}>
             <div className={styles.title}>
@@ -40,11 +45,11 @@ const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterCha
                 <div className={styles.updateInfo}>
                     <div className={styles.wrapText}>
                         <div className={styles.div2}>마지막 업데이트 날짜</div>
-                        <div className={styles.div3}>{response.responseAt.slice(11, 16)}</div>
+                        <div className={styles.div3}>{date.slice(11, 16)}</div>
                     </div>
-                    <button className={styles.button} >
+                    <button className={styles.button} onClick={handleRefresh} disabled={isPending}>
                         <div className={styles.button1}>
-                            정보 갱신
+                            {isPending ? '갱신 중...' : '정보 갱신'}
                         </div>
                     </button>
                 </div>
@@ -63,7 +68,8 @@ const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterCha
                                 <div
                                     className={styles.lv280}>LV. {selectedMainCharacter.character_level} | {selectedMainCharacter.character_class}</div>
                                 {selectedMainCharacter.character_guild_name !== null ?
-                                    <div className={styles.div5}>길드: {selectedMainCharacter.character_guild_name}</div> :
+                                    <div
+                                        className={styles.div5}>길드: {selectedMainCharacter.character_guild_name}</div> :
                                     <div/>
                                 }
                             </div>
@@ -84,7 +90,8 @@ const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterCha
                     <div className={styles.characterApi1} key={subChar.ocid}>
                         <div className={styles.wrapCharacterInfoApi}>
                             <div className={styles.wrap1}>
-                                <Image className={styles.characterProfileIconApi1} width={56} height={56} alt="character_image"
+                                <Image className={styles.characterProfileIconApi1} width={56} height={56}
+                                       alt="character_image"
                                        src={subChar.character_image}/>
                                 {subChar.main_character ?
                                     <div className={styles.badgeMain}>
@@ -102,7 +109,8 @@ const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterCha
                                     <div className={styles.button1}>{subChar.character_name}</div>
                                 </div>
                                 <div className={styles.wrapSubInfo1}>
-                                    <div className={styles.lv2801}>LV. {subChar.character_level} | {subChar.character_class}</div>
+                                    <div
+                                        className={styles.lv2801}>LV. {subChar.character_level} | {subChar.character_class}</div>
                                     {subChar.character_guild_name !== null ?
                                         <div className={styles.label}>길드: {subChar.character_guild_name}</div> :
                                         <div/>
@@ -112,7 +120,8 @@ const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterCha
                             <div className={styles.wrapBtn}>
                                 <button className={styles.buttonApi2} onClick={() => handleCharacterChange(subChar)}>
                                     <div className={styles.iconApi}>
-                                        <Image className={styles.serverPngIcon} width={18} height={18} sizes="100vw" alt="change" src="/icons/change.svg" />
+                                        <Image className={styles.serverPngIcon} width={18} height={18} sizes="100vw"
+                                               alt="change" src="/icons/change.svg"/>
                                     </div>
                                 </button>
                             </div>

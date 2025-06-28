@@ -54,7 +54,7 @@ const NoSearch: NextPage = () => {
             console.log("API 체크 성공:", response);
 
             try {
-                // API 키를 Base64로 인코딩하여 암호화
+                // API 키를 Base64로 인코딩하여 암호화 (간단한 암호화)
                 const encryptedApiKey = btoa(inputValue.trim());
 
                 // 암호화된 API 키를 쿠키에 저장

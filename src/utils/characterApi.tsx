@@ -16,7 +16,6 @@ export async function getCharacter(name: string): Promise<ApiResponse | null> {
                 tags: [`character:${name}`], // 특정 캐릭터 데이터에 대한 태그
             },
         });
-
         if (!response.ok) {
             console.warn(`캐릭터 정보를 가져오지 못했습니다: ${name}, 상태 코드: ${response.status}`);
             return null;
