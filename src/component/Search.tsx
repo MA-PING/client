@@ -6,6 +6,7 @@ import {useRouter} from 'next/navigation';
 import {useState, useEffect, useRef} from "react";
 import styles from '@/styles/Search.module.css';
 import Portal from "@/component/Portal";
+import {serverImageMap} from "@/interfaces/serverImageMap";
 
 // --- 타입 정의 (기존과 동일) ---
 interface ApiResponse {
@@ -23,7 +24,6 @@ interface Character {
     image: string;
     level: number;
 }
-
 async function getAutocomplete(name: string): Promise<Character[] | null> {
     try {
         const response = await fetch('https://api.ma-ping.com/api/v1/autocomplete?characterName=' + name, {
@@ -240,7 +240,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
                 <div className={styles.wrapInfo}>
                     <div className={styles.info}>
                         <Image className={styles.icon} width={18} height={18} alt={char.world}
-                               src={"/icons/server/" + char.world + ".png"}/>
+                               src={serverImageMap[char.world]}/>
                         <div className={styles.div}>{char.characterName}</div>
                     </div>
                     <div className={styles.lv280}>LV. {char.level} | {char.className}</div>

@@ -14,5 +14,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "daily",
             priority: 0.8,
         },
+        {
+            url: 'https://ma-ping.com/c',
+            lastModified: new Date(),
+            changeFrequency: "daily",
+            priority: 0.9,
+        },
+        {
+            url: 'https://ma-ping.com/login',
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.5,
+        },
     ]
 }

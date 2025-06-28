@@ -583,7 +583,7 @@
     gap: 40px;
 }
 .div {
-    width: 100%;
+    width: 260px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;

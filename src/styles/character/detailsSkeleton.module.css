@@ -1,0 +1,76 @@
+
+.detailsSkeletonDiv {
+    /* Details 컴포넌트의 기본 레이아웃과 동일하게 설정 */
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* MUI Skeleton의 기본 색상과 충돌하지 않도록 주의 */
+}
+
+.title1 .div1 {
+    display: flex;
+    align-items: center;
+    /* 폰트 사이즈 등 Details의 실제 텍스트와 유사하게 */
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tab {
+    display: flex;
+    gap: 5px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.tabAtomic {
+    /* MUI Skeleton 버튼의 기본 크기와 유사하게 맞춥니다. */
+    padding: 8px 15px;
+    border-radius: 6px;
+    /* 배경색은 MUI Skeleton이 자체적으로 처리하지만, 필요시 오버라이드 가능 */
+}
+
+.tabContentSkeleton {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    min-height: 200px;
+    /* 내부 스켈레톤 요소들을 위한 정렬 */
+    display: flex;
+    flex-direction: column; /* 스켈레톤 요소들을 세로로 쌓기 위해 */
+    gap: 8px; /* 스켈레톤 요소들 사이의 간격 */
+}
+
+/* 각 탭별 상세 스켈레톤 스타일 (내부 Box 컴포넌트) */
+.statSkeleton,
+.equipmentSkeleton,
+.unionSkeleton,
+.skillsSkeleton {
+    width: 100%;
+    padding: 15px;
+    /* 각 섹션의 실제 콘텐츠와 유사한 패딩/마진 설정 */
+}
+
+.equipmentGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
+}
+
+/* MUI Skeleton의 색상/애니메이션을 커스터마이즈하고 싶다면 */
+/* global.css 또는 theme 파일에서 override 할 수 있습니다. */
+/* 예시: */
+/* .MuiSkeleton-root {
+  background-color: rgba(0, 0, 0, 0.11) !important;
+} */

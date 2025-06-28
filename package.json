@@ -16,6 +16,7 @@
     "@suspensive/react": "^3.0.0",
     "@toss/utils": "^1.6.1",
     "axios": "^1.8.4",
+    "cookies-next": "^6.0.0",
     "dotenv": "^16.4.7",
     "nanoid": "^5.1.5",
     "next": "15.2.4",

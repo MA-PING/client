@@ -7,18 +7,18 @@ import { ApiResponse, Character } from "@/interfaces/character";
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import { refreshCharacterData } from '@/app/actions';
+import {serverImageMap} from "@/interfaces/serverImageMap";
 
 interface CharacterInfoProps {
     response: ApiResponse;
 }
-
 const CharacterInfo: NextPage<CharacterInfoProps> = ({ response }) => {
     const router = useRouter();
     const [isPending, startTransition] = useTransition(); // 로딩 상태 관리를 위한 훅
 
     const Character: Character = response.data;
     const characterProfileImage: string = Character.basic.character_image;
-    const serverImage: string = "/icons/server/" + Character.basic.world_name + ".png";
+    const serverImage: string = serverImageMap[Character.basic.world_name];
 
     const handleRefresh = async () => {
         startTransition(async () => {
@@ -72,9 +72,6 @@ const CharacterInfo: NextPage<CharacterInfoProps> = ({ response }) => {
                         </div>
                     </button>
                 </div>
-                <div className={styles.character1}/>
-                <div className={styles.character1}/>
-                <div className={styles.character1}/>
             </div>
         </div>);
 };

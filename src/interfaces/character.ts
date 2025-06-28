@@ -566,6 +566,28 @@ export interface Character {
     unionArtifact: UnionArtifact; // e.g., unionArtifact
 }
 
+export interface characterMainList {
+    ocid: string;
+    character_name: string;
+    character_image: string;
+    world_name: string;
+    character_class: string;
+    character_level: number;
+    character_guild_name: string;
+    main_character: boolean;
+}
+
+// export interface accountList {
+//     account_id: string;
+//     character_list: characterList[];
+// }
+
+export interface CharacterList {
+    characterList: characterMainList[];
+    characterInfo: Character;
+}
+
+
 // --- API Response Wrapper ---
 export interface ApiResponse {
     code: string;
@@ -574,7 +596,20 @@ export interface ApiResponse {
     data: Character; // Use the main Character interface
     success: boolean;
 }
-
+export interface ApisResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: CharacterList; // Use the main Character interface
+    success: boolean;
+}
+export interface ApiCheckResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: characterMainList[];
+    success: boolean;
+}
 // --- Notes ---
 // 1. Corrected some potential typos (e.g., itemAddOption, exceptional_upgrade).
 // 2. Added `export` to all interfaces.

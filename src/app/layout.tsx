@@ -58,7 +58,7 @@ export default function RootLayout({
           <Script
               id="nexon-analytics"
               strategy="afterInteractive"
-              src="https://openapi.nexon.com/js/analytics.js?app_id=139195"
+              src="https://openapi.nexon.com/js/analytics.js?app_id=226073"
           />
         <main className={styles.main}>
           {children}

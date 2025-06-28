@@ -75,7 +75,7 @@ const UnionInnerStat: NextPage<UnionInnerStatProps> = ({unionBlock}) => {
     }
     return (
         <div className={styles.container}>
-            <Image className={styles.lineIcon} width={352} height={320} sizes="100vw" alt="" src="/icons/line.svg"/>
+            <Image className={styles.lineIcon} width={352} height={320} sizes="100vw" alt="" src="/icons/Union.png"/>
             <div className={styles.grid}>
                 {gridCells}
             </div>

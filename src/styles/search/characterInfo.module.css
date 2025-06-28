@@ -186,6 +186,187 @@
     font-size: 14px;
     color: rgba(14, 15, 20, 0.7);
 }
+.label {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.badge {
+    margin: 0 !important;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border-radius: 6px;
+    border: 1px solid #4060ff;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+    z-index: 1;
+    font-size: 12px;
+    color: #4060ff;
+}
+.badgeSub {
+    margin: 0 !important;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border-radius: 6px;
+    border: 1px solid #bbbbbd;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+    z-index: 1;
+    font-size: 12px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.badgeMain {
+    border-radius: 6px;
+    border: 1px solid #4060ff;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+    color: #4060ff;
+}
+.badge1 {
+    border-radius: 6px;
+    border: 1px solid #bbbbbd;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+}
+.wrapBtn {
+    margin: 0 !important;
+    position: absolute;
+    top: calc(50% - 16px);
+    left: 249px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
+}
+.characterProfileIcon1 {
+    width: 56px;
+    position: relative;
+    border-radius: 4px;
+    height: 56px;
+    object-fit: cover;
+}
+.buttonApi2 {
+    width: 32px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.characterApi1 {
+    /*width: 100%;*/
+    margin-top: 8px;
+    position: relative;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    /*padding: 16px;*/
+    box-sizing: border-box;
+    gap: 16px;
+    text-align: left;
+    font-size: 12px;
+    color: rgba(14, 15, 20, 0.5);
+}
+/*.character {*/
+/*    align-self: stretch;*/
+/*    border-radius: 8px;*/
+/*    background-color: #fff;*/
+/*    border: 1px solid #b8c3ff;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    padding: 16px;*/
+/*    position: relative;*/
+/*    gap: 16px;*/
+/*    font-size: 24px;*/
+/*    color: rgba(14, 15, 20, 0.9);*/
+/*}*/
+.characterProfileIconApi1 {
+    width: 56px;
+    position: relative;
+    border-radius: 4px;
+    height: 56px;
+    object-fit: cover;
+}
+.iconApi {
+    width: 20px;
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.wrapCharacterInfoApi {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 0;
+}
+.wrap1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.containerApi {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    font-size: 18px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.wrapSubInfo1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.lv280 {
+    width: 161px;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+}
 .div11 {
     width: 260px;
     /*width: 100%;*/
@@ -198,6 +379,9 @@
     /*text-align: left;*/
     /*font-size: 32px;*/
     /*color: rgba(14, 15, 20, 0.9);*/
+}
+.divApi{
+    width: 282px;
 }
 @media screen and (max-width: 1280px) {
 }
