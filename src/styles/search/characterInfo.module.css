@@ -282,6 +282,7 @@
 }
 .characterApi1 {
     /*width: 100%;*/
+    width: 282px;
     margin-top: 8px;
     position: relative;
     border-radius: 8px;
@@ -360,7 +361,7 @@
     color: rgba(14, 15, 20, 0.7);
 }
 .lv280 {
-    width: 161px;
+    width: 180px;
     position: relative;
     letter-spacing: -0.02em;
     line-height: 150%;
@@ -383,11 +384,23 @@
 .divApi{
     width: 282px;
 }
+.list {
+    display: flex;
+    flex-direction: column;
+}
 @media screen and (max-width: 1280px) {
 }
 @media screen and (max-width: 1199px) {
 }
 @media screen and (max-width: 900px) {
+    .list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        overflow-x: auto;
+    }
+    .divApi{
+        width: 90%;
+    }
 }
 @media screen and (max-width: 720px) {
 }

@@ -3,6 +3,7 @@
     flex-direction: column;
     min-height: 100vh; /* 뷰포트 전체를 최소 높이로 설정 */
     margin: 0;
+    min-width: 320px;
 }
 
 .main {

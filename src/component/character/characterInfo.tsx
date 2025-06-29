@@ -85,7 +85,7 @@ const CharacterInfos: NextPage<CharacterInfosProps> = ({response, onCharacterCha
                     }
                 </div>
             </div>
-            <div>
+            <div className={styles.list}>
                 {subCharacters.map((subChar) => (
                     <div className={styles.characterApi1} key={subChar.ocid}>
                         <div className={styles.wrapCharacterInfoApi}>

@@ -123,6 +123,7 @@
     border: 1px solid #ededf0;
     display: flex;
     padding: 16px;
+    position: relative;
 }
 
 .inPageNavigationLarge {
@@ -210,6 +211,89 @@
     color: rgba(14, 15, 20, 0.9);
     white-space: normal; /* 글자 자동 줄바꿈 */
 }
+.apiKey {
+    width: 219px;
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+    display: inline-block;
+}
+.apiKey1 {
+    width: 254px;
+    position: relative;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+    display: inline-block;
+}
+.titleApi {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 텍스트 중앙 정렬 */
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%; /* 부모 너비에 맞춰 텍스트 정렬이 잘 되도록 */
+}
+
+.button1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.button {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #4060ff;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 17px;
+    color: #fff;
+}
+.content {
+    box-shadow: 0px 0px 1px rgba(14, 15, 20, 0.05), 0px 4px 8px rgba(14, 15, 20, 0.05);
+    border-radius: 12px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    gap: 32px;
+    z-index: 20; /* dimApi 위에 오도록 충분히 높은 z-index */
+    /* max-width를 줘서 팝업 크기 제어 (선택 사항) */
+    max-width: 320px;
+    width: 90%; /* 모바일에서 화면 너비에 맞게 조절 */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+}
+.dimApi {
+    width: 100%; /* 부모(div2)의 100% 너비를 채웁니다. */
+    height: 100%; /* 부모(div2)의 100% 높이를 채웁니다. */
+    position: absolute; /* 부모(div2)를 기준으로 위치합니다. */
+    top: 0; /* 부모의 상단에 맞춰집니다. */
+    left: 0; /* 부모의 좌측에 맞춰집니다. */
+    margin: 0; /* margin: 0 !important; 대신 단순히 margin: 0; */
+    backdrop-filter: blur(8px);
+    border-radius: 12px; /* div2의 border-radius와 일치하게 */
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex; /* 내부 content를 중앙 정렬하기 위해 flex 사용 */
+    flex-direction: column;
+    align-items: center; /* 수평 중앙 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    text-align: center;
+    font-size: 28px;
+    color: rgba(14, 15, 20, 0.9);
+    z-index: 10; /* div2의 다른 내용 위에 오도록 높은 z-index 부여 (content의 z-index보다 낮게) */
+}
+
 
 /* -------------------------------------- */
 /* --- 데스크톱 스타일 (1024px 이상) --- */

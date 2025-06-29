@@ -8,6 +8,7 @@ import { useState } from 'react';
 import {getApiCheck} from "@/utils/apiCheck";
 import {setCookie} from "cookies-next";
 import { useRouter } from 'next/navigation';
+import BannerModal from "@/component/bannerModal";
 
 interface ApiBody {
     apiKey: string;
@@ -41,7 +42,6 @@ const NoSearch: NextPage = () => {
 
         setIsLoading(true);
         setError(null);
-        // setApiResponse(null); // 이전 응답 초기화 - 이 줄도 필요 없습니다.
 
         const body: ApiBody = {
             apiKey: inputValue.trim(),
@@ -54,7 +54,7 @@ const NoSearch: NextPage = () => {
             console.log("API 체크 성공:", response);
 
             try {
-                // API 키를 Base64로 인코딩하여 암호화 (간단한 암호화)
+                // API 키를 Base64로 인코딩하여 암호화
                 const encryptedApiKey = btoa(inputValue.trim());
 
                 // 암호화된 API 키를 쿠키에 저장
@@ -72,8 +72,9 @@ const NoSearch: NextPage = () => {
             setError('캐릭터 데이터를 가져오는 데 실패했습니다. API 키를 확인해주세요.');
         }
     };
+    const [showModal, setShowModal] = useState(false)
 
-    // API 키가 입력되지 않았거나 데이터가 아직 로드되지 않은 경우의 기본 뷰
+    const clickModal = () => setShowModal(!showModal)
     return (
         <div className={styles.apiX}>
             <div className={styles.wrapSearchj}>
@@ -107,7 +108,7 @@ const NoSearch: NextPage = () => {
                 </div>
                 <div className={styles.container1}>
                     <div className={styles.container}>
-                        <div className={styles.textInput}>
+                        <form className={styles.textInput}>
                             <div className={styles.textInput1}>
                                 <input
                                     className={styles.inputField}
@@ -118,19 +119,22 @@ const NoSearch: NextPage = () => {
                                     autoComplete="off"
                                 />
                             </div>
-                        </div>
+                        </form>
                         {error && <p className={styles.errorMessage}>{error}</p>} {/* 오류 메시지 표시 */}
                         <div className={styles.wrapBtn}>
                             <button className={styles.button} onClick={handleInputButtonClick} disabled={isLoading}>
                                 <div className={styles.button1}>{isLoading ? '검색 중...' : '입력하기'}</div>
                             </button>
-                            <div className={styles.button2}>
+                            <button className={styles.button2} onClick={clickModal}>
                                 <div className={styles.button1}>API Key 가이드</div>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+            {showModal &&
+                <BannerModal onClose={clickModal}/>
+            }
         </div>
     );
 };
