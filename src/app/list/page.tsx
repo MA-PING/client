@@ -1,5 +1,3 @@
-// app/page.tsx
-
 import Header from "@/component/header";
 import { Suspense } from 'react';
 import Loading from '@/component/search/loading';
@@ -9,19 +7,10 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import CharacterDisplay from "@/component/character/CharacterDisplay";
 
-// 이 컴포넌트는 서버 컴포넌트입니다. 상태 관리를 직접 할 수 없습니다.
-// 데이터를 클라이언트 컴포넌트(`CharacterInfos`)에서 업데이트해야 하고
-// `Details` 컴포넌트의 데이터도 변경해야 하므로, 복잡도가 있습니다.
-// 이 경우, `Details` 컴포넌트를 클라이언트 컴포넌트로 만들고,
-// `CharacterInfos`에서 변경된 캐릭터 이름을 받아와 `Details` 내부에서
-// 새로운 데이터를 가져오도록 하거나, 상위 클라이언트 컴포넌트를 추가해야 합니다.
 
-// ⭐ 가장 적합한 전략: Home 컴포넌트 하위에 'use client' 컴포넌트를 하나 더 둬서
-// 해당 컴포넌트가 캐릭터 선택 및 데이터 가져오기 로직을 처리하도록 합니다.
-
-async function getInitialCharacterData(): Promise<{ initialApiResponse: ApisResponse | null; initialDetailCharacter: Character | null }> {
-    const cookieStore = await cookies();
-    const encryptedApiKey = cookieStore.get('ApiKey')?.value;
+export async function getInitialCharacterData(encryptedApiKey: string | undefined): Promise<{ initialApiResponse: ApisResponse | null; initialDetailCharacter: Character | null }> {
+    // const cookieStore = await cookies();
+    // const encryptedApiKey = cookieStore.get('ApiKey')?.value;
 
     let initialApiResponse: ApisResponse | null = null;
     let initialDetailCharacter: Character | null = null;
@@ -52,7 +41,9 @@ async function getInitialCharacterData(): Promise<{ initialApiResponse: ApisResp
 }
 
 export default async function Home() {
-    const { initialApiResponse, initialDetailCharacter } = await getInitialCharacterData();
+    const cookieStore = await cookies();
+    const encryptedApiKey = cookieStore.get('ApiKey')?.value;
+    const { initialApiResponse, initialDetailCharacter } = await getInitialCharacterData(encryptedApiKey);
 
     if (!initialApiResponse || !initialDetailCharacter) {
         return (

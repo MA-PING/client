@@ -610,6 +610,21 @@ export interface ApiCheckResponse {
     data: characterMainList[];
     success: boolean;
 }
+export interface userInfo {
+    userId: string;
+    userName: string;
+    email: string;
+    userApiInfo: string;
+}
+
+export interface UserInfoResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: userInfo;
+    success: boolean;
+}
+
 // --- Notes ---
 // 1. Corrected some potential typos (e.g., itemAddOption, exceptional_upgrade).
 // 2. Added `export` to all interfaces.

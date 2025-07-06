@@ -8,3 +8,9 @@ export async function refreshCharacterData(characterName: string) {
     revalidateTag(tag);
     console.log(`Revalidating cache for tag: ${tag}`);
 }
+
+export async function refreshUserData(token: string) {
+    const tag = `token:${token}`;
+    revalidateTag(tag);
+    console.log(`유저 정보 tag: ${tag}`);
+}

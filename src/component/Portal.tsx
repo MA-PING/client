@@ -1,4 +1,4 @@
-// src/component/Portal.tsx
+'use client'
 import { useEffect, useState, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 

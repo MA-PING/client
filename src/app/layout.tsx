@@ -5,6 +5,8 @@ import Footer from "@/component/footer";
 import FloatingButton from "@/component/FloatingButton";
 import Script from "next/script";
 import styles from "./layout.module.css";
+import {ReduxProvider} from "@/app/ReduxProvider";
+
 
 const pretendard = localFont({
     src: '../data/fonts/PretendardVariable.woff2',
@@ -60,12 +62,14 @@ export default function RootLayout({
               strategy="afterInteractive"
               src="https://openapi.nexon.com/js/analytics.js?app_id=226073"
           />
-        <main className={styles.main}>
-          {children}
-        </main>
-        <Footer/>
-        <FloatingButton />
-        <div id="portal-root" />
+        <ReduxProvider>
+            <main className={styles.main}>
+                {children}
+            </main>
+            <Footer/>
+            <FloatingButton />
+            <div id="portal-root" />
+        </ReduxProvider>
       </body>
     </html>
   );

@@ -345,7 +345,7 @@
 }
 .dim {
     width: 100%;
-    position: absolute;
+    position: fixed;
     margin: 0;
     top: 0px;
     left: 0px;
@@ -416,14 +416,17 @@
     color: #fff;
 }
 .miniCharacterContainer {
-    background-color: white; /* 예시 */
-    border-radius: 8px; /* 예시 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 예시 */
-    padding: 10px; /* 예시 */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px;
 
 }
 @media screen and (max-width: 580px) {
     .dim {
         width: 300px;
+    }
+    .apiGuide {
+        width: calc(100% + 6px);
     }
 }

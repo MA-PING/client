@@ -73,7 +73,6 @@ const NoSearch: NextPage = () => {
         }
     };
     const [showModal, setShowModal] = useState(false)
-
     const clickModal = () => setShowModal(!showModal)
     return (
         <div className={styles.apiX}>

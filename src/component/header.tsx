@@ -14,22 +14,50 @@ import Search from "@/component/Search";
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
-
-
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "@/redux/store";
+import {deleteCookie} from "cookies-next";
+import {clearUserData} from "@/redux/userSlice";
+import {Popover} from "@mui/material";
+import {refreshUserData} from "@/app/actions";
 
 const Header:NextPage = () => {
+    const dispatch = useDispatch();
     const pathname = usePathname()
     const [isClient, setIsClient] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const [isLogin, setLogin] = useState(false);
 
     const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1281px)' });
     const isTablet = useMediaQuery({ query: '(min-width: 901px)' });
     const isMobile = useMediaQuery({ query: '(max-width: 1280px)' });
     const isMobile900 = useMediaQuery({ query: '(max-width: 901px)' });
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+    const userInfoRedux = useSelector((state: RootState) => state.userInfo);
+    console.log(userInfoRedux)
 
     useEffect(() => {
+
         setIsClient(true);
-    }, []);
+
+        if (userInfoRedux.userName) {
+            setLogin(true);
+        }else {
+            setLogin(false)
+        }
+
+    }, [userInfoRedux.userName]);
 
     const toggleDrawer = (open: boolean) =>
         (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -42,29 +70,43 @@ const Header:NextPage = () => {
             }
             setDrawerOpen(open);
         };
-
+    const handleLogout = async () => {
+        if (userInfoRedux.accessToken){
+            await refreshUserData(userInfoRedux.accessToken)
+        }
+        dispatch(clearUserData());
+        deleteCookie('apiKey');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('tokenExpiresAt');
+        // router.push('/');
+        setDrawerOpen(false);
+    };
     const drawerList = (
         <Box
-            // MUI Box는 직접 스타일링을 위한 sx 프롭이나 className을 허용합니다.
-            // 제공된 `typetabletmobileLoginno` 클래스를 사용합니다.
             className={drawerStyles.typetabletmobileLoginno}
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <div className={drawerStyles.wrapBtn}>
-                <Link href="/login" passHref legacyBehavior>
-                    <a className={drawerStyles.button}>
-                        <Image className={styles.icon} width={8} height={8} alt="로그인 아이콘" src="/icons/login.svg" />
-                        <div className={drawerStyles.button1}>로그인</div>
-                    </a>
-                </Link>
-                <Link href="/login" passHref legacyBehavior>
-                    <a className={drawerStyles.button2}>
-                        <div className={drawerStyles.button1}>회원가입</div>
-                    </a>
-                </Link>
-            </div>
+            {!isLogin && (
+                <div className={drawerStyles.wrapBtn}>
+                    <Link href="/login" passHref legacyBehavior>
+                        <a className={drawerStyles.button}>
+                            <Image className={styles.icon} width={8} height={8} alt="로그인 아이콘" src="/icons/login.svg" />
+                            <div className={drawerStyles.button1}>로그인</div>
+                        </a>
+                    </Link>
+                    <Link href="/login" passHref legacyBehavior>
+                        <a className={drawerStyles.button2}>
+                            <div className={drawerStyles.button1}>회원가입</div>
+                        </a>
+                    </Link>
+                </div>
+            )}
+            {isLogin && (
+                <div className={styles.maping}>{userInfoRedux.userName}님 안녕하세요!</div>
+            )}
             <div className={drawerStyles.container}>
                 <div className={drawerStyles.wrapItem}>
                     <Link href="/" passHref legacyBehavior>
@@ -92,31 +134,33 @@ const Header:NextPage = () => {
                         </a>
                     </Link>
                 </div>
-                {/* 구분선 */}
-                {/*<div className={drawerStyles.divider}></div>*/}
-                {/*<div className={drawerStyles.wrapItem}> */}
-                {/*    <Link href="/favorites" passHref legacyBehavior>*/}
-                {/*        <a className={drawerStyles.menuAtomic}>*/}
-                {/*            /!*<BookmarkIcon />*!/*/}
-                {/*            <div className={drawerStyles.div}>즐겨찾기</div>*/}
-                {/*        </a>*/}
-                {/*    </Link>*/}
-                {/*    <Link href="/account-settings" passHref legacyBehavior>*/}
-                {/*        <a className={drawerStyles.menuAtomic}>*/}
-                {/*            /!*<AccountSettingsIcon />*!/*/}
-                {/*            <div className={drawerStyles.div}>내 계정 설정</div>*/}
-                {/*        </a>*/}
-                {/*    </Link>*/}
-                {/*</div>*/}
-                {/*/!* 구분선 *!/*/}
-                {/*<div className={drawerStyles.divider}></div>*/}
-                {/*/!* 로그아웃 항목 *!/*/}
-                {/*<Link href="/logout" passHref legacyBehavior>*/}
-                {/*    <a className={drawerStyles.menuAtomic + ' ' + drawerStyles.menuAtomic6}> /!* menuAtomic6이 특정 로그아웃 스타일을 추가한다면 유지, 아니라면 제거 *!/*/}
-                {/*        /!*<LogoutIcon />*!/*/}
-                {/*        <div className={drawerStyles.div}>로그아웃</div>*/}
-                {/*    </a>*/}
-                {/*</Link>*/}
+
+                {isLogin && (
+                    <>
+                        <div className={drawerStyles.divider}></div>
+                        <div className={drawerStyles.wrapItem}>
+                            <Link href="/" passHref legacyBehavior>
+                                <a className={drawerStyles.menuAtomic}>
+                                    <Image className={styles.icon} width={8} height={8} alt="즐겨찾기 아이콘" src="/icons/heart_on.svg" />
+                                    <div className={drawerStyles.div}>즐겨찾기</div>
+                                </a>
+                            </Link>
+                            <Link href="/" passHref legacyBehavior>
+                                <a className={drawerStyles.menuAtomic}>
+                                    <Image className={styles.icon} width={8} height={8} alt="계정 설정 아이콘" src="/icons/account.svg" />
+                                    <div className={drawerStyles.div}>내 계정 설정</div>
+                                </a>
+                            </Link>
+                        </div>
+                        <div className={drawerStyles.divider}></div>
+                        <button onClick={handleLogout}>
+                            <a className={`${drawerStyles.menuAtomic} ${drawerStyles.menuAtomic6}`}>
+                                <Image className={styles.icon} width={8} height={8} alt="로그아웃 아이콘" src="/icons/logout.svg" />
+                                <div className={drawerStyles.div}>로그아웃</div>
+                            </a>
+                        </button>
+                    </>
+                )}
             </div>
         </Box>
     );
@@ -156,12 +200,61 @@ const Header:NextPage = () => {
             <div className={styles.wrapBtn}>
                 {isClient && isMobile &&
                     <div className={styles.button}>
-                        <Image className={styles.icon} width={18} height={18} alt="" src="/icons/search.svg"/>
+                        <Image className={styles.icon} width={18} height={18} alt="검색 아이콘" src="/icons/search.svg"/>
                     </div>}
-                {isClient && isTablet &&
+                {isClient && isTablet && !isLogin &&
                     <Link href='/login' className={styles.buttonLongin}>
                         <div className={styles.button1}>로그인</div>
                     </Link>
+                }
+                {isClient && isTablet && isLogin &&
+                    <>
+                        <button className={styles.button} aria-describedby={id} onClick={handleClick}>
+                            <div className={styles.icon}>
+                                <Image className={styles.ellipse16Stroke} width={24} height={24} sizes="100vw" alt="유저 아이콘" src="/icons/user.svg" />
+                            </div>
+                        </button>
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                        >
+                            <div className={styles.typepcLoginyes}>
+                                <div className={styles.maping}>{userInfoRedux.userName}님 안녕하세요!</div>
+                                <div className={styles.loginContainer}>
+                                    <div className={drawerStyles.wrapItem}>
+                                        <Link href="/" passHref legacyBehavior>
+                                            <a className={drawerStyles.menuAtomic}>
+                                                <Image className={styles.icon} width={8} height={8} alt="즐겨찾기 아이콘" src="/icons/heart_on.svg" />
+                                                <div className={drawerStyles.div}>즐겨찾기</div>
+                                            </a>
+                                        </Link>
+                                        <Link href="/" passHref legacyBehavior>
+                                            <a className={drawerStyles.menuAtomic}>
+                                                <Image className={styles.icon} width={8} height={8} alt="계정 설정 아이콘" src="/icons/account.svg" />
+                                                <div className={drawerStyles.div}>내 계정 설정</div>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                    <div className={drawerStyles.divider}></div>
+                                    <button onClick={handleLogout} className={drawerStyles.menuAtomic}>
+                                        <Image className={styles.icon} width={8} height={8} alt="로그아웃 아이콘" src="/icons/logout.svg" />
+                                        <div className={drawerStyles.div}>로그아웃</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </Popover>
+                    </>
+
                 }
                 {isClient && isMobile900 && (
                     <>
@@ -172,19 +265,14 @@ const Header:NextPage = () => {
                             onClick={toggleDrawer(true)}
                             sx={{ ml: 1 }}
                         >
-                            {/* 사용자 정의 메뉴 아이콘 이미지를 사용합니다. */}
                             <Image className={styles.icon} width={40} height={40} alt="메뉴 열기" src="/icons/menu.svg" />
                         </IconButton>
                         <Drawer
                             anchor="right"
                             open={drawerOpen}
                             onClose={toggleDrawer(false)}
-                            // 선택적으로, Drawer의 paper 컴포넌트 스타일을 지정하기 위해 PaperProps를 추가합니다.
                             PaperProps={{
                                 sx: {
-                                    // width: drawerStyles.typetabletmobileLoginno.width, // CSS 모듈에서 드로어 너비 설정
-                                    // 드로어 크기를 어떻게 하고 싶은지에 따라 이 부분을 조정해야 할 수 있습니다.
-                                    // 또는 필요하다면 여기에 `width: '334px'`와 같이 고정 너비를 직접 설정할 수도 있습니다.
                                     width: '334px',
                                     maxHeight: '100vh', // 뷰포트 높이를 넘지 않도록 보장
                                 }

@@ -2,12 +2,6 @@
 
 import { ApiResponse, Character } from '@/interfaces/character';
 
-// 캐릭터 데이터를 새로고침하는 함수 (현재 코드에는 없지만, 필요시 추가할 수 있습니다.)
-// async function refreshCharacterData(characterName: string) {
-//     // 여기에 데이터 새로고침 로직 (예: API 호출)을 구현합니다.
-//     console.log(`캐릭터 데이터 새로고침 요청: ${characterName}`);
-// }
-
 export async function getCharacter(name: string): Promise<ApiResponse | null> {
     try {
         const response = await fetch('https://api.ma-ping.com/api/v1/character?characterName=' + name, {
