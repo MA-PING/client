@@ -50,10 +50,10 @@ const Frame: NextPage = () => {
                     email: completeEmail,
                     password,
                 }),
+                credentials: "include", // ← 쿠키 사용 필수 설정
             });
 
             let data;
-
             try {
                 data = await response.json();
             } catch {
@@ -66,17 +66,8 @@ const Frame: NextPage = () => {
                 return;
             }
 
-            console.log("로그인 성공:", data);
             alert("로그인 성공!");
 
-
-            const { accessToken, refreshToken, expiresIn } = data.data;
-
-            localStorage.setItem("accessToken", accessToken);
-            localStorage.setItem("refreshToken", refreshToken);
-            localStorage.setItem("tokenExpiresAt", expiresIn.toString());
-
-            // 리다이렉트 (예: 홈으로)
             window.location.href = "/";
         } catch (error) {
             console.error("로그인 에러:", error);
