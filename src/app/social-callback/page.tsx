@@ -7,10 +7,8 @@ export default function SocialCallback() {
     const searchParams = useSearchParams();
 
     useEffect(() => {
-        const token = searchParams.get("token");
         const isNew = searchParams.get("isNew");
-        if (token) {
-            localStorage.setItem("access_token", token);
+        if (isNew) {
             if (isNew === "true") {
                 router.replace("/onboarding");
             } else {
