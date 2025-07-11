@@ -1,0 +1,392 @@
+.itemOngoingIcon {
+    width: 20px;
+    position: relative;
+    border-radius: 40px;
+    height: 20px;
+}
+.wrapItemChild {
+    flex: 1;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.wrapItem {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.div1 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.stepIndicatorAtomic {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.itemBefore {
+    width: 20px;
+    position: relative;
+    border-radius: 40px;
+    border: 1px solid #6f6f70;
+    box-sizing: border-box;
+    height: 20px;
+}
+.div2 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.stepIndicatorAtomic1 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.stepIndicator {
+    width: 360px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.div5 {
+    align-self: stretch;
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
+.div6 {
+    align-self: stretch;
+    position: relative;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.title {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.div7 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.wrapIcon {
+    width: 48px;
+    height: 20px;
+}
+.textInput1 {
+    flex: 1;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    gap: 8px;
+}
+.textInput {
+    flex: 1;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 2;
+}
+.div8 {
+    width: 13px;
+    position: relative;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(14, 15, 20, 0.7);
+    display: flex;
+    align-items: center;
+    height: 48px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.div9 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.icon {
+    width: 20px;
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.select {
+    width: 160px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    gap: 0px;
+    z-index: 0;
+    color: rgba(14, 15, 20, 0.9);
+}
+.input {
+    align-self: stretch;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    z-index: 1;
+}
+.button1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.button {
+    flex: 1;
+    border-radius: 10px;
+    background-color: #ededf0;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+.button2 {
+    flex: 1;
+    border-radius: 10px;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+.wrapButton {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    z-index: 0;
+    font-size: 18px;
+    color: rgba(14, 15, 20, 0.2);
+}
+.container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    z-index: 2;
+}
+.dividerIcon {
+    position: absolute;
+    width: 100%;
+    right: 0%;
+    left: 0%;
+    border-radius: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.divider1 {
+    flex: 1;
+    position: relative;
+    height: 0px;
+}
+.div10 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.divider {
+    align-self: stretch;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    z-index: 1;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.iconChild {
+    position: absolute;
+    height: 87.5%;
+    width: 87.5%;
+    top: 8.33%;
+    right: 4.17%;
+    bottom: 4.17%;
+    left: 8.33%;
+    border-radius: 50%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+}
+.icon1 {
+    width: 24px;
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.span {
+    letter-spacing: -0.02em;
+}
+.googleContainer {
+    flex: 1;
+    position: relative;
+    line-height: 150%;
+    font-weight: 500;
+}
+.wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.label {
+    align-self: stretch;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.btnSocialLogin {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 15px 24px;
+}
+.image1Icon {
+    position: absolute;
+    height: 83.33%;
+    width: 83.33%;
+    top: 8.33%;
+    right: 8.33%;
+    bottom: 8.33%;
+    left: 8.33%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+}
+.label1 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.btnSocialLogin1 {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 24px;
+}
+.wrapButton1 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    z-index: 0;
+    color: rgba(14, 15, 20, 0.9);
+}
+.containerGroup {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 40px;
+    font-size: 16px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.content {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 48px;
+    font-size: 32px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.div {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 744px;
+    box-sizing: border-box;
+    gap: 64px;
+    text-align: left;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.7);
+    font-family: Pretendard;
+}
+

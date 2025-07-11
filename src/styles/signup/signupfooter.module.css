@@ -1,0 +1,50 @@
+.div {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.infoChild {
+    width: 1px;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 16px;
+}
+.div1 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    text-align: left;
+}
+.info {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.footer {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: right;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.7);
+    font-family: Pretendard;
+}
+

@@ -1,6 +1,7 @@
 "use client";
 import type { NextPage } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../../styles/login/loginform.module.css";
 import { useEffect, useRef, useState } from "react";
 import TextField from "@mui/material/TextField";
@@ -18,7 +19,6 @@ const GOOGLE_AUTH_URL =
     `https://accounts.google.com/o/oauth2/auth?client_id=57030810261-lchn2518e3r4h2phih6picav5cqfnh59.apps.googleusercontent.com` +
     `&redirect_uri=https://ma-ping.com/api/v1/auth/signup/google` +
     `&response_type=code&scope=openid%20email%20profile&access_type=offline`;
-
 
 const Frame: NextPage = () => {
     const [email, setEmail] = useState("");
@@ -263,9 +263,10 @@ const Frame: NextPage = () => {
                             >
                                 로그인
                             </Button>
-                            <div className={styles.button4}>
+                            {/* 회원가입 버튼을 Link로 감싸기 */}
+                            <Link href="/signup" className={styles.button4} style={{ cursor: "pointer" }}>
                                 <div className={styles.button1}>회원가입</div>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

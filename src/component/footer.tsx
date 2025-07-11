@@ -8,6 +8,7 @@ import {useMediaQuery} from "react-responsive";
 import {useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
 import Loginfooter from "@/component/login/loginfooter";
+import Signupfooter from "@/component/signup/signupfooter"
 
 const Footer:NextPage = () => {
     const pathname = usePathname();
@@ -25,6 +26,12 @@ const Footer:NextPage = () => {
     if(pathname == '/login') {
         return (
             <Loginfooter/>
+
+        );
+    }
+    if(pathname == '/signup') {
+        return (
+    <Signupfooter/>
         );
     }
 

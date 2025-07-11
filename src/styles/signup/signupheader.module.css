@@ -1,0 +1,97 @@
+.vector4Stroke {
+    position: absolute;
+    height: 66.67%;
+    width: 35.42%;
+    top: 16.67%;
+    right: 32.29%;
+    bottom: 16.67%;
+    left: 32.29%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: contain;
+}
+.icon {
+    width: 1000px;
+    position: relative;
+    height: 30px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.button {
+    width: 40px;
+    border-radius: 8px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 0px;
+    box-sizing: border-box;
+}
+.wrapBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+.mapingIcon {
+    position: absolute;
+    height: 100%;
+    width: 100.33%;
+    top: 0%;
+    right: -0.33%;
+    bottom: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.logoMaping1 {
+    width: 30px;
+    position: relative;
+    height: 22px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.logoIcon {
+    width: 129.8px;
+    position: relative;
+    height: 20.4px;
+}
+.logo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 168px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.logoMaping {
+    flex: 1;
+    position: relative;
+    height: 22px;
+    overflow: hidden;
+}
+.headerPc {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 24px;
+    box-sizing: border-box;
+    gap: 8px;
+}
+
+
+
+body {
+    margin: 0; line-height: normal;
+}
