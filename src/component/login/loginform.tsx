@@ -8,6 +8,18 @@ import Button from "@mui/material/Button";
 import Checkbox from '@mui/material/Checkbox';
 import { MenuItem, Select } from "@mui/material";
 
+const NAVER_AUTH_URL =
+    `https://nid.naver.com/oauth2.0/authorize?response_type=code` +
+    `&client_id=FXmn63c4JEW3_uMt_9sK` +
+    `&state=${Math.random().toString(36).substring(2, 15)}` +
+    `&redirect_uri=https://api.ma-ping.com/api/v1/auth/signup/naver`;
+
+const GOOGLE_AUTH_URL =
+    `https://accounts.google.com/o/oauth2/auth?client_id=57030810261-lchn2518e3r4h2phih6picav5cqfnh59.apps.googleusercontent.com` +
+    `&redirect_uri=https://api.ma-ping.com/api/v1/auth/signup/google` +
+    `&response_type=code&scope=openid%20email%20profile&access_type=offline`;
+
+
 const Frame: NextPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -67,7 +79,6 @@ const Frame: NextPage = () => {
             }
 
             alert("로그인 성공!");
-
             window.location.href = "/";
         } catch (error) {
             console.error("로그인 에러:", error);
@@ -75,8 +86,13 @@ const Frame: NextPage = () => {
         }
     };
 
-
-
+    // 소셜 로그인 이동 함수
+    const handleNaverLogin = () => {
+        window.location.href = NAVER_AUTH_URL;
+    };
+    const handleGoogleLogin = () => {
+        window.location.href = GOOGLE_AUTH_URL;
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -89,7 +105,12 @@ const Frame: NextPage = () => {
                 </div>
                 <div className={styles.containerGroup}>
                     <div className={styles.title}>
-                        <div className={styles.btnSocialLogin}>
+                        {/* 구글 로그인 버튼 */}
+                        <div
+                            className={styles.btnSocialLogin}
+                            onClick={handleGoogleLogin}
+                            style={{ cursor: "pointer" }}
+                        >
                             <div className={styles.label}>
                                 <div className={styles.wrap}>
                                     <Image src="/icons/sns-google.png" alt="" width={24} height={24} className={styles.icon} />
@@ -99,7 +120,12 @@ const Frame: NextPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.btnSocialLogin1}>
+                        {/* 네이버 로그인 버튼 */}
+                        <div
+                            className={styles.btnSocialLogin1}
+                            onClick={handleNaverLogin}
+                            style={{ cursor: "pointer" }}
+                        >
                             <div className={styles.label1}>
                                 <div className={styles.wrap}>
                                     <Image src="/icons/sns-naver.svg" alt="" width={24} height={24} className={styles.icon} />
@@ -110,7 +136,6 @@ const Frame: NextPage = () => {
                             </div>
                         </div>
                     </div>
-
                     <div className={styles.divider}>
                         <Image src="/images/Divider.svg" alt="" width={196} height={1} className={styles.dividerIcon} />
                         <div className={styles.div3}>또는</div>
