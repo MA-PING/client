@@ -51,7 +51,7 @@ const Component1:FunctionComponent = () => {
                             <div className={styles.div8}>@</div>
                             <div className={styles.select}>
                                 <div className={styles.div9}>선택하기</div>
-                                <img className={styles.icon} alt="" src="icon.svg" />
+                                <img className={styles.icon} alt="" src="/icons/arrow_down.svg" />
                             </div>
                         </div>
                         <div className={styles.wrapButton}>
