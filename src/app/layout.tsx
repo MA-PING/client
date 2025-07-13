@@ -6,6 +6,7 @@ import FloatingButton from "@/component/FloatingButton";
 import Script from "next/script";
 import styles from "./layout.module.css";
 import {ReduxProvider} from "@/app/ReduxProvider";
+import {cookies} from "next/headers";
 
 
 const pretendard = localFont({
@@ -48,12 +49,13 @@ export const viewport: Viewport = {
     // userScalable: false,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get('accessToken')?.value;
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} font-pretendard ${styles.body}`}>
@@ -62,7 +64,7 @@ export default function RootLayout({
               strategy="afterInteractive"
               src="https://openapi.nexon.com/js/analytics.js?app_id=226073"
           />
-        <ReduxProvider>
+        <ReduxProvider accessToken={accessToken}>
             <main className={styles.main}>
                 {children}
             </main>

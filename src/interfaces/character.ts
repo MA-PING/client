@@ -625,6 +625,27 @@ export interface UserInfoResponse {
     success: boolean;
 }
 
+export interface JWTInfo {
+    userId: string;
+    accessToken: string;
+    refreshToken: string;
+    grantType: string;
+    expiresIn: number;
+}
+
+export interface JWTResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: JWTInfo;
+    success: boolean;
+}
+export interface NoResponse {
+    timestamp: string;
+    status: number;
+    error: string;
+    path: string;
+}
 // --- Notes ---
 // 1. Corrected some potential typos (e.g., itemAddOption, exceptional_upgrade).
 // 2. Added `export` to all interfaces.

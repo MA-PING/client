@@ -22,7 +22,10 @@ export async function getInitialCharacterData(encryptedApiKey: string | undefine
 
             if (!initialApiResponse || !initialApiResponse.data || !initialApiResponse.data.characterInfo || !initialApiResponse.data.characterList) {
                 console.warn("API 응답 데이터가 유효하지 않습니다. 쿠키 삭제 후 리다이렉트.");
-                (await cookies()).delete('ApiKey');
+                const cookieStore = await cookies();
+                if (cookieStore.has('ApiKey')) { // 'ApiKey' 쿠키가 있는지 확인
+                    cookieStore.delete('ApiKey'); // 쿠키가 있을 경우에만 삭제
+                }
                 redirect('/');
             } else {
                 // 초기 로드 시 메인 캐릭터 정보를 Details에 전달
@@ -30,7 +33,10 @@ export async function getInitialCharacterData(encryptedApiKey: string | undefine
             }
         } catch (error) {
             console.error("API 키 디코딩 또는 초기 API 호출 중 오류 발생:", error);
-            (await cookies()).delete('ApiKey'); // 오류 시 쿠키 삭제
+            const cookieStore = await cookies();
+            if (cookieStore.has('ApiKey')) { // 'ApiKey' 쿠키가 있는지 확인
+                cookieStore.delete('ApiKey'); // 쿠키가 있을 경우에만 삭제
+            }
             redirect('/');
         }
     } else {

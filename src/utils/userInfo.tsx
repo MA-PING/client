@@ -1,6 +1,6 @@
 'use server';
 
-import {userInfo, UserInfoResponse} from '@/interfaces/character';
+import {NoResponse, userInfo, UserInfoResponse} from '@/interfaces/character';
 
 
 export async function getUserInfo(token: string): Promise<userInfo | null> {
@@ -12,16 +12,18 @@ export async function getUserInfo(token: string): Promise<userInfo | null> {
                 'Authorization': `Bearer ${token}`,
             },
             next: {
-                revalidate: 1000, // 1000초마다 데이터 갱신
+                // revalidate: 100,
                 tags: [`token:${token}`],
             },
         });
         if (!response.ok) {
             console.warn(`사용자 정보를 가져오지 못했습니다, 상태 코드: ${response.status}`);
+            const data: NoResponse = await response.json();
+            console.warn(`사용자 정보를 가져오지 못했습니다, 메시지: ${data.error}`);
             return null;
         }
-
         const data: UserInfoResponse = await response.json();
+        console.log('characterData: '+ data.data);
         const characterData = data.data;
 
         if (!characterData) {

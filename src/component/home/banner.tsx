@@ -4,13 +4,24 @@ import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '../../styles/home/banner.module.css';
 import Search from "@/component/Search";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import BannerModal from "@/component/bannerModal";
+import {useSelector} from "react-redux";
+import {RootState} from "@/redux/store";
 
 
 const Banner:NextPage = () => {
     const [showModal, setShowModal] = useState(false)
+    const [isLogin, setLogin] = useState(false);
+    const userInfoRedux = useSelector((state: RootState) => state.userInfo);
+    useEffect(() => {
+        if (userInfoRedux.userApiInfo) {
+            setLogin(true);
+        }else {
+            setLogin(false)
+        }
 
+    }, [userInfoRedux.userApiInfo]);
     const clickModal = () => setShowModal(!showModal)
     return (
         <div className={styles.banner}>
@@ -77,17 +88,20 @@ const Banner:NextPage = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className={styles.dimApi}>
-                                    <div className={styles.content}>
-                                        <div className={styles.titleApi}>
-                                            <div className={styles.apiKey}>API Key 인증</div>
-                                            <div className={styles.apiKey1}>API Key를 입력하면, 메이 AI가 당신의 캐릭터에 꼭 맞는 육성 팁을 알려드릴게요.</div>
+                                {!isLogin &&
+                                    <div className={styles.dimApi}>
+                                        <div className={styles.content}>
+                                            <div className={styles.titleApi}>
+                                                <div className={styles.apiKey}>API Key 인증</div>
+                                                <div className={styles.apiKey1}>API Key를 입력하면, 메이 AI가 당신의 캐릭터에 꼭 맞는 육성 팁을
+                                                    알려드릴게요.
+                                                </div>
+                                            </div>
+                                            <button className={styles.button} onClick={clickModal}>
+                                                <div className={styles.button1}>API Key 입력하기</div>
+                                            </button>
                                         </div>
-                                        <button className={styles.button} onClick={clickModal}>
-                                            <div className={styles.button1}>API Key 입력하기</div>
-                                        </button>
-                                    </div>
-                                </div>
+                                    </div>}
                             </div>
                             <div className={styles.div2}>
                                 <div className={styles.inPageNavigationLarge}>

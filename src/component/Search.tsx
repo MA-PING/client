@@ -3,7 +3,7 @@
 import type {NextPage} from 'next';
 import Image from "next/image";
 import {useRouter} from 'next/navigation';
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect, useRef, useCallback} from "react";
 import styles from '@/styles/Search.module.css';
 import Portal from "@/component/Portal";
 import {serverImageMap} from "@/interfaces/serverImageMap";
@@ -58,6 +58,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
 
     const [suggestions, setSuggestions] = useState<Character[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [highlightedIndex, setHighlightedIndex] = useState(-1);
 
     const router = useRouter();
     const searchBarRef = useRef<HTMLDivElement>(null);
@@ -94,6 +95,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
             const target = event.target as Node;
             if (searchBarRef.current && !searchBarRef.current.contains(target) && modalRef.current && !modalRef.current.contains(target)) {
                 setIsModalOpen(false);
+                setHighlightedIndex(-1); // 모달 닫힐 때 하이라이트 초기화
             }
         };
         if (isModalOpen) {
@@ -154,10 +156,13 @@ const Search: NextPage<SearchProps> = ({header}) => {
     useEffect(() => {
         if (inputValue.trim().length === 0) {
             setSuggestions([]);
+            setIsLoading(false); // 입력이 없으면 로딩 상태 해제
+            setHighlightedIndex(-1); // 입력이 없으면 하이라이트 초기화
             return;
         }
 
         setIsLoading(true);
+        setHighlightedIndex(-1);
         const debounceTimer = setTimeout(async () => {
             const autocompleteResults = await getAutocomplete(inputValue);
             setSuggestions(autocompleteResults || []);
@@ -169,71 +174,114 @@ const Search: NextPage<SearchProps> = ({header}) => {
     }, [inputValue]);
 
 
-    // localStorage 저장
-    const addCharacterToRecent = (character: Character) => {
-        const newRecent = [
-            character,
-            ...recentSearches.filter(c => c.characterName !== character.characterName)
-        ].slice(0, 10); // 최대 5개까지 저장
+    // localStorage 저장 - useCallback으로 감쌈
+    const addCharacterToRecent = useCallback((character: Character) => {
+        // 함수형 업데이트를 사용하여 최신 recentSearches 상태를 참조
+        setRecentSearches(prevRecentSearches => {
+            const newRecent = [
+                character,
+                ...prevRecentSearches.filter(c => c.characterName !== character.characterName)
+            ].slice(0, 10);
 
-        setRecentSearches(newRecent);
-        if (typeof window !== 'undefined') {
-            try {
-                localStorage.setItem('recentSearches', JSON.stringify({recent: newRecent}));
-            } catch (error) {
-                console.error("Failed to save state to localStorage", error);
+            if (typeof window !== 'undefined') {
+                try {
+                    localStorage.setItem('recentSearches', JSON.stringify({recent: newRecent}));
+                } catch (error) {
+                    console.error("Failed to save state to localStorage", error);
+                }
             }
-        }
-    };
+            return newRecent;
+        });
+    }, []);
 
-    // 모달 캐릭터 선택
-    const handleSelectCharacter = (character: Character) => {
+    // 모달 캐릭터 선택 (키보드 및 마우스 공용)
+    const handleSelectCharacter = useCallback((character: Character) => {
         setInputValue(character.characterName); // 선택한 캐릭터 이름으로 input 값 변경
         addCharacterToRecent(character);
         router.push(`/c/${encodeURIComponent(character.characterName)}`);
         setIsModalOpen(false); // 모달 닫기
-    };
+        setHighlightedIndex(-1); // 하이라이트 초기화
+    }, [addCharacterToRecent, router]); // addCharacterToRecent가 useCallback으로 감싸져 안정적임
 
     // localStorage 삭제
-    const handleDeleteRecent = (characterNameToDelete: string) => {
-        const newRecentSearches = recentSearches.filter(
-            (char) => char.characterName !== characterNameToDelete
-        );
-        setRecentSearches(newRecentSearches);
-        if (typeof window !== 'undefined') {
-            try {
-                const newState = {recent: newRecentSearches};
-                localStorage.setItem('recentSearches', JSON.stringify(newState));
-            } catch (error) {
-                console.error("Failed to save state to localStorage", error);
+    const handleDeleteRecent = useCallback((characterNameToDelete: string) => {
+        setRecentSearches(prevRecentSearches => {
+            const newRecentSearches = prevRecentSearches.filter(
+                (char) => char.characterName !== characterNameToDelete
+            );
+            if (typeof window !== 'undefined') {
+                try {
+                    const newState = {recent: newRecentSearches};
+                    localStorage.setItem('recentSearches', JSON.stringify(newState));
+                } catch (error) {
+                    console.error("Failed to save state to localStorage", error);
+                }
             }
-        }
-    };
+            return newRecentSearches;
+        });
+    }, []);
 
-    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleFormSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const nickname = inputValue.trim();
         if (nickname === '') return;
 
+        // 하이라이트된 항목이 있다면 해당 항목을 선택
+        if (highlightedIndex !== -1) {
+            const currentList = inputValue.trim().length > 0 ? suggestions.slice(0, 3) : recentSearches.slice(0, 3);
+            if (currentList[highlightedIndex]) {
+                handleSelectCharacter(currentList[highlightedIndex]);
+                return; // 선택 후 함수 종료
+            }
+        }
+
+        // 하이라이트된 항목이 없거나 유효하지 않은 경우 기존 로직 수행
         const topSuggestion = suggestions.length > 0 && suggestions[0].characterName.toLowerCase() === nickname.toLowerCase() ? suggestions[0] : null;
 
         if (topSuggestion) {
             addCharacterToRecent(topSuggestion);
-        } else {
-            // 자동완성 목록에 없으면, 수동으로 기본 Character 객체를 만들 수 있으나,
-            // 이 경우 level, image 등 모든 정보가 없으므로 저장은 선택 사항입니다.
-            // 여기서는 저장하지 않고 페이지만 이동합니다.
         }
 
         router.push(`/c/${encodeURIComponent(nickname)}`);
         setIsModalOpen(false);
-    };
+        setHighlightedIndex(-1); // 하이라이트 초기화
+    }, [inputValue, highlightedIndex, suggestions, recentSearches, handleSelectCharacter, addCharacterToRecent, router]); // 의존성 추가
+
+    // 키보드 이벤트 핸들러
+    const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
+        const currentList = inputValue.trim().length > 0 ? suggestions.slice(0, 3) : recentSearches.slice(0, 3);
+        const listLength = currentList.length;
+
+        if (listLength === 0) return; // 목록이 없으면 아무것도 하지 않음
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault(); // 기본 스크롤 동작 방지
+            setHighlightedIndex(prevIndex => (prevIndex + 1) % listLength);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault(); // 기본 스크롤 동작 방지
+            setHighlightedIndex(prevIndex => (prevIndex - 1 + listLength) % listLength);
+        } else if (e.key === 'Enter') {
+            e.preventDefault(); // 폼 제출 방지
+            if (highlightedIndex !== -1 && currentList[highlightedIndex]) {
+                handleSelectCharacter(currentList[highlightedIndex]);
+            } else {
+                // 하이라이트된 항목이 없으면 폼 제출 (검색 실행)
+                handleFormSubmit(e as unknown as React.FormEvent<HTMLFormElement>); // 타입 캐스팅
+            }
+        } else if (e.key === 'Escape') {
+            setIsModalOpen(false);
+            setHighlightedIndex(-1);
+        }
+    }, [inputValue, suggestions, recentSearches, highlightedIndex, handleSelectCharacter, handleFormSubmit]); // 의존성 추가
+
     const searchBarHeader = `${header ? styles.searchBarHeader : styles.searchBar}`;
     const isActive = inputValue.trim() !== '' || isModalOpen;
     const searchBarClassName = `${searchBarHeader} ${isActive ? styles.searchBarActive : ''}`;
 
-    const renderCharacterItem = (char: Character, isRecent: boolean) => (
-        <div key={char.characterName} className={header ? styles.searchAtomicHeader : styles.searchAtomic}>
+    const renderCharacterItem = (char: Character, isRecent: boolean, index: number) => (
+        <div key={char.characterName}
+             className={`${header ? styles.searchAtomicHeader : styles.searchAtomic} ${highlightedIndex === index ? styles.highlightedItem : ''}`}
+        >
             <div className={styles.wrapCharacterInfo} onMouseDown={() => handleSelectCharacter(char)}>
                 <Image className={styles.characterProfileIcon} width={48} height={48} alt={char.characterName}
                        src={char.image || '/default-image.png'} unoptimized/>
@@ -271,7 +319,12 @@ const Search: NextPage<SearchProps> = ({header}) => {
                         <div className={styles.iconWrapper}><Image fill sizes="100vw" alt="search icon"
                                                                    src="/icons/Group 1.svg"/></div>
                         <input className={styles.inputField} type="text" placeholder="내용을 입력해주세요" value={inputValue}
-                               onChange={(e) => setInputValue(e.target.value)} onFocus={() => setIsModalOpen(true)}
+                               onChange={(e) => setInputValue(e.target.value)}
+                               onFocus={() => {
+                                   setIsModalOpen(true);
+                                   setHighlightedIndex(-1); // 포커스 시 하이라이트 초기화
+                               }}
+                               onKeyDown={handleKeyDown} // 키보드 이벤트 핸들러 추가
                                autoComplete="off"/>
                     </div>
                 </form>
@@ -282,8 +335,9 @@ const Search: NextPage<SearchProps> = ({header}) => {
                         {inputValue.trim().length > 0 ? (
                             <div className={styles.wrapRecent}>
                                 {isLoading && <div className={styles.modalContent}><p>불러오는 중...</p></div>}
-                                {!isLoading && suggestions.length > 0 && suggestions.slice(0, 3).map(char => renderCharacterItem(char, false))}
-                                {!isLoading && suggestions.length === 0 && (
+                                {!isLoading && suggestions.length > 0 ?
+                                    suggestions.slice(0, 3).map((char, index) => renderCharacterItem(char, false, index))
+                                    : !isLoading && ( // suggestions.length === 0 일 때만 이 부분을 렌더링
                                     <div className={styles.modalContent}>
                                         <div className={styles.imageWrapper}>
                                             <Image className={styles.mapingIcon} fill sizes="100vw"
@@ -297,7 +351,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
                         ) : (
                             recentSearches.length > 0 ? (
                                 <div className={styles.wrapRecent}>
-                                    {recentSearches.slice(0, 3).map(char => renderCharacterItem(char, true))}
+                                    {recentSearches.slice(0, 3).map((char, index) => renderCharacterItem(char, true, index))}
                                 </div>
                             ) : (
                                 <div className={styles.modalContent}>

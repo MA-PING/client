@@ -2,17 +2,20 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '../../styles/home/APIContents.module.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {getApiCheck} from "@/utils/apiCheck";
 import {setCookie} from "cookies-next";
 import BannerModal from "@/component/bannerModal";
 import {characterMainList} from "@/interfaces/character";
+import { useSelector} from "react-redux";
+import {RootState} from "@/redux/store";
 interface ApiBody {
     apiKey: string;
 }
 const APIContents: NextPage = () => {
     // const router = useRouter();
-
+    const [isLogin, setLogin] = useState(false);
+    console.log(isLogin) // todo: api 있을경우
     // API 키 입력 필드의 값을 저장하는 상태 변수
     const [inputValue, setInputValue] = useState<string>('');
     const [showMiniCharacter, setShowMiniCharacter] = useState<boolean>(false);
@@ -21,7 +24,16 @@ const APIContents: NextPage = () => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     };
+    const userInfoRedux = useSelector((state: RootState) => state.userInfo);
 
+    useEffect(() => {
+        if (userInfoRedux.userApiInfo) {
+            setLogin(true);
+        }else {
+            setLogin(false)
+        }
+
+    }, [userInfoRedux.userApiInfo]);
     const handleInputButtonClick = async () => {
         if (!inputValue.trim()) {
             return;
@@ -68,7 +80,7 @@ const APIContents: NextPage = () => {
         <div className={styles.apiContents}>
             <div className={styles.heroSection}>
                 <div className={styles.title}>
-                    <h2 className={styles.welcomeTitle}>{`어서오세요 KingKoo님! `}</h2>
+                    <h2 className={styles.welcomeTitle}>어서오세요 {userInfoRedux.userName}님!</h2>
                     <div className={styles.aiMessage}>
                         <p>{`메이 AI가 당신을 기다리면서 본캐 분석을 마쳤어요😎 `}</p>
                         <p>{`딱 맞는 육성 팁이 준비되어 있으니 지금 바로 확인해 보세요!`}</p>
@@ -104,30 +116,31 @@ const APIContents: NextPage = () => {
                         </button>
                     </div>
                     {/*<button className={styles.ctaButton}>내 캐릭터 정보 확인하기</button>*/}
-                    <div className={styles.container}>
-                        <div className={styles.wrapInput}>
-                            <div className={styles.textInput}>
-                                <div className={styles.textInput1}>
-                                    <input
-                                        className={styles.div1}
-                                        type="text"
-                                        placeholder="API Key를 입력해주세요"
-                                        value={inputValue}
-                                        onChange={handleInputChange}
-                                        autoComplete="off"
-                                    />
+                    {userInfoRedux.userApiInfo === null &&
+                        <div className={styles.container}>
+                            <div className={styles.wrapInput}>
+                                <div className={styles.textInput}>
+                                    <div className={styles.textInput1}>
+                                        <input
+                                            className={styles.div1}
+                                            type="text"
+                                            placeholder="API Key를 입력해주세요"
+                                            value={inputValue}
+                                            onChange={handleInputChange}
+                                            autoComplete="off"
+                                        />
+                                    </div>
+                                </div>
+                                <div className={styles.wrapBtn}>
+                                    <button className={styles.button1} onClick={handleInputButtonClick}>
+                                        <div className={styles.button2}>입력하기</div>
+                                    </button>
+                                    <button className={styles.button3} onClick={clickModal}>
+                                        <div className={styles.button2}>API Key 가이드</div>
+                                    </button>
                                 </div>
                             </div>
-                            <div className={styles.wrapBtn}>
-                                <button className={styles.button1} onClick={handleInputButtonClick}>
-                                    <div className={styles.button2}>입력하기</div>
-                                </button>
-                                <button className={styles.button3} onClick={clickModal}>
-                                    <div className={styles.button2}>API Key 가이드</div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                        </div>}
                 </div>
             </div>
 

@@ -16,10 +16,11 @@ import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "@/redux/store";
-import {deleteCookie} from "cookies-next";
 import {clearUserData} from "@/redux/userSlice";
 import {Popover} from "@mui/material";
-import {refreshUserData} from "@/app/actions";
+import {serverLogout} from "@/app/actions";
+import {getLogout} from "@/utils/apiLogout";
+// import {refreshUserData} from "@/app/actions";
 
 const Header:NextPage = () => {
     const dispatch = useDispatch();
@@ -45,7 +46,6 @@ const Header:NextPage = () => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
     const userInfoRedux = useSelector((state: RootState) => state.userInfo);
-    console.log(userInfoRedux)
 
     useEffect(() => {
 
@@ -53,8 +53,10 @@ const Header:NextPage = () => {
 
         if (userInfoRedux.userName) {
             setLogin(true);
+            console.log(1)
         }else {
             setLogin(false)
+            console.log(2)
         }
 
     }, [userInfoRedux.userName]);
@@ -72,15 +74,13 @@ const Header:NextPage = () => {
         };
     const handleLogout = async () => {
         if (userInfoRedux.accessToken){
-            await refreshUserData(userInfoRedux.accessToken)
+            await getLogout(userInfoRedux.accessToken);
         }
-        dispatch(clearUserData());
-        deleteCookie('apiKey');
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
-        localStorage.removeItem('tokenExpiresAt');
-        // router.push('/');
         setDrawerOpen(false);
+        dispatch(clearUserData());
+        await serverLogout();
+        window.location.reload();
+        // router.push('/');
     };
     const drawerList = (
         <Box
@@ -153,11 +153,9 @@ const Header:NextPage = () => {
                             </Link>
                         </div>
                         <div className={drawerStyles.divider}></div>
-                        <button onClick={handleLogout}>
-                            <a className={`${drawerStyles.menuAtomic} ${drawerStyles.menuAtomic6}`}>
-                                <Image className={styles.icon} width={8} height={8} alt="로그아웃 아이콘" src="/icons/logout.svg" />
-                                <div className={drawerStyles.div}>로그아웃</div>
-                            </a>
+                        <button onClick={handleLogout} className={drawerStyles.menuAtomic}>
+                            <Image className={styles.icon} width={8} height={8} alt="로그아웃 아이콘" src="/icons/logout.svg" />
+                            <div className={drawerStyles.div}>로그아웃</div>
                         </button>
                     </>
                 )}
