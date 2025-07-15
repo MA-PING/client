@@ -4,7 +4,6 @@ import Image from "next/image";
 import styles from '../../styles/home/APIContents.module.css';
 import {useEffect, useState} from "react";
 import {getApiCheck} from "@/utils/apiCheck";
-import {setCookie} from "cookies-next";
 import BannerModal from "@/component/bannerModal";
 import {characterMainList} from "@/interfaces/character";
 import { useSelector} from "react-redux";

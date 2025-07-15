@@ -6,7 +6,6 @@ import styles from '@/styles/search/noSearch.module.css';
 import Search from '@/component/Search';
 import { useState } from 'react';
 import {getApiCheck} from "@/utils/apiCheck";
-import {setCookie} from "cookies-next";
 import { useRouter } from 'next/navigation';
 import BannerModal from "@/component/bannerModal";
 import {saveAPIKey} from "@/app/actions";

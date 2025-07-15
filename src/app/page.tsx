@@ -1,5 +1,5 @@
 import PatchNotice from '@/component/home/patchNote';
-import APIContents1 from "@/component/home/APIContents";
+import APIContents from "@/component/home/APIContents";
 import Banner from "@/component/home/banner";
 import Header from "@/component/header";
 
@@ -39,7 +39,7 @@ export default async function Home() {
   <div>
       <Header/>
       <Banner/>
-      <APIContents1/>
+      <APIContents/>
       <PatchNotice patchNotes={patchNotes}/>
   </div>
     );
