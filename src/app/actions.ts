@@ -21,5 +21,25 @@ export async function serverLogout() {
     (await cookies()).delete('accessToken');
     (await cookies()).delete('refreshToken');
     (await cookies()).delete('apiKey');
+}
 
+export async function saveAPIKey(apiKey: string, cookieName: string) {
+    const cookieStore = await cookies();
+    // 쿠키 설정
+    cookieStore.set(cookieName, apiKey, {
+        maxAge: 60 * 60 * 24 * 7, // 7일
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true,
+        sameSite: 'lax' as const
+    });
+}
+export async function saveAccessToken(accessToken: string) {
+    const cookieStore = await cookies();
+    // 쿠키 설정
+    cookieStore.set('accessToken', accessToken, {
+        maxAge: 60 * 60 * 24 * 3, // 7일
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true,
+        sameSite: 'lax' as const
+    });
 }

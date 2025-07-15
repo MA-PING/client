@@ -8,6 +8,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Checkbox from '@mui/material/Checkbox';
 import { MenuItem, Select } from "@mui/material";
+import {setAccessToken} from "@/redux/userSlice";
+import {useDispatch} from "react-redux";
 
 const NAVER_AUTH_URL =
     `https://nid.naver.com/oauth2.0/authorize?response_type=code` +
@@ -21,6 +23,7 @@ const GOOGLE_AUTH_URL =
     `&response_type=code&scope=openid%20email%20profile&access_type=offline`;
 
 const Frame: NextPage = () => {
+    const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [selectedDomain, setSelectedDomain] = useState("");
@@ -77,7 +80,7 @@ const Frame: NextPage = () => {
                 alert(`로그인 실패: ${data.message || response.statusText || ""}`);
                 return;
             }
-
+            dispatch(setAccessToken({ accessToken: data.accessToken, tokenExpiresAt: data.tokenExpiresAt }));
             alert("로그인 성공!");
             window.location.href = "/";
         } catch (error) {

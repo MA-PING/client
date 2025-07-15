@@ -9,6 +9,7 @@ import BannerModal from "@/component/bannerModal";
 import {characterMainList} from "@/interfaces/character";
 import { useSelector} from "react-redux";
 import {RootState} from "@/redux/store";
+import {saveAPIKey} from "@/app/actions";
 interface ApiBody {
     apiKey: string;
 }
@@ -57,7 +58,7 @@ const APIContents: NextPage = () => {
                 const encryptedApiKey = btoa(inputValue.trim());
 
                 // 암호화된 API 키를 쿠키에 저장
-                setCookie('ApiKey', encryptedApiKey, { maxAge: 60 * 60 * 24 * 7, secure: process.env.NODE_ENV === 'production', sameSite: 'lax' });
+                await saveAPIKey(encryptedApiKey, 'ApiKey');
 
                 const mainCharacter = response?.data.find((c: characterMainList) => c.main_character);
                 if (mainCharacter) {

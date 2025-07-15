@@ -53,10 +53,10 @@ const Header:NextPage = () => {
 
         if (userInfoRedux.userName) {
             setLogin(true);
-            console.log(1)
+            // console.log(1)
         }else {
             setLogin(false)
-            console.log(2)
+            // console.log(2)
         }
 
     }, [userInfoRedux.userName]);

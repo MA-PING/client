@@ -646,11 +646,55 @@ export interface NoResponse {
     error: string;
     path: string;
 }
-// --- Notes ---
-// 1. Corrected some potential typos (e.g., itemAddOption, exceptional_upgrade).
-// 2. Added `export` to all interfaces.
-// 3. Added missing interface definitions referenced in other interfaces (e.g., ItemEquipmentMedalShape).
-// 4. Added missing properties in interfaces based on the final `Character` interface definition.
-// 5. Suggested potential type corrections (e.g., string vs number/boolean for flags/counts). Verify these against the actual API response.
-// 6. Suggested using `null` for fields that might not always be present (like `date_expire`).
-// 7. Recommended conventional lowercase starting letters for property names inside `Character` interface (e.g., `Stat` -> `stat`). This is a convention, not a strict requirement.
+
+export interface chatHistory {
+    chatId: string;
+    topic: string;
+    dateTime: string;
+}
+
+export interface ChatHistoryResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: chatHistory[];
+    success: boolean;
+}
+
+export interface historyInfo {
+    ocid: string | null;
+    characterName: string | null;
+    type: string | null;
+    question: string;
+    answer: string;
+    timestamp: string;
+}
+
+export interface historyData {
+    chatId: string;
+    topic: string;
+    dateTime: string;
+    history: historyInfo[];
+}
+
+export interface historyDataResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: historyData;
+    success: boolean;
+}
+
+
+
+
+
+
+
+export interface response {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: string;
+    success: boolean;
+}

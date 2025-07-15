@@ -9,6 +9,7 @@ import {getApiCheck} from "@/utils/apiCheck";
 import {setCookie} from "cookies-next";
 import { useRouter } from 'next/navigation';
 import BannerModal from "@/component/bannerModal";
+import {saveAPIKey} from "@/app/actions";
 
 interface ApiBody {
     apiKey: string;
@@ -58,8 +59,8 @@ const NoSearch: NextPage = () => {
                 const encryptedApiKey = btoa(inputValue.trim());
 
                 // 암호화된 API 키를 쿠키에 저장
-                setCookie('ApiKey', encryptedApiKey, { maxAge: 60 * 60 * 24 * 7, secure: process.env.NODE_ENV === 'production', sameSite: 'lax' });
-
+                // setCookie('ApiKey', encryptedApiKey, { maxAge: 60 * 60 * 24 * 7, secure: process.env.NODE_ENV === 'production', sameSite: 'lax' });
+                await saveAPIKey(encryptedApiKey, 'ApiKey');
                 // /list 페이지로 리다이렉트
                 router.push('/list');
 

@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
             },
         ]
     },
+    compiler: {
+        // NODE_ENV가 'production'일 때만 console.* 호출을 제거
+        removeConsole: process.env.NODE_ENV === 'production',
+    },
 };
 
 export default nextConfig;
