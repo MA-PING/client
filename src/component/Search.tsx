@@ -7,45 +7,8 @@ import {useState, useEffect, useRef, useCallback} from "react";
 import styles from '@/styles/Search.module.css';
 import Portal from "@/component/Portal";
 import {serverImageMap} from "@/interfaces/serverImageMap";
-
-// --- 타입 정의 (기존과 동일) ---
-interface ApiResponse {
-    code: string;
-    message: string;
-    responseAt: string;
-    data: Character[];
-    success: boolean;
-}
-
-interface Character {
-    characterName: string;
-    world: string;
-    className: string;
-    image: string;
-    level: number;
-}
-async function getAutocomplete(name: string): Promise<Character[] | null> {
-    try {
-        const response = await fetch('https://api.ma-ping.com/api/v1/autocomplete?characterName=' + name, {
-            next: {
-                revalidate: 10,
-            },
-        });
-        if (!response.ok) {
-            return null;
-        }
-        const data: ApiResponse = await response.json();
-
-        if (data.data === null) {
-            return null;
-        }
-        return data.data;
-    } catch (error) {
-        console.error('자동완성 가져오기 오류:', error);
-        return null;
-    }
-}
-
+import {CharacterInfo} from "@/interfaces/character"
+import {getAutocomplete} from "@/utils/autocomplete";
 
 interface SearchProps {
     header: boolean
@@ -54,9 +17,9 @@ interface SearchProps {
 const Search: NextPage<SearchProps> = ({header}) => {
     const [inputValue, setInputValue] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [recentSearches, setRecentSearches] = useState<Character[]>([]);
+    const [recentSearches, setRecentSearches] = useState<CharacterInfo[]>([]);
 
-    const [suggestions, setSuggestions] = useState<Character[]>([]);
+    const [suggestions, setSuggestions] = useState<CharacterInfo[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [highlightedIndex, setHighlightedIndex] = useState(-1);
 
@@ -175,7 +138,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
 
 
     // localStorage 저장 - useCallback으로 감쌈
-    const addCharacterToRecent = useCallback((character: Character) => {
+    const addCharacterToRecent = useCallback((character: CharacterInfo) => {
         // 함수형 업데이트를 사용하여 최신 recentSearches 상태를 참조
         setRecentSearches(prevRecentSearches => {
             const newRecent = [
@@ -195,7 +158,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
     }, []);
 
     // 모달 캐릭터 선택 (키보드 및 마우스 공용)
-    const handleSelectCharacter = useCallback((character: Character) => {
+    const handleSelectCharacter = useCallback((character: CharacterInfo) => {
         setInputValue(character.characterName); // 선택한 캐릭터 이름으로 input 값 변경
         addCharacterToRecent(character);
         router.push(`/c/${encodeURIComponent(character.characterName)}`);
@@ -278,7 +241,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
     const isActive = inputValue.trim() !== '' || isModalOpen;
     const searchBarClassName = `${searchBarHeader} ${isActive ? styles.searchBarActive : ''}`;
 
-    const renderCharacterItem = (char: Character, isRecent: boolean, index: number) => (
+    const renderCharacterItem = (char: CharacterInfo, isRecent: boolean, index: number) => (
         <div key={char.characterName}
              className={`${header ? styles.searchAtomicHeader : styles.searchAtomic} ${highlightedIndex === index ? styles.highlightedItem : ''}`}
         >
@@ -343,7 +306,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
                                             <Image className={styles.mapingIcon} fill sizes="100vw"
                                                    alt="Mapping Illustration" src="/icons/noSearch.svg"/>
                                         </div>
-                                        <div className={styles.textWrapper}><p>이 캐릭터는 메이플스토리에 등록되지 않았어요.</p><p>다시 한 번
+                                        <div className={styles.textWrapper}><p>이 캐릭터는 서버에 등록되지 않았어요.</p><p>다시 한 번
                                             확인해주세요.</p></div>
                                     </div>
                                 )}

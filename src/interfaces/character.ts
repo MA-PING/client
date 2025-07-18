@@ -685,8 +685,21 @@ export interface historyDataResponse {
     success: boolean;
 }
 
+export interface ApiCharacterResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: CharacterInfo[];
+    success: boolean;
+}
 
-
+export interface CharacterInfo {
+    characterName: string;
+    world: string;
+    className: string;
+    image: string;
+    level: number;
+}
 
 
 

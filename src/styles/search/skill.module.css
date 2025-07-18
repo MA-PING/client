@@ -63,6 +63,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     overflow: auto;
+    scrollbar-width: none;
     /*text-overflow: ellipsis;*/
     white-space: nowrap;
 }

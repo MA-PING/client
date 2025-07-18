@@ -7,7 +7,7 @@ import drawerStyles from '../styles/drawer.module.css'; // 새로 추가된: 드
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import { useMediaQuery } from 'react-responsive'
-import {useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import Search from "@/component/Search";
 
 // MUI 컴포넌트
@@ -20,6 +20,7 @@ import {clearUserData} from "@/redux/userSlice";
 import {Popover} from "@mui/material";
 import {serverLogout} from "@/app/actions";
 import {getLogout} from "@/utils/apiLogout";
+import MobileSearch from "@/component/search/mobileSearch";
 // import {refreshUserData} from "@/app/actions";
 
 const Header:NextPage = () => {
@@ -28,13 +29,15 @@ const Header:NextPage = () => {
     const [isClient, setIsClient] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [isLogin, setLogin] = useState(false);
-
+    const [isSearch, setSearch] = useState(false)
     const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1281px)' });
     const isTablet = useMediaQuery({ query: '(min-width: 901px)' });
     const isMobile = useMediaQuery({ query: '(max-width: 1280px)' });
     const isMobile900 = useMediaQuery({ query: '(max-width: 901px)' });
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-
+    const search = (bool: boolean) => {
+        setSearch(bool)
+    }
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -82,6 +85,7 @@ const Header:NextPage = () => {
         window.location.reload();
         // router.push('/');
     };
+
     const drawerList = (
         <Box
             className={drawerStyles.typetabletmobileLoginno}
@@ -197,9 +201,9 @@ const Header:NextPage = () => {
             }
             <div className={styles.wrapBtn}>
                 {isClient && isMobile &&
-                    <div className={styles.button}>
+                    <button className={styles.button} onClick={() => search(true)}>
                         <Image className={styles.icon} width={18} height={18} alt="검색 아이콘" src="/icons/search.svg"/>
-                    </div>}
+                    </button>}
                 {isClient && isTablet && !isLogin &&
                     <Link href='/login' className={styles.buttonLongin}>
                         <div className={styles.button1}>로그인</div>
@@ -281,6 +285,7 @@ const Header:NextPage = () => {
                     </>
                 )}
             </div>
+            {isSearch && isMobile && <MobileSearch open={isSearch} onClose={() => setSearch(false)}/>}
         </div>
     );
 };

@@ -1,0 +1,440 @@
+.searchFilterModal {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 0px 16px rgba(14, 15, 20, 0.05), 0px 6px 20px rgba(14, 15, 20, 0.05);
+    width: 394px; /* 이미지에서 보이는 고정 너비 (내부 content 378px + 좌우 padding 8px*2) */
+    padding: 8px; /* 이미지에 맞춰 내부 패딩 */
+    box-sizing: border-box; /* padding이 width에 포함되도록 */
+    position: relative; /* 닫기 버튼의 absolute 위치 기준 */
+    z-index: 1001; /* backdrop 위에 나타나도록 더 높은 z-index */
+    display: flex; /* 내부 요소 정렬을 위해 flex 사용 */
+    flex-direction: row; /* 이미지와 동일하게 가로 정렬 */
+    align-items: flex-start; /* 상단 정렬 */
+    justify-content: center; /* 내부 콘텐츠 중앙 정렬 */
+    gap: 10px; /* 이미지에 보이는 gap */
+}
+
+.searchFilterModal .content {
+    width: 378px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 20px;
+    gap: 16px;
+    z-index: 0;
+}
+.searchFilterModalNo {
+    width: 378px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 20px;
+    gap: 16px;
+    z-index: 0;
+    color: rgba(14, 15, 20, 0.5)
+}
+.closeButtonModal {
+    width: 32px;
+    position: absolute;
+    top: 8px;
+    right: 8px; /* 이미지에서 보이는 오른쪽 상단 위치 */
+    border-radius: 6px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 1; /* content 위에 오도록 z-index 설정 */
+    background: none; /* 배경 제거 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer;
+    padding: 0; /* 패딩 제거 */
+}
+
+.closeButtonModal:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* hover 효과 */
+}
+
+.closeButtonModal .vector2Stroke { /* 닫기 버튼 내부 Image 아이콘 스타일 */
+    position: relative; /* Image 컴포넌트가 relative를 따르도록 */
+    width: 20px;
+    height: 20px;
+}
+
+.div {
+    position: relative;
+    line-height: 150%;
+    font-weight: 600;
+}
+.div1 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.textInput1 {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #d4d4d6;
+    box-sizing: border-box;
+    height: 29px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 16px 8px 8px;
+}
+.textInput {
+    width: 102px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.div2 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.textInput2 {
+    width: 77px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.div4 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+}
+.wrapInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.iconChild { /* SearchFilter 내부의 작은 아이콘들 */
+    position: absolute;
+    height: 73.13%;
+    width: 100%;
+    top: 12.58%;
+    right: 14.29%;
+    bottom: 14.29%;
+    left: 12.58%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.icon { /* SearchFilter 내부의 아이콘 컨테이너 */
+    width: 16px;
+    position: relative;
+    height: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.button1 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.button { /* 검색, 필터 초기화 버튼 */
+    width: 70px;
+    border-radius: 6px;
+    background-color: #4060ff;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px; /* 이미지상 '찾기' 버튼의 패딩은 상하로 더 좁음. 조정 필요 */
+    box-sizing: border-box;
+    gap: 4px;
+    color: #fff;
+    cursor: pointer; /* 버튼이므로 커서 변경 */
+}
+/* '찾기' 버튼의 패딩 조정 (이미지에서 상하 패딩이 더 적음) */
+.button[aria-label="찾기"] {
+    width: 76px;
+    position: relative;
+    border-radius: 6px;
+    background-color: #4060ff;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    gap: 4px;
+    text-align: left;
+    font-size: 14px;
+    color: #fff;
+}
+
+
+.wrapText {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+    font-size: 14px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.title { /* 필터 모달의 상단 타이틀 영역 */
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 8px;
+    gap: 16px;
+}
+.dividerIcon {
+    width: 378px;
+    position: relative;
+    border-radius: 4px;
+    max-height: 100%;
+}
+.button2 { /* '필터 초기화' 버튼 */
+    width: 362px;
+    border-radius: 6px;
+    background-color: #f0f3ff;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    gap: 4px;
+    font-size: 14px;
+    color: #4060ff;
+    cursor: pointer;
+}
+/* '필터 초기화' 버튼 패딩 조정 */
+.button2[aria-label="필터 초기화"] {
+    padding: 8px 16px; /* 이미지와 유사하게 상하 패딩 조정 */
+    height: auto; /* 패딩에 맞춰 높이 자동 조정 */
+}
+.title1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.filterCharacterAtomicChild {
+    width: 38px;
+    position: relative;
+    border-radius: 4px;
+    height: 38px;
+    object-fit: cover;
+}
+.label {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.badge {
+    border-radius: 6px;
+    border: 1px solid #4060ff;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+}
+.badge1 {
+    border-radius: 6px;
+    border: 1px solid #bbbbbd;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+    color: rgba(14, 15, 20, 0.5);
+}
+.div6 {
+    align-self: stretch;
+    position: relative;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    color: rgba(14, 15, 20, 0.7);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wrapCharacter {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.filterCharacterAtomic {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 8px;
+    color: #4060ff;
+}
+.filterCharacterAtomicItem {
+    width: 38px;
+    position: relative;
+    height: 38px;
+    object-fit: cover;
+}
+.badge1 {
+    border-radius: 6px;
+    border: 1px solid #bbbbbd;
+    box-sizing: border-box;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+}
+.filterCharacterAtomic1 {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    gap: 8px;
+}
+.wrapCharacters {
+    align-self: stretch;
+    height: 256px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.characters {
+    align-self: stretch;
+    width: 198px;
+    overflow-y: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.scrollerChild {
+    width: 4px;
+    position: relative;
+    border-radius: 12px;
+    background-color: #d4d4d6;
+    height: 40px;
+}
+.scroller {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.container { /* 캐릭터 선택 컨테이너 */
+    height: 288px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.filterOptionAtomic {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.1); /* 배경색 투명도 조정 */
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.wrapOption {
+    align-self: stretch;
+    height: 256px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 13px;
+    color: rgba(14, 15, 20, 0.9);
+}
+.container1 { /* 필터 선택 컨테이너 */
+    width: 120px;
+    height: 282px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.scroller1 {
+    height: 282px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.div12 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.filter { /* 필터 모달의 하단 필터 선택 영역 */
+    align-self: stretch;
+    height: 282px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px 8px;
+    box-sizing: border-box;
+    gap: 24px;
+    font-size: 12px;
+    color: rgba(14, 15, 20, 0.5);
+}

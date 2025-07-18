@@ -12,6 +12,8 @@ import {chatHistory} from "@/interfaces/character";
 import {getChatHistory} from "@/utils/chatHistory";
 import {deleteChatHistory} from "@/utils/deleteChat";
 import {getChatContent} from "@/utils/chatHistoryContent";
+import {getMessage} from "@/utils/chat";
+import SearchFilter from "@/component/searchFilter";
 
 interface aiBody {
     chatId: string | null;
@@ -53,6 +55,13 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
     const [currentChatId, setCurrentChatId] = useState<string | null>(null); // 현재 채팅의 chatId 상태
     const [isLogin, setLogin] = useState(false);
     const userInfoRedux = useSelector((state: RootState) => state.userInfo);
+    const [isSearchFilterOpen, setIsSearchFilterOpen] = useState(false);
+    const [isFilter, setIsFilter] = useState<string>('필터선택');
+    const [isCharacter, setCharacter] = useState<string>('캐릭터 닉네임');
+    const filter = (character: string, filter: string) => {
+        setIsFilter(filter);
+        setCharacter(character);
+    }
     useEffect(() => {
         if (userInfoRedux.userName) {
             setLogin(true);
@@ -65,6 +74,12 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
         setPageValue(page);
         if (page === 'history' && isLogin && userInfoRedux.accessToken) {
             fetchChatHistory(userInfoRedux.accessToken);
+        }
+        if(page === 'newChat'){
+            setPageValue('chat');
+            setChatHistory([]);
+            setCurrentChatId(null);
+            setCurrentChatTopic('새로운 대화');
         }
     };
     // 채팅 내용이 업데이트될 때마다 맨 아래로 스크롤
@@ -115,14 +130,11 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
             setChatHistory((prevHistory) => {
                 const lastAiMessageIndex = prevHistory.findIndex(msg => msg.id === aiMessageId);
 
-                // **첫 번째 AI 응답 시 uuid와 topic을 저장합니다.**
                 if (currentChatId === null && data.uuid) { // currentChatId가 null일 때만 저장
                     setCurrentChatId(data.uuid);
-                    // console.log("새 채팅 ID 설정:", data.uuid); // 디버깅
                 }
                 if (data.topic && data.topic !== currentChatTopic) {
                     setCurrentChatTopic(data.topic);
-                    // console.log("새 토픽 설정:", data.topic); // 디버깅
                 }
 
                 if (lastAiMessageIndex !== -1) {
@@ -193,8 +205,6 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                 }];
             });
         };
-
-
         try {
             const body: aiBody = {
                 chatId: currentChatId, // 여기에 currentChatId를 사용합니다!
@@ -204,8 +214,11 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                 text: message, // 사용자의 메시지
             };
             // 스트림 데이터를 처리할 콜백 함수들을 전달합니다.
-            await getNewGuestMessage(body, handleStreamData, handleStreamEnd, handleStreamError);
-
+            if (isLogin && userInfoRedux.accessToken) {
+                await getMessage(userInfoRedux.accessToken, body, handleStreamData, handleStreamEnd, handleStreamError);
+            } else {
+                await getNewGuestMessage(body, handleStreamData, handleStreamEnd, handleStreamError);
+            }
         } catch (error) {
             console.error("메시지 전송 또는 AI 응답 수신 최상위 오류:", error);
             // 전체 함수 레벨에서의 최종 오류 처리 (네트워크 요청 자체 실패 등)
@@ -375,7 +388,6 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
         }
     };
 
-
     return (
         <div className={!size ? styles.statusdefaultTypesmallLo : styles.statusdefaultTypesmallLoBig}>
             {/* 기본 페이지 (default) */}
@@ -384,22 +396,22 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     <div className={styles.headerChatbot}>
                         {isLogin ?
                             <div className={styles.wrapFilterLogin}>
-                                <div className={styles.button}>
+                                <button className={styles.button} onClick={() => setIsSearchFilterOpen(true)}>
                                     <Image width={16} height={16} alt='"' src="/icons/filter.svg"/>
                                     <div className={styles.ai}>검색필터</div>
-                                </div>
+                                </button>
                                 <Image className={styles.dividerIcon} width={1} height={18} sizes="100vw" alt=""
                                        src="/icons/Divider1.svg"/>
                                 <div className={styles.wrapLogin}>
                                     <div className={styles.textInput}>
                                         <div className={styles.textInputLogin1}>
-                                            <div className={styles.div23}>캐릭터 닉네임</div>
+                                            <div className={styles.div23}>{isCharacter}</div>
                                         </div>
                                     </div>
                                     <div className={styles.div24}>에게 딱 맞는</div>
                                     <div className={styles.textInput2}>
                                         <div className={styles.textInputLogin1}>
-                                            <div className={styles.div23}>필터선택</div>
+                                            <div className={styles.div23}>{isFilter}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -705,7 +717,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                                 )}
                             </div>
                             <div className={styles.historyAtomic}>
-                                <div onClick={() => handlePageClick('chat')} className={styles.wrapItem}>
+                                <div onClick={() => handlePageClick('newChat')} className={styles.wrapItem}>
                                     <div className={styles.wrapInfo}>
                                         <Image className={styles.iconBlue} width={16} height={16} sizes="100vw" alt=""
                                                src="icons/newchatting.svg"/>
@@ -734,7 +746,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                                 </Link>
                             </div>
                             <div className={styles.historyAtomic}>
-                                <div onClick={() => handlePageClick('chat')} className={styles.wrapItem}>
+                                <div onClick={() => handlePageClick('newChat')} className={styles.wrapItem}>
                                     <div className={styles.wrapInfo}>
                                         <Image className={styles.iconBlue} width={16} height={16} sizes="100vw" alt=""
                                                src="icons/newchatting.svg"/>
@@ -849,6 +861,11 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                         <div className={styles.maAi10}>마지막 업데이트 : 1시간 전</div>
                     </div>
                 </div>}
+            {isSearchFilterOpen && (
+                <div className={styles.backdrop}>
+                    <SearchFilter onClose={() => setIsSearchFilterOpen(false) } onFilter={filter}/>
+                </div>
+            )}
         </div>
     );
 };

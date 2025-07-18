@@ -946,6 +946,10 @@
     font-size: 14px;
     color: rgba(14, 15, 20, 0.9);
 }
+.historyAtomic:hover {
+    color: rgba(14, 15, 20, 0.9);
+    background-color: #ededf0;
+}
 .wrapItem {
     flex: 1;
     display: flex;
@@ -1007,7 +1011,18 @@
     padding: 8px 10px;
     max-width: calc(100% - 38px); /* Adjust max-width to account for the AI icon */
 }
-
+.backdrop {
+    position: fixed; /* 전체 화면을 덮기 위해 fixed */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* ChatBot 모달 위에 나타나도록 높은 z-index 설정 */
+}
 @media screen and (max-width: 580px) {
     .statusdefaultTypesmallLo {
         position: fixed; /* 화면에 고정 */

@@ -1,19 +1,15 @@
-import type { ApisResponse } from '@/interfaces/character';
+import {ApiCheckResponse, characterMainList} from '@/interfaces/character';
 
-interface ApiBody {
-    apiKey: string;
-}
-
-export async function getApiCharacterList(body: ApiBody): Promise<ApisResponse | null> {
+export async function getCharacterList(token: string): Promise<characterMainList[] | null> {
     try {
-        const response = await fetch('https://api.ma-ping.com/api/v1/character/apiList', {
-            method: 'POST',
+        const response = await fetch('https://api.ma-ping.com/api/v1/character/onlyList', {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(body),
             next: {
-                revalidate: 100, // 100초마다 데이터 갱신
+                revalidate: 1000, // 1000초마다 데이터 갱신
             },
         });
 
@@ -23,15 +19,15 @@ export async function getApiCharacterList(body: ApiBody): Promise<ApisResponse |
             return null;
         }
 
-        const data: ApisResponse = await response.json();
+        const data: ApiCheckResponse = await response.json();
 
         // 원본 로직에 따라 data.data가 null인 경우를 처리합니다.
         if (data.data === null) {
-            console.warn('API가 캐릭터 목록에 대해 null 데이터를 반환했습니다:', data.message);
+            console.warn('캐릭터 목록에 대해 null 데이터를 반환했습니다:', data.message);
             return null;
         }
 
-        return data;
+        return data.data;
     } catch (error) {
         console.error('캐릭터 목록 가져오기 실패:', error);
         return null;

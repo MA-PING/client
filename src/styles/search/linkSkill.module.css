@@ -56,6 +56,7 @@
     letter-spacing: -0.02em;
     line-height: 150%;
     overflow: auto;
+    scrollbar-width: none;
     /*text-overflow: ellipsis;*/
     white-space: nowrap;
 }
