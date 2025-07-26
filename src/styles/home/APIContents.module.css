@@ -355,6 +355,89 @@
     }
 }
 
+.containerModal {
+    align-self: stretch;
+    max-height: 488px;
+    overflow-y: auto;
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 20px;
+}
+.div2 {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    height: 144px;
+    cursor: pointer;
+}
+.div3 {
+    flex: 1;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+    font-weight: 500;
+}
+.characterPngIcon {
+    width: 112px;
+    position: relative;
+    border-radius: 4px;
+    height: 112px;
+    object-fit: cover;
+}
+.serverPngIcon {
+    width: 18px;
+    position: relative;
+    height: 18px;
+    object-fit: cover;
+}
+.wrapPrimaryInfo {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.lv280 {
+    align-self: stretch;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 150%;
+}
+.div4 {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 24px;
+}
+.wrapSubInfo {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    font-size: 16px;
+    color: rgba(14, 15, 20, 0.7);
+}
+.characterThumbnail {
+    width: 336px;
+    border-radius: 12px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    box-sizing: border-box;
+}
 /* -------------------------------------- */
 /* --- 넓은 데스크톱 스타일 (1024px 이상) --- */
 /* -------------------------------------- */
@@ -370,5 +453,18 @@
 
     .aiMessage {
         font-size: 16px;
+    }
+
+
+}
+
+@media (max-width: 900px) {
+    .containerModal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 720px) {
+    .containerModal {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

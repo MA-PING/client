@@ -234,17 +234,13 @@ const Header:NextPage = () => {
                                 <div className={styles.maping}>{userInfoRedux.userName}님 안녕하세요!</div>
                                 <div className={styles.loginContainer}>
                                     <div className={drawerStyles.wrapItem}>
-                                        <Link href="/" passHref legacyBehavior>
-                                            <a className={drawerStyles.menuAtomic}>
-                                                <Image className={styles.icon} width={8} height={8} alt="즐겨찾기 아이콘" src="/icons/heart_on.svg" />
-                                                <div className={drawerStyles.div}>즐겨찾기</div>
-                                            </a>
+                                        <Link href='/' className={drawerStyles.menuAtomic}>
+                                            <Image className={styles.icon} width={8} height={8} alt="즐겨찾기 아이콘" src="/icons/heart_on.svg" />
+                                            <div className={drawerStyles.div}>즐겨찾기</div>
                                         </Link>
-                                        <Link href="/" passHref legacyBehavior>
-                                            <a className={drawerStyles.menuAtomic}>
-                                                <Image className={styles.icon} width={8} height={8} alt="계정 설정 아이콘" src="/icons/account.svg" />
-                                                <div className={drawerStyles.div}>내 계정 설정</div>
-                                            </a>
+                                        <Link href="/" className={drawerStyles.menuAtomic}>
+                                            <Image className={styles.icon} width={8} height={8} alt="계정 설정 아이콘" src="/icons/account.svg" />
+                                            <div className={drawerStyles.div}>내 계정 설정</div>
                                         </Link>
                                     </div>
                                     <div className={drawerStyles.divider}></div>

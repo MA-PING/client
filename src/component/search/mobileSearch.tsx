@@ -40,8 +40,9 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [highlightedIndex, setHighlightedIndex] = useState(-1);
     const router = useRouter();
-    const searchBarRef = useRef<HTMLDivElement>(null);
-
+    const searchBarRef = useRef<HTMLFormElement>(null);
+    const isActive = inputValue.trim() !== '';
+    const searchBarClassName = `${isActive ? styles.searchBarActive : ''}`;
     // localStorage 로딩
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -254,7 +255,7 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
             }}
         >
             <AppBar sx={{ position: 'relative', backgroundColor: 'transparent', boxShadow: 'none' }}>
-                <Toolbar className={styles.headerMobiletablet}> \
+                <Toolbar className={styles.headerMobiletablet}>
                     <div className={styles.wrapBtn}>
                         <IconButton
                             edge="start"
@@ -275,8 +276,10 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
                     </div>
                 </Toolbar>
             </AppBar>
-            <div className={styles.div1}>
-                <div className={styles.searchMobile} ref={searchBarRef}>
+            {/* halo와 form을 searchContainer 안으로 옮겨 형제 관계로 만듭니다. */}
+            <div className={styles.searchContainer} >
+                {isActive && <div className={styles.halo}/>}
+                <form className={`${styles.searchMobile} ${searchBarClassName}`} onSubmit={handleFormSubmit} ref={searchBarRef}>
                     <div className={styles.icon}>
                         <Image fill sizes="100vw" alt="search icon"
                                src="/icons/Group 1.svg"/>
@@ -286,12 +289,11 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
                            onFocus={() => {
                                setHighlightedIndex(-1); // 포커스 시 하이라이트 초기화
                            }}
-                           onKeyDown={handleKeyDown} 
+                           onKeyDown={handleKeyDown}
                            autoComplete="off"
                            autoFocus/>
-                </div>
+                </form>
             </div>
-
             <div className={styles.content}>
                 {inputValue.trim().length > 0 ? (
                     (<>
@@ -311,9 +313,9 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
                         )}
                     </>)
                 ): ( recentSearches.length > 0 ? (
-                    <>
-                        {recentSearches.slice(0, 3).map((char, index) => renderCharacterItem(char, true, index))}
-                    </>
+                        <>
+                            {recentSearches.slice(0, 3).map((char, index) => renderCharacterItem(char, true, index))}
+                        </>
                     ):(<div className={styles.modalContent}>
                             <div className={styles.imageWrapper}>
                                 <Image className={styles.mapingIcon} fill sizes="100vw"

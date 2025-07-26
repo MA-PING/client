@@ -74,9 +74,6 @@
 .vector2Stroke,
 .vector3Stroke {
     position: absolute;
-    /* width, height, top, right, bottom, left는 Image 컴포넌트의 props로 제어되거나
-       icon 부모 요소의 크기에 따라 조정됩니다. */
-    /* 현재 이미지 파일의 경우 닫기 아이콘은 X 모양이므로, 두 개의 벡터를 사용한 것입니다. */
     width: 12.1px;
     height: 12.1px;
     top: 50%;
@@ -88,18 +85,32 @@
 }
 
 /* 🔍 검색 입력창 영역 */
+/* div1은 이제 searchContainer의 자식으로 남겨두고, halo를 searchContainer 내부로 옮깁니다. */
 .div1 {
-    align-self: stretch;
+    /* 기존 div1의 flexbox 속성만 유지하거나, 필요없으면 제거합니다. */
+    /* searchContainer가 relative 기준이 되므로 div1에 relative는 더이상 필요 없습니다. */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 0; /* margin으로 좌우 여백을 줄 것이므로 padding은 0 */
+    padding: 0;
+    /* position: relative; 이젠 필요 없음 */
+}
+
+.searchContainer {
+    margin-top: 8px; /* Appbar와 searchContainer 간의 간격 */
+    width: 100%;
+    position: relative; /* halo의 기준점이 되도록 relative 추가 */
+    display: flex; /* 자식 요소들을 가운데 정렬하기 위함 */
+    justify-content: center; /* 폼을 중앙으로 정렬 */
+    align-items: center;
+    padding: 0 16px; /* 좌우 패딩을 searchContainer에 줍니다. */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
 }
 
 .searchMobile {
-    width: calc(100% - 32px); /* 부모 div의 좌우 margin 16px씩을 제외한 너비 */
-    margin: 0 16px; /* 좌우 마진 */
+    width: 100%; /* searchContainer의 100%를 차지하도록 변경 */
+    /* margin: 0 16px; -> 이제 searchContainer의 padding으로 대체 */
     border-radius: 12px;
     background-color: #fff;
     border: 2px solid #d4d4d6;
@@ -107,9 +118,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 16px; /* 내부 패딩 */
+    padding: 16px;
     gap: 8px;
+    z-index: 1; /* 검색창이 헤일로 위에 오도록 */
     box-sizing: border-box; /* 패딩 포함 너비 계산 */
+    position: relative; /* input 내부의 아이콘 등 자식 요소들을 위해 유지 */
 }
 
 .iconChild { /* 검색 입력창 내 검색 아이콘 */
@@ -270,7 +283,7 @@
 }
 
 /* 검색 결과 없음 / 최근 검색 없음 메시지 스타일 */
-.messageContent {
+.modalContent { /* .messageContent 대신 .modalContent 사용 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -329,14 +342,17 @@
     color: #888;
 }
 
-.modalContent {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 1rem 1rem 4rem 1rem;
-    text-align: center;
-    font-size: 1rem;
-    color: rgba(14, 15, 20, 0.7);
+.halo {
+    position: absolute;
+    top: -3px; /* searchMobile의 상단 border-radius에 맞게 조정 */
+    left: calc(50% - (100% - 32px)/2 - 3px); /* searchMobile의 너비를 고려하여 가운데 정렬 후 3px 좌로 이동 */
+    width: calc(100% - 32px + 6px); /* searchMobile의 너비에 좌우 3px씩 추가 */
+    height: calc(66px); /* searchMobile의 예상 높이 (input + padding)에 6px 추가 */
+    border-radius: 14px; /* 검색창보다 살짝 더 큰 border-radius */
+    background-color: #e0e5ff;
+    z-index: 0; /* 검색창 뒤에 위치 */
+}
+
+.searchBarActive {
+    border-color: #4060ff;
 }

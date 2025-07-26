@@ -9,6 +9,13 @@ import {characterMainList} from "@/interfaces/character";
 import { useSelector} from "react-redux";
 import {RootState} from "@/redux/store";
 import {saveAPIKey} from "@/app/actions";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import {DialogContent, DialogContentText} from "@mui/material";
+import {getCharacterList} from "@/utils/characterList";
+import {serverImageMap} from "@/interfaces/serverImageMap";
+
+
 interface ApiBody {
     apiKey: string;
 }
@@ -20,6 +27,20 @@ const APIContents: NextPage = () => {
     const [inputValue, setInputValue] = useState<string>('');
     const [showMiniCharacter, setShowMiniCharacter] = useState<boolean>(false);
     const [characterData, setCharacterData] = useState<characterMainList | null>(null);
+    const [open, setOpen] = useState(false);
+    const [characterList, setCharacterList] = useState<characterMainList[] | null>(null);
+
+    const handleClickOpen = async () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const setList = (list: characterMainList[]) => {
+        setCharacterList(list)
+    }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
@@ -27,13 +48,45 @@ const APIContents: NextPage = () => {
     const userInfoRedux = useSelector((state: RootState) => state.userInfo);
 
     useEffect(() => {
-        if (userInfoRedux.userApiInfo) {
-            setLogin(true);
-        }else {
-            setLogin(false)
-        }
+        if (userInfoRedux.userApiInfo && userInfoRedux.accessToken) {
+            const token = userInfoRedux.accessToken;
+            const fetchCharacterData = async () => {
+                try {
+                    const list = await getCharacterList(token);
 
-    }, [userInfoRedux.userApiInfo]);
+                    if (list) {
+                        const sortedCharacterList = list.sort((a, b) => {
+                            if (a.main_character && !b.main_character) {
+                                return -1;
+                            }
+                            if (!a.main_character && b.main_character) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                        setList(sortedCharacterList);
+                        const mainCharacter = list.find((c: characterMainList) => c.main_character);
+
+                        if (mainCharacter) {
+                            setCharacterData(mainCharacter);
+                            setShowMiniCharacter(true);
+                        } else {
+                            setShowMiniCharacter(false);
+                            setCharacterData(null);
+                        }
+                    }
+                    setLogin(true);
+                } catch (error) {
+                    console.error("캐릭터 데이터를 가져오는 중 오류 발생:", error);
+                    setLogin(false);
+                }
+            };
+
+            fetchCharacterData();
+        } else {
+            setLogin(false);
+        }
+    }, [userInfoRedux.userApiInfo, userInfoRedux.accessToken]);
     const handleInputButtonClick = async () => {
         if (!inputValue.trim()) {
             return;
@@ -53,10 +106,8 @@ const APIContents: NextPage = () => {
             console.log("API 체크 성공:", response);
 
             try {
-                // API 키를 Base64로 인코딩하여 암호화
                 const encryptedApiKey = btoa(inputValue.trim());
 
-                // 암호화된 API 키를 쿠키에 저장
                 await saveAPIKey(encryptedApiKey, 'ApiKey');
 
                 const mainCharacter = response?.data.find((c: characterMainList) => c.main_character);
@@ -111,7 +162,7 @@ const APIContents: NextPage = () => {
                             <span>API Key 연결됨 : {characterData?.character_name}</span>
                         </div>
                         }
-                        <button className={styles.changeButton} aria-label="API 키 변경">
+                        <button className={styles.changeButton} aria-label="API 키 변경" onClick={handleClickOpen}>
                             <Image width={20} height={20} alt="변경" src="/icons/change.svg" />
                         </button>
                     </div>
@@ -215,6 +266,35 @@ const APIContents: NextPage = () => {
             {showModal &&
                 <BannerModal onClose={clickModal}/>
             }
+            <Dialog open={open} onClose={handleClose} maxWidth={'xl'}>
+                <DialogTitle >캐릭터 변경</DialogTitle>
+                <DialogContent >
+                    <DialogContentText>
+                        맞춤형 길라잡이가 필요한 캐릭터를 선택해주세요
+                    </DialogContentText>
+                    <div className={styles.containerModal}>
+                        {characterList ?
+                            characterList.map(c =>
+                                <div className={styles.div2} key={c.character_name} onClick={() => setCharacterData(c)}>
+                                    <Image className={styles.characterPngIcon} width={112} height={112} sizes="100vw" alt="" src={c.character_image} />
+                                    <div className={styles.container1}>
+                                        <div className={styles.wrapPrimaryInfo}>
+                                            <Image className={styles.serverPngIcon} width={18} height={18} sizes="100vw" alt="" src={serverImageMap[c.world_name]} />
+                                            <div className={styles.div3}>{c.character_name}</div>
+                                        </div>
+                                        <div className={styles.wrapSubInfo}>
+                                            <div className={styles.lv280}>LV. {c.character_level} | {c.character_class}</div>
+                                            <div className={styles.div4}>{c.character_guild_name ? `길드: `+c.character_guild_name : ''}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ):
+                            <p>캐릭터가 없습니다.</p>
+                        }
+
+                    </div>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 };

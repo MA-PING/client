@@ -674,7 +674,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                         </div>
                         <div className={styles.wrapBtn}>
                             <div className={styles.buttonChat}>
-                                <button onClick={() => handlePageClick('chat')} className={styles.icon}>
+                                <button onClick={() => handlePageClick('newChat')} className={styles.icon}>
                                     <Image className={styles.vector2Stroke} width={24} height={24} sizes="100vw" alt=""
                                            src="/icons/newchatting.svg"/>
                                 </button>

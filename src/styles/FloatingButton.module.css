@@ -1,4 +1,4 @@
-/* components/FloatingChatbot.module.css */
+
 
 .wrapChatbot {
     position: fixed; /* 화면에 고정 */
@@ -93,4 +93,20 @@
     height: 80px;
     overflow: hidden;
     flex-shrink: 0;
+}
+
+@media screen and (max-width: 580px) {
+    .chatbotShrink {
+        height: 72px;
+        width: 72px;
+    }
+    .wrapChatbot{
+        font-size: 14px;
+    }
+    .wrap {
+        width: 260px;
+    }
+    .arrow{
+        width: 18px;
+    }
 }
