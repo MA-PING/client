@@ -1,8 +1,15 @@
-import { FunctionComponent } from 'react';
+"use client";
+import { FunctionComponent, useState } from 'react';
 import styles from '../../styles/signup/signupform.module.css';
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { MenuItem, Select } from "@mui/material";
 
+const Component1: FunctionComponent = () => {
+    // 이메일 아이디와 도메인 상태 관리
+    const [email, setEmail] = useState('');
+    const [domain, setDomain] = useState('');
 
-const Component1:FunctionComponent = () => {
     return (
         <div className={styles.div} style={{ marginTop: "104px" }}>
             <div className={styles.stepIndicator}>
@@ -34,6 +41,7 @@ const Component1:FunctionComponent = () => {
                     <div className={styles.div2}> API Key 등록</div>
                 </div>
             </div>
+
             <div className={styles.content}>
                 <div className={styles.title}>
                     <div className={styles.div5}>아이디 생성</div>
@@ -43,26 +51,55 @@ const Component1:FunctionComponent = () => {
                     <div className={styles.container}>
                         <div className={styles.input}>
                             <div className={styles.textInput}>
-                                <div className={styles.textInput1}>
-                                    <div className={styles.div7}>ex) Mapping</div>
-                                    <div className={styles.wrapIcon} />
-                                </div>
+                                <TextField
+                                    placeholder="ex-Maping123"
+                                    variant="outlined"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    sx={{
+                                        width: "295px",
+                                        "& .MuiOutlinedInput-root": {
+                                            height: "48px",
+                                            fontSize: "14px",
+                                            borderRadius: "7px",
+                                        },
+                                        "& input": {
+                                            padding: "12px",
+                                        },
+                                    }}
+                                />
                             </div>
+
                             <div className={styles.div8}>@</div>
+
                             <div className={styles.select}>
-                                <div className={styles.div9}>선택하기</div>
-                                <img className={styles.icon} alt="" src="/icons/arrow_down.svg" />
+                                <Select
+                                    value={domain}
+                                    onChange={(e) => setDomain(e.target.value)}
+                                    displayEmpty
+                                    sx={{
+                                        width: "120px",
+                                        height: "48px",
+                                        fontSize: "14px",
+                                        borderRadius: "7px",
+                                        background: "white",
+                                    }}
+                                    inputProps={{ 'aria-label': '도메인 선택' }}
+                                >
+                                    <MenuItem value=""><em>선택하기</em></MenuItem>
+                                    <MenuItem value="gmail.com">gmail.com</MenuItem>
+                                    <MenuItem value="naver.com">naver.com</MenuItem>
+                                    <MenuItem value="daum.net">daum.net</MenuItem>
+                                </Select>
                             </div>
                         </div>
+
                         <div className={styles.wrapButton}>
-                            <div className={styles.button}>
-                                <div className={styles.button1}>인증 메일 보내기</div>
-                            </div>
-                            <div className={styles.button2}>
-                                <div className={styles.button1}>다시 보내기</div>
-                            </div>
+                            <Button className={styles.button} variant="contained">인증 메일 보내기</Button>
+                            <Button className={styles.button2} variant="outlined">다시 보내기</Button>
                         </div>
                     </div>
+
                     <div className={styles.divider}>
                         <div className={styles.divider1}>
                             <img className={styles.dividerIcon} alt="" src="divider.svg" />
@@ -72,6 +109,7 @@ const Component1:FunctionComponent = () => {
                             <img className={styles.dividerIcon} alt="" src="divider.svg" />
                         </div>
                     </div>
+
                     <div className={styles.wrapButton1}>
                         <div className={styles.btnSocialLogin}>
                             <div className={styles.label}>
@@ -85,6 +123,7 @@ const Component1:FunctionComponent = () => {
                                 </div>
                             </div>
                         </div>
+
                         <div className={styles.btnSocialLogin1}>
                             <div className={styles.label1}>
                                 <div className={styles.wrap}>
@@ -98,9 +137,11 @@ const Component1:FunctionComponent = () => {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-        </div>);
+        </div>
+    );
 };
 
 export default Component1;

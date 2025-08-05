@@ -109,7 +109,7 @@
     padding: 12px 16px;
     gap: 8px;
 }
-.textInput {
+/*.textInput {
     flex: 1;
     height: 48px;
     display: flex;
@@ -117,7 +117,7 @@
     align-items: center;
     justify-content: flex-start;
     z-index: 2;
-}
+}*/
 .div8 {
     width: 13px;
     position: relative;
@@ -144,7 +144,7 @@
     overflow: hidden;
     flex-shrink: 0;
 }
-.select {
+/*.select {
     width: 160px;
     border-radius: 8px;
     background-color: #fff;
@@ -159,7 +159,7 @@
     gap: 0px;
     z-index: 0;
     color: rgba(14, 15, 20, 0.9);
-}
+}*/
 .input {
     align-self: stretch;
     height: 48px;
