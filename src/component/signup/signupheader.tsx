@@ -6,11 +6,11 @@ const HeaderPC: FunctionComponent = () => {
     return (
         <div className={styles.headerPc}>
             <div className={styles.wrapBtn}>
-                <div className={styles.button}>
+                <Link href="/login" className={styles.button}>
                     <div className={styles.icon}>
                         <img className={styles.vector4Stroke} alt="" src="/icons/arrow_left.svg" />
                     </div>
-                </div>
+                </Link>
             </div>
             <div className={styles.logoMaping}>
                 <Link href="/" className={styles.logo}>
