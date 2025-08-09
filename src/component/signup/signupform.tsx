@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import { MenuItem, Select } from "@mui/material";
 
 const Component1: FunctionComponent = () => {
-    // 이메일 아이디와 도메인 상태 관리
     const [email, setEmail] = useState('');
     const [domain, setDomain] = useState('');
 
@@ -50,48 +49,42 @@ const Component1: FunctionComponent = () => {
                 <div className={styles.containerGroup}>
                     <div className={styles.container}>
                         <div className={styles.input}>
-                            <div className={styles.textInput}>
-                                <TextField
-                                    placeholder="ex-Maping123"
-                                    variant="outlined"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    sx={{
-                                        width: "295px",
-                                        "& .MuiOutlinedInput-root": {
-                                            height: "48px",
-                                            fontSize: "14px",
-                                            borderRadius: "7px",
-                                        },
-                                        "& input": {
-                                            padding: "12px",
-                                        },
-                                    }}
-                                />
-                            </div>
-
-                            <div className={styles.div8}>@</div>
-
-                            <div className={styles.select}>
-                                <Select
-                                    value={domain}
-                                    onChange={(e) => setDomain(e.target.value)}
-                                    displayEmpty
-                                    sx={{
-                                        width: "120px",
+                            <TextField
+                                placeholder="ex-Maping123"
+                                variant="outlined"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                sx={{
+                                    width: "295px",
+                                    "& .MuiOutlinedInput-root": {
                                         height: "48px",
                                         fontSize: "14px",
                                         borderRadius: "7px",
-                                        background: "white",
-                                    }}
-                                    inputProps={{ 'aria-label': '도메인 선택' }}
-                                >
-                                    <MenuItem value=""><em>선택하기</em></MenuItem>
-                                    <MenuItem value="gmail.com">gmail.com</MenuItem>
-                                    <MenuItem value="naver.com">naver.com</MenuItem>
-                                    <MenuItem value="daum.net">daum.net</MenuItem>
-                                </Select>
-                            </div>
+                                    },
+                                    "& input": {
+                                        padding: "12px",
+                                    },
+                                }}
+                            />
+                            <div className={styles.div8}>@</div>
+                            <Select
+                                value={domain}
+                                onChange={(e) => setDomain(e.target.value)}
+                                displayEmpty
+                                sx={{
+                                    width: "120px",
+                                    height: "48px",
+                                    fontSize: "14px",
+                                    borderRadius: "7px",
+                                    background: "white",
+                                }}
+                                inputProps={{ 'aria-label': '도메인 선택' }}
+                            >
+                                <MenuItem value=""><em>선택하기</em></MenuItem>
+                                <MenuItem value="gmail.com">gmail.com</MenuItem>
+                                <MenuItem value="naver.com">naver.com</MenuItem>
+                                <MenuItem value="daum.net">daum.net</MenuItem>
+                            </Select>
                         </div>
 
                         <div className={styles.wrapButton}>
@@ -117,8 +110,8 @@ const Component1: FunctionComponent = () => {
                                     <div className={styles.icon1}>
                                         <img className={styles.iconChild} alt="" src="/icons/sns-google.png" />
                                     </div>
-                                    <div className={styles.googleContainer}>{`Google `}
-                                        <span className={styles.span}>계정으로 계속하기</span>
+                                    <div className={styles.googleContainer}>
+                                        Google <span className={styles.span}>계정으로 계속하기</span>
                                     </div>
                                 </div>
                             </div>
@@ -130,8 +123,8 @@ const Component1: FunctionComponent = () => {
                                     <div className={styles.icon1}>
                                         <img className={styles.image1Icon} alt="" src="/icons/sns-naver.svg" />
                                     </div>
-                                    <div className={styles.googleContainer}>{`Naver `}
-                                        <span className={styles.span}>계정으로 계속하기</span>
+                                    <div className={styles.googleContainer}>
+                                        Naver <span className={styles.span}>계정으로 계속하기</span>
                                     </div>
                                 </div>
                             </div>

@@ -57,7 +57,8 @@
     gap: 8px;
 }
 .stepIndicator {
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -109,15 +110,6 @@
     padding: 12px 16px;
     gap: 8px;
 }
-/*.textInput {
-    flex: 1;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    z-index: 2;
-}*/
 .div8 {
     width: 13px;
     position: relative;
@@ -144,22 +136,6 @@
     overflow: hidden;
     flex-shrink: 0;
 }
-/*.select {
-    width: 160px;
-    border-radius: 8px;
-    background-color: #fff;
-    border: 1px solid #d4d4d6;
-    box-sizing: border-box;
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    gap: 0px;
-    z-index: 0;
-    color: rgba(14, 15, 20, 0.9);
-}*/
 .input {
     align-self: stretch;
     height: 48px;
@@ -374,6 +350,8 @@
     font-size: 32px;
     color: rgba(14, 15, 20, 0.9);
 }
+
+/* 수정된 부분 */
 .div {
     width: 100%;
     position: relative;
@@ -381,12 +359,42 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 0px 744px;
-    box-sizing: border-box;
     gap: 64px;
     text-align: left;
     font-size: 14px;
     color: rgba(14, 15, 20, 0.7);
     font-family: Pretendard;
+
+    padding: 0 20px; /* 모바일 여백 */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* 랩탑 대응 */
+@media (max-width: 1440px) {
+    .div {
+        max-width: 1000px;
+    }
+}
+
+/* 태블릿 대응 */
+@media (max-width: 1024px) {
+    .div {
+        max-width: 90%;
+        padding: 0 16px;
+    }
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .div {
+        gap: 32px;
+    }
+    .stepIndicator {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .content {
+        gap: 24px;
+    }
+}
