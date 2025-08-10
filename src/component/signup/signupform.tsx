@@ -1,5 +1,5 @@
 "use client";
-import { FunctionComponent, useState } from 'react'; // useEffect는 이제 필요 없으므로 제거
+import { FunctionComponent, useState } from 'react';
 import styles from '../../styles/signup/signupform.module.css';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -8,29 +8,54 @@ import { MenuItem, Select } from "@mui/material";
 const Component1: FunctionComponent = () => {
     const [email, setEmail] = useState('');
     const [domain, setDomain] = useState('');
-
-    // --- 👇 로직을 매우 단순하게 수정 ---
-    // 첫 이메일이 발송되었는지 여부만 추적하는 상태
     const [initialEmailSent, setInitialEmailSent] = useState(false);
 
-    // "인증 메일 보내기" 버튼 클릭 핸들러
-    const handleSendEmail = () => {
-        console.log(`Sending verification to ${email}@${domain}`);
-        // 첫 이메일이 발송되었음을 상태에 기록
-        setInitialEmailSent(true);
+    const callSendEmailAPI = async () => {
+        const fullEmail = `${email}@${domain}`;
+        const formData = new URLSearchParams();
+        formData.append('email', fullEmail);
+
+        try {
+            // 👇 전체 URL을 사용하도록 수정
+            const response = await fetch(`https://api.ma-ping.com/api/v1/auth/send-email-verification`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.isSuccess) {
+                alert("인증번호가 성공적으로 발송되었습니다.");
+                return true;
+            } else {
+                alert(result.message || "메일 발송에 실패했습니다.");
+                return false;
+            }
+
+        } catch (error) {
+            console.error("메일 발송 API 호출 오류:", error);
+            alert("메일 발송 중 오류가 발생했습니다.");
+            return false;
+        }
     };
 
-    // "다시 보내기" 버튼 클릭 핸들러
-    const handleResendEmail = () => {
-        // 실제 다시 보내기 API 호출 로직을 여기에 추가
-        console.log(`Resending verification to ${email}@${domain}`);
+    const handleSendEmail = async () => {
+        const isSuccess = await callSendEmailAPI();
+        if (isSuccess) {
+            setInitialEmailSent(true);
+        }
     };
-    // --- 👆 ---
+
+    const handleResendEmail = async () => {
+        await callSendEmailAPI();
+    };
 
     return (
         <div className={styles.div}>
             <div className={styles.stepIndicator}>
-                {/* Step indicator UI */}
                 <div className={styles.stepIndicatorAtomic}>
                     <div className={styles.wrapItem}>
                         <img className={styles.itemOngoingIcon} alt="" src="/icons/union/id.svg" />
@@ -146,11 +171,9 @@ const Component1: FunctionComponent = () => {
                             >
                                 인증 메일 보내기
                             </Button>
-
-                            {/* 👇 '다시 보내기' 버튼의 최종 로직 */}
                             <Button
                                 className={styles.button2}
-                                variant="text" // 테두리가 없는 'text' variant가 더 적합할 수 있습니다.
+                                variant="text"
                                 onClick={handleResendEmail}
                                 disabled={!initialEmailSent}
                                 sx={{
