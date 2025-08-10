@@ -10,8 +10,9 @@ const Component1: FunctionComponent = () => {
     const [domain, setDomain] = useState('');
 
     return (
-        <div className={styles.div} style={{ marginTop: "104px" }}>
+        <div className={styles.div}>
             <div className={styles.stepIndicator}>
+                {/* 기존 단계 표시 UI */}
                 <div className={styles.stepIndicatorAtomic}>
                     <div className={styles.wrapItem}>
                         <img className={styles.itemOngoingIcon} alt="" src="/icons/union/id.svg" />
@@ -37,7 +38,7 @@ const Component1: FunctionComponent = () => {
                     <div className={styles.wrapItem}>
                         <div className={styles.itemBefore} />
                     </div>
-                    <div className={styles.div2}> API Key 등록</div>
+                    <div className={styles.div2}>API Key 등록</div>
                 </div>
             </div>
 
@@ -46,6 +47,7 @@ const Component1: FunctionComponent = () => {
                     <div className={styles.div5}>아이디 생성</div>
                     <div className={styles.div6}>가입을 완료하고 나만을 위한 맞춤 정보를 받아보세요.</div>
                 </div>
+
                 <div className={styles.containerGroup}>
                     <div className={styles.container}>
                         <div className={styles.input}>
@@ -60,6 +62,7 @@ const Component1: FunctionComponent = () => {
                                         height: "48px",
                                         fontSize: "14px",
                                         borderRadius: "7px",
+                                        fontFamily: "Pretendard, sans-serif",
                                     },
                                     "& input": {
                                         padding: "12px",
@@ -75,12 +78,32 @@ const Component1: FunctionComponent = () => {
                                     width: "120px",
                                     height: "48px",
                                     fontSize: "14px",
-                                    borderRadius: "7px",
-                                    background: "white",
+                                    fontFamily: "Pretendard, sans-serif",
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderRadius: "7px",
+                                    },
+                                    "& .MuiOutlinedInput-root": {
+                                        borderRadius: "7px",
+                                    },
                                 }}
                                 inputProps={{ 'aria-label': '도메인 선택' }}
+                                MenuProps={{
+                                    PaperProps: {
+                                        sx: {
+                                            boxShadow: "none",
+                                            border: "1px solid rgba(0, 0, 0, 0.2)",
+                                            borderRadius: "10px",
+                                            fontFamily: "Pretendard, sans-serif",
+                                        },
+                                    },
+                                }}
                             >
-                                <MenuItem value=""><em>선택하기</em></MenuItem>
+                                <MenuItem
+                                    value=""
+                                    sx={{ fontFamily: "Pretendard, sans-serif" }}
+                                >
+                                    <em>선택하기</em>
+                                </MenuItem>
                                 <MenuItem value="gmail.com">gmail.com</MenuItem>
                                 <MenuItem value="naver.com">naver.com</MenuItem>
                                 <MenuItem value="daum.net">daum.net</MenuItem>
