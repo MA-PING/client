@@ -1,5 +1,5 @@
 "use client";
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useState } from 'react'; // useEffect는 이제 필요 없으므로 제거
 import styles from '../../styles/signup/signupform.module.css';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -9,10 +9,28 @@ const Component1: FunctionComponent = () => {
     const [email, setEmail] = useState('');
     const [domain, setDomain] = useState('');
 
+    // --- 👇 로직을 매우 단순하게 수정 ---
+    // 첫 이메일이 발송되었는지 여부만 추적하는 상태
+    const [initialEmailSent, setInitialEmailSent] = useState(false);
+
+    // "인증 메일 보내기" 버튼 클릭 핸들러
+    const handleSendEmail = () => {
+        console.log(`Sending verification to ${email}@${domain}`);
+        // 첫 이메일이 발송되었음을 상태에 기록
+        setInitialEmailSent(true);
+    };
+
+    // "다시 보내기" 버튼 클릭 핸들러
+    const handleResendEmail = () => {
+        // 실제 다시 보내기 API 호출 로직을 여기에 추가
+        console.log(`Resending verification to ${email}@${domain}`);
+    };
+    // --- 👆 ---
+
     return (
         <div className={styles.div}>
             <div className={styles.stepIndicator}>
-                {/* 기존 단계 표시 UI */}
+                {/* Step indicator UI */}
                 <div className={styles.stepIndicatorAtomic}>
                     <div className={styles.wrapItem}>
                         <img className={styles.itemOngoingIcon} alt="" src="/icons/union/id.svg" />
@@ -111,8 +129,41 @@ const Component1: FunctionComponent = () => {
                         </div>
 
                         <div className={styles.wrapButton}>
-                            <Button className={styles.button} variant="contained">인증 메일 보내기</Button>
-                            <Button className={styles.button2} variant="outlined">다시 보내기</Button>
+                            <Button
+                                className={styles.button}
+                                variant="contained"
+                                disabled={!email || !domain}
+                                onClick={handleSendEmail}
+                                sx={{
+                                    borderRadius: '7px',
+                                    backgroundColor: "#4060FF",
+                                    boxShadow: "none",
+                                    "&:hover": {
+                                        backgroundColor: "#4060FF",
+                                        boxShadow: "none",
+                                    },
+                                }}
+                            >
+                                인증 메일 보내기
+                            </Button>
+
+                            {/* 👇 '다시 보내기' 버튼의 최종 로직 */}
+                            <Button
+                                className={styles.button2}
+                                variant="text" // 테두리가 없는 'text' variant가 더 적합할 수 있습니다.
+                                onClick={handleResendEmail}
+                                disabled={!initialEmailSent}
+                                sx={{
+                                    color: initialEmailSent ? 'black' : 'grey',
+                                    border: 'none',
+                                    '&:hover': {
+                                        border: 'none',
+                                        backgroundColor: 'transparent'
+                                    }
+                                }}
+                            >
+                                다시 보내기
+                            </Button>
                         </div>
                     </div>
 
@@ -153,7 +204,6 @@ const Component1: FunctionComponent = () => {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
