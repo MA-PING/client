@@ -2,7 +2,7 @@
 import type { NextPage } from 'next';
 import Image from "next/image";
 import styles from '../../styles/home/APIContents.module.css';
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {getApiCheck} from "@/utils/apiCheck";
 import BannerModal from "@/component/bannerModal";
 import {characterMainList} from "@/interfaces/character";
@@ -14,6 +14,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {DialogContent, DialogContentText} from "@mui/material";
 import {getCharacterList} from "@/utils/characterList";
 import {serverImageMap} from "@/interfaces/serverImageMap";
+import {getAiAdvice} from "@/utils/aiAdvice";
+import remarkGfm from "remark-gfm";
+import ReactMarkdown from "react-markdown";
 
 
 interface ApiBody {
@@ -29,6 +32,9 @@ const APIContents: NextPage = () => {
     const [characterData, setCharacterData] = useState<characterMainList | null>(null);
     const [open, setOpen] = useState(false);
     const [characterList, setCharacterList] = useState<characterMainList[] | null>(null);
+    const [skill, setSkill] = useState<string | null>(null)
+    const [union, setUnion] = useState<string | null>(null)
+    const [level, setLevel] = useState<string | null>(null)
 
     const handleClickOpen = async () => {
         setOpen(true);
@@ -46,7 +52,27 @@ const APIContents: NextPage = () => {
         setInputValue(e.target.value);
     };
     const userInfoRedux = useSelector((state: RootState) => state.userInfo);
-
+    const setCharacterAdvice = (c: characterMainList) => {
+        setCharacterData(c)
+        getAdvice();
+    }
+    const getAdvice = useCallback(async () => {
+        const token = userInfoRedux.accessToken;
+        if (characterData !== null && characterData.ocid !== null && token !== null){
+            const skill = await getAiAdvice('LinkSkill', characterData.ocid, token);
+            if (skill !== null){
+                setSkill(skill);
+            }
+            const union = await getAiAdvice('union', characterData.ocid, token);
+            if (union !== null){
+                setUnion(union);
+            }
+            const level = await getAiAdvice('level', characterData.ocid, token);
+            if (level !== null){
+                setLevel(level);
+            }
+        }
+    }, [characterData, userInfoRedux.accessToken]);
     useEffect(() => {
         if (userInfoRedux.userApiInfo && userInfoRedux.accessToken) {
             const token = userInfoRedux.accessToken;
@@ -70,6 +96,19 @@ const APIContents: NextPage = () => {
                         if (mainCharacter) {
                             setCharacterData(mainCharacter);
                             setShowMiniCharacter(true);
+                            const skill = await getAiAdvice('skill', mainCharacter.ocid, token);
+                            if (skill !== null){
+                                setSkill(skill);
+                            }
+                            const union = await getAiAdvice('union', mainCharacter.ocid, token);
+                            if (union !== null){
+                                setUnion(union);
+                            }
+                            const level = await getAiAdvice('stat', mainCharacter.ocid, token);
+                            if (level !== null){
+                                setLevel(level);
+                            }
+
                         } else {
                             setShowMiniCharacter(false);
                             setCharacterData(null);
@@ -225,7 +264,19 @@ const APIContents: NextPage = () => {
                                     <Image width={20} height={20} alt="경고" src="/icons/x.svg" />
                                     <h4>링크스킬</h4>
                                 </div>
-                                <p>링크스킬 레벨 총합이 전체 유저 평균보다 12레벨 낮아요! 부캐를 키워서 보강해보세요.</p>
+                                {skill !== null ?
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        components={{
+                                            li: ({ ...props }) => (
+                                                <li {...props} className={styles.li} />
+                                            ),
+                                        }}
+                                    >
+                                        {skill}
+                                    </ReactMarkdown>:
+                                    <p>API Key가 입력되지 않았어요</p>
+                                }
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>
@@ -239,7 +290,19 @@ const APIContents: NextPage = () => {
                                     <Image width={20} height={20} alt="경고" src="/icons/x.svg" />
                                     <h4>유니온</h4>
                                 </div>
-                                <p>유니온 레벨이 동레벨대 유저 평균보다 35% 낮아요! 부캐를 더 육성해서 레벨을 높여보세요.</p>
+                                {union !== null ?
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        components={{
+                                            li: ({ ...props }) => (
+                                                <li {...props} className={styles.li} />
+                                            ),
+                                        }}
+                                    >
+                                        {union}
+                                    </ReactMarkdown>:
+                                    <p>API Key가 입력되지 않았어요</p>
+                                }
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>
@@ -253,7 +316,19 @@ const APIContents: NextPage = () => {
                                     <Image width={20} height={20} alt="경고" src="/icons/x.svg" />
                                     <h4>레벨링</h4>
                                 </div>
-                                <p>최근 경험치 상승률이 예전보다 10% 줄었어요. 새로운 사냥터로 이동하는건 어떠세요?</p>
+                                {level !== null ?
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        components={{
+                                            li: ({ ...props }) => (
+                                                <li {...props} className={styles.li} />
+                                            ),
+                                        }}
+                                    >
+                                        {level}
+                                    </ReactMarkdown>:
+                                    <p>API Key가 입력되지 않았어요</p>
+                                }
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>
@@ -275,7 +350,7 @@ const APIContents: NextPage = () => {
                     <div className={styles.containerModal}>
                         {characterList ?
                             characterList.map(c =>
-                                <div className={styles.div2} key={c.character_name} onClick={() => setCharacterData(c)}>
+                                <div className={styles.div2} key={c.character_name} onClick={() => setCharacterAdvice(c)}>
                                     <Image className={styles.characterPngIcon} width={112} height={112} sizes="100vw" alt="" src={c.character_image} />
                                     <div className={styles.container1}>
                                         <div className={styles.wrapPrimaryInfo}>

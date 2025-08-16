@@ -700,7 +700,13 @@ export interface CharacterInfo {
     image: string;
     level: number;
 }
-
+export interface recommendResponse {
+    code: string;
+    message: string;
+    responseAt: string;
+    data: string[];
+    success: boolean;
+}
 
 
 
