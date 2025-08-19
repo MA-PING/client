@@ -97,22 +97,22 @@ const Header: NextPage<HeaderProps> = ({initialUserName}) => {
         );
     }
 
-    const excludedPaths = [
-        '/chatbot',
-        '/my-character',
-        '/info',
-        '/my-page',
-        '/ranking',
-        '/simulator',
-        '/list',
-        '/',
-    ];
-
-    if (!pathname.startsWith('/c/') && !excludedPaths.includes(pathname)) {
-        return (
-            <></>
-        );
-    }
+    // const excludedPaths = [
+    //     '/chatbot',
+    //     '/my-character',
+    //     '/info',
+    //     '/my-page',
+    //     '/ranking',
+    //     '/simulator',
+    //     '/list',
+    //     '/',
+    // ];
+    //
+    // if (!pathname.startsWith('/c/') && !excludedPaths.includes(pathname)) {
+    //     return (
+    //         <></>
+    //     );
+    // }
 
 
     const drawerList = (
