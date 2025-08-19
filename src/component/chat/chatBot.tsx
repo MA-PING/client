@@ -495,7 +495,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size, initialUserRecommend, i
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>1</div>
                                         </div>
-                                        <div className={styles.div3}>2{initialCharacterRecommend.data[0]}</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data[0]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic}>
                                         <div className={styles.inPageNavigationAtomic1}>
@@ -546,25 +546,25 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size, initialUserRecommend, i
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>2</div>
                                         </div>
-                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[1] : initialUserRecommend.data[2]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic}>
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>3</div>
                                         </div>
-                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[2] : initialUserRecommend.data[3]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic6}>
                                         <div className={styles.inPageNavigationAtomic7}>
                                             <div className={styles.div8}>4</div>
                                         </div>
-                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[3] : initialUserRecommend.data[4]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic6}>
                                         <div className={styles.inPageNavigationAtomic7}>
                                             <div className={styles.div8}>5</div>
                                         </div>
-                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[4] : initialUserRecommend.data[5]}</div>
                                     </div>
                                 </div>
                             </div>

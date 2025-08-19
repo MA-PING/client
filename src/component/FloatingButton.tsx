@@ -22,16 +22,17 @@ const FloatingButton: NextPage<FloatingButtonProps> = ({initialUserRecommend, in
     const toggleChat = () => {
         setIsChatOpen(!isChatOpen);
     };
+    const allowedPaths = [
+        '/',
+        '/my-character',
+        '/simulator',
+        '/ranking',
+    ];
 
-    // 현재 경로에 따라 플로팅 UI를 표시할지 여부 결정
-    const shouldShowFloatingUI =
-        pathname === '/' ||
-        pathname === '/my-character' ||
-        pathname === '/simulator' ||
-        pathname === '/ranking' ||
-        pathname.startsWith('/c/');
+    // 경로가 허용된 목록에 포함되거나 '/c/'로 시작하면 true
+    const shouldShowFloatingUI = allowedPaths.includes(pathname) || pathname.startsWith('/c/');
 
-    // 해당 경로가 아니면 아무것도 렌더링하지 않음
+    // 조건에 맞지 않으면 렌더링하지 않습니다.
     if (!shouldShowFloatingUI) {
         return null;
     }
