@@ -1,7 +1,6 @@
 import PatchNotice from '@/component/home/patchNote';
 import APIContents from "@/component/home/APIContents";
 import Banner from "@/component/home/banner";
-import Header from "@/component/header";
 import {getApiUserRecommend} from "@/utils/userRecommend";
 import {cookies} from "next/headers";
 import {getApiCharacterRecommend} from "@/utils/characterRecommend";
