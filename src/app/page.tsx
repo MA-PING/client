@@ -6,7 +6,7 @@ import {cookies} from "next/headers";
 import {getApiCharacterRecommend} from "@/utils/characterRecommend";
 import {getCharacterList} from "@/utils/characterList";
 import {characterMainList, recommendResponse} from "@/interfaces/character";
-import {getAiAdvice} from "@/utils/aiAdvice";
+import {getAiAdviceByServer} from "@/utils/AiAdviceByServer";
 
 interface PatchNote {
     title: string;
@@ -35,19 +35,6 @@ async function getPatchNotes(): Promise<PatchNote[]> {
         console.error('패치 노트 가져오기 오류:', error);
         return [];
     }
-}
-export async function getAiAdviceByServer(ocid: string) {
-    'use server'
-    const cookieStore = await cookies();
-    const accessToken = cookieStore.get('accessToken')?.value;
-    if (!accessToken) {
-        return null;
-    }
-    const skill = await getAiAdvice('linkSkill', ocid, accessToken);
-    const union = await getAiAdvice('union', ocid, accessToken);
-    const level = await getAiAdvice('level', ocid, accessToken);
-
-    return {skill, union, level};
 }
 
 export default async function Home() {
@@ -79,7 +66,6 @@ export default async function Home() {
     }
   return(
   <div>
-
       <Banner initialUserRecommend={userRecommendData}
               initialCharacterRecommend={characterRecommendData}
               initialCharacterName={mainCharacterName}/>

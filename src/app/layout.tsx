@@ -9,6 +9,10 @@ import {ReduxProvider} from "@/app/ReduxProvider";
 import {cookies} from "next/headers";
 import Header from "@/component/header";
 import {getUserInfo} from "@/utils/userInfo";
+import {characterMainList, recommendResponse} from "@/interfaces/character";
+import {getCharacterList} from "@/utils/characterList";
+import {getApiCharacterRecommend} from "@/utils/characterRecommend";
+import {getApiUserRecommend} from "@/utils/userRecommend";
 
 
 const pretendard = localFont({
@@ -65,7 +69,24 @@ export default async function RootLayout({
             userName = user.userName;
         }
     }
+    let characterRecommendData: recommendResponse | null = null;
+    let characterList = null;
+    let mainCharacterName: string | null = null;
+    const userRecommendData = await getApiUserRecommend();
+    if (accessToken != null) {
+        characterList = await getCharacterList(accessToken);
+        if (characterList) {
+            const CharacterMainList = characterList.find((c: characterMainList) => c.main_character);
 
+            if (CharacterMainList && CharacterMainList.character_name) {
+                const character = await getApiCharacterRecommend(CharacterMainList.ocid, accessToken);
+                if (character !== null) {
+                    mainCharacterName = CharacterMainList.character_name;
+                    characterRecommendData = character;
+                }
+            }
+        }
+    }
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} font-pretendard ${styles.body}`}>
@@ -80,7 +101,10 @@ export default async function RootLayout({
                 {children}
             </main>
             <Footer/>
-            <FloatingButton />
+            <FloatingButton initialUserRecommend={userRecommendData}
+                            initialCharacterRecommend={characterRecommendData}
+                            initialCharacterName={mainCharacterName}
+            />
             <div id="portal-root" />
         </ReduxProvider>
       </body>

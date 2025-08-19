@@ -8,7 +8,7 @@ import Link from "next/link";
 import {useSelector} from "react-redux";
 import {RootState} from "@/redux/store";
 import {getNewGuestMessage} from "@/utils/guestChat";
-import {chatHistory} from "@/interfaces/character";
+import {chatHistory, recommendResponse} from "@/interfaces/character";
 import {getChatHistory} from "@/utils/chatHistory";
 import {deleteChatHistory} from "@/utils/deleteChat";
 import {getChatContent} from "@/utils/chatHistoryContent";
@@ -40,12 +40,15 @@ interface ChatMessage {
 
 interface ChatBotProps {
     onClose: () => void,
-    size: boolean
+    size: boolean,
+    initialUserRecommend: recommendResponse | null,
+    initialCharacterRecommend: null | recommendResponse,
+    initialCharacterName: null | string
 }
 
 let messageIdCounter = 0; // 컴포넌트 외부에서 고유 ID를 위한 카운터
 
-const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
+const ChatBot: NextPage<ChatBotProps> = ({onClose, size, initialUserRecommend, initialCharacterRecommend, initialCharacterName}) => {
     const [userChatHistory, setUserChatHistory] = useState<chatHistory[]>([]); // 사용자 채팅 기록 상태
     const [inputValue, setInputValue] = useState('');
     const [pageValue, setPageValue] = useState<string>('default');
@@ -62,10 +65,11 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
         setIsFilter(filter);
         setCharacter(character);
     }
+    const today = new Date().toISOString().slice(0, 10);
     useEffect(() => {
         if (userInfoRedux.userName) {
             setLogin(true);
-        }else {
+        } else {
             setLogin(false)
         }
 
@@ -75,7 +79,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
         if (page === 'history' && isLogin && userInfoRedux.accessToken) {
             fetchChatHistory(userInfoRedux.accessToken);
         }
-        if(page === 'newChat'){
+        if (page === 'newChat') {
             setPageValue('chat');
             setChatHistory([]);
             setCurrentChatId(null);
@@ -304,9 +308,9 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
         try {
             // 가정: getChatHistory 함수는 access token을 받아 채팅 기록 배열을 반환합니다.
             const history = await getChatHistory(accessToken); // getChatHistory 함수 호출
-            if (history !== null){
+            if (history !== null) {
                 setUserChatHistory(history);
-            }else{
+            } else {
                 setUserChatHistory([]);
             }
 
@@ -326,9 +330,9 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
     // 채팅 기록 삭제 함수 (예시)
     const handleDeleteHistoryItem = async (chatId: string) => {
         console.log(`채팅 ID ${chatId} 삭제 요청`);
-        if (userInfoRedux.accessToken){
-            const deleteBool =  await deleteChatHistory(userInfoRedux.accessToken, chatId);
-            if (deleteBool){
+        if (userInfoRedux.accessToken) {
+            const deleteBool = await deleteChatHistory(userInfoRedux.accessToken, chatId);
+            if (deleteBool) {
                 setUserChatHistory(prev => prev.filter(item => item.chatId !== chatId));
             }
         }
@@ -415,7 +419,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>:
+                            </div> :
                             <div className={styles.wrapFilter}>
                                 <div className={styles.button}>
                                     <Image width={16} height={16} alt='"' src="/icons/filterNo.svg"/>
@@ -469,20 +473,21 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                     <div className={styles.content}>
                         <div className={styles.title}>
                             {isLogin ?
-                                <div className={styles.ai}>안녕하세요 {userInfoRedux.userName}님! 오늘은 무엇을 도와드릴까요?</div>:
+                                <div className={styles.ai}>안녕하세요 {userInfoRedux.userName}님! 오늘은 무엇을 도와드릴까요?</div> :
                                 <div className={styles.ai}>당신에게 딱 맞는 메이플 길라잡이 메이 AI에요. 무엇을 도와드릴까요?</div>
                             }
                         </div>
-                        {isLogin &&
+                        {isLogin && initialCharacterRecommend !== null &&
                             <div className={styles.inPageNavigationSmall}>
                                 <div className={styles.wrapTitle}>
                                     <div className={styles.icon}>
-                                        <Image className={styles.iconChild} width={11.7} height={11.7} sizes="100vw" alt=""
+                                        <Image className={styles.iconChild} width={11.7} height={11.7} sizes="100vw"
+                                               alt=""
                                                src="/icons/search.svg"/>
                                     </div>
                                     <div className={styles.title1}>
                                         <div className={styles.div}>본캐 맞춤 추천 질문</div>
-                                        <div className={styles.div1}>오늘 17:28 / 칸데르니아 (본캐) 기준</div>
+                                        <div className={styles.div1}>{initialCharacterRecommend.responseAt.slice(0, 10) == today ? '오늘' : '어제'} {initialCharacterRecommend.responseAt.slice(11, 16)} / {initialCharacterName} (본캐) 기준</div>
                                     </div>
                                 </div>
                                 <div className={styles.list}>
@@ -490,77 +495,80 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>1</div>
                                         </div>
-                                        <div className={styles.div3}>230레벨 이후 사냥터 추천</div>
+                                        <div className={styles.div3}>2{initialCharacterRecommend.data[0]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic}>
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>2</div>
                                         </div>
-                                        <div className={styles.div3}>캐릭터 레벨업이 느려진 이유는 무엇 때문인가요?</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data[1]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic}>
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>3</div>
                                         </div>
-                                        <div className={styles.div3}>링크 스킬과 유니온이 뭔가요?</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data[2]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic6}>
                                         <div className={styles.inPageNavigationAtomic7}>
                                             <div className={styles.div8}>4</div>
                                         </div>
-                                        <div className={styles.div3}>무자본 스킬트리 추천</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data[3]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic6}>
                                         <div className={styles.inPageNavigationAtomic7}>
                                             <div className={styles.div8}>5</div>
                                         </div>
-                                        <div className={styles.div3}>소과금으로 효율적인 육성하는 방법</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data[4]}</div>
                                     </div>
                                 </div>
                             </div>}
-                        <div className={styles.inPageNavigationSmall1}>
-                            <div className={styles.wrapTitle}>
-                                <div className={styles.icon}>
-                                    <Image className={styles.iconChild} width={11.7} height={11.7} sizes="100vw" alt=""
-                                           src="/icons/search.svg"/>
+                        {initialUserRecommend !== null &&
+                            <div className={styles.inPageNavigationSmall1}>
+                                <div className={styles.wrapTitle}>
+                                    <div className={styles.icon}>
+                                        <Image className={styles.iconChild} width={11.7} height={11.7} sizes="100vw" alt=""
+                                               src="/icons/search.svg"/>
+                                    </div>
+                                    <div className={styles.title2}>
+                                        <div className={styles.div}>유저들이 자주 하는 질문</div>
+                                        <div className={styles.div1}>{initialUserRecommend.responseAt.slice(0, 10) == today ? '오늘' : '어제'} {initialUserRecommend.responseAt.slice(11, 16)}</div>
+                                    </div>
                                 </div>
-                                <div className={styles.title2}>
-                                    <div className={styles.div}>유저들이 자주 하는 질문</div>
+                                <div className={styles.list}>
+                                    <div className={styles.inPageNavigationAtomic}>
+                                        <div className={styles.inPageNavigationAtomic1}>
+                                            <div className={styles.div2}>1</div>
+                                        </div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                    </div>
+                                    <div className={styles.inPageNavigationAtomic}>
+                                        <div className={styles.inPageNavigationAtomic1}>
+                                            <div className={styles.div2}>2</div>
+                                        </div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                    </div>
+                                    <div className={styles.inPageNavigationAtomic}>
+                                        <div className={styles.inPageNavigationAtomic1}>
+                                            <div className={styles.div2}>3</div>
+                                        </div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                    </div>
+                                    <div className={styles.inPageNavigationAtomic6}>
+                                        <div className={styles.inPageNavigationAtomic7}>
+                                            <div className={styles.div8}>4</div>
+                                        </div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                    </div>
+                                    <div className={styles.inPageNavigationAtomic6}>
+                                        <div className={styles.inPageNavigationAtomic7}>
+                                            <div className={styles.div8}>5</div>
+                                        </div>
+                                        <div className={styles.div3}>{initialUserRecommend.data.length == 5 ? initialUserRecommend.data[0] : initialUserRecommend.data[1]}</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className={styles.list}>
-                                <div className={styles.inPageNavigationAtomic}>
-                                    <div className={styles.inPageNavigationAtomic1}>
-                                        <div className={styles.div2}>1</div>
-                                    </div>
-                                    <div className={styles.div3}>230레벨 이후 사냥터 추천</div>
-                                </div>
-                                <div className={styles.inPageNavigationAtomic}>
-                                    <div className={styles.inPageNavigationAtomic1}>
-                                        <div className={styles.div2}>2</div>
-                                    </div>
-                                    <div className={styles.div3}>캐릭터 레벨업이 느려진 이유는 무엇 때문인가요?</div>
-                                </div>
-                                <div className={styles.inPageNavigationAtomic}>
-                                    <div className={styles.inPageNavigationAtomic1}>
-                                        <div className={styles.div2}>3</div>
-                                    </div>
-                                    <div className={styles.div3}>링크 스킬과 유니온이 뭔가요?</div>
-                                </div>
-                                <div className={styles.inPageNavigationAtomic6}>
-                                    <div className={styles.inPageNavigationAtomic7}>
-                                        <div className={styles.div8}>4</div>
-                                    </div>
-                                    <div className={styles.div3}>무자본 스킬트리 추천</div>
-                                </div>
-                                <div className={styles.inPageNavigationAtomic6}>
-                                    <div className={styles.inPageNavigationAtomic7}>
-                                        <div className={styles.div8}>5</div>
-                                    </div>
-                                    <div className={styles.div3}>소과금으로 효율적인 육성하는 방법</div>
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </>
             )}
@@ -606,7 +614,8 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                                 {/* Date separator */}
                                 {(index === 0 || formatDateOnly(chatHistory[index - 1].timestamp) !== formatDateOnly(message.timestamp)) && (
                                     <div className={styles.dateSeparator}>
-                                        <div className={styles.timestamp}>{formatDateOnly(message.timestamp)} {formatTimeOnly(message.timestamp)}</div>
+                                        <div
+                                            className={styles.timestamp}>{formatDateOnly(message.timestamp)} {formatTimeOnly(message.timestamp)}</div>
                                     </div>
                                 )}
 
@@ -625,7 +634,8 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                                             <div className={styles.logoMaping}>
                                                 <div className={styles.logo}>
                                                     <div className={styles.logoMaping}>
-                                                        <Image className={styles.mapingIcon} width={30} height={22} sizes="100vw" alt="" src="/icons/chatbot.svg" />
+                                                        <Image className={styles.mapingIcon} width={30} height={22}
+                                                               sizes="100vw" alt="" src="/icons/chatbot.svg"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -696,15 +706,20 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                                 {userChatHistory.length > 0 ? (
                                     userChatHistory.map((item) => (
                                         <div key={item.chatId} className={styles.historyAtomic}>
-                                            <div onClick={() => handleHistoryItemClick(item.chatId, item.topic)} className={styles.wrapInfoHistory}>
-                                                <Image className={styles.iconBlue} width={16} height={16} sizes="100vw" alt=""
+                                            <div onClick={() => handleHistoryItemClick(item.chatId, item.topic)}
+                                                 className={styles.wrapInfoHistory}>
+                                                <Image className={styles.iconBlue} width={16} height={16} sizes="100vw"
+                                                       alt=""
                                                        src="/icons/history.svg"/>
                                                 <div className={styles.divHistory}>{item.topic.replace('\n', '')}</div>
-                                                <div className={styles.divHistory1}>{formatRelativeTime(item.dateTime)}</div>
+                                                <div
+                                                    className={styles.divHistory1}>{formatRelativeTime(item.dateTime)}</div>
                                             </div>
-                                            <button onClick={() => handleDeleteHistoryItem(item.chatId)} className={styles.deleteButton}>
+                                            <button onClick={() => handleDeleteHistoryItem(item.chatId)}
+                                                    className={styles.deleteButton}>
                                                 <div className={styles.iconHistory}>
-                                                    <Image className={styles.iconBlue} width={16} height={16} sizes="100vw" alt=""
+                                                    <Image className={styles.iconBlue} width={16} height={16}
+                                                           sizes="100vw" alt=""
                                                            src="/icons/delete.svg"/>
                                                 </div>
                                             </button>
@@ -728,7 +743,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                             {/*<div className={styles.div2}>메시지</div>*/}
                             <div ref={chatEndRef}/>
                             {/* 채팅 맨 아래로 스크롤하기 위한 마커 */}
-                        </div>:
+                        </div> :
                         <div className={styles.wrapLog}>
                             <div className={styles.titleChat}>
                                 <div className={styles.pm}>오늘</div>
@@ -736,7 +751,8 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                             <div className={styles.log}>
                                 <div className={styles.infoTextLogin}>
                                     <div className={styles.iconBlue}>
-                                        <Image className={styles.iconChildBlue} width={16} height={16} sizes="100vw" alt=""
+                                        <Image className={styles.iconChildBlue} width={16} height={16} sizes="100vw"
+                                               alt=""
                                                src="/icons/blue_mark.svg"/>
                                     </div>
                                     <div className={styles.divLogin}>대화 기록을 저장하려면 로그인이 필요해요</div>
@@ -863,7 +879,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size}) => {
                 </div>}
             {isSearchFilterOpen && (
                 <div className={styles.backdrop}>
-                    <SearchFilter onClose={() => setIsSearchFilterOpen(false) } onFilter={filter}/>
+                    <SearchFilter onClose={() => setIsSearchFilterOpen(false)} onFilter={filter}/>
                 </div>
             )}
         </div>
