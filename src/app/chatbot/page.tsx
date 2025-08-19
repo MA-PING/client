@@ -1,21 +1,37 @@
-'use client'
+'use server'
 
-import ChatBot from "@/component/chat/chatBot";
-import { useState } from 'react';
+import BigChatBot from "@/component/chat/bigChatBot";
+import {characterMainList, recommendResponse} from "@/interfaces/character";
+import {getApiUserRecommend} from "@/utils/userRecommend";
+import {getCharacterList} from "@/utils/characterList";
+import {getApiCharacterRecommend} from "@/utils/characterRecommend";
+import {cookies} from "next/headers";
 
+export default async function Home() {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get('accessToken')?.value;
+    let characterRecommendData: recommendResponse | null = null;
+    let characterList = null;
+    let mainCharacterName: string | null = null;
+    const userRecommendData = await getApiUserRecommend();
+    if (accessToken != null) {
+        characterList = await getCharacterList(accessToken);
+        if (characterList) {
+            const CharacterMainList = characterList.find((c: characterMainList) => c.main_character);
 
-export default function Home() {
-    const [isChatOpen, setIsChatOpen] = useState(false);
-    // 채팅창 열림/닫힘 토글 함수
-    const toggleChat = () => {
-        setIsChatOpen(!isChatOpen);
-    };
-
+            if (CharacterMainList && CharacterMainList.character_name) {
+                const character = await getApiCharacterRecommend(CharacterMainList.ocid, accessToken);
+                if (character !== null) {
+                    mainCharacterName = CharacterMainList.character_name;
+                    characterRecommendData = character;
+                }
+            }
+        }
+    }
     return (
-        <>
-            <div className="flex items-center justify-center min-h-screen ">
-                <ChatBot onClose={toggleChat} size={true}/>
-            </div>
-        </>
+        <BigChatBot initialUserRecommend={userRecommendData}
+                    initialCharacterRecommend={characterRecommendData}
+                    initialCharacterName={mainCharacterName}
+        />
     );
 }
