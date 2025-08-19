@@ -1,4 +1,4 @@
-import Header from "@/component/header";
+
 import NoSearch from "@/component/search/noSearch";
 import {Suspense} from "react";
 import Loading from "@/component/search/loading";
@@ -12,7 +12,6 @@ export default async function Home() {
     if (!initialApiResponse || !initialDetailCharacter) {
         return (
             <div>
-                <Header />
                 <Suspense fallback={<Loading />}>
                     <NoSearch/>
                 </Suspense>
@@ -22,7 +21,6 @@ export default async function Home() {
 
     return (
         <div>
-            <Header />
             <Suspense fallback={<Loading />}>
                 <CharacterDisplay initialApiResponse={initialApiResponse} initialDetailCharacter={initialDetailCharacter} />
             </Suspense>

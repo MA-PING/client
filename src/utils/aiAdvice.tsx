@@ -10,7 +10,7 @@ export async function getAiAdvice(type: string, ocid:string, token: string): Pro
             },
             body: JSON.stringify({"ocid": ocid}),
             next: {
-                revalidate: 1000, // 1000초마다 데이터 갱신
+                revalidate: 6000, // 1000초마다 데이터 갱신
             },
         });
 

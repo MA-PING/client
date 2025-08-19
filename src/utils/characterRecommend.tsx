@@ -13,7 +13,7 @@ export async function getApiCharacterRecommend(ocid: string, token: string): Pro
             },
             body: JSON.stringify(body),
             next: {
-                revalidate: 1000,
+                revalidate: 6000,
             },
         });
 

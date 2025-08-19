@@ -1,12 +1,12 @@
 'use client'
-import type { NextPage } from 'next';
+import type {NextPage} from 'next';
 import Image from "next/image";
 import styles from '../../styles/home/APIContents.module.css';
-import {useCallback, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import {getApiCheck} from "@/utils/apiCheck";
 import BannerModal from "@/component/bannerModal";
 import {characterMainList} from "@/interfaces/character";
-import { useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {RootState} from "@/redux/store";
 import {saveAPIKey} from "@/app/actions";
 import Dialog from '@mui/material/Dialog';
@@ -14,7 +14,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {DialogContent, DialogContentText} from "@mui/material";
 import {getCharacterList} from "@/utils/characterList";
 import {serverImageMap} from "@/interfaces/serverImageMap";
-import {getAiAdvice} from "@/utils/aiAdvice";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
 
@@ -22,19 +21,35 @@ import ReactMarkdown from "react-markdown";
 interface ApiBody {
     apiKey: string;
 }
-const APIContents: NextPage = () => {
+interface AiAdvice {
+    skill: string | null;
+    union: string | null;
+    level: string | null;
+}
+interface Props {
+    initialCharacterList: characterMainList[] | null;
+    initialMainCharacter: characterMainList | null;
+    initialCharacterAdvice: AiAdvice | null;
+    getAdviceFunction: (ocid: string) => Promise<AiAdvice | null>;
+}
+
+const APIContents: NextPage<Props> = ({initialCharacterList,
+                                      initialMainCharacter,
+                                      initialCharacterAdvice,
+                                      getAdviceFunction,
+                                      } ) => {
     // const router = useRouter();
     const [isLogin, setLogin] = useState(false);
     console.log(isLogin) // todo: api 있을경우
     // API 키 입력 필드의 값을 저장하는 상태 변수
     const [inputValue, setInputValue] = useState<string>('');
     const [showMiniCharacter, setShowMiniCharacter] = useState<boolean>(false);
-    const [characterData, setCharacterData] = useState<characterMainList | null>(null);
+    const [characterData, setCharacterData] = useState<characterMainList | null>(initialMainCharacter);
     const [open, setOpen] = useState(false);
-    const [characterList, setCharacterList] = useState<characterMainList[] | null>(null);
-    const [skill, setSkill] = useState<string | null>(null)
-    const [union, setUnion] = useState<string | null>(null)
-    const [level, setLevel] = useState<string | null>(null)
+    const [characterList, setCharacterList] = useState<characterMainList[] | null>(initialCharacterList);
+    const [skill, setSkill] = useState<string | null>(initialCharacterAdvice?.skill || null);
+    const [union, setUnion] = useState<string | null>(initialCharacterAdvice?.union || null);
+    const [level, setLevel] = useState<string | null>(initialCharacterAdvice?.level || null);
 
     const handleClickOpen = async () => {
         setOpen(true);
@@ -52,27 +67,19 @@ const APIContents: NextPage = () => {
         setInputValue(e.target.value);
     };
     const userInfoRedux = useSelector((state: RootState) => state.userInfo);
-    const setCharacterAdvice = (c: characterMainList) => {
-        setCharacterData(c)
-        getAdvice();
-    }
-    const getAdvice = useCallback(async () => {
-        const token = userInfoRedux.accessToken;
-        if (characterData !== null && characterData.ocid !== null && token !== null){
-            const skill = await getAiAdvice('LinkSkill', characterData.ocid, token);
-            if (skill !== null){
-                setSkill(skill);
-            }
-            const union = await getAiAdvice('union', characterData.ocid, token);
-            if (union !== null){
-                setUnion(union);
-            }
-            const level = await getAiAdvice('level', characterData.ocid, token);
-            if (level !== null){
-                setLevel(level);
-            }
+    const setCharacterAdvice = async (c: characterMainList) => {
+        setCharacterData(c);
+        setSkill(c.character_name); //Todo 내용 정하기
+        setUnion(c.character_name); //Todo 내용 정하기
+        setLevel(c.character_name); //Todo 내용 정하기
+        handleClose();
+        const newAdvice = await getAdviceFunction(c.ocid);
+        if (newAdvice) {
+            setSkill(newAdvice.skill);
+            setUnion(newAdvice.union);
+            setLevel(newAdvice.level);
         }
-    }, [characterData, userInfoRedux.accessToken]);
+    };
     useEffect(() => {
         if (userInfoRedux.userApiInfo && userInfoRedux.accessToken) {
             const token = userInfoRedux.accessToken;
@@ -96,18 +103,6 @@ const APIContents: NextPage = () => {
                         if (mainCharacter) {
                             setCharacterData(mainCharacter);
                             setShowMiniCharacter(true);
-                            const skill = await getAiAdvice('skill', mainCharacter.ocid, token);
-                            if (skill !== null){
-                                setSkill(skill);
-                            }
-                            const union = await getAiAdvice('union', mainCharacter.ocid, token);
-                            if (union !== null){
-                                setUnion(union);
-                            }
-                            const level = await getAiAdvice('stat', mainCharacter.ocid, token);
-                            if (level !== null){
-                                setLevel(level);
-                            }
 
                         } else {
                             setShowMiniCharacter(false);
@@ -185,24 +180,25 @@ const APIContents: NextPage = () => {
                             src="/images/characterBackground.avif"
                             alt="캐릭터 배경 이미지"
                             fill
-                            style={{ objectFit: 'cover' }}
+                            style={{objectFit: 'cover'}}
                             sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </div>
-                    <Image className={styles.characterImage} width={240} height={240} alt="대표 캐릭터" src={characterData?.character_image || "/images/no-character.png"} />
+                    <Image className={styles.characterImage} width={240} height={240} alt="대표 캐릭터"
+                           src={characterData?.character_image || "/images/no-character.png"}/>
                     <div className={styles.apiKeyInfo}>
                         {!showMiniCharacter && characterData === null ?
                             <div className={styles.NostatusIndicator}>
-                                <Image width={16} height={16} alt="실패 아이콘" src="/icons/circle_danger.svg" />
+                                <Image width={16} height={16} alt="실패 아이콘" src="/icons/circle_danger.svg"/>
                                 <span>API Key 열결 필요 : N/A</span>
-                            </div>:
+                            </div> :
                             <div className={styles.statusIndicator}>
-                                <Image width={16} height={16} alt="성공 아이콘" src="/icons/circle_succes.svg" />
-                            <span>API Key 연결됨 : {characterData?.character_name}</span>
-                        </div>
+                                <Image width={16} height={16} alt="성공 아이콘" src="/icons/circle_succes.svg"/>
+                                <span>API Key 연결됨 : {characterData?.character_name}</span>
+                            </div>
                         }
                         <button className={styles.changeButton} aria-label="API 키 변경" onClick={handleClickOpen}>
-                            <Image width={20} height={20} alt="변경" src="/icons/change.svg" />
+                            <Image width={20} height={20} alt="변경" src="/icons/change.svg"/>
                         </button>
                     </div>
                     {/*<button className={styles.ctaButton}>내 캐릭터 정보 확인하기</button>*/}
@@ -241,15 +237,16 @@ const APIContents: NextPage = () => {
                     {/* AI 캐릭터 상태 */}
                     <div className={styles.aiCharacterStatus}>
                         <div className={styles.aiCharacterImageWrapper}>
-                            <Image className={styles.aiCharacterImage} width={160} height={160} alt="AI 도우미 캐릭터" src="/images/character-api-connected.png" />
+                            <Image className={styles.aiCharacterImage} width={160} height={160} alt="AI 도우미 캐릭터"
+                                   src={characterData?.character_image || "/images/no-character.png"}/>
                         </div>
                         {!showMiniCharacter && characterData === null ?
                             <div className={styles.NoaiApiKeyStatus}>
-                                <Image width={16} height={16} alt="실패 아이콘" src="/icons/circle_danger.svg" />
+                                <Image width={16} height={16} alt="실패 아이콘" src="/icons/circle_danger.svg"/>
                                 <span>API Key 열결 필요 : N/A</span>
-                            </div>:
+                            </div> :
                             <div className={styles.aiApiKeyStatus}>
-                                <Image width={16} height={16} alt="성공 아이콘" src="/icons/circle_succes.svg" />
+                                <Image width={16} height={16} alt="성공 아이콘" src="/icons/circle_succes.svg"/>
                                 <span>API Key 연결됨 : {characterData?.character_name}</span>
                             </div>
                         }
@@ -261,78 +258,78 @@ const APIContents: NextPage = () => {
                         <div className={styles.analysisItem}>
                             <div className={styles.analysisText}>
                                 <div className={styles.analysisTitle}>
-                                    <Image width={20} height={20} alt="경고" src="/icons/x.svg" />
+                                    <Image width={20} height={20} alt="경고" src="/icons/siren.svg"/>
                                     <h4>링크스킬</h4>
                                 </div>
                                 {skill !== null ?
                                     <ReactMarkdown
                                         remarkPlugins={[remarkGfm]}
                                         components={{
-                                            li: ({ ...props }) => (
-                                                <li {...props} className={styles.li} />
+                                            li: ({...props}) => (
+                                                <li {...props} className={styles.li}/>
                                             ),
                                         }}
                                     >
                                         {skill}
-                                    </ReactMarkdown>:
+                                    </ReactMarkdown> :
                                     <p>API Key가 입력되지 않았어요</p>
                                 }
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>
-                                <Image width={16} height={16} alt="화살표" src="/icons/next.svg" />
+                                <Image width={16} height={16} alt="화살표" src="/icons/next.svg"/>
                             </button>
                         </div>
                         {/* 분석 아이템 2: 유니온 */}
                         <div className={styles.analysisItem}>
                             <div className={styles.analysisText}>
                                 <div className={styles.analysisTitle}>
-                                    <Image width={20} height={20} alt="경고" src="/icons/x.svg" />
+                                    <Image width={20} height={20} alt="경고" src="/icons/siren.svg"/>
                                     <h4>유니온</h4>
                                 </div>
                                 {union !== null ?
                                     <ReactMarkdown
                                         remarkPlugins={[remarkGfm]}
                                         components={{
-                                            li: ({ ...props }) => (
-                                                <li {...props} className={styles.li} />
+                                            li: ({...props}) => (
+                                                <li {...props} className={styles.li}/>
                                             ),
                                         }}
                                     >
                                         {union}
-                                    </ReactMarkdown>:
+                                    </ReactMarkdown> :
                                     <p>API Key가 입력되지 않았어요</p>
                                 }
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>
-                                <Image width={16} height={16} alt="화살표" src="/icons/next.svg" />
+                                <Image width={16} height={16} alt="화살표" src="/icons/next.svg"/>
                             </button>
                         </div>
                         {/* 분석 아이템 3: 레벨링 */}
                         <div className={styles.analysisItem}>
                             <div className={styles.analysisText}>
                                 <div className={styles.analysisTitle}>
-                                    <Image width={20} height={20} alt="경고" src="/icons/x.svg" />
+                                    <Image width={20} height={20} alt="경고" src="/icons/siren.svg"/>
                                     <h4>레벨링</h4>
                                 </div>
                                 {level !== null ?
                                     <ReactMarkdown
                                         remarkPlugins={[remarkGfm]}
                                         components={{
-                                            li: ({ ...props }) => (
-                                                <li {...props} className={styles.li} />
+                                            li: ({...props}) => (
+                                                <li {...props} className={styles.li}/>
                                             ),
                                         }}
                                     >
                                         {level}
-                                    </ReactMarkdown>:
+                                    </ReactMarkdown> :
                                     <p>API Key가 입력되지 않았어요</p>
                                 }
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>
-                                <Image width={16} height={16} alt="화살표" src="/icons/next.svg" />
+                                <Image width={16} height={16} alt="화살표" src="/icons/next.svg"/>
                             </button>
                         </div>
                     </div>
@@ -342,28 +339,33 @@ const APIContents: NextPage = () => {
                 <BannerModal onClose={clickModal}/>
             }
             <Dialog open={open} onClose={handleClose} maxWidth={'xl'}>
-                <DialogTitle >캐릭터 변경</DialogTitle>
-                <DialogContent >
+                <DialogTitle>캐릭터 변경</DialogTitle>
+                <DialogContent>
                     <DialogContentText>
                         맞춤형 길라잡이가 필요한 캐릭터를 선택해주세요
                     </DialogContentText>
                     <div className={styles.containerModal}>
                         {characterList ?
                             characterList.map(c =>
-                                <div className={styles.div2} key={c.character_name} onClick={() => setCharacterAdvice(c)}>
-                                    <Image className={styles.characterPngIcon} width={112} height={112} sizes="100vw" alt="" src={c.character_image} />
+                                <div className={styles.div2} key={c.character_name}
+                                     onClick={() => setCharacterAdvice(c)}>
+                                    <Image className={styles.characterPngIcon} width={112} height={112} sizes="100vw"
+                                           alt="" src={c.character_image}/>
                                     <div className={styles.container1}>
                                         <div className={styles.wrapPrimaryInfo}>
-                                            <Image className={styles.serverPngIcon} width={18} height={18} sizes="100vw" alt="" src={serverImageMap[c.world_name]} />
+                                            <Image className={styles.serverPngIcon} width={18} height={18} sizes="100vw"
+                                                   alt="" src={serverImageMap[c.world_name]}/>
                                             <div className={styles.div3}>{c.character_name}</div>
                                         </div>
                                         <div className={styles.wrapSubInfo}>
-                                            <div className={styles.lv280}>LV. {c.character_level} | {c.character_class}</div>
-                                            <div className={styles.div4}>{c.character_guild_name ? `길드: `+c.character_guild_name : ''}</div>
+                                            <div
+                                                className={styles.lv280}>LV. {c.character_level} | {c.character_class}</div>
+                                            <div
+                                                className={styles.div4}>{c.character_guild_name ? `길드: ` + c.character_guild_name : ''}</div>
                                         </div>
                                     </div>
                                 </div>
-                            ):
+                            ) :
                             <p>캐릭터가 없습니다.</p>
                         }
 

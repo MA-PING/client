@@ -8,7 +8,7 @@ export async function getApiUserRecommend(): Promise<recommendResponse | null> {
                 'Content-Type': 'application/json',
             },
             next: {
-                revalidate: 1000,
+                revalidate: 6000,
             },
         });
 

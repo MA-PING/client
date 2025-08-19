@@ -7,6 +7,8 @@ import Script from "next/script";
 import styles from "./layout.module.css";
 import {ReduxProvider} from "@/app/ReduxProvider";
 import {cookies} from "next/headers";
+import Header from "@/component/header";
+import {getUserInfo} from "@/utils/userInfo";
 
 
 const pretendard = localFont({
@@ -56,6 +58,14 @@ export default async function RootLayout({
 }>) {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('accessToken')?.value;
+    let userName: string | null = null;
+    if (accessToken) {
+        const user = await getUserInfo(accessToken);
+        if (user && user.userName){
+            userName = user.userName;
+        }
+    }
+
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} font-pretendard ${styles.body}`}>
@@ -65,6 +75,7 @@ export default async function RootLayout({
               src="https://openapi.nexon.com/js/analytics.js?app_id=226073"
           />
         <ReduxProvider accessToken={accessToken}>
+            <Header initialUserName={userName}/>
             <main className={styles.main}>
                 {children}
             </main>

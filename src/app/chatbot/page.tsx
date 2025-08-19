@@ -1,7 +1,6 @@
 'use client'
 
 import ChatBot from "@/component/chat/chatBot";
-import Header from "@/component/header";
 import { useState } from 'react';
 
 
@@ -14,7 +13,6 @@ export default function Home() {
 
     return (
         <>
-            <Header />
             <div className="flex items-center justify-center min-h-screen ">
                 <ChatBot onClose={toggleChat} size={true}/>
             </div>

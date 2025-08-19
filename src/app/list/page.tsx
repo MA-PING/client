@@ -1,4 +1,4 @@
-import Header from "@/component/header";
+
 import { Suspense } from 'react';
 import Loading from '@/component/search/loading';
 import { getApiCharacterList } from "@/utils/apiCharacterList";
@@ -50,7 +50,6 @@ export default async function Home() {
     if (!initialApiResponse || !initialDetailCharacter) {
         return (
             <div>
-                <Header />
                 <Suspense fallback={<Loading />}>
                     <div>초기 캐릭터 정보를 불러오지 못했습니다.</div>
                 </Suspense>
@@ -60,7 +59,6 @@ export default async function Home() {
 
     return (
         <div>
-            <Header />
             <Suspense fallback={<Loading />}>
                 <CharacterDisplay initialApiResponse={initialApiResponse} initialDetailCharacter={initialDetailCharacter} />
             </Suspense>
