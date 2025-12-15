@@ -7,6 +7,7 @@ import {getApiCharacterRecommend} from "@/utils/characterRecommend";
 import {getCharacterList} from "@/utils/characterList";
 import {characterMainList, recommendResponse} from "@/interfaces/character";
 import {getAiAdviceByServer} from "@/utils/AiAdviceByServer";
+import {getUserInfo} from "@/utils/userInfo";
 
 interface PatchNote {
     title: string;
@@ -42,12 +43,19 @@ export default async function Home() {
     const userRecommendData = await getApiUserRecommend();
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('accessToken')?.value;
+    let userName: string | null = null;
+    if (accessToken) {
+        const user = await getUserInfo(accessToken);
+        if (user && user.userName){
+            userName = user.userName;
+        }
+    }
     let characterRecommendData: recommendResponse | null = null;
     let mainCharacterName: string | null = null;
     let characterAdviceData = null;
     let characterList = null;
     let mainCharacter: characterMainList | null = null;
-    if (accessToken != null) {
+    if (userName && accessToken != null) {
         characterList = await getCharacterList(accessToken);
         if (characterList) {
             const CharacterMainList = characterList.find((c: characterMainList) => c.main_character);

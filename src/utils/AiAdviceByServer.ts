@@ -18,7 +18,7 @@ export async function getAiAdviceByServer(ocid: string): Promise<AiAdvice | null
     }
 
     try {
-        const skill = await getAiAdvice('LinkSkill', ocid, accessToken);
+        const skill = await getAiAdvice('linkSkill', ocid, accessToken);
         const union = await getAiAdvice('union', ocid, accessToken);
         const level = await getAiAdvice('level', ocid, accessToken);
 

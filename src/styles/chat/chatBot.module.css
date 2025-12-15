@@ -23,13 +23,13 @@
     text-align: left; /* 기본 텍스트 정렬 */
 }
 .statusdefaultTypesmallLoBig {
-    margin-top: 50px;
+    /*margin-top: 10px;*/
     width: 480px;
     position: relative;
     border-radius: 8px;
     background-color: #fff;
     height: 800px;
-    overflow: hidden;
+    overflow: auto;
     flex-shrink: 0;
     text-align: left;
     font-size: 14px;

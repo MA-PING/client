@@ -3,19 +3,18 @@ import styles from "../../styles/search/character.module.css"
 import Details from "@/component/search/characterDetails";
 import NoSearch from "@/component/search/noSearch";
 import type {NextPage} from "next";
-import {getCharacter} from "@/utils/characterApi";
+import {ApiResponse} from "@/interfaces/character";
 
 interface CharacterProps {
-    name: string
+    response: ApiResponse | null,
 }
 
-const Character: NextPage<CharacterProps> = async ({name}) => {
+const Character: NextPage<CharacterProps> = async ({response}) => {
 
-    const response = await getCharacter(name);
     if (response == null) {
         return (
             <>
-                <NoSearch />
+                <NoSearch/>
             </>
         );
     }

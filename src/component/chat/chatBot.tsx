@@ -477,7 +477,7 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size, initialUserRecommend, i
                                 <div className={styles.ai}>당신에게 딱 맞는 메이플 길라잡이 메이 AI에요. 무엇을 도와드릴까요?</div>
                             }
                         </div>
-                        {isLogin && initialCharacterRecommend !== null &&
+                        {isLogin && initialCharacterRecommend !== null&&
                             <div className={styles.inPageNavigationSmall}>
                                 <div className={styles.wrapTitle}>
                                     <div className={styles.icon}>
@@ -495,31 +495,31 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size, initialUserRecommend, i
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>1</div>
                                         </div>
-                                        <div className={styles.div3}>{initialCharacterRecommend.data[0]}</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data.length == 5 ? initialCharacterRecommend.data[0] : initialCharacterRecommend.data[1]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic}>
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>2</div>
                                         </div>
-                                        <div className={styles.div3}>{initialCharacterRecommend.data[1]}</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data.length == 5 ? initialCharacterRecommend.data[1] : initialCharacterRecommend.data[2]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic}>
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>3</div>
                                         </div>
-                                        <div className={styles.div3}>{initialCharacterRecommend.data[2]}</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data.length == 5 ? initialCharacterRecommend.data[2] : initialCharacterRecommend.data[3]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic6}>
                                         <div className={styles.inPageNavigationAtomic7}>
                                             <div className={styles.div8}>4</div>
                                         </div>
-                                        <div className={styles.div3}>{initialCharacterRecommend.data[3]}</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data.length == 5 ? initialCharacterRecommend.data[3] : initialCharacterRecommend.data[4]}</div>
                                     </div>
                                     <div className={styles.inPageNavigationAtomic6}>
                                         <div className={styles.inPageNavigationAtomic7}>
                                             <div className={styles.div8}>5</div>
                                         </div>
-                                        <div className={styles.div3}>{initialCharacterRecommend.data[4]}</div>
+                                        <div className={styles.div3}>{initialCharacterRecommend.data.length == 5 ? initialCharacterRecommend.data[4] : initialCharacterRecommend.data[5]}</div>
                                     </div>
                                 </div>
                             </div>}
@@ -530,13 +530,13 @@ const ChatBot: NextPage<ChatBotProps> = ({onClose, size, initialUserRecommend, i
                                         <Image className={styles.iconChild} width={11.7} height={11.7} sizes="100vw" alt=""
                                                src="/icons/search.svg"/>
                                     </div>
-                                    <div className={styles.title2}>
+                                    <div className={styles.title1}>
                                         <div className={styles.div}>유저들이 자주 하는 질문</div>
-                                        <div className={styles.div1}>{initialUserRecommend.responseAt.slice(0, 10) == today ? '오늘' : '어제'} {initialUserRecommend.responseAt.slice(11, 16)}</div>
+                                        <div className={styles.div1}> {initialUserRecommend.responseAt.slice(0, 10) == today ? '오늘' : '어제'} {initialUserRecommend.responseAt.slice(11, 16)}</div>
                                     </div>
                                 </div>
                                 <div className={styles.list}>
-                                    <div className={styles.inPageNavigationAtomic}>
+                                    <div className={styles.inPageNavigationAtomic} >
                                         <div className={styles.inPageNavigationAtomic1}>
                                             <div className={styles.div2}>1</div>
                                         </div>

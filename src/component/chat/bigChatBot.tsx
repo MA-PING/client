@@ -24,7 +24,7 @@ const BigChatBot: NextPage<BigChatBotProps> = ({initialUserRecommend, initialCha
     return (
         <>
             <div className="flex items-center justify-center min-h-screen ">
-                <ChatBot onClose={toggleChat} size={false}
+                <ChatBot onClose={toggleChat} size={true}
                          initialUserRecommend={initialUserRecommend}
                          initialCharacterRecommend={initialCharacterRecommend}
                          initialCharacterName={initialCharacterName}

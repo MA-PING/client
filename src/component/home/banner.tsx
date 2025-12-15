@@ -85,31 +85,31 @@ const Banner: NextPage<BannerProps> = ({initialUserRecommend, initialCharacterRe
                                                 <div className={styles.inPageNavigationAtomic1}>
                                                     <div className={styles.div5}>1</div>
                                                 </div>
-                                                <div className={styles.div6}>{characterRecommend.data[0]}</div>
+                                                <div className={styles.div6}>{characterRecommend.data.length == 5 ? characterRecommend.data[0] : characterRecommend.data[1]}</div>
                                             </div>
                                             <div className={styles.inPageNavigationAtomic}>
                                                 <div className={styles.inPageNavigationAtomic1}>
                                                     <div className={styles.div5}>2</div>
                                                 </div>
-                                                <div className={styles.div6}>{characterRecommend.data[1]}</div>
+                                                <div className={styles.div6}>{characterRecommend.data.length == 5 ? characterRecommend.data[1] : characterRecommend.data[2]}</div>
                                             </div>
                                             <div className={styles.inPageNavigationAtomic}>
                                                 <div className={styles.inPageNavigationAtomic1}>
                                                     <div className={styles.div5}>3</div>
                                                 </div>
-                                                <div className={styles.div6}>{characterRecommend.data[2]}</div>
+                                                <div className={styles.div6}>{characterRecommend.data.length == 5 ? characterRecommend.data[2] : characterRecommend.data[3]}</div>
                                             </div>
                                             <div className={styles.inPageNavigationAtomic}>
                                                 <div className={styles.inPageNavigationAtomic7}>
                                                     <div className={styles.div10}>4</div>
                                                 </div>
-                                                <div className={styles.div6}>{characterRecommend.data[3]}</div>
+                                                <div className={styles.div6}>{characterRecommend.data.length == 5 ? characterRecommend.data[3] : characterRecommend.data[4]}</div>
                                             </div>
                                             <div className={styles.inPageNavigationAtomic}>
                                                 <div className={styles.inPageNavigationAtomic7}>
                                                     <div className={styles.div10}>5</div>
                                                 </div>
-                                                <div className={styles.div6}>{characterRecommend.data[4]}</div>
+                                                <div className={styles.div6}>{characterRecommend.data.length == 5 ? characterRecommend.data[4] : characterRecommend.data[5]}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@ const Banner: NextPage<BannerProps> = ({initialUserRecommend, initialCharacterRe
                                                    src="/icons/search.svg"/>
                                             <div className={styles.title1}>
                                                 <div className={styles.div3}>본캐 맞춤 추천 질문</div>
-                                                <div className={styles.div4}>오늘 17:28 / 칸데르니아 (본캐) 기준</div>
+                                                <div className={styles.div4}></div>
                                             </div>
                                         </div>
                                         <div className={styles.list}>
@@ -129,31 +129,31 @@ const Banner: NextPage<BannerProps> = ({initialUserRecommend, initialCharacterRe
                                                 <div className={styles.inPageNavigationAtomic1}>
                                                     <div className={styles.div5}>1</div>
                                                 </div>
-                                                <div className={styles.div6}>230레벨 이후 사냥터 추천</div>
+                                                <div className={styles.div6}></div>
                                             </div>
                                             <div className={styles.inPageNavigationAtomic}>
                                                 <div className={styles.inPageNavigationAtomic1}>
                                                     <div className={styles.div5}>2</div>
                                                 </div>
-                                                <div className={styles.div6}>캐릭터 레벨업이 느려진 이유는 무엇 때문인가요?</div>
+                                                <div className={styles.div6}></div>
                                             </div>
                                             <div className={styles.inPageNavigationAtomic}>
                                                 <div className={styles.inPageNavigationAtomic1}>
                                                     <div className={styles.div5}>3</div>
                                                 </div>
-                                                <div className={styles.div6}>링크 스킬과 유니온이 뭔가요?</div>
+                                                <div className={styles.div6}></div>
                                             </div>
                                             <div className={styles.inPageNavigationAtomic}>
                                                 <div className={styles.inPageNavigationAtomic7}>
                                                     <div className={styles.div10}>4</div>
                                                 </div>
-                                                <div className={styles.div6}>무자본 스킬트리 추천</div>
+                                                <div className={styles.div6}></div>
                                             </div>
                                             <div className={styles.inPageNavigationAtomic}>
                                                 <div className={styles.inPageNavigationAtomic7}>
                                                     <div className={styles.div10}>5</div>
                                                 </div>
-                                                <div className={styles.div6}>소과금으로 효율적인 육성하는 방법</div>
+                                                <div className={styles.div6}></div>
                                             </div>
                                         </div>
                                     </div>

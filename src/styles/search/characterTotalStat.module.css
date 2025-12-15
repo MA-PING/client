@@ -382,6 +382,16 @@
         width: 328px;
         height: 2px;
     }
+    .item1 {
+        align-self: stretch;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
     /*.div {*/
     /*    flex: 1;*/
     /*    position: relative;*/
