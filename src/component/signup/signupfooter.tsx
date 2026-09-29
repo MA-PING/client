@@ -8,7 +8,7 @@ const Footer:FunctionComponent = () => {
             <div className={styles.container}>
                 <div className={styles.info}>
                     <div className={styles.div}>개인정보처리방침</div>
-                    <img className={styles.infoChild} alt="" src="Vector 1.svg" />
+                    <img className={styles.infoChild} alt="" src="/icons/Vector 1.svg" />
                     <div className={styles.div1}>이용약관</div>
                 </div>
             </div>
