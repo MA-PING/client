@@ -9,6 +9,8 @@ export interface AuthUser {
     id: string;
     email: string;
     nickname: string;
+    mainCharacterOcid: string | null;
+    mainCharacterName: string | null;
 }
 
 class AuthApiError extends Error {}
@@ -112,4 +114,28 @@ export async function checkNickname(nickname: string): Promise<boolean> {
 
 export function socialLoginUrl(provider: 'google' | 'naver'): string {
     return `/oauth2/authorization/${provider}`;
+}
+
+export async function changePassword(currentPassword: string, newPassword: string): Promise<void> {
+    const res = await authFetch('/api/auth/password', {
+        method: 'POST',
+        body: JSON.stringify({ currentPassword, newPassword }),
+    });
+    if (!res.ok) throw new AuthApiError(await parseErrorMessage(res, '비밀번호 변경에 실패했습니다.'));
+}
+
+export async function sendPasswordReset(email: string): Promise<void> {
+    const res = await authFetch('/api/auth/password-reset/send', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+    });
+    if (!res.ok) throw new AuthApiError(await parseErrorMessage(res, '재설정 메일 발송에 실패했습니다.'));
+}
+
+export async function confirmPasswordReset(email: string, code: string, newPassword: string): Promise<void> {
+    const res = await authFetch('/api/auth/password-reset/confirm', {
+        method: 'POST',
+        body: JSON.stringify({ email, code, newPassword }),
+    });
+    if (!res.ok) throw new AuthApiError(await parseErrorMessage(res, '비밀번호 재설정에 실패했습니다.'));
 }

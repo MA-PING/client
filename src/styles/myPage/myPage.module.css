@@ -1,0 +1,134 @@
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 20px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card {
+    border: 1px solid #E5E5E8;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cardTitle {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.label {
+    font-size: 14px;
+    color: #6B6B70;
+    min-width: 72px;
+}
+
+.value {
+    font-size: 14px;
+    color: #1A1A1E;
+    word-break: break-all;
+}
+
+.inputRow {
+    display: flex;
+    gap: 8px;
+}
+
+.input {
+    flex: 1;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #D4D4D6;
+    border-radius: 7px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.select {
+    flex: 1;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #D4D4D6;
+    border-radius: 7px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+}
+
+.button {
+    height: 44px;
+    padding: 0 16px;
+    background: #4060FF;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.button:disabled {
+    background: #C7CCEB;
+    cursor: not-allowed;
+}
+
+.buttonOutline {
+    height: 44px;
+    padding: 0 16px;
+    background: #fff;
+    color: #FF4060;
+    border: 1px solid #FF4060;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.buttonOutline:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.helperText {
+    font-size: 13px;
+    color: #8A8A90;
+}
+
+.message {
+    font-size: 13px;
+}
+
+.messageSuccess {
+    color: #2E9E5B;
+}
+
+.messageError {
+    color: #E5484D;
+}
+
+.dangerZone {
+    border-color: #FFD9DC;
+}
+
+.dangerTitle {
+    color: #E5484D;
+}

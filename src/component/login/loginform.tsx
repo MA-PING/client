@@ -8,9 +8,12 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Checkbox from '@mui/material/Checkbox';
 import { MenuItem, Select } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
 import {setUserInfo} from "@/redux/userSlice";
 import {useDispatch} from "react-redux";
-import {fetchMe, login, socialLoginUrl} from "@/utils/authApi";
+import {confirmPasswordReset, fetchMe, login, sendPasswordReset, socialLoginUrl} from "@/utils/authApi";
 
 const Frame: NextPage = () => {
     const dispatch = useDispatch();
@@ -18,6 +21,15 @@ const Frame: NextPage = () => {
     const [password, setPassword] = useState("");
     const [selectedDomain, setSelectedDomain] = useState("");
     const dropdownRef = useRef<HTMLDivElement>(null);
+
+    const [resetOpen, setResetOpen] = useState(false);
+    const [resetStep, setResetStep] = useState<"email" | "code">("email");
+    const [resetEmail, setResetEmail] = useState("");
+    const [resetCode, setResetCode] = useState("");
+    const [resetNewPassword, setResetNewPassword] = useState("");
+    const [resetLoading, setResetLoading] = useState(false);
+    const [resetError, setResetError] = useState<string | null>(null);
+    const [resetDone, setResetDone] = useState(false);
 
     const domains = [
         { value: "kakao.com", label: "kakao.com" },
@@ -56,6 +68,44 @@ const Frame: NextPage = () => {
         } catch (error) {
             console.error("로그인 에러:", error);
             alert(error instanceof Error ? `로그인 실패: ${error.message}` : "로그인 중 문제가 발생했습니다.");
+        }
+    };
+
+    const openResetModal = () => {
+        setResetOpen(true);
+        setResetStep("email");
+        setResetEmail("");
+        setResetCode("");
+        setResetNewPassword("");
+        setResetError(null);
+        setResetDone(false);
+    };
+
+    const handleSendResetCode = async () => {
+        if (!resetEmail.trim()) return;
+        setResetLoading(true);
+        setResetError(null);
+        try {
+            await sendPasswordReset(resetEmail.trim());
+            setResetStep("code");
+        } catch (error) {
+            setResetError(error instanceof Error ? error.message : "재설정 메일 발송에 실패했습니다.");
+        } finally {
+            setResetLoading(false);
+        }
+    };
+
+    const handleConfirmReset = async () => {
+        if (!resetCode.trim() || resetNewPassword.length < 8) return;
+        setResetLoading(true);
+        setResetError(null);
+        try {
+            await confirmPasswordReset(resetEmail.trim(), resetCode.trim(), resetNewPassword);
+            setResetDone(true);
+        } catch (error) {
+            setResetError(error instanceof Error ? error.message : "비밀번호 재설정에 실패했습니다.");
+        } finally {
+            setResetLoading(false);
         }
     };
 
@@ -206,7 +256,7 @@ const Frame: NextPage = () => {
                                     />
                                     <div className={styles.div3}>로그인 유지하기</div>
                                 </div>
-                                <div className={styles.button}>
+                                <div className={styles.button} onClick={openResetModal} style={{ cursor: "pointer" }}>
                                     <div className={styles.button1}>비밀번호 찾기</div>
                                     <Image src="/images/loginfollow.svg" alt="" width={16} height={16} className={styles.icon3} />
                                 </div>
@@ -244,6 +294,56 @@ const Frame: NextPage = () => {
                     </div>
                 </div>
             </div>
+            <Dialog open={resetOpen} onClose={() => setResetOpen(false)} maxWidth="xs" fullWidth>
+                <DialogTitle>비밀번호 찾기</DialogTitle>
+                <DialogContent>
+                    {resetDone ? (
+                        <p>비밀번호가 재설정되었어요. 새 비밀번호로 로그인해주세요.</p>
+                    ) : resetStep === "email" ? (
+                        <div style={{ display: "flex", flexDirection: "column", gap: 12, paddingTop: 8 }}>
+                            <TextField
+                                label="가입한 이메일"
+                                value={resetEmail}
+                                onChange={(e) => setResetEmail(e.target.value)}
+                                fullWidth
+                            />
+                            <Button
+                                variant="contained"
+                                onClick={handleSendResetCode}
+                                disabled={resetLoading || !resetEmail.trim()}
+                                sx={{ backgroundColor: "#4060FF", boxShadow: "none" }}
+                            >
+                                인증코드 받기
+                            </Button>
+                        </div>
+                    ) : (
+                        <div style={{ display: "flex", flexDirection: "column", gap: 12, paddingTop: 8 }}>
+                            <TextField
+                                label="인증코드 (6자리)"
+                                value={resetCode}
+                                onChange={(e) => setResetCode(e.target.value)}
+                                fullWidth
+                            />
+                            <TextField
+                                label="새 비밀번호 (8자 이상)"
+                                type="password"
+                                value={resetNewPassword}
+                                onChange={(e) => setResetNewPassword(e.target.value)}
+                                fullWidth
+                            />
+                            <Button
+                                variant="contained"
+                                onClick={handleConfirmReset}
+                                disabled={resetLoading || !resetCode.trim() || resetNewPassword.length < 8}
+                                sx={{ backgroundColor: "#4060FF", boxShadow: "none" }}
+                            >
+                                비밀번호 재설정
+                            </Button>
+                        </div>
+                    )}
+                    {resetError && <p style={{ color: "#E5484D", fontSize: 13, marginTop: 8 }}>{resetError}</p>}
+                </DialogContent>
+            </Dialog>
         </div>
     );
 };
