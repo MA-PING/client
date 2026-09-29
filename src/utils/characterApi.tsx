@@ -3,9 +3,19 @@
 import { ApiResponse, Character } from '@/interfaces/character';
 import { BACKEND_URL } from '@/utils/serverApi';
 
+// Next.js가 라우트 파라미터를 이미 디코딩해서 줄 수도, 인코딩된 채로 줄 수도 있어
+// 한 번 디코딩해 평문으로 되돌린 뒤 다시 인코딩한다(이중 인코딩 방지).
+function normalizeCharacterName(name: string): string {
+    try {
+        return decodeURIComponent(name);
+    } catch {
+        return name;
+    }
+}
+
 export async function getCharacter(name: string): Promise<ApiResponse | null> {
     try {
-        const response = await fetch(`${BACKEND_URL}/api/characters?characterName=${encodeURIComponent(name)}`, {
+        const response = await fetch(`${BACKEND_URL}/api/characters?characterName=${encodeURIComponent(normalizeCharacterName(name))}`, {
             next: {
                 revalidate: 1000, // 1000초마다 데이터 갱신
                 tags: [`character:${name}`], // 특정 캐릭터 데이터에 대한 태그
