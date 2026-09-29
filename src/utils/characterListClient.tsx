@@ -1,5 +1,4 @@
 import { characterMainList } from '@/interfaces/character';
-import { backendFetch } from '@/utils/serverApi';
 
 interface CharacterListEntry {
     ocid: string;
@@ -25,21 +24,17 @@ function toCharacterMainList(entry: CharacterListEntry): characterMainList {
     };
 }
 
-// 서버 컴포넌트 전용. 로그인 쿠키(ACCESS_TOKEN)를 그대로 백엔드에 전달해 인증한다.
-export async function getCharacterList(): Promise<characterMainList[] | null> {
+// 클라이언트 컴포넌트 전용. 로그인 세션은 httpOnly 쿠키로 유지되므로 same-origin 요청이면 충분하다.
+export async function getCharacterListClient(): Promise<characterMainList[] | null> {
     try {
-        const response = await backendFetch('/api/characters/me/list');
+        const response = await fetch('/api/characters/me/list', { credentials: 'same-origin' });
 
         if (!response.ok) {
-            const errorData = await response.json().catch(() => null);
-            console.error('API 오류:', response.status, errorData);
             return null;
         }
 
         const data: CharacterListEntry[] = await response.json();
-
         if (data === null) {
-            console.warn('캐릭터 목록에 대해 null 데이터를 반환했습니다.');
             return null;
         }
 

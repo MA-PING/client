@@ -5,7 +5,7 @@ import React, {useEffect, useState} from "react";
 import {RootState} from "@/redux/store";
 import {useSelector} from "react-redux";
 import {characterMainList} from "@/interfaces/character";
-import {getCharacterList} from "@/utils/characterList";
+import {getCharacterListClient} from "@/utils/characterListClient";
 
 interface SearchFilterProps {
     onClose: () => void,
@@ -32,20 +32,18 @@ const SearchFilter: NextPage<SearchFilterProps> = ({onClose, onFilter}) => {
         const fetchCharacterList = async () => {
             if (userInfoRedux.userName) {
                 setLogin(true);
-                if (userInfoRedux.userApiInfo && userInfoRedux.accessToken) {
-                    const initialApiResponse = await getCharacterList(userInfoRedux.accessToken);
-                    if (initialApiResponse) {
-                        const sortedCharacterList = initialApiResponse.sort((a, b) => {
-                            if (a.main_character && !b.main_character) {
-                                return -1;
-                            }
-                            if (!a.main_character && b.main_character) {
-                                return 1;
-                            }
-                            return 0;
-                        });
-                        setCharacterMainList(sortedCharacterList);
-                    }
+                const initialApiResponse = await getCharacterListClient();
+                if (initialApiResponse) {
+                    const sortedCharacterList = initialApiResponse.sort((a, b) => {
+                        if (a.main_character && !b.main_character) {
+                            return -1;
+                        }
+                        if (!a.main_character && b.main_character) {
+                            return 1;
+                        }
+                        return 0;
+                    });
+                    setCharacterMainList(sortedCharacterList);
                 }
             } else {
                 setLogin(false);
@@ -54,7 +52,7 @@ const SearchFilter: NextPage<SearchFilterProps> = ({onClose, onFilter}) => {
         };
 
         fetchCharacterList();
-    }, [userInfoRedux.userName, userInfoRedux.userApiInfo]);
+    }, [userInfoRedux.userName]);
 
 
     return (

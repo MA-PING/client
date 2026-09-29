@@ -12,7 +12,7 @@ import {saveAPIKey} from "@/app/actions";
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import {DialogContent, DialogContentText} from "@mui/material";
-import {getCharacterList} from "@/utils/characterList";
+import {getCharacterListClient} from "@/utils/characterListClient";
 import {serverImageMap} from "@/interfaces/serverImageMap";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
@@ -100,11 +100,10 @@ const APIContents: NextPage<Props> = ({initialCharacterList,
         }
     };
     useEffect(() => {
-        if (userInfoRedux.userApiInfo && userInfoRedux.accessToken) {
-            const token = userInfoRedux.accessToken;
+        if (userInfoRedux.userName) {
             const fetchCharacterData = async () => {
                 try {
-                    const list = await getCharacterList(token);
+                    const list = await getCharacterListClient();
 
                     if (list) {
                         const sortedCharacterList = list.sort((a, b) => {
@@ -139,7 +138,7 @@ const APIContents: NextPage<Props> = ({initialCharacterList,
         } else {
             setLogin(false);
         }
-    }, [userInfoRedux.userApiInfo, userInfoRedux.accessToken]);
+    }, [userInfoRedux.userName]);
     const handleInputButtonClick = async () => {
         if (!inputValue.trim()) {
             return;
@@ -221,7 +220,7 @@ const APIContents: NextPage<Props> = ({initialCharacterList,
                         </button>
                     </div>
                     {/*<button className={styles.ctaButton}>내 캐릭터 정보 확인하기</button>*/}
-                    {userInfoRedux.userApiInfo === null &&
+                    {characterData === null &&
                         <div className={styles.container}>
                             <div className={styles.wrapInput}>
                                 <div className={styles.textInput}>

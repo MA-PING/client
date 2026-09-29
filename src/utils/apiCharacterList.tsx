@@ -1,12 +1,42 @@
-import type { ApisResponse } from '@/interfaces/character';
+import type { ApisResponse, Character, characterMainList } from '@/interfaces/character';
+import { BACKEND_URL } from '@/utils/serverApi';
 
 interface ApiBody {
     apiKey: string;
 }
 
+interface CharacterListEntry {
+    ocid: string;
+    characterName: string;
+    characterImage: string;
+    worldName: string;
+    characterClass: string;
+    characterLevel: number;
+    guildName: string;
+    mainCharacter: boolean;
+}
+
+interface CharacterListResponseBody {
+    characterList: CharacterListEntry[];
+    character: Character;
+}
+
+function toCharacterMainList(entry: CharacterListEntry): characterMainList {
+    return {
+        ocid: entry.ocid,
+        character_name: entry.characterName,
+        character_image: entry.characterImage,
+        world_name: entry.worldName,
+        character_class: entry.characterClass,
+        character_level: entry.characterLevel,
+        character_guild_name: entry.guildName,
+        main_character: entry.mainCharacter,
+    };
+}
+
 export async function getApiCharacterList(body: ApiBody): Promise<ApisResponse | null> {
     try {
-        const response = await fetch('https://api.ma-ping.com/api/v1/character/apiList', {
+        const response = await fetch(`${BACKEND_URL}/api/characters/by-api-key`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,20 +48,28 @@ export async function getApiCharacterList(body: ApiBody): Promise<ApisResponse |
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
+            const errorData = await response.json().catch(() => null);
             console.error('API 오류:', response.status, errorData);
             return null;
         }
 
-        const data: ApisResponse = await response.json();
+        const data: CharacterListResponseBody = await response.json();
 
-        // 원본 로직에 따라 data.data가 null인 경우를 처리합니다.
-        if (data.data === null) {
-            console.warn('API가 캐릭터 목록에 대해 null 데이터를 반환했습니다:', data.message);
+        if (data === null) {
+            console.warn('API가 캐릭터 목록에 대해 null 데이터를 반환했습니다.');
             return null;
         }
 
-        return data;
+        return {
+            code: 'OK',
+            message: '',
+            responseAt: new Date().toISOString(),
+            data: {
+                characterList: data.characterList.map(toCharacterMainList),
+                characterInfo: data.character,
+            },
+            success: true,
+        };
     } catch (error) {
         console.error('캐릭터 목록 가져오기 실패:', error);
         return null;

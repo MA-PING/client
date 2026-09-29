@@ -9,6 +9,7 @@ import Portal from "@/component/Portal";
 import {serverImageMap} from "@/interfaces/serverImageMap";
 import {CharacterInfo} from "@/interfaces/character"
 import {getAutocomplete} from "@/utils/autocomplete";
+import {addFavorite, getFavorites, removeFavorite} from "@/utils/favoriteApi";
 
 interface SearchProps {
     header: boolean
@@ -22,6 +23,7 @@ const Search: NextPage<SearchProps> = ({header}) => {
     const [suggestions, setSuggestions] = useState<CharacterInfo[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [highlightedIndex, setHighlightedIndex] = useState(-1);
+    const [favoriteNames, setFavoriteNames] = useState<Set<string>>(new Set());
 
     const router = useRouter();
     const searchBarRef = useRef<HTMLDivElement>(null);
@@ -84,6 +86,13 @@ const Search: NextPage<SearchProps> = ({header}) => {
                 console.error("Failed to parse state from localStorage", error);
             }
         }
+    }, []);
+
+    // 즐겨찾기 목록 로딩 (비로그인 시 조용히 무시)
+    useEffect(() => {
+        getFavorites().then((favorites) => {
+            setFavoriteNames(new Set(favorites.map((f) => f.characterName)));
+        });
     }, []);
 
     // 다른 탭/창에서의 localStorage 변경을 감지하는 useEffect
@@ -165,6 +174,30 @@ const Search: NextPage<SearchProps> = ({header}) => {
         setIsModalOpen(false); // 모달 닫기
         setHighlightedIndex(-1); // 하이라이트 초기화
     }, [addCharacterToRecent, router]); // addCharacterToRecent가 useCallback으로 감싸져 안정적임
+
+    // 즐겨찾기 토글 (낙관적 업데이트 후 실패 시 롤백)
+    const handleToggleFavorite = useCallback(async (characterName: string) => {
+        const wasFavorite = favoriteNames.has(characterName);
+        setFavoriteNames(prev => {
+            const next = new Set(prev);
+            if (wasFavorite) next.delete(characterName); else next.add(characterName);
+            return next;
+        });
+        try {
+            if (wasFavorite) {
+                await removeFavorite(characterName);
+            } else {
+                await addFavorite(characterName);
+            }
+        } catch (error) {
+            console.error('즐겨찾기 처리 중 오류 발생:', error);
+            setFavoriteNames(prev => {
+                const next = new Set(prev);
+                if (wasFavorite) next.add(characterName); else next.delete(characterName);
+                return next;
+            });
+        }
+    }, [favoriteNames]);
 
     // localStorage 삭제
     const handleDeleteRecent = useCallback((characterNameToDelete: string) => {
@@ -259,8 +292,16 @@ const Search: NextPage<SearchProps> = ({header}) => {
             </div>
             {isRecent && (
                 <div className={styles.wrapIcon}>
-                    <button type="button" className={styles.button} title="즐겨찾기">
-                        <div className={styles.icon1}><Image fill alt="즐겨찾기" src="/icons/heart.svg"/></div>
+                    <button type="button" className={styles.button}
+                            title={favoriteNames.has(char.characterName) ? "즐겨찾기 해제" : "즐겨찾기"}
+                            onMouseDown={(e) => {
+                                e.stopPropagation();
+                                handleToggleFavorite(char.characterName);
+                            }}>
+                        <div className={styles.icon1}>
+                            <Image fill alt="즐겨찾기"
+                                   src={favoriteNames.has(char.characterName) ? "/icons/heart_on.svg" : "/icons/heart_off.svg"}/>
+                        </div>
                     </button>
                     <button type="button" className={styles.button1} title="삭제" onMouseDown={(e) => {
                         e.stopPropagation();
