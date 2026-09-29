@@ -16,27 +16,36 @@ import {getCharacterList} from "@/utils/characterList";
 import {serverImageMap} from "@/interfaces/serverImageMap";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
+import {requestAdvice} from "@/utils/aiApi";
 
 
 interface ApiBody {
     apiKey: string;
 }
-interface AiAdvice {
-    skill: string | null;
-    union: string | null;
-    level: string | null;
-}
+
+// 훈수 3종이 렌더링 방식이 같아 한 곳에서 처리한다.
+const AdviceText = ({advice, loading, className}: { advice: string | null; loading: boolean; className: string }) => {
+    if (loading) return <p>메이 AI가 분석 중이에요...</p>;
+    if (advice === null) return <p>API Key가 입력되지 않았어요</p>;
+    return (
+        <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+                li: ({...props}) => <li {...props} className={className}/>,
+            }}
+        >
+            {advice}
+        </ReactMarkdown>
+    );
+};
+
 interface Props {
     initialCharacterList: characterMainList[] | null;
     initialMainCharacter: characterMainList | null;
-    initialCharacterAdvice: AiAdvice | null;
-    getAdviceFunction: (ocid: string) => Promise<AiAdvice | null>;
 }
 
 const APIContents: NextPage<Props> = ({initialCharacterList,
                                       initialMainCharacter,
-                                      initialCharacterAdvice,
-                                      getAdviceFunction,
                                       } ) => {
     // const router = useRouter();
     const [isLogin, setLogin] = useState(false);
@@ -47,9 +56,10 @@ const APIContents: NextPage<Props> = ({initialCharacterList,
     const [characterData, setCharacterData] = useState<characterMainList | null>(initialMainCharacter);
     const [open, setOpen] = useState(false);
     const [characterList, setCharacterList] = useState<characterMainList[] | null>(initialCharacterList);
-    const [skill, setSkill] = useState<string | null>(initialCharacterAdvice?.skill || null);
-    const [union, setUnion] = useState<string | null>(initialCharacterAdvice?.union || null);
-    const [level, setLevel] = useState<string | null>(initialCharacterAdvice?.level || null);
+    const [skill, setSkill] = useState<string | null>(null);
+    const [union, setUnion] = useState<string | null>(null);
+    const [level, setLevel] = useState<string | null>(null);
+    const [adviceLoading, setAdviceLoading] = useState(false);
 
     const handleClickOpen = async () => {
         setOpen(true);
@@ -67,17 +77,26 @@ const APIContents: NextPage<Props> = ({initialCharacterList,
         setInputValue(e.target.value);
     };
     const userInfoRedux = useSelector((state: RootState) => state.userInfo);
+    // 훈수 3종은 서로 독립이라 병렬로 요청한다. 실패한 항목만 null로 남는다.
     const setCharacterAdvice = async (c: characterMainList) => {
         setCharacterData(c);
-        setSkill(c.character_name); //Todo 내용 정하기
-        setUnion(c.character_name); //Todo 내용 정하기
-        setLevel(c.character_name); //Todo 내용 정하기
+        setSkill(null);
+        setUnion(null);
+        setLevel(null);
         handleClose();
-        const newAdvice = await getAdviceFunction(c.ocid);
-        if (newAdvice) {
-            setSkill(newAdvice.skill);
-            setUnion(newAdvice.union);
-            setLevel(newAdvice.level);
+
+        setAdviceLoading(true);
+        try {
+            const [linkSkill, unionAdvice, levelAdvice] = await Promise.all([
+                requestAdvice(c.ocid, 'LINK_SKILL'),
+                requestAdvice(c.ocid, 'UNION'),
+                requestAdvice(c.ocid, 'LEVEL'),
+            ]);
+            setSkill(linkSkill);
+            setUnion(unionAdvice);
+            setLevel(levelAdvice);
+        } finally {
+            setAdviceLoading(false);
         }
     };
     useEffect(() => {
@@ -261,19 +280,7 @@ const APIContents: NextPage<Props> = ({initialCharacterList,
                                     <Image width={20} height={20} alt="경고" src="/icons/siren.svg"/>
                                     <h4>링크스킬</h4>
                                 </div>
-                                {skill !== null ?
-                                    <ReactMarkdown
-                                        remarkPlugins={[remarkGfm]}
-                                        components={{
-                                            li: ({...props}) => (
-                                                <li {...props} className={styles.li}/>
-                                            ),
-                                        }}
-                                    >
-                                        {skill}
-                                    </ReactMarkdown> :
-                                    <p>API Key가 입력되지 않았어요</p>
-                                }
+                                <AdviceText advice={skill} loading={adviceLoading} className={styles.li}/>
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>
@@ -287,19 +294,7 @@ const APIContents: NextPage<Props> = ({initialCharacterList,
                                     <Image width={20} height={20} alt="경고" src="/icons/siren.svg"/>
                                     <h4>유니온</h4>
                                 </div>
-                                {union !== null ?
-                                    <ReactMarkdown
-                                        remarkPlugins={[remarkGfm]}
-                                        components={{
-                                            li: ({...props}) => (
-                                                <li {...props} className={styles.li}/>
-                                            ),
-                                        }}
-                                    >
-                                        {union}
-                                    </ReactMarkdown> :
-                                    <p>API Key가 입력되지 않았어요</p>
-                                }
+                                <AdviceText advice={union} loading={adviceLoading} className={styles.li}/>
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>
@@ -313,19 +308,7 @@ const APIContents: NextPage<Props> = ({initialCharacterList,
                                     <Image width={20} height={20} alt="경고" src="/icons/siren.svg"/>
                                     <h4>레벨링</h4>
                                 </div>
-                                {level !== null ?
-                                    <ReactMarkdown
-                                        remarkPlugins={[remarkGfm]}
-                                        components={{
-                                            li: ({...props}) => (
-                                                <li {...props} className={styles.li}/>
-                                            ),
-                                        }}
-                                    >
-                                        {level}
-                                    </ReactMarkdown> :
-                                    <p>API Key가 입력되지 않았어요</p>
-                                }
+                                <AdviceText advice={level} loading={adviceLoading} className={styles.li}/>
                             </div>
                             <button className={styles.detailsButton}>
                                 <span>더 알아보기</span>

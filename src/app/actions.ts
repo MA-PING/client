@@ -6,21 +6,14 @@ import {cookies} from "next/headers";
 // 특정 캐릭터 이름 태그를 가진 캐시를 무효화하는 함수
 export async function refreshCharacterData(characterName: string) {
     const tag = `character:${characterName}`;
-    revalidateTag(tag);
+    revalidateTag(tag, { expire: 0 });
     console.log(`Revalidating cache for tag: ${tag}`);
 }
 
 export async function refreshUserData(token: string) {
     const tag = `token:${token}`;
-    revalidateTag(tag);
+    revalidateTag(tag, { expire: 0 });
     console.log(`유저 정보 tag: ${tag}`);
-}
-
-export async function serverLogout() {
-    // 서버에서 httpOnly 쿠키를 직접 삭제
-    (await cookies()).delete('accessToken');
-    (await cookies()).delete('refreshToken');
-    (await cookies()).delete('apiKey');
 }
 
 export async function saveAPIKey(apiKey: string, cookieName: string) {
@@ -28,16 +21,6 @@ export async function saveAPIKey(apiKey: string, cookieName: string) {
     // 쿠키 설정
     cookieStore.set(cookieName, apiKey, {
         maxAge: 60 * 60 * 24 * 7, // 7일
-        secure: process.env.NODE_ENV === 'production',
-        httpOnly: true,
-        sameSite: 'lax' as const
-    });
-}
-export async function saveAccessToken(accessToken: string) {
-    const cookieStore = await cookies();
-    // 쿠키 설정
-    cookieStore.set('accessToken', accessToken, {
-        maxAge: 60 * 60 * 24 * 3, // 7일
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
         sameSite: 'lax' as const

@@ -1,5 +1,17 @@
 import type { NextConfig } from "next";
+
+const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:8080";
+
 const nextConfig: NextConfig = {
+    async rewrites() {
+        return [
+            { source: "/api/auth/:path*", destination: `${BACKEND_URL}/api/auth/:path*` },
+            { source: "/api/users/:path*", destination: `${BACKEND_URL}/api/users/:path*` },
+            { source: "/api/ai/:path*", destination: `${BACKEND_URL}/api/ai/:path*` },
+            { source: "/oauth2/:path*", destination: `${BACKEND_URL}/oauth2/:path*` },
+            { source: "/login/oauth2/:path*", destination: `${BACKEND_URL}/login/oauth2/:path*` },
+        ];
+    },
     images: {
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [

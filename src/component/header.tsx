@@ -18,8 +18,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "@/redux/store";
 import {clearUserData} from "@/redux/userSlice";
 import {Popover} from "@mui/material";
-import {serverLogout} from "@/app/actions";
-import {getLogout} from "@/utils/apiLogout";
+import {logout} from "@/utils/authApi";
 import MobileSearch from "@/component/search/mobileSearch";
 
 // import {refreshUserData} from "@/app/actions";
@@ -81,17 +80,13 @@ const Header: NextPage<HeaderProps> = ({initialUserName}) => {
             setDrawerOpen(open);
         };
     const handleLogout = async () => {
-        if (userInfoRedux.accessToken) {
-            await getLogout(userInfoRedux.accessToken);
-        }
+        await logout();
         setDrawerOpen(false);
         dispatch(clearUserData());
-        await serverLogout();
         window.location.reload();
-        // router.push('/');
     };
 
-    if (pathname == '/login' || pathname == '/login' || pathname == '/social-callback' || pathname == '/api') {
+    if (pathname == '/login' || pathname == '/oauth/callback' || pathname == '/api') {
         return (
             <></>
         );

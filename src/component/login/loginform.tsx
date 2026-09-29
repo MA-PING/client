@@ -8,19 +8,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Checkbox from '@mui/material/Checkbox';
 import { MenuItem, Select } from "@mui/material";
-import {setAccessToken} from "@/redux/userSlice";
+import {setUserInfo} from "@/redux/userSlice";
 import {useDispatch} from "react-redux";
-
-const NAVER_AUTH_URL =
-    `https://nid.naver.com/oauth2.0/authorize?response_type=code` +
-    `&client_id=FXmn63c4JEW3_uMt_9sK` +
-    `&state=${Math.random().toString(36).substring(2, 15)}` +
-    `&redirect_uri=https://ma-ping.com/api/v1/auth/signup/naver`;
-
-const GOOGLE_AUTH_URL =
-    `https://accounts.google.com/o/oauth2/auth?client_id=57030810261-lchn2518e3r4h2phih6picav5cqfnh59.apps.googleusercontent.com` +
-    `&redirect_uri=https://ma-ping.com/api/v1/auth/signup/google` +
-    `&response_type=code&scope=openid%20email%20profile&access_type=offline`;
+import {fetchMe, login, socialLoginUrl} from "@/utils/authApi";
 
 const Frame: NextPage = () => {
     const dispatch = useDispatch();
@@ -56,45 +46,25 @@ const Frame: NextPage = () => {
         const completeEmail = `${email}@${selectedDomain}`;
 
         try {
-            const response = await fetch("/api/proxy-login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: completeEmail,
-                    password,
-                }),
-                credentials: "include", // ← 쿠키 사용 필수 설정
-            });
-
-            let data;
-            try {
-                data = await response.json();
-            } catch {
-                data = { message: "서버에서 유효한 JSON 응답을 받지 못했습니다." };
+            await login(completeEmail, password);
+            const user = await fetchMe();
+            if (user) {
+                dispatch(setUserInfo({ userId: user.id, userName: user.nickname, email: user.email }));
             }
-
-            if (!response.ok) {
-                console.error("로그인 실패:", data.message || data);
-                alert(`로그인 실패: ${data.message || response.statusText || ""}`);
-                return;
-            }
-            dispatch(setAccessToken({ accessToken: data.accessToken, tokenExpiresAt: data.tokenExpiresAt }));
             alert("로그인 성공!");
             window.location.href = "/";
         } catch (error) {
             console.error("로그인 에러:", error);
-            alert("로그인 중 문제가 발생했습니다.");
+            alert(error instanceof Error ? `로그인 실패: ${error.message}` : "로그인 중 문제가 발생했습니다.");
         }
     };
 
     // 소셜 로그인 이동 함수
     const handleNaverLogin = () => {
-        window.location.href = NAVER_AUTH_URL;
+        window.location.href = socialLoginUrl('naver');
     };
     const handleGoogleLogin = () => {
-        window.location.href = GOOGLE_AUTH_URL;
+        window.location.href = socialLoginUrl('google');
     };
 
     return (

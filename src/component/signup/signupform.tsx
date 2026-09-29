@@ -4,6 +4,7 @@ import styles from '../../styles/signup/signupform.module.css';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { MenuItem, Select } from "@mui/material";
+import { sendEmailVerification } from "@/utils/authApi";
 
 const Component1: FunctionComponent = () => {
     const [email, setEmail] = useState('');
@@ -12,32 +13,14 @@ const Component1: FunctionComponent = () => {
 
     const callSendEmailAPI = async () => {
         const fullEmail = `${email}@${domain}`;
-        const formData = new URLSearchParams();
-        formData.append('email', fullEmail);
 
         try {
-            // 👇 전체 URL을 사용하도록 수정
-            const response = await fetch(`https://api.ma-ping.com/api/v1/auth/send-email-verification`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: formData,
-            });
-
-            const result = await response.json();
-
-            if (response.ok && result.isSuccess) {
-                alert("인증번호가 성공적으로 발송되었습니다.");
-                return true;
-            } else {
-                alert(result.message || "메일 발송에 실패했습니다.");
-                return false;
-            }
-
+            await sendEmailVerification(fullEmail);
+            alert("인증번호가 성공적으로 발송되었습니다.");
+            return true;
         } catch (error) {
             console.error("메일 발송 API 호출 오류:", error);
-            alert("메일 발송 중 오류가 발생했습니다.");
+            alert(error instanceof Error ? error.message : "메일 발송 중 오류가 발생했습니다.");
             return false;
         }
     };

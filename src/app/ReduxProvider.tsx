@@ -4,15 +4,16 @@
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import AuthInitializer from "@/component/userAuth";
+import { AuthUser } from "@/utils/authApi";
 import React from "react";
 
-export function ReduxProvider({children, accessToken}: {
+export function ReduxProvider({children, initialUser}: {
     children: React.ReactNode,
-    accessToken?: string | undefined,
+    initialUser: AuthUser | null,
 }) {
     return (
         <Provider store={store}>
-            <AuthInitializer accessToken={accessToken}/>
+            <AuthInitializer initialUser={initialUser}/>
             {children}
         </Provider>
     );

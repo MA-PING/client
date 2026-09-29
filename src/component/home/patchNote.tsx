@@ -5,29 +5,27 @@ import styles from '../../styles/home/patchNote.module.css';
 import { useState } from 'react';
 import ReactMarkdown from "react-markdown";
 import remarkGfm from 'remark-gfm'
-
-interface PatchNote {
-    title: string;
-    url: string;
-    date: string;
-    summary: string;
-    version: string;
-}
+import { NoticeSummary } from '@/utils/aiApi';
 
 interface Props {
-    patchNotes: PatchNote[];
+    patchNotes: NoticeSummary[];
 }
 
 const PatchNotice: NextPage<Props> = ({ patchNotes }) => {
     // patchNotes가 undefined일 경우에 대비하여 초기값 설정
     const notes = patchNotes || [];
-    const newVersion : string = notes[0].version;
+    const newVersion = notes[0]?.gameVersion ?? '';
 
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggleAccordion = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
+
+    if (notes.length === 0) {
+        return null;
+    }
+
     return (
         <div className={styles.ai}>
             <div className={styles.notes}>
