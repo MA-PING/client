@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
             { source: "/api/auth/:path*", destination: `${BACKEND_URL}/api/auth/:path*` },
             { source: "/api/users/:path*", destination: `${BACKEND_URL}/api/users/:path*` },
             { source: "/api/ai/:path*", destination: `${BACKEND_URL}/api/ai/:path*` },
+            { source: "/api/characters/:path*", destination: `${BACKEND_URL}/api/characters/:path*` },
+            { source: "/api/favorites/:path*", destination: `${BACKEND_URL}/api/favorites/:path*` },
             { source: "/oauth2/:path*", destination: `${BACKEND_URL}/oauth2/:path*` },
             { source: "/login/oauth2/:path*", destination: `${BACKEND_URL}/login/oauth2/:path*` },
         ];

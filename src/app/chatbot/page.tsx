@@ -9,13 +9,13 @@ import {cookies} from "next/headers";
 
 export default async function Home() {
     const cookieStore = await cookies();
-    const accessToken = cookieStore.get('accessToken')?.value;
+    const accessToken = cookieStore.get('ACCESS_TOKEN')?.value;
     let characterRecommendData: recommendResponse | null = null;
     let characterList = null;
     let mainCharacterName: string | null = null;
     const userRecommendData = await getApiUserRecommend();
     if (accessToken != null) {
-        characterList = await getCharacterList(accessToken);
+        characterList = await getCharacterList();
         if (characterList) {
             const CharacterMainList = characterList.find((c: characterMainList) => c.main_character);
 

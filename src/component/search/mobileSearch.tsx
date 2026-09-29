@@ -16,6 +16,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {CharacterInfo} from "@/interfaces/character";
 import {useRouter} from "next/navigation";
 import {getAutocomplete} from "@/utils/autocomplete";
+import {addFavorite, getFavorites, removeFavorite} from "@/utils/favoriteApi";
 import {serverImageMap} from "@/interfaces/serverImageMap"; // React, useState 임포트
 
 // Transition 컴포넌트 정의 (MUI Dialog에 필요)
@@ -39,6 +40,7 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
     const [suggestions, setSuggestions] = useState<CharacterInfo[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [highlightedIndex, setHighlightedIndex] = useState(-1);
+    const [favoriteNames, setFavoriteNames] = useState<Set<string>>(new Set());
     const router = useRouter();
     const searchBarRef = useRef<HTMLFormElement>(null);
     const isActive = inputValue.trim() !== '';
@@ -58,6 +60,12 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
                 console.error("Failed to parse state from localStorage", error);
             }
         }
+    }, []);
+    // 즐겨찾기 목록 로딩 (비로그인 시 조용히 무시)
+    useEffect(() => {
+        getFavorites().then((favorites) => {
+            setFavoriteNames(new Set(favorites.map((f) => f.characterName)));
+        });
     }, []);
     // 다른 탭/창에서의 localStorage 변경을 감지하는 useEffect
     useEffect(() => {
@@ -146,6 +154,30 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
             return newRecentSearches;
         });
     }, []);
+    // 즐겨찾기 토글 (낙관적 업데이트 후 실패 시 롤백)
+    const handleToggleFavorite = useCallback(async (characterName: string) => {
+        const wasFavorite = favoriteNames.has(characterName);
+        setFavoriteNames(prev => {
+            const next = new Set(prev);
+            if (wasFavorite) next.delete(characterName); else next.add(characterName);
+            return next;
+        });
+        try {
+            if (wasFavorite) {
+                await removeFavorite(characterName);
+            } else {
+                await addFavorite(characterName);
+            }
+        } catch (error) {
+            console.error('즐겨찾기 처리 중 오류 발생:', error);
+            setFavoriteNames(prev => {
+                const next = new Set(prev);
+                if (wasFavorite) next.add(characterName); else next.delete(characterName);
+                return next;
+            });
+        }
+    }, [favoriteNames]);
+
     // 모달 캐릭터 선택 (키보드 및 마우스 공용)
     const handleSelectCharacter = useCallback((character: CharacterInfo) => {
         setInputValue(character.characterName); // 선택한 캐릭터 이름으로 input 값 변경
@@ -219,9 +251,15 @@ const MobileSearch: NextPage<MobileSearchProps> = ({ open, onClose }) => {
             </div>
             {isRecent &&
                 <div className={styles.wrapIcon}>
-                    <button className={styles.button}>
+                    <button type="button" className={styles.button}
+                            title={favoriteNames.has(char.characterName) ? "즐겨찾기 해제" : "즐겨찾기"}
+                            onMouseDown={(e) => {
+                                e.stopPropagation();
+                                handleToggleFavorite(char.characterName);
+                            }}>
                         <div className={styles.icon1}>
-                            <Image className={styles.unionIcon} fill alt="즐겨찾기" src="/icons/heart.svg" />
+                            <Image className={styles.unionIcon} fill alt="즐겨찾기"
+                                   src={favoriteNames.has(char.characterName) ? "/icons/heart_on.svg" : "/icons/heart_off.svg"} />
                         </div>
                     </button>
                     <button className={styles.button1} title="삭제" onMouseDown={(e) => {
