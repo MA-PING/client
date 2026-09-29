@@ -177,7 +177,7 @@ const Header: NextPage<HeaderProps> = ({initialUserName}) => {
                                     <div className={drawerStyles.div}>즐겨찾기</div>
                                 </a>
                             </Link>
-                            <Link href="/" passHref legacyBehavior>
+                            <Link href="/my-page" passHref legacyBehavior>
                                 <a className={drawerStyles.menuAtomic}>
                                     <Image className={styles.icon} width={8} height={8} alt="계정 설정 아이콘"
                                            src="/icons/account.svg"/>
@@ -273,7 +273,7 @@ const Header: NextPage<HeaderProps> = ({initialUserName}) => {
                                                    src="/icons/heart_on.svg"/>
                                             <div className={drawerStyles.div}>즐겨찾기</div>
                                         </Link>
-                                        <Link href="/" className={drawerStyles.menuAtomic}>
+                                        <Link href="/my-page" className={drawerStyles.menuAtomic}>
                                             <Image className={styles.icon} width={8} height={8} alt="계정 설정 아이콘"
                                                    src="/icons/account.svg"/>
                                             <div className={drawerStyles.div}>내 계정 설정</div>

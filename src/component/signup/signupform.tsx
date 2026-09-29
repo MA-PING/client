@@ -175,11 +175,11 @@ const Component1: FunctionComponent = () => {
 
                     <div className={styles.divider}>
                         <div className={styles.divider1}>
-                            <img className={styles.dividerIcon} alt="" src="divider.svg" />
+                            <img className={styles.dividerIcon} alt="" src="/icons/divider.svg" />
                         </div>
                         <div className={styles.div10}>또는</div>
                         <div className={styles.divider1}>
-                            <img className={styles.dividerIcon} alt="" src="divider.svg" />
+                            <img className={styles.dividerIcon} alt="" src="/icons/divider.svg" />
                         </div>
                     </div>
 
